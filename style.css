@@ -782,6 +782,8 @@ height:auto;
 
 }
 
+}
+
 #methodology img{
 
 max-width:100%;
@@ -871,3 +873,67 @@ position:relative;
 }
 
 }
+
+/* ==========================
+   Contact Cards
+========================== */
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+    margin-top:50px;
+
+}
+
+.contact-card{
+
+    background:#101b2d;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.contact-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#3b82f6;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.contact-card h3{
+
+    margin-bottom:15px;
+
+    color:#ffffff;
+
+}
+
+.contact-card a{
+
+    color:#69a9ff;
+
+    word-break:break-word;
+
+}
+
+.contact-card a:hover{
+
+    color:#8bc2ff;
+
+    }
