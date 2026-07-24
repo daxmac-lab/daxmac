@@ -688,55 +688,34 @@ body::after{
 
 .hero-content{
 
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-gap:60px;
-
-max-width:1200px;
-
-margin:auto;
-
-padding:60px 20px;
-
-flex-wrap:wrap;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
 
 }
 
 .hero-text{
 
-flex:1;
-
-min-width:320px;
+    flex:1;
 
 }
 
 .hero-image{
 
-flex:1;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-min-width:300px;
+    flex:1;
+    display:flex;
+    justify-content:center;
 
 }
 
 .hero-image img{
 
-width:100%;
+    width:100%;
+    max-width:480px;
+    height:auto;
 
-max-width:500px;
-
-height:auto;
-
-    }
+}
 
 /* ==========================
    Methodology Illustration
@@ -792,21 +771,14 @@ height:auto;
 
 .hero-content{
 
-flex-direction:column;
-
-text-align:center;
-
-}
-
-.hero-image{
-
-order:-1;
+    flex-direction:column-reverse;
+    text-align:center;
 
 }
 
 .hero-image img{
 
-max-width:320px;
+    max-width:300px;
 
 }
 
