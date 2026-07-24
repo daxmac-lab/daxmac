@@ -495,23 +495,65 @@ nav a:hover{
     display:none;
 
 }
-/* ========================= */
-/* ABOUT */
-/* ========================= */
 
-#about{
 
-    text-align:center;
+/* ==========================
+   About
+========================== */
+
+.about-content{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:60px;
+
+    flex-wrap:wrap;
 
 }
 
-#about p{
+.about-image{
 
-    max-width:800px;
+    flex:1;
 
-    margin:30px auto 0;
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.about-image img{
+
+    width:100%;
+
+    max-width:420px;
+
+    height:auto;
+
+}
+
+.about-text{
+
+    flex:1;
+
+    min-width:320px;
+
+}
+
+.about-text h2{
+
+    margin-bottom:20px;
+
+}
+
+.about-text p{
 
     font-size:1.05rem;
+
+    color:#b7c2d4;
 
 }
 
@@ -798,6 +840,13 @@ max-width:300px;
 
 }
 
+.about-content{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
 
 
 /* ==========================
