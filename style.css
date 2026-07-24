@@ -595,21 +595,87 @@ nav a:hover{
 
 }
 
-/* ========================= */
-/* FOOTER */
-/* ========================= */
+/* ==========================
+   Footer
+========================== */
 
 footer{
 
+    background:#060d18;
+
     border-top:1px solid rgba(255,255,255,.08);
 
-    padding:40px 25px;
+    padding:60px 25px;
+
+}
+
+.footer-content{
+
+    max-width:1200px;
+
+    margin:auto;
 
     text-align:center;
 
-    color:#8fa2bf;
+}
 
-    background:#060d18;
+.footer-content img{
+
+    width:55px;
+
+    margin:0 auto 20px;
+
+}
+
+.footer-content h3{
+
+    color:#ffffff;
+
+    margin-bottom:10px;
+
+}
+
+.footer-tagline{
+
+    color:#8ea4c4;
+
+    margin:20px 0 35px;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+
+    margin-bottom:35px;
+
+}
+
+.footer-links a{
+
+    color:#69a9ff;
+
+    transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+    color:#ffffff;
+
+}
+
+.copyright{
+
+    color:#6b7b94;
+
+    font-size:.9rem;
 
 }
 
