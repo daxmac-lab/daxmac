@@ -756,3 +756,145 @@ body::after{
     pointer-events:none;
 
         }
+
+/* ==========================
+   Hero Layout
+========================== */
+
+.hero-content{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:60px;
+
+max-width:1200px;
+
+margin:auto;
+
+padding:60px 20px;
+
+flex-wrap:wrap;
+
+}
+
+.hero-text{
+
+flex:1;
+
+min-width:320px;
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+min-width:300px;
+
+}
+
+.hero-image img{
+
+width:100%;
+
+max-width:500px;
+
+height:auto;
+
+    }
+
+/* ==========================
+   Methodology Illustration
+========================== */
+
+#methodology img{
+
+display:block;
+
+margin:40px auto;
+
+width:100%;
+
+max-width:700px;
+
+height:auto;
+
+}
+
+/* ==========================
+   About Illustration
+========================== */
+
+#about{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+#about img{
+
+width:100%;
+
+max-width:550px;
+
+margin:40px auto;
+
+height:auto;
+
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:768px){
+
+.hero-content{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.hero-image{
+
+order:-1;
+
+}
+
+.hero-image img{
+
+max-width:320px;
+
+}
+
+#methodology img{
+
+max-width:100%;
+
+}
+
+#about img{
+
+max-width:300px;
+
+}
+
+}
