@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://daxmac-lab.github.io/daxmac/sitemap.xml
