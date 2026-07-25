@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Field Note #3 | DaxMac</title>
+
+<meta name="description"
+content="Why creating a resource is not the same as managing its lifecycle, and how onboarding documentation should make that distinction explicit.">
+
+<link rel="stylesheet" href="../style.css">
+
+<link rel="icon" href="../assets/favicon.png">
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="../assets/logo.png" alt="DaxMac Logo">
+
+<span>DaxMac</span>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="../audits.html">Audits</a></li>
+
+<li><a href="../field-notes.html">Field Notes</a></li>
+
+<li><a href="../index.html#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="section">
+
+<p class="badge">
+Field Note #3
+</p>
+
+<h1>
+Creating a Resource Is Not the Same as Managing Its Lifecycle
+</h1>
+
+<p>
+
+Published by DaxMac
+
+</p>
+
+</section>
+
+<section class="section">
+
+<p>
+
+Many onboarding guides are excellent at teaching developers how to create a resource. Far fewer explain how that resource should be managed throughout its lifetime.
+
+</p>
+
+<p>
+
+This distinction becomes especially important when developers build applications that span multiple requests, long-running workflows, or autonomous agents.
+
+</p>
+
+<p>
+
+The first example a developer encounters is often a simple resource creation call. It is easy to understand, easy to copy, and ideal for getting started.
+
+</p>
+
+<p>
+
+Nothing about that approach is wrong.
+
+</p>
+
+<p>
+
+The problem begins when the documentation does not clearly explain that creating a resource is only the beginning of its lifecycle.
+
+</p>
+
+<p>
+
+Developers naturally extend the first example into more complex workflows. If onboarding focuses only on creating new resources, it is easy to assume that repeating the same creation step is the correct way to continue a workflow.
+
+</p>
+
+<p>
+
+In reality, many production systems depend on reconnecting to, reusing, or managing an existing resource rather than creating a new one each time.
+
+</p>
+
+<p>
+
+Those are very different architectural decisions.
+
+</p>
+
+<p>
+
+When documentation postpones lifecycle guidance until later reference pages, developers may build their initial mental model around creation instead of continuity. The result is not necessarily a misunderstanding of the API itself, but an incomplete understanding of how the system is intended to be used over time.
+
+</p>
+
+<p>
+
+Good onboarding documentation should teach more than the first successful API call.
+
+</p>
+
+<p>
+
+It should also establish when developers are expected to create something new, when they should reconnect to an existing resource, and how those choices affect long-running workflows.
+
+</p>
+
+<p>
+
+The first example shapes the developer's mental model. If lifecycle expectations are introduced too late, that initial model can become surprisingly difficult to replace.
+
+</p>
+
+</section>
+
+<section class="section" style="text-align:center;">
+
+<a href="../field-notes.html">
+
+← Back to Field Notes
+
+</a>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+<img src="../assets/logo.png"
+alt="DaxMac Logo">
+
+<h3>DaxMac</h3>
+
+<p>
+
+Independent Developer Onboarding Audits
+
+</p>
+
+<p class="footer-tagline">
+
+Built for API-first engineering teams.
+
+</p>
+
+<p class="copyright">
+
+© 2026 DaxMac. All rights reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+
+  </html>
