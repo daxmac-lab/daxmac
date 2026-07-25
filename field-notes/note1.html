@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Field Note #1 | DaxMac</title>
+
+<meta name="description"
+content="When documentation defines concepts but not their relationship, developers are forced to construct architectural assumptions on their own.">
+
+<link rel="stylesheet" href="../style.css">
+
+<link rel="icon" href="../assets/favicon.png">
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="../assets/logo.png" alt="DaxMac Logo">
+
+<span>DaxMac</span>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="../audits.html">Audits</a></li>
+
+<li><a href="../field-notes.html">Field Notes</a></li>
+
+<li><a href="../index.html#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="section">
+
+<p class="badge">
+Field Note #1
+</p>
+
+<h1>
+When Documentation Defines Concepts but Not Their Relationship
+</h1>
+
+<p>
+
+Published by DaxMac
+
+</p>
+
+</section>
+
+<section class="section">
+
+<p>
+
+One documentation pattern appears repeatedly across developer platforms: concepts are documented individually, but their operational relationship is left for developers to infer.
+
+</p>
+
+<p>
+
+Consider a common example.
+
+</p>
+
+<p>
+
+A platform may introduce a compute resource, such as a Pod, and separately introduce persistent storage, such as a Network Volume. Each concept is explained correctly on its own.
+
+</p>
+
+<p>
+
+The documentation might describe the compute resource as the environment where workloads run, while persistent storage is introduced as storage that can be attached to multiple compute resources to share data.
+
+</p>
+
+<p>
+
+Nothing in those descriptions is incorrect.
+
+</p>
+
+<p>
+
+The challenge is what the documentation does not explain.
+
+</p>
+
+<p>
+
+A developer reading these concepts for the first time is left to build a mental model about how they interact. If the documentation never explains the lifecycle of data written inside the compute resource—or explicitly distinguishes temporary storage from persistent storage—the developer must fill in that gap themselves.
+
+</p>
+
+<p>
+
+That assumption may be correct.
+
+</p>
+
+<p>
+
+It may also be wrong.
+
+</p>
+
+<p>
+
+The documentation has transferred an architectural decision from explicit guidance to developer interpretation.
+
+</p>
+
+<p>
+
+This pattern is worth paying attention to because onboarding documentation does more than define terminology. It teaches developers how a system behaves.
+
+</p>
+
+<p>
+
+When relationships between concepts remain implicit, documentation may unintentionally encourage assumptions that are only challenged much later during implementation.
+
+</p>
+
+<p>
+
+Good onboarding documentation doesn't just explain individual components.
+
+</p>
+
+<p>
+
+It explains how those components work together to shape production behavior.
+
+</p>
+
+</section>
+
+<section class="section" style="text-align:center;">
+
+<a href="../field-notes.html">
+
+← Back to Field Notes
+
+</a>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+<img src="../assets/logo.png"
+alt="DaxMac Logo">
+
+<h3>DaxMac</h3>
+
+<p>
+
+Independent Developer Onboarding Audits
+
+</p>
+
+<p class="footer-tagline">
+
+Built for API-first engineering teams.
+
+</p>
+
+<p class="copyright">
+
+© 2026 DaxMac. All rights reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+
+</html>
