@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Svix Developer Onboarding Audit | DaxMac</title>
+
+    <link rel="icon" href="../assets/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="../assets/logo.png" alt="DaxMac Logo">
+
+<span>DaxMac</span>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="../audits.html">Audits</a></li>
+
+<li><a href="../index.html#methodology">Methodology</a></li>
+
+<li><a href="../index.html#about">About</a></li>
+
+<li><a href="../index.html#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="section">
+
+<img src="../assets/svix.png"
+     alt="Svix Logo"
+     style="width:90px;margin-bottom:25px;">
+
+<h1>Svix Developer Onboarding Audit</h1>
+
+<p>
+Finding: The application boundary is introduced without explaining its operational scope.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Finding</h2>
+
+<p>
+
+The application boundary is introduced without explaining its operational scope.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence 1 – Initial guidance</h2>
+
+<img src="../assets/audits/svix/screenshot1.png"
+     alt="Initial guidance">
+
+<p>
+
+The introduction recommends creating one application per user but does not explain that the application establishes the operational scope of key resources. Because the recommendation is presented as "usually," developers can reasonably interpret the application as an organizational grouping rather than a foundational architectural boundary.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Documentation-induced Assumption</h2>
+
+<p>
+
+Because the introduction does not explain the operational consequences of the application boundary, developers can reasonably treat it as a flexible organizational choice instead of the unit that scopes endpoint management and message history.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence 2 – Message history scope</h2>
+
+<img src="../assets/audits/svix/screenshot2.png"
+     alt="Message history scope">
+
+<p>
+
+The Message API shows that message history is scoped to an application. This operational consequence is documented in the API reference but is not explained where the application model is first introduced, making it easy to underestimate the significance of the initial application boundary.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Production Trigger</h2>
+
+<p>
+
+The assumption breaks when a team models multiple customers within a single application and later needs to manage endpoints or inspect message history on a per-customer basis. They discover that these operations are scoped to the shared application, making the original application boundary difficult to change.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence 3 – Endpoint management scope</h2>
+
+<img src="../assets/audits/svix/screenshot3.png"
+     alt="Endpoint management scope">
+
+<p>
+
+The Endpoint API also scopes endpoint management to the application. Together with the Message API, this demonstrates that the application functions as an operational boundary rather than simply an organizational container.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Business Consequence</h2>
+
+<p>
+
+Correcting the application boundary after onboarding can require reorganizing webhook resources and operational workflows, increasing migration effort, operational complexity, and support overhead.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Conclusion</h2>
+
+<p>
+
+The documentation correctly recommends creating one application per user but does not explain why that recommendation matters operationally. Explaining that the application defines the scope of endpoint management and message history would help developers make an informed architectural decision at the beginning of implementation.
+
+</p>
+
+</section>
+
+<section class="section" style="text-align:center;">
+
+<a href="../audits.html">
+
+← Back to Audit Library
+
+</a>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 DaxMac. All rights reserved.
+
+</p>
+
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+
+  </html>
