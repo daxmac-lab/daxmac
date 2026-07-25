@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Liveblocks Developer Onboarding Audit | DaxMac</title>
+
+<link rel="icon" href="../assets/favicon.png">
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="../assets/logo.png" alt="DaxMac Logo">
+
+<span>DaxMac</span>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="../audits.html">Audits</a></li>
+
+<li><a href="../index.html#methodology">Methodology</a></li>
+
+<li><a href="../index.html#about">About</a></li>
+
+<li><a href="../index.html#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="section">
+
+<img src="../assets/liveblocks.png"
+alt="Liveblocks Logo"
+style="width:90px;margin-bottom:25px;">
+
+<h1>Liveblocks Developer Onboarding Audit</h1>
+
+<p>
+
+Finding: The Concepts onboarding presents environment selection as a setup attribute but does not emphasize that it is an irreversible architectural boundary.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Finding</h2>
+
+<p>
+
+The Concepts onboarding presents environment selection as a setup attribute but does not emphasize that it is an irreversible architectural boundary.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence 1 – Project model</h2>
+
+<img src="../assets/audits/liveblocks/screenshot1.png"
+alt="Project model">
+
+<p>
+
+The Concepts documentation introduces a project as the top-level container for Liveblocks resources. At this stage, the documentation explains what a project is but does not establish that the environment selection becomes a permanent architectural decision.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Documentation-Induced Assumption</h2>
+
+<p>
+
+Because the Concepts page presents environment selection as part of project setup rather than as an irreversible architectural decision, developers can reasonably underestimate the importance of choosing the correct environment during project creation.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence 2 – Irreversible environment selection</h2>
+
+<img src="../assets/audits/liveblocks/screenshot2.png"
+alt="Environment selection">
+
+<p>
+
+The documentation states that the environment tag cannot be changed once a project has been created. While this limitation is documented, its long-term architectural significance is not emphasized during the initial onboarding flow.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Production Trigger</h2>
+
+<p>
+
+The assumption breaks when a team later decides to promote a Development project to production and discovers that the environment tag cannot be changed after project creation, requiring a new project instead of modifying the existing one.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence 3 – Recommended project structure</h2>
+
+<img src="../assets/audits/liveblocks/screenshot3.png"
+alt="Recommended project structure">
+
+<p>
+
+The documentation recommends creating separate projects for production, staging, and development. Combined with the irreversible environment tag, this indicates that project creation establishes a long-term architectural boundary rather than a temporary setup choice.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Business Consequence</h2>
+
+<p>
+
+Correcting the mistake requires creating a new project and updating deployment workflows, increasing engineering effort, operational overhead, and potentially delaying production rollout.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Conclusion</h2>
+
+<p>
+
+The documentation accurately states that the environment tag cannot be changed after project creation. However, it does not clearly communicate that this decision establishes a permanent architectural boundary. Emphasizing the architectural importance of environment selection earlier in the onboarding flow would help developers make a more informed project setup decision.
+
+</p>
+
+</section>
+
+<section class="section" style="text-align:center;">
+
+<a href="../audits.html">
+
+← Back to Audit Library
+
+</a>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 DaxMac. All rights reserved.
+
+</p>
+
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+
+  </html>
