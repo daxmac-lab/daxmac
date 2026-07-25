@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Field Note #2 | DaxMac</title>
+
+<meta name="description"
+content="Why initial validation should not automatically become a developer's mental model for long-term reliability.">
+
+<link rel="stylesheet" href="../style.css">
+
+<link rel="icon" href="../assets/favicon.png">
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="../assets/logo.png" alt="DaxMac Logo">
+
+<span>DaxMac</span>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="../audits.html">Audits</a></li>
+
+<li><a href="../field-notes.html">Field Notes</a></li>
+
+<li><a href="../index.html#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="section">
+
+<p class="badge">
+Field Note #2
+</p>
+
+<h1>
+When Initial Validation Is Mistaken for Long-Term Reliability
+</h1>
+
+<p>
+
+Published by DaxMac
+
+</p>
+
+</section>
+
+<section class="section">
+
+<p>
+
+One pattern appears repeatedly in AI-powered developer tools: documentation explains that something has been successfully generated or validated, but it does not always distinguish that momentary success from long-term reliability.
+
+</p>
+
+<p>
+
+Consider an AI-generated end-to-end test.
+
+</p>
+
+<p>
+
+The onboarding experience may explain that an AI agent creates a test, validates it against the application, and marks it as active. That sequence naturally communicates progress. A developer sees a generated test, watches it pass validation, and concludes that the workflow has produced something ready for production.
+
+</p>
+
+<p>
+
+Nothing about that explanation is necessarily incorrect.
+
+</p>
+
+<p>
+
+The question is what developers are likely to infer from it.
+
+</p>
+
+<p>
+
+Validation is evidence that a test worked against the current version of an application. It is not, by itself, evidence that the same test will continue to represent the correct user journey as the application changes.
+
+</p>
+
+<p>
+
+Those are two different ideas.
+
+</p>
+
+<p>
+
+If documentation introduces validation without clearly separating it from long-term maintainability, developers may unconsciously treat the initial success as evidence of future reliability. The documentation has not explicitly made that claim, but it also has not helped distinguish between a successful execution today and a resilient test over time.
+
+</p>
+
+<p>
+
+This distinction matters because applications evolve continuously. Interfaces change. Workflows are reorganized. Intermediate steps appear. A test that once reflected the intended behavior may eventually require regeneration or manual updates simply because the product itself has changed.
+
+</p>
+
+<p>
+
+Good onboarding documentation does more than describe what happened during setup.
+
+</p>
+
+<p>
+
+It also teaches developers what they should and should not expect after deployment.
+
+</p>
+
+<p>
+
+One successful validation demonstrates that a test works under current conditions. It should not automatically become the developer's mental model for long-term stability.
+
+</p>
+
+<p>
+
+Documentation becomes stronger when it explicitly separates <strong>initial validation</strong> from <strong>ongoing maintenance</strong>, allowing developers to build expectations that better reflect how software evolves.
+
+</p>
+
+</section>
+
+<section class="section" style="text-align:center;">
+
+<a href="../field-notes.html">
+
+← Back to Field Notes
+
+</a>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+<img src="../assets/logo.png"
+alt="DaxMac Logo">
+
+<h3>DaxMac</h3>
+
+<p>
+
+Independent Developer Onboarding Audits
+
+</p>
+
+<p class="footer-tagline">
+
+Built for API-first engineering teams.
+
+</p>
+
+<p class="copyright">
+
+© 2026 DaxMac. All rights reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+
+  </html>
