@@ -408,10 +408,51 @@ nav a:hover{
 /* SERVICES */
 /* ========================= */
 
-#services{
+/* Services */
 
-    background:#0b1424;
+.price{
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 15px 0;
+}
 
+.card h4{
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+.card ul{
+    padding-left: 20px;
+    margin: 0;
+}
+
+.card ul li{
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.service-contact{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.service-contact h3{
+    margin-bottom: 15px;
+}
+
+.service-contact p{
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.service-contact a{
+    color: inherit;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.service-contact a:hover{
+    text-decoration: underline;
 }
 
 /* ========================= */
