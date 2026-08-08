@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Corbado Documentation Audit | DaxMac</title>
+
+<meta name="description"
+content="An audit examining how Corbado distinguishes cross-region data replication from application failover readiness.">
+
+<link rel="icon" href="../assets/favicon.png">
+
+<link rel="stylesheet" href="../style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-3G8JYVSPW5');
+</script>
+  
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="../assets/logo.png" alt="DaxMac Logo">
+
+<span>DaxMac</span>
+
+</div>
+
+<div class="menu-toggle">
+
+☰
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="../audits.html">Audits</a></li>
+
+<li><a href="../field-notes.html">Field Notes</a></li>
+
+<li><a href="../index.html#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="section">
+
+<img src="../assets/corbado.png"
+alt="Corbado Logo"
+style="width:90px;margin-bottom:25px;">
+
+<h1>Corbado Developer Onboarding Audit</h1>
+
+<p>
+
+Finding: Cross-region replication does not mean regional failover is ready.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Finding</h2>
+
+<p>
+
+Corbado presents Multi-AZ + Cross-Region Replica as a deployment configuration with near-real-time replication to another AWS region and an RPO of less than one minute.
+
+However, the same configuration requires manual failover and has a documented 1–4 hour RTO.
+
+Corbado's Geo Failover-Ready configuration is materially different: it maintains a partially deployed secondary application environment that can be activated with minimal manual intervention, with a documented 15–30 minute RTO.
+
+The documentation therefore distinguishes between having current replicated data and having an application environment ready to take over, but that distinction can be easy to miss when evaluating disaster recovery primarily through RPO.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Developer Assumption</h2>
+
+<p>
+
+A team evaluating disaster-recovery options may focus on the &lt;1 minute RPO and the existence of a secondary regional copy when determining whether Cross-Region Replica satisfies its availability requirements.
+
+The risk is not that the documentation explicitly promises automatic recovery.
+
+The risk is that RPO communicates potential data loss, while RTO communicates service restoration time—and the two represent very different operational guarantees.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence</h2>
+
+<img src="../assets/audits/corbado/screenshot1.png"
+alt="Corbado disaster recovery configuration">
+
+<p>
+
+The deployment documentation shows:
+
+</p>
+
+<p>
+
+Cross-Region Replica
+
+</p>
+
+<p>
+
+&lt;1 minute RPO
+
+</p>
+
+<p>
+
+Manual failover
+
+</p>
+
+<p>
+
+1–4 hour RTO
+
+</p>
+
+<p>
+
+while Geo Failover-Ready provides:
+
+</p>
+
+<p>
+
+A partially deployed secondary application environment
+
+</p>
+
+<p>
+
+Push-button/minimal-intervention activation
+
+</p>
+
+<p>
+
+15–30 minute RTO
+
+</p>
+
+<p>
+
+The same page therefore provides direct evidence that replication and failover readiness are separate capabilities.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Production Trigger</h2>
+
+<p>
+
+The primary region experiences a complete regional failure.
+
+The team has current data in another region, but Corbado documents that the Cross-Region Replica configuration still requires manual failover, with a 1–4 hour RTO.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>What Can Break in Production</h2>
+
+<p>
+
+The organization can have a nearly current copy of its data while the application itself remains unavailable.
+
+</p>
+
+<p>
+
+In other words:
+
+</p>
+
+<p>
+
+Low RPO ≠ fast recovery.
+
+</p>
+
+<p>
+
+For an authentication component, that distinction matters because dependent applications may remain unable to authenticate users until the application environment is restored and failover is completed.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Possible Interventions</h2>
+
+<p>
+
+Make Manual failover prominent wherever Cross-Region Replica is presented.
+
+</p>
+
+<p>
+
+Put RPO and RTO side by side in the configuration-selection flow.
+
+</p>
+
+<p>
+
+Explicitly explain that Cross-Region Replica provides replicated data but not a ready-to-activate secondary application environment.
+
+</p>
+
+<p>
+
+Add a decision rule explaining when Geo Failover-Ready is required.
+
+</p>
+
+<p>
+
+Explain the operational difference between data replication and application failover readiness.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Business Consequence</h2>
+
+<p>
+
+A team can satisfy its data-loss requirement while failing to satisfy its service-restoration requirement.
+
+For authentication infrastructure, discovering that distinction during a regional outage can mean a significantly longer service interruption than the team expected, affecting every application that depends on the authentication service.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Scope</h2>
+
+<p>
+
+This finding does not claim that Corbado's Cross-Region Replica configuration is defective.
+
+The documented behavior is explicit.
+
+The finding is that a low RPO can be mistaken for a strong recovery posture if the operational distinction between replicated data and application failover readiness is not made prominent enough during configuration selection.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Severity: High · Priority: Low</h2>
+
+<p>
+
+An extended auth outage is severe — every dependent app loses authentication for up to 4 hours. But this only manifests if two things both happen: a team picks Cross-Region Replica specifically, and a full regional failure occurs — a genuinely rare trigger event. High impact, low likelihood of actually firing.
+
+</p>
+
+</section>
+
+<section class="section" style="text-align:center;">
+
+<a href="../audits.html">
+
+← Back to Audit Library
+
+</a>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 DaxMac. All rights reserved.
+
+</p>
+
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+
+</html>
