@@ -10,7 +10,7 @@
 <title>Liveblocks Documentation Audit | DaxMac</title>
 
 <meta name="description"
-content="An audit examining how Liveblocks presents environment selection during project creation and its architectural implications.">
+content="An audit examining how Liveblocks documents organization context across authentication and resource creation in multi-tenant applications.">
 
 <link rel="icon" href="../assets/favicon.png">
 
@@ -75,7 +75,7 @@ style="width:90px;margin-bottom:25px;">
 
 <p>
 
-Finding: The Concepts onboarding presents environment selection as a setup attribute but does not emphasize that it is an irreversible architectural boundary.
+Finding: Organization context can drift between authentication and resource creation.
 
 </p>
 
@@ -87,7 +87,11 @@ Finding: The Concepts onboarding presents environment selection as a setup attri
 
 <p>
 
-The Concepts onboarding presents environment selection as a setup attribute but does not emphasize that it is an irreversible architectural boundary.
+Liveblocks documents organizationId as the mechanism for workspace-level isolation. During authentication, developers provide an organizationId, and Liveblocks states that the authenticated user can only access resources within that organization.
+
+When creating resources such as rooms, developers also provide an organizationId.
+
+The documentation establishes both organization-scoped operations, but does not explicitly establish the alignment requirement between them: the organization context used to authenticate a user must remain consistent with the organization context used when creating the resources that user is expected to access.
 
 </p>
 
@@ -95,14 +99,13 @@ The Concepts onboarding presents environment selection as a setup attribute but 
 
 <section class="section">
 
-<h2>Evidence 1 – Project model</h2>
-
-<img src="../assets/audits/liveblocks/screenshot1.png"
-alt="Project model">
+<h2>Developer Assumption</h2>
 
 <p>
 
-The Concepts documentation introduces a project as the top-level container for Liveblocks resources. At this stage, the documentation explains what a project is but does not establish that the environment selection becomes a permanent architectural decision.
+A developer implementing a multi-tenant application may treat the authenticated userId as the primary identity boundary and resolve organizationId separately wherever it is required.
+
+The documentation explains how to provide the organization context in each operation, but does not prominently establish that these contexts must remain aligned throughout the resource lifecycle.
 
 </p>
 
@@ -110,26 +113,16 @@ The Concepts documentation introduces a project as the top-level container for L
 
 <section class="section">
 
-<h2>Documentation-Induced Assumption</h2>
+<h2>Evidence</h2>
+
+<img src="../assets/audits/liveblocks/screenshot4.png"
+alt="Liveblocks organization context">
 
 <p>
 
-Because the Concepts page presents environment selection as part of project setup rather than as an irreversible architectural decision, developers can reasonably underestimate the importance of choosing the correct environment during project creation.
+The documentation shows organizationId being used during authentication and separately during resource creation.
 
-</p>
-
-</section>
-
-<section class="section">
-
-<h2>Evidence 2 – Irreversible environment selection</h2>
-
-<img src="../assets/audits/liveblocks/screenshot2.png"
-alt="Environment selection">
-
-<p>
-
-The documentation states that the environment tag cannot be changed once a project has been created. While this limitation is documented, its long-term architectural significance is not emphasized during the initial onboarding flow.
+The evidence establishes the two organization-scoped operations. The finding is about the missing explicit connection between them.
 
 </p>
 
@@ -141,7 +134,7 @@ The documentation states that the environment tag cannot be changed once a proje
 
 <p>
 
-The assumption breaks when a team later decides to promote a Development project to production and discovers that the environment tag cannot be changed after project creation, requiring a new project instead of modifying the existing one.
+A multi-tenant application authenticates a user with one organization context but later creates a Liveblocks resource using a different, stale, missing, or incorrectly resolved organization context.
 
 </p>
 
@@ -149,14 +142,65 @@ The assumption breaks when a team later decides to promote a Development project
 
 <section class="section">
 
-<h2>Evidence 3 – Recommended project structure</h2>
-
-<img src="../assets/audits/liveblocks/screenshot3.png"
-alt="Recommended project structure">
+<h2>What Can Break in Production</h2>
 
 <p>
 
-The documentation recommends creating separate projects for production, staging, and development. Combined with the irreversible environment tag, this indicates that project creation establishes a long-term architectural boundary rather than a temporary setup choice.
+The authentication operation can succeed while the resource operation is operating against a different tenant context.
+
+</p>
+
+<p>
+
+This can leave the application with an inconsistent state:
+
+</p>
+
+<p>
+
+Authenticated user → Organization A
+
+</p>
+
+<p>
+
+Created resource → Organization B
+
+</p>
+
+<p>
+
+The resulting behavior could include resources being associated with an unintended organizational context or users being unable to access resources that the application believes belong to their tenant.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Possible Interventions</h2>
+
+<p>
+
+Explicitly document the organization-alignment invariant between authentication and resource creation.
+
+</p>
+
+<p>
+
+Show a multi-tenant example where the organization context is resolved once and reused across the integration.
+
+</p>
+
+<p>
+
+Provide clearer validation or errors when applicable organization contexts are inconsistent.
+
+</p>
+
+<p>
+
+Make the recommended SDK/API pattern make organization context difficult to resolve independently at different points in the application.
 
 </p>
 
@@ -168,7 +212,9 @@ The documentation recommends creating separate projects for production, staging,
 
 <p>
 
-Correcting the mistake requires creating a new project and updating deployment workflows, increasing engineering effort, operational overhead, and potentially delaying production rollout.
+Tenant-specific collaboration features can become inconsistent even though authentication itself is working correctly.
+
+That can lead to inaccessible rooms, incorrect resource ownership, customer-facing confusion, support escalations, and costly remediation if resources have already been created under the wrong organizational context.
 
 </p>
 
@@ -176,11 +222,27 @@ Correcting the mistake requires creating a new project and updating deployment w
 
 <section class="section">
 
-<h2>Conclusion</h2>
+<h2>Scope</h2>
 
 <p>
 
-The documentation accurately states that the environment tag cannot be changed after project creation. However, it does not clearly communicate that this decision establishes a permanent architectural boundary. Emphasizing the architectural importance of environment selection earlier in the onboarding flow would help developers make a more informed project setup decision.
+This finding does not claim that a mismatched organizationId causes cross-tenant data exposure.
+
+The documentation reviewed does not establish that behavior.
+
+The defensible finding is narrower: the tenant-context relationship between authentication and resource creation is not made explicit enough to prevent developers from treating the two contexts independently.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Severity: High · Priority: Medium</h2>
+
+<p>
+
+Tenant context mismatch is a data-integrity issue — resources landing under the wrong org can be hard to unwind once created. But it only fires for teams building multi-tenant architecture specifically, not every Liveblocks integration. High impact, moderate likelihood.
 
 </p>
 
@@ -210,4 +272,4 @@ The documentation accurately states that the environment tag cannot be changed a
 
 </body>
 
-  </html>
+</html>
