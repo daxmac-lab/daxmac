@@ -8,7 +8,7 @@
     <title>Svix Documentation Audit | DaxMac</title>
 
 <meta name="description"
-content="An audit examining how Svix introduces the application boundary without fully explaining its operational scope.">
+content="An audit examining how Svix's webhook acknowledgement requirement can be interpreted without an explicit distinction between acknowledgement and downstream business processing.">
 
     <link rel="icon" href="../assets/favicon.png">
     <link rel="stylesheet" href="../style.css">
@@ -71,7 +71,7 @@ gtag('config', 'G-3G8JYVSPW5');
 <h1>Svix Developer Onboarding Audit</h1>
 
 <p>
-Finding: The application boundary is introduced without explaining its operational scope.
+Finding: Webhook acknowledgement is not explicitly distinguished from downstream business processing.
 </p>
 
 </section>
@@ -82,7 +82,11 @@ Finding: The application boundary is introduced without explaining its operation
 
 <p>
 
-The application boundary is introduced without explaining its operational scope.
+Svix states that a webhook is considered processed when the receiving endpoint returns a 2xx response within a reasonable timeframe, with the page specifying 15 seconds.
+
+The same section separately instructs developers to verify the webhook's signature and timestamp.
+
+What the onboarding flow does not explicitly establish is the architectural distinction between acknowledging receipt of a webhook and completing the downstream business operation triggered by that webhook.
 
 </p>
 
@@ -90,41 +94,25 @@ The application boundary is introduced without explaining its operational scope.
 
 <section class="section">
 
-<h2>Evidence 1 – Initial guidance</h2>
-
-<img src="../assets/audits/svix/screenshot1.png"
-     alt="Initial guidance">
+<h2>Developer Assumption</h2>
 
 <p>
 
-The introduction recommends creating one application per user but does not explain that the application establishes the operational scope of key resources. Because the recommendation is presented as "usually," developers can reasonably interpret the application as an organizational grouping rather than a foundational architectural boundary.
+A developer may structure a webhook handler around the business operation:
 
 </p>
 
-</section>
-
-<section class="section">
-
-<h2>Documentation-induced Assumption</h2>
-
 <p>
 
-Because the introduction does not explain the operational consequences of the application boundary, developers can reasonably treat it as a flexible organizational choice instead of the unit that scopes endpoint management and message history.
+Receive → validate → process business logic → return 2xx
 
 </p>
 
-</section>
-
-<section class="section">
-
-<h2>Evidence 2 – Message history scope</h2>
-
-<img src="../assets/audits/svix/screenshot2.png"
-     alt="Message history scope">
-
 <p>
 
-The Message API shows that message history is scoped to an application. This operational consequence is documented in the API reference but is not explained where the application model is first introduced, making it easy to underestimate the significance of the initial application boundary.
+That approach makes the HTTP acknowledgement dependent on the time required to complete the downstream operation.
+
+The documentation establishes the response-time requirement but does not explicitly connect it to the architectural decision of whether long-running business processing should happen synchronously inside the webhook request.
 
 </p>
 
@@ -136,7 +124,39 @@ The Message API shows that message history is scoped to an application. This ope
 
 <p>
 
-The assumption breaks when a team models multiple customers within a single application and later needs to manage endpoints or inspect message history on a per-customer basis. They discover that these operations are scoped to the shared application, making the original application boundary difficult to change.
+The webhook handler performs work that can take longer than the documented 15-second response window.
+
+For example:
+
+</p>
+
+<p>
+
+Database operations
+
+</p>
+
+<p>
+
+Calls to another API
+
+</p>
+
+<p>
+
+Large processing jobs
+
+</p>
+
+<p>
+
+Multiple dependent operations
+
+</p>
+
+<p>
+
+Other substantial business logic
 
 </p>
 
@@ -144,14 +164,112 @@ The assumption breaks when a team models multiple customers within a single appl
 
 <section class="section">
 
-<h2>Evidence 3 – Endpoint management scope</h2>
-
-<img src="../assets/audits/svix/screenshot3.png"
-     alt="Endpoint management scope">
+<h2>What Can Break in Production</h2>
 
 <p>
 
-The Endpoint API also scopes endpoint management to the application. Together with the Message API, this demonstrates that the application functions as an operational boundary rather than simply an organizational container.
+The underlying business operation can succeed while the webhook endpoint fails to acknowledge the delivery within the expected timeframe.
+
+</p>
+
+<p>
+
+This creates two different states:
+
+</p>
+
+<p>
+
+Application:<br>
+The business operation succeeded.
+
+</p>
+
+<p>
+
+Webhook delivery:<br>
+The delivery was not acknowledged within the expected window.
+
+</p>
+
+<p>
+
+Depending on the delivery behavior, that divergence can result in repeated delivery attempts and duplicate downstream work.
+
+</p>
+
+<p>
+
+The architectural risk is therefore:
+
+</p>
+
+<p>
+
+<strong>
+Webhook acknowledgement latency becomes coupled to business-processing latency.
+</strong>
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Evidence</h2>
+
+<img src="../assets/audits/svix/screenshot4.png"
+     alt="Svix webhook acknowledgement requirement">
+
+<p>
+
+Svix's Webhooks Consumption 101 section explicitly states that a webhook is considered processed when the endpoint returns a 2xx response within a reasonable timeframe (15s with Svix).
+
+The same section separately tells developers to verify the webhook's signature and timestamp.
+
+This establishes the documented acknowledgement requirement.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Possible Interventions</h2>
+
+<p>
+
+Explicitly distinguish delivery acknowledgement from business processing completion.
+
+</p>
+
+<p>
+
+Show a recommended handler pattern that acknowledges the webhook before long-running work.
+
+</p>
+
+<p>
+
+Provide an asynchronous processing example using a queue or background job.
+
+</p>
+
+<p>
+
+Explain what developers should do when processing can exceed the acknowledgement window.
+
+</p>
+
+<p>
+
+Provide an idempotency/deduplication pattern for downstream processing.
+
+</p>
+
+<p>
+
+Make the acknowledgement deadline prominent in the initial webhook implementation flow.
 
 </p>
 
@@ -163,7 +281,9 @@ The Endpoint API also scopes endpoint management to the application. Together wi
 
 <p>
 
-Correcting the application boundary after onboarding can require reorganizing webhook resources and operational workflows, increasing migration effort, operational complexity, and support overhead.
+A production integration can accidentally make webhook delivery reliability dependent on downstream business-processing latency.
+
+Slow handlers can therefore create additional delivery attempts, duplicate work, unnecessary infrastructure load, and difficult-to-diagnose incidents where the business operation succeeded but the webhook delivery system did not receive the expected acknowledgement.
 
 </p>
 
@@ -171,11 +291,33 @@ Correcting the application boundary after onboarding can require reorganizing we
 
 <section class="section">
 
-<h2>Conclusion</h2>
+<h2>Scope</h2>
 
 <p>
 
-The documentation correctly recommends creating one application per user but does not explain why that recommendation matters operationally. Explaining that the application defines the scope of endpoint management and message history would help developers make an informed architectural decision at the beginning of implementation.
+This finding does not claim that Svix retries every webhook that exceeds 15 seconds.
+
+The reviewed page does not establish the exact retry behavior for every timeout or slow-response scenario.
+
+The defensible finding is narrower:
+
+</p>
+
+<p>
+
+Svix establishes a time-bound HTTP acknowledgement contract but does not explicitly connect that contract to the architectural decision of whether downstream business processing should be synchronous or asynchronous.
+
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Severity: Medium · Priority: High</h2>
+
+<p>
+
+Duplicate processing and unnecessary retries are real production noise, but they're recoverable with a standard idempotency pattern — not data loss or extended downtime. The trigger, though, is common: any handler doing real work (DB writes, API calls) before acknowledging will hit this, which is a very typical first implementation. Lower impact, high likelihood.
 
 </p>
 
@@ -206,3 +348,4 @@ The documentation correctly recommends creating one application per user but doe
 </body>
 
   </html>
+```0
