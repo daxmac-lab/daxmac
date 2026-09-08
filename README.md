@@ -54,11 +54,11 @@ https://daxmac-lab.github.io/daxmac/
 
 **Email**
 
-daxmac.lab@gmail.com
+info@daxmac.cc
 
 **LinkedIn**
 
-https://www.linkedin.com/company/daxmac/
+https://daxmac.cc 
 
 **X**
 
