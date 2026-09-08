@@ -46,7 +46,7 @@ Every audit follows the same production-first framework:
 
 ## Website
 
-https://daxmac-lab.github.io/daxmac/
+https://daxmac.cc 
 
 ---
 
@@ -58,7 +58,7 @@ info@daxmac.cc
 
 **LinkedIn**
 
-https://daxmac.cc 
+https://www.linkedin.com/in/nwajichukwu-goodness-audits
 
 **X**
 
