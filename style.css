@@ -1101,3 +1101,55 @@ p { margin: 0; }
   font-weight: 600;
   color: var(--ink);
 }
+
+/* Subheadings inside an article */
+.article__body h2 {
+  font-size: clamp(1.3rem, 1.1rem + 0.85vw, 1.6rem);
+  letter-spacing: -0.012em;
+  margin-top: clamp(48px, 5vw, 68px);
+  margin-bottom: 18px;
+}
+
+/* Pull-quote block, as used in note4 */
+.article__body blockquote {
+  margin: clamp(32px, 3.5vw, 44px) 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent);
+}
+
+.article__body blockquote p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1rem + 0.45vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.article__body blockquote p + p {
+  margin-top: 0.5em;
+}
+
+/* Lists inside an article */
+.article__body ul {
+  margin: clamp(20px, 2.5vw, 28px) 0;
+  display: grid;
+  gap: 10px;
+  max-width: 62ch;
+}
+
+.article__body ul li {
+  position: relative;
+  padding-left: 22px;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.15rem);
+  line-height: 1.62;
+  color: var(--ink);
+}
+
+.article__body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+   }
