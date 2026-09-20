@@ -1,130 +1,172 @@
 /* =======================================
-   DaxMac JavaScript
+   DAXMAC — WEBSITE JAVASCRIPT
 ======================================= */
 
-/* Smooth Scrolling */
+document.addEventListener("DOMContentLoaded", () => {
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+    /* =======================================
+       SMOOTH SCROLLING
+    ======================================= */
 
-    link.addEventListener("click", function (e) {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-        e.preventDefault();
+        link.addEventListener("click", function (e) {
 
-        const target = document.querySelector(this.getAttribute("href"));
+            const targetId = this.getAttribute("href");
 
-        if (target) {
+            if (!targetId || targetId === "#") {
+                return;
+            }
+
+            const target = document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            e.preventDefault();
 
             target.scrollIntoView({
-                behavior: "smooth"
+                behavior: "smooth",
+                block: "start"
             });
-
-        }
-
-    });
-
-});
-
-
-/* Sticky Header */
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 60) {
-
-        header.style.boxShadow = "0 10px 30px rgba(0,0,0,.25)";
-
-    } else {
-
-        header.style.boxShadow = "none";
-
-    }
-
-});
-
-
-/* Fade In Sections */
-
-const sections = document.querySelectorAll(".section");
-
-const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.style.opacity = "1";
-
-            entry.target.style.transform = "translateY(0)";
-
-        }
-
-    });
-
-}, {
-
-    threshold: 0.15
-
-});
-
-sections.forEach(section => {
-
-    section.style.opacity = "0";
-
-    section.style.transform = "translateY(40px)";
-
-    section.style.transition = "all .8s ease";
-
-    observer.observe(section);
-
-});
-
-
-/* Card Hover Animation */
-
-document.querySelectorAll(".card").forEach(card => {
-
-    card.addEventListener("mouseenter", () => {
-
-        card.style.transform = "translateY(-8px)";
-
-    });
-
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform = "translateY(0)";
-
-    });
-
-});
-
-
-console.log("DaxMac Website Loaded");
-
-/* =======================================
-   Mobile Navigation
-======================================= */
-
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-if (menuToggle && navLinks) {
-
-    menuToggle.addEventListener("click", () => {
-
-        navLinks.classList.toggle("active");
-
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navLinks.classList.remove("active");
 
         });
 
     });
 
-}
+
+    /* =======================================
+       MOBILE NAVIGATION
+    ======================================= */
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen = navLinks.classList.toggle("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+        });
+
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
+    }
+
+
+    /* =======================================
+       STICKY HEADER STATE
+    ======================================= */
+
+    const header = document.querySelector(".site-header");
+
+    if (header) {
+
+        const updateHeader = () => {
+
+            header.classList.toggle(
+                "scrolled",
+                window.scrollY > 40
+            );
+
+        };
+
+        updateHeader();
+
+        window.addEventListener(
+            "scroll",
+            updateHeader,
+            { passive: true }
+        );
+
+    }
+
+
+    /* =======================================
+       SCROLL REVEAL
+    ======================================= */
+
+    const revealElements = document.querySelectorAll(
+        ".section-heading, " +
+        ".problem-flow, " +
+        ".method-grid, " +
+        ".validation-flow, " +
+        ".services-grid, " +
+        ".comparison-grid, " +
+        ".custom-service, " +
+        ".examples-grid, " +
+        ".audience-list, " +
+        ".about-grid"
+    );
+
+
+    if ("IntersectionObserver" in window) {
+
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    entry.target.classList.add("is-visible");
+
+                    observer.unobserve(entry.target);
+
+                });
+
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -40px 0px"
+            }
+        );
+
+
+        revealElements.forEach(element => {
+
+            element.classList.add("reveal");
+
+            observer.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach(element => {
+            element.classList.add("is-visible");
+        });
+
+    }
+
+
+    /* =======================================
+       DAXMAC READY
+    ======================================= */
+
+    console.log("DaxMac website loaded.");
+
+});
