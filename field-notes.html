@@ -1,233 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Field Notes | DaxMac</title>
-
-<meta name="description"
-content="Short observations and documentation patterns discovered while auditing developer onboarding experiences.">
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="icon" href="assets/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Notes | DaxMac</title>
+  <meta name="description" content="Short observations and documentation patterns discovered while auditing developer onboarding experiences.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css">
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-3G8JYVSPW5');
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
   </script>
-  
 </head>
-
 <body>
 
-<header>
-
-<nav>
-
-<div class="logo">
-
-<img src="assets/logo.png" alt="DaxMac Logo">
-
-<span>DaxMac</span>
-
-</div>
-
-<div class="menu-toggle">
-
-☰
-
-</div>
-
-<ul class="nav-links">
-
-<li><a href="index.html">Home</a></li>
-
-<li><a href="audits.html">Audits</a></li>
-
-<li><a href="field-notes.html">Field Notes</a></li>
-
-<li><a href="index.html#contact">Contact</a></li>
-
-</ul>
-
-</nav>
-
-</header>
-
-<section class="section">
-
-<p class="badge">
-
-DaxMac Journal
-
-</p>
-
-<h1>
-
-Field Notes
-
-</h1>
-
-<p>
-
-Short observations from developer onboarding research. Unlike full audits, Field Notes explore recurring documentation patterns and the mental models they create across API-first platforms.
-
-</p>
-
-</section>
-
-<section class="section">
-
-<div class="cards">
-
-<article class="card">
-
-<h3>
-
-When Documentation Defines Concepts but Not Their Relationship
-
-</h3>
-
-<p>
-
-Developers build mental models from onboarding documentation. Defining concepts individually without explaining how they interact leaves critical architectural decisions to inference.
-
-</p>
-
-<a href="field-notes/note1.html">
-
-Read Field Note →
-
-</a>
-
-</article>
-
-<article class="card">
-
-<h3>
-
-When Initial Validation Is Mistaken for Long-Term Reliability
-
-</h3>
-
-<p>
-
-Successful validation demonstrates that something works today. It should not automatically become a developer's mental model for long-term reliability.
-
-</p>
-
-<a href="field-notes/note2.html">
-
-Read Field Note →
-
-</a>
-
-</article>
-
-<article class="card">
-
-<h3>
-
-Creating a Resource Is Not the Same as Managing Its Lifecycle
-
-</h3>
-
-<p>
-
-Onboarding often teaches developers how to create resources but not how those resources should be managed throughout long-running workflows.
-
-</p>
-
-<a href="field-notes/note3.html">
-
-Read Field Note →
-
-</a>
-
-</article>
-
-  <article class="card">
-
-<h3>
-
-AI Increased Engineering Velocity. It Didn't Fix Developer Onboarding.
-
-</h3>
-
-<p>
-
-AI has accelerated software delivery, but it hasn't solved developer onboarding. Engineering velocity and production success are two different metrics.
-
-</p>
-
-<a href="field-notes/note4.html">
-
-Read Field Note →
-
-</a>
-
-  </article>
-
-</div>
-
-</section>
-
-<footer>
-
-<div class="footer-content">
-
-<img src="assets/logo.png"
-alt="DaxMac Logo">
-
-<h3>DaxMac</h3>
-
-<p>
-
-Independent Developer Onboarding Audits
-
-</p>
-
-<p class="footer-tagline">
-
-Built for API-first engineering teams.
-
-</p>
-
-<div class="footer-links">
-
-<a href="index.html">Home</a>
-
-<a href="audits.html">Audits</a>
-
-<a href="field-notes.html">Field Notes</a>
-
-<a href="index.html#contact">Contact</a>
-
-</div>
-
-<p class="copyright">
-
-© 2026 DaxMac. All rights reserved.
-
-</p>
-
-</div>
-
-</footer>
-
-<script src="script.js"></script>
-
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="assets/logo.png" alt="DaxMac">
+      </a>
+
+      <!-- Links injected by script.js: Home · Audit · Field Notes · Contact -->
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ PAGE INTRO ============ -->
+    <section class="page-intro">
+      <div class="wrap">
+        <p class="eyebrow">DaxMac Journal</p>
+
+        <h1 class="page-intro__title">Field Notes</h1>
+
+        <p class="page-intro__lede">
+          Short observations from developer onboarding research. Unlike a full audit,
+          Field Notes explore recurring documentation patterns and the mental models
+          they create across API-first platforms.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ NOTES ============ -->
+    <section class="section notes">
+      <div class="wrap">
+        <div class="notes-grid">
+
+          <a class="note-card" href="field-notes/note1.html">
+            <h2 class="note-card__title">
+              When Documentation Defines Concepts but Not Their Relationship
+            </h2>
+            <p class="note-card__text">
+              Developers build mental models from onboarding documentation. Defining
+              concepts individually without explaining how they interact leaves
+              critical architectural decisions to inference.
+            </p>
+            <span class="note-card__link">Read Field Note</span>
+          </a>
+
+          <a class="note-card" href="field-notes/note2.html">
+            <h2 class="note-card__title">
+              When Initial Validation Is Mistaken for Long-Term Reliability
+            </h2>
+            <p class="note-card__text">
+              Successful validation demonstrates that something works today. It
+              should not automatically become a developer's mental model for
+              long-term reliability.
+            </p>
+            <span class="note-card__link">Read Field Note</span>
+          </a>
+
+          <a class="note-card" href="field-notes/note3.html">
+            <h2 class="note-card__title">
+              Creating a Resource Is Not the Same as Managing Its Lifecycle
+            </h2>
+            <p class="note-card__text">
+              Onboarding often teaches developers how to create resources but not
+              how those resources should be managed throughout long-running workflows.
+            </p>
+            <span class="note-card__link">Read Field Note</span>
+          </a>
+
+          <a class="note-card" href="field-notes/note4.html">
+            <h2 class="note-card__title">
+              AI Increased Engineering Velocity. It Didn't Fix Developer Onboarding.
+            </h2>
+            <p class="note-card__text">
+              AI has accelerated software delivery, but it hasn't solved developer
+              onboarding. Engineering velocity and production success are two
+              different metrics.
+            </p>
+            <span class="note-card__link">Read Field Note</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation &amp; API adoption.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="index.html#services">Developer Experience Review</a></li>
+          <li><a href="index.html#services">Developer Implementation Review</a></li>
+          <li><a href="index.html#services">Custom Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Contact">
+        <h2 class="footer__head">Contact</h2>
+        <ul>
+          <li><a href="field-notes.html">Field Notes</a></li>
+          <li><a href="audits.html">Audit</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h2 class="footer__head">Company</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="#">LinkedIn</a> · <a href="#">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
-  </html>
+              </html>
