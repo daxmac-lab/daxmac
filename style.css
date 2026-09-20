@@ -1095,3 +1095,9 @@ p { margin: 0; }
 .article__back:hover {
   border-bottom-color: var(--accent);
      }
+
+/* Emphasis inside article prose */
+.article__body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
