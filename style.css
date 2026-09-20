@@ -1031,3 +1031,67 @@ p { margin: 0; }
 @media (max-width: 900px) {
   .notes-grid { grid-template-columns: 1fr; }
    }
+
+
+/* ==========================================================================
+   21. FIELD NOTE — SINGLE
+   ========================================================================== */
+
+.article {
+  padding-block: clamp(56px, 7vw, 96px) clamp(56px, 7vw, 96px);
+}
+
+.article__head {
+  max-width: 780px;
+  margin-bottom: clamp(44px, 5.5vw, 72px);
+}
+
+.article__title {
+  font-size: clamp(1.85rem, 1.4rem + 2.1vw, 2.85rem);
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin-bottom: 28px;
+}
+
+.article__meta {
+  display: inline-block;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.article__body {
+  max-width: 68ch;
+}
+
+.article__body p {
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+  line-height: 1.72;
+  color: var(--ink);
+}
+
+.article__body p + p {
+  margin-top: 1.35em;
+}
+
+.article__foot {
+  max-width: 68ch;
+  margin-top: clamp(56px, 6.5vw, 88px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.article__back {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--accent-deep);
+  border-bottom: 1px solid var(--accent-line);
+  padding-bottom: 2px;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.article__back:hover {
+  border-bottom-color: var(--accent);
+     }
