@@ -1,1321 +1,854 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>DaxMac | Developer Implementation Risk</title>
+    <meta
+        name="description"
+        content="DaxMac helps developer-facing companies identify implementation problems that can create unnecessary support and engineering work."
+    >
 
-    <meta name="description"
-          content="DaxMac helps developer-facing companies find implementation problems before they become support and engineering work. We follow the developer journey and validate important assumptions against the product.">
+    <meta
+        name="keywords"
+        content="developer experience, API integration, developer onboarding, implementation risk, API adoption, developer tools"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <meta name="author" content="DaxMac">
 
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta
+        property="og:title"
+        content="DaxMac | Developer Experience & API Integration"
+    >
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+    <meta
+        property="og:description"
+        content="Find implementation problems before they become support and engineering work."
+    >
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    <meta
+        property="og:type"
+        content="website"
+    >
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+    <meta
+        property="og:url"
+        content="https://daxmac.cc/"
+    >
 
-        gtag('js', new Date());
-        gtag('config', 'G-3G8JYVSPW5');
-    </script>
+    <title>DaxMac | Developer Experience & API Integration</title>
 
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/logo.png"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
-
 
 <body>
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-    <!-- =====================================================
-         NAVIGATION
-         ===================================================== -->
+<header class="site-header" id="site-header">
 
-    <header>
+    <nav class="navbar" aria-label="Main navigation">
 
-        <nav class="nav container">
+        <a href="index.html" class="brand" aria-label="DaxMac home">
 
-            <a href="index.html" class="logo">
+            <span class="brand-mark">
+                <img
+                    src="assets/logo.png"
+                    alt=""
+                >
+            </span>
 
-                <img src="assets/logo.png"
-                     alt="DaxMac Logo">
+            <span class="brand-name">DaxMac</span>
 
-                <span>DaxMac</span>
+        </a>
 
+
+        <div class="desktop-nav">
+
+            <a href="#services">Services</a>
+
+            <a href="audits.html">Audits</a>
+
+            <a href="field-notes.html">Field Notes</a>
+
+            <a href="#methodology">How It Works</a>
+
+            <a href="#about">About</a>
+
+            <a href="#contact">Contact</a>
+
+        </div>
+
+
+        <a
+            href="#contact"
+            class="nav-cta"
+        >
+            Start a Review
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+
+
+    <!-- Mobile Navigation -->
+
+    <div
+        class="mobile-menu"
+        id="mobile-menu"
+        aria-hidden="true"
+    >
+
+        <div class="mobile-menu-inner">
+
+            <a href="#services">Services</a>
+
+            <a href="audits.html">Audits</a>
+
+            <a href="field-notes.html">Field Notes</a>
+
+            <a href="#methodology">How It Works</a>
+
+            <a href="#about">About</a>
+
+            <a href="#contact">Contact</a>
+
+            <a
+                href="#contact"
+                class="mobile-menu-cta"
+            >
+                Start a Review
             </a>
 
+        </div>
 
-            <button class="menu-toggle"
-                    type="button"
-                    aria-label="Open navigation"
-                    aria-expanded="false">
+    </div>
 
-                ☰
-
-            </button>
-
-
-            <ul class="nav-links">
-
-                <li>
-                    <a href="#services">
-                        Services
-                    </a>
-                </li>
-
-                <li>
-                    <a href="field-notes.html">
-                        Field Notes
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#methodology">
-                        How It Works
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#about">
-                        About
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#contact">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </header>
+</header>
 
 
 
-    <main>
+<main>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="hero">
+
+    <div class="hero-background" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+    </div>
 
 
-        <!-- =====================================================
-             HERO
-             ===================================================== -->
+    <div class="container hero-layout">
 
-        <section id="hero">
+        <div class="hero-content reveal">
 
-            <div class="container hero-content">
+            <div class="eyebrow">
 
-                <div class="hero-text">
+                <span class="eyebrow-line"></span>
 
-                    <p class="badge">
-                        Developer Experience • API Integration
-                    </p>
-
-
-                    <h1>
-                        Find implementation problems before they become support and engineering work.
-                    </h1>
-
-
-                    <p>
-                        DaxMac helps developer-facing companies uncover where developers can
-                        misunderstand, misimplement, or struggle with a product during integration.
-                    </p>
-
-
-                    <p>
-                        We follow the developer journey and, when needed, test the API or SDK
-                        directly to validate important implementation assumptions.
-                    </p>
-
-
-                    <div class="hero-buttons">
-
-                        <a href="#services">
-                            See Services
-                        </a>
-
-                        <a href="#methodology">
-                            How It Works
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="hero-image">
-
-                    <img src="assets/hero-illustration.png"
-                         alt="Developer implementation journey">
-
-                </div>
+                <span>
+                    Developer Experience · API Integration
+                </span>
 
             </div>
 
-        </section>
 
+            <h1>
+                Find implementation problems before they become
+                <span class="accent-text">
+                    support and engineering work.
+                </span>
+            </h1>
 
 
-        <!-- =====================================================
-             TRUST BAR
-             ===================================================== -->
+            <p class="hero-description">
+                DaxMac helps developer-facing companies identify where
+                developers can misunderstand, misimplement, or struggle
+                with a product during integration.
+            </p>
 
-        <section id="trust">
 
-            <div class="container">
+            <p class="hero-secondary">
+                We follow the developer journey and, when needed,
+                test relevant API or SDK flows against the actual
+                product to validate important implementation assumptions.
+            </p>
 
-                <p>
-                    Independent Analysis
-                    <span>•</span>
-                    Evidence-Based Findings
-                    <span>•</span>
-                    Hands-On Validation
-                </p>
 
-            </div>
+            <div class="hero-actions">
 
-        </section>
-
-
-
-        <!-- =====================================================
-             PROBLEM
-             ===================================================== -->
-
-        <section id="problem" class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        The Problem
-                    </p>
-
-                    <h2>
-                        Your developers are implementing the product — not just reading the docs.
-                    </h2>
-
-                </div>
-
-
-                <div class="problem-content">
-
-                    <div class="problem-copy">
-
-                        <p>
-                            Developers make implementation decisions based on what they understand
-                            about how a product works.
-                        </p>
-
-
-                        <p>
-                            A reasonable assumption can become an implementation decision.
-                            If that assumption does not match the actual product behavior,
-                            the problem may surface later during integration, support,
-                            engineering, or production.
-                        </p>
-
-                    </div>
-
-
-                    <div class="problem-flow">
-
-                        <div class="flow-item">
-
-                            <strong>
-                                Developer experience
-                            </strong>
-
-                            <span>
-                                What the developer encounters
-                            </span>
-
-                        </div>
-
-
-                        <div class="flow-item">
-
-                            <strong>
-                                Developer assumption
-                            </strong>
-
-                            <span>
-                                What they reasonably believe
-                            </span>
-
-                        </div>
-
-
-                        <div class="flow-item">
-
-                            <strong>
-                                Implementation decision
-                            </strong>
-
-                            <span>
-                                What they build around
-                            </span>
-
-                        </div>
-
-
-                        <div class="flow-item">
-
-                            <strong>
-                                Product behavior
-                            </strong>
-
-                            <span>
-                                What actually happens
-                            </span>
-
-                        </div>
-
-
-                        <div class="flow-item">
-
-                            <strong>
-                                Downstream problem
-                            </strong>
-
-                            <span>
-                                Friction, support, engineering, or production impact
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <p class="problem-conclusion">
-                        DaxMac investigates these gaps before they become someone else's problem.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             METHODOLOGY
-             ===================================================== -->
-
-        <section id="methodology" class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        How It Works
-                    </p>
-
-                    <h2>
-                        We follow the developer journey.
-                    </h2>
-
-                    <p>
-                        DaxMac examines the path a developer takes to understand and implement
-                        your product — then validates important assumptions where actual
-                        product behavior matters.
-                    </p>
-
-                </div>
-
-
-                <div class="method-grid">
-
-
-                    <article class="method-card">
-
-                        <span class="method-number">
-                            01
-                        </span>
-
-                        <h3>
-                            Follow
-                        </h3>
-
-                        <p>
-                            Take a real implementation path from the perspective of a developer
-                            trying to get the product working.
-                        </p>
-
-                    </article>
-
-
-                    <article class="method-card">
-
-                        <span class="method-number">
-                            02
-                        </span>
-
-                        <h3>
-                            Identify
-                        </h3>
-
-                        <p>
-                            Identify assumptions the developer experience can reasonably create
-                            and the implementation decisions those assumptions can influence.
-                        </p>
-
-                    </article>
-
-
-                    <article class="method-card">
-
-                        <span class="method-number">
-                            03
-                        </span>
-
-                        <h3>
-                            Validate
-                        </h3>
-
-                        <p>
-                            Where relevant, use the API, SDK, sandbox, or developer environment
-                            to test important assumptions against actual product behavior.
-                        </p>
-
-                    </article>
-
-
-                    <article class="method-card">
-
-                        <span class="method-number">
-                            04
-                        </span>
-
-                        <h3>
-                            Report
-                        </h3>
-
-                        <p>
-                            Document the evidence, implementation implication, and potential
-                            downstream risk in a structured findings report.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             LIVE VALIDATION
-             ===================================================== -->
-
-        <section id="validation" class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        Live Validation
-                    </p>
-
-                    <h2>
-                        Not just a documentation review.
-                    </h2>
-
-                    <p>
-                        When a finding depends on actual product behavior, DaxMac can go beyond
-                        reading the developer experience and attempt the relevant implementation.
-                    </p>
-
-                </div>
-
-
-                <div class="validation-copy">
-
-                    <p>
-                        We use the available API, SDK, sandbox, or developer environment
-                        to test specific implementation assumptions encountered during
-                        the developer journey.
-                    </p>
-
-                </div>
-
-
-                <div class="validation-flow">
-
-
-                    <div class="flow-item">
-
-                        <strong>
-                            Documentation
-                        </strong>
-
-                        <span>
-                            What the developer is told
-                        </span>
-
-                    </div>
-
-
-                    <div class="flow-item">
-
-                        <strong>
-                            Expectation
-                        </strong>
-
-                        <span>
-                            What the developer can reasonably expect
-                        </span>
-
-                    </div>
-
-
-                    <div class="flow-item">
-
-                        <strong>
-                            Implementation
-                        </strong>
-
-                        <span>
-                            What we actually attempt
-                        </span>
-
-                    </div>
-
-
-                    <div class="flow-item">
-
-                        <strong>
-                            Observed behavior
-                        </strong>
-
-                        <span>
-                            What the product actually does
-                        </span>
-
-                    </div>
-
-
-                    <div class="flow-item">
-
-                        <strong>
-                            Finding
-                        </strong>
-
-                        <span>
-                            Where the gap creates implementation risk
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <p class="section-note">
-
-                    Live testing is used to validate implementation assumptions.
-                    It is not general QA or feature testing.
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             SERVICES
-             ===================================================== -->
-
-        <section id="services" class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        Services
-                    </p>
-
-                    <h2>
-                        Choose the depth of investigation you need.
-                    </h2>
-
-                    <p>
-                        Both reviews examine the developer implementation experience.
-                        The difference is whether the relevant implementation is tested
-                        against the actual product.
-                    </p>
-
-                </div>
-
-
-                <div class="cards">
-
-
-                    <!-- Developer Experience Review -->
-
-                    <article class="card service-card">
-
-                        <div class="card-top">
-
-                            <span class="service-number">
-                                01
-                            </span>
-
-                            <span class="price">
-                                $549
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Developer Experience Review
-                        </h3>
-
-
-                        <p class="service-lead">
-
-                            <strong>
-                                Understand what your developer experience can lead customers to expect.
-                            </strong>
-
-                        </p>
-
-
-                        <p>
-                            We examine a core developer journey, including relevant onboarding,
-                            documentation, examples, and implementation surfaces, to identify
-                            assumptions that could create integration or implementation problems.
-                        </p>
-
-
-                        <h4>
-                            Includes
-                        </h4>
-
-
-                        <ul>
-
-                            <li>
-                                Developer journey review
-                            </li>
-
-                            <li>
-                                Relevant onboarding and implementation surfaces
-                            </li>
-
-                            <li>
-                                Assumption analysis
-                            </li>
-
-                            <li>
-                                Up to 10 validated findings
-                            </li>
-
-                            <li>
-                                Structured findings report
-                            </li>
-
-                        </ul>
-
-
-                        <p class="service-note">
-                            Live API/SDK testing is not included.
-                        </p>
-
-
-                        <a href="#contact" class="service-button">
-                            Start a Review
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- Developer Implementation Review -->
-
-                    <article class="card service-card featured">
-
-                        <div class="card-top">
-
-                            <span class="service-number">
-                                02
-                            </span>
-
-                            <span class="price">
-                                $849
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Developer Implementation Review
-                        </h3>
-
-
-                        <p class="service-lead">
-
-                            <strong>
-                                Follow the developer journey and test important assumptions against the actual product.
-                            </strong>
-
-                        </p>
-
-
-                        <p>
-                            Everything in the Developer Experience Review, plus targeted
-                            hands-on API or SDK testing to validate findings where actual
-                            product behavior matters.
-                        </p>
-
-
-                        <h4>
-                            Includes
-                        </h4>
-
-
-                        <ul>
-
-                            <li>
-                                Developer journey review
-                            </li>
-
-                            <li>
-                                Relevant API and SDK flows
-                            </li>
-
-                            <li>
-                                Live implementation testing
-                            </li>
-
-                            <li>
-                                Behavioral validation
-                            </li>
-
-                            <li>
-                                Authentication and configuration testing where relevant
-                            </li>
-
-                            <li>
-                                Up to 20 validated findings
-                            </li>
-
-                            <li>
-                                Structured findings report
-                            </li>
-
-                        </ul>
-
-
-                        <p class="service-note">
-                            Live testing is performed against the agreed developer journey,
-                            not as general product QA.
-                        </p>
-
-
-                        <a href="#contact" class="service-button">
-                            Start an Implementation Review
-                        </a>
-
-                    </article>
-
-                </div>
-
-
-
-                <!-- Service Comparison -->
-
-                <div class="comparison">
-
-                    <div class="comparison-heading">
-
-                        <p class="section-label">
-                            Comparison
-                        </p>
-
-                        <h3>
-                            What does live validation add?
-                        </h3>
-
-                        <p>
-                            The $549 review examines what the developer experience can lead
-                            a developer to believe. The $849 review goes further by attempting
-                            the relevant implementation and comparing expectations with actual
-                            product behavior.
-                        </p>
-
-                    </div>
-
-
-                    <div class="comparison-grid">
-
-
-                        <div class="comparison-item">
-
-                            <span class="comparison-price">
-                                $549
-                            </span>
-
-                            <h4>
-                                Developer Experience Review
-                            </h4>
-
-
-                            <ul>
-
-                                <li>
-                                    Developer journey
-                                </li>
-
-                                <li>
-                                    Implementation assumptions
-                                </li>
-
-                                <li>
-                                    Risk analysis
-                                </li>
-
-                                <li>
-                                    Up to 10 findings
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-
-                        <div class="comparison-item">
-
-                            <span class="comparison-price">
-                                $849
-                            </span>
-
-                            <h4>
-                                Developer Implementation Review
-                            </h4>
-
-
-                            <ul>
-
-                                <li>
-                                    Everything in $549
-                                </li>
-
-                                <li>
-                                    Live API/SDK testing
-                                </li>
-
-                                <li>
-                                    Observed behavior
-                                </li>
-
-                                <li>
-                                    Behavioral validation
-                                </li>
-
-                                <li>
-                                    Up to 20 findings
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Custom Assessment -->
-
-                <div class="custom-service">
-
-                    <div>
-
-                        <p class="section-label">
-                            Larger Scope
-                        </p>
-
-                        <h3>
-                            Custom Implementation Assessment
-                        </h3>
-
-                        <p>
-                            For products with multiple implementation paths, APIs, SDKs,
-                            complex integrations, or deeper production-facing requirements.
-                        </p>
-
-                    </div>
-
-
-                    <div class="custom-price">
-                        From $1,650
-                    </div>
-
-
-                    <div class="custom-list">
-
-                        <span>
-                            Multiple developer journeys
-                        </span>
-
-                        <span>
-                            Multiple APIs or SDKs
-                        </span>
-
-                        <span>
-                            Complex authentication
-                        </span>
-
-                        <span>
-                            Webhooks and asynchronous workflows
-                        </span>
-
-                        <span>
-                            Lifecycle and state behavior
-                        </span>
-
-                        <span>
-                            Environment differences
-                        </span>
-
-                        <span>
-                            Production implementation paths
-                        </span>
-
-                        <span>
-                            Deeper live API validation
-                        </span>
-
-                    </div>
-
-
-                    <a href="#contact">
-                        Discuss a Custom Assessment →
-                    </a>
-
-                </div>
-
-
-
-                <!-- Findings Note -->
-
-                <div class="service-contact">
-
-                    <p>
-                        <strong>
-                            Findings are never manufactured to meet a quota.
-                        </strong>
-                    </p>
-
-
-                    <p>
-                        The number of findings depends on what the product and developer
-                        experience actually support. Each finding must have a reasonable
-                        basis in the developer journey and sufficient evidence to explain
-                        the implementation risk.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             EXAMPLE FINDINGS
-             ===================================================== -->
-
-        <section id="examples" class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        Examples
-                    </p>
-
-                    <h2>
-                        Example Implementation Findings
-                    </h2>
-
-                    <p>
-                        Anonymized examples of the implementation assumptions and product
-                        behavior DaxMac investigates.
-                    </p>
-
-                </div>
-
-
-                <div class="cards examples-grid">
-
-
-                    <article class="card example-card">
-
-                        <span class="example-category">
-                            AI Infrastructure
-                        </span>
-
-
-                        <h3>
-                            Developer implementation assumption
-                        </h3>
-
-
-                        <p>
-                            An anonymized example of a developer assumption examined
-                            through an API implementation journey.
-                        </p>
-
-
-                        <a href="audits/ai-infrastructure.html">
-                            Read Example →
-                        </a>
-
-                    </article>
-
-
-                    <article class="card example-card">
-
-                        <span class="example-category">
-                            Digital Wallet Infrastructure
-                        </span>
-
-
-                        <h3>
-                            Implementation assumption in a developer-facing product
-                        </h3>
-
-
-                        <p>
-                            An anonymized example of an implementation assumption
-                            identified in a developer-facing product experience.
-                        </p>
-
-
-                        <a href="audits/digital-wallet-infrastructure.html">
-                            Read Example →
-                        </a>
-
-                    </article>
-
-                </div>
-
-
-                <div class="section-link">
-
-                    <a href="field-notes.html">
-                        Read DaxMac Field Notes →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             AUDIENCE
-             ===================================================== -->
-
-        <section id="audience" class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        Who It's For
-                    </p>
-
-                    <h2>
-                        Built for developer-facing companies.
-                    </h2>
-
-                    <p>
-                        DaxMac is designed for companies where developers are customers,
-                        users, or critical integrators of the product.
-                    </p>
-
-                </div>
-
-
-                <div class="audience-list">
-
-                    <span>
-                        APIs
-                    </span>
-
-                    <span>
-                        Developer Tools
-                    </span>
-
-                    <span>
-                        AI Infrastructure
-                    </span>
-
-                    <span>
-                        Fintech Infrastructure
-                    </span>
-
-                    <span>
-                        Authentication
-                    </span>
-
-                    <span>
-                        Observability
-                    </span>
-
-                    <span>
-                        Infrastructure SaaS
-                    </span>
-
-                </div>
-
-
-                <div class="audience-conclusion">
-
-                    <p>
-                        If developers are responsible for implementing your product,
-                        their implementation experience is part of your product experience.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             ABOUT
-             ===================================================== -->
-
-        <section id="about" class="section">
-
-            <div class="container">
-
-                <div class="about-grid">
-
-
-                    <div class="about-content">
-
-                        <p class="section-label">
-                            About DaxMac
-                        </p>
-
-                        <h2>
-                            Focused on the gap between what developers expect and what implementation actually requires.
-                        </h2>
-
-                    </div>
-
-
-                    <div class="about-copy">
-
-                        <p>
-                            DaxMac is an independent service focused on developer implementation
-                            and API adoption.
-                        </p>
-
-
-                        <p>
-                            We examine the gap between what a developer can reasonably expect
-                            from a product and what the implementation actually requires.
-                        </p>
-
-
-                        <p>
-                            Our work connects the developer experience to potential implementation,
-                            support, engineering, adoption, and production consequences through
-                            evidence-based analysis and, where relevant, hands-on technical validation.
-                        </p>
-
-
-                        <p>
-                            We are not a documentation agency or general QA service.
-                            The focus is the developer's path to implementation.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             CONTACT
-             ===================================================== -->
-
-        <section id="contact" class="section contact-section">
-
-            <div class="container">
-
-                <div class="contact-layout">
-
-
-                    <div class="contact-intro">
-
-                        <p class="section-label">
-                            Start a Review
-                        </p>
-
-                        <h2>
-                            Find out what your developers may encounter before they do.
-                        </h2>
-
-                        <p>
-                            Tell us about the product, developer journey, or implementation
-                            path you want examined.
-                        </p>
-
-                    </div>
-
-
-                    <div class="contact-links">
-
-
-                        <a href="mailto:info@daxmac.cc"
-                           class="contact-link">
-
-                            <span class="contact-link-label">
-                                Email
-                            </span>
-
-                            <span class="contact-link-value">
-                                info@daxmac.cc
-                            </span>
-
-                        </a>
-
-
-                        <a href="https://www.linkedin.com/company/daxmac/"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-link">
-
-                            <span class="contact-link-label">
-                                LinkedIn
-                            </span>
-
-                            <span class="contact-link-value">
-                                DaxMac
-                            </span>
-
-                        </a>
-
-
-                        <a href="https://x.com/daxmachq"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-link">
-
-                            <span class="contact-link-label">
-                                X
-                            </span>
-
-                            <span class="contact-link-value">
-                                @daxmachq
-                            </span>
-
-                        </a>
-
-
-                        <a href="field-notes.html"
-                           class="contact-link">
-
-                            <span class="contact-link-label">
-                                Research
-                            </span>
-
-                            <span class="contact-link-value">
-                                DaxMac Field Notes
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
-    <footer class="site-footer">
-
-        <div class="container footer-inner">
-
-            <div class="footer-brand">
-                DaxMac
-            </div>
-
-
-            <div class="footer-copy">
-                Developer implementation and API adoption.
-            </div>
-
-
-            <div class="footer-links">
-
-                <a href="field-notes.html">
-                    Field Notes
+                <a
+                    href="#services"
+                    class="button button-primary"
+                >
+                    See Services
+                    <span aria-hidden="true">→</span>
                 </a>
 
-                <a href="#contact">
-                    Contact
+                <a
+                    href="#methodology"
+                    class="button button-secondary"
+                >
+                    How It Works
                 </a>
+
+            </div>
+
+
+            <div class="hero-meta">
+
+                <span>Independent</span>
+
+                <span>Evidence-Based</span>
+
+                <span>Implementation-Focused</span>
 
             </div>
 
         </div>
 
-    </footer>
+
+        <!-- Hero technical visual -->
+
+        <div class="hero-visual reveal reveal-delay">
+
+            <div class="implementation-panel">
+
+                <div class="panel-top">
+
+                    <span class="panel-label">
+                        IMPLEMENTATION PATH
+                    </span>
+
+                    <span class="panel-status">
+                        <span class="status-dot"></span>
+                        ANALYSIS
+                    </span>
+
+                </div>
+
+
+                <div class="implementation-flow">
+
+                    <div class="flow-node">
+
+                        <span class="flow-number">01</span>
+
+                        <div>
+                            <strong>Experience</strong>
+                            <small>What the developer sees</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flow-connector"></div>
+
+
+                    <div class="flow-node">
+
+                        <span class="flow-number">02</span>
+
+                        <div>
+                            <strong>Assumption</strong>
+                            <small>What they reasonably infer</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flow-connector"></div>
+
+
+                    <div class="flow-node">
+
+                        <span class="flow-number">03</span>
+
+                        <div>
+                            <strong>Decision</strong>
+                            <small>What they implement</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flow-connector"></div>
+
+
+                    <div class="flow-node">
+
+                        <span class="flow-number">04</span>
+
+                        <div>
+                            <strong>Behavior</strong>
+                            <small>What the product actually does</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flow-connector"></div>
+
+
+                    <div class="flow-node flow-node-final">
+
+                        <span class="flow-number">05</span>
+
+                        <div>
+                            <strong>Downstream Problem</strong>
+                            <small>Support · Engineering · Friction</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
-    <script src="script.js"></script>
+<!-- =========================================================
+     TRUST STRIP
+========================================================= -->
 
-</body>
+<section class="trust-strip">
 
-</html>
+    <div class="container trust-inner">
+
+        <span>Independent Analysis</span>
+
+        <span class="trust-divider"></span>
+
+        <span>Evidence-Based Findings</span>
+
+        <span class="trust-divider"></span>
+
+        <span>Hands-On Validation</span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROBLEM
+========================================================= -->
+
+<section class="section problem-section" id="problem">
+
+    <div class="container">
+
+        <div class="section-intro reveal">
+
+            <div class="section-number">
+                01 / THE PROBLEM
+            </div>
+
+            <h2>
+                Your developers are implementing the product —
+                <span>not just reading the docs.</span>
+            </h2>
+
+            <p>
+                Developers make implementation decisions based on
+                what they understand about how a product works.
+            </p>
+
+        </div>
+
+
+        <div class="problem-layout">
+
+            <div class="problem-copy reveal">
+
+                <p>
+                    A reasonable assumption can become an implementation
+                    decision. If that assumption does not match the actual
+                    product behavior, the problem may surface later during
+                    integration, support, engineering, or production.
+                </p>
+
+                <p>
+                    DaxMac examines this part of the developer experience:
+                    the gap between what a developer can reasonably believe
+                    and what implementation actually requires.
+                </p>
+
+
+                <a
+                    href="#methodology"
+                    class="text-link"
+                >
+                    See how we investigate
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </div>
+
+
+            <div class="problem-diagram reveal reveal-delay">
+
+                <div class="diagram-header">
+
+                    <span>
+                        FROM EXPERIENCE TO CONSEQUENCE
+                    </span>
+
+                    <span class="diagram-line"></span>
+
+                </div>
+
+
+                <div class="vertical-flow">
+
+                    <div class="vertical-node">
+
+                        <span>01</span>
+
+                        <strong>
+                            What the developer sees
+                        </strong>
+
+                    </div>
+
+
+                    <div class="vertical-arrow">↓</div>
+
+
+                    <div class="vertical-node">
+
+                        <span>02</span>
+
+                        <strong>
+                            What the developer assumes
+                        </strong>
+
+                    </div>
+
+
+                    <div class="vertical-arrow">↓</div>
+
+
+                    <div class="vertical-node">
+
+                        <span>03</span>
+
+                        <strong>
+                            What they implement
+                        </strong>
+
+                    </div>
+
+
+                    <div class="vertical-arrow">↓</div>
+
+
+                    <div class="vertical-node highlighted">
+
+                        <span>04</span>
+
+                        <strong>
+                            What the product actually requires
+                        </strong>
+
+                    </div>
+
+
+                    <div class="vertical-arrow">↓</div>
+
+
+                    <div class="vertical-node consequence">
+
+                        <span>05</span>
+
+                        <strong>
+                            Downstream friction
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     METHODOLOGY
+========================================================= -->
+
+<section
+    class="section methodology-section"
+    id="methodology"
+>
+
+    <div class="container">
+
+        <div class="section-intro section-intro-centered reveal">
+
+            <div class="section-number">
+                02 / METHOD
+            </div>
+
+            <h2>
+                We follow the
+                <span>developer journey.</span>
+            </h2>
+
+            <p>
+                DaxMac examines the path a developer takes to understand
+                and implement a product, then validates important assumptions
+                where actual product behavior matters.
+            </p>
+
+        </div>
+
+
+        <div class="method-grid">
+
+            <article class="method-card reveal">
+
+                <div class="card-index">
+                    01
+                </div>
+
+                <div class="method-card-content">
+
+                    <h3>Follow</h3>
+
+                    <p>
+                        Follow a relevant developer journey from the
+                        perspective of someone trying to implement the product.
+                    </p>
+
+                </div>
+
+                <span class="method-arrow">↗</span>
+
+            </article>
+
+
+            <article class="method-card reveal reveal-delay">
+
+                <div class="card-index">
+                    02
+                </div>
+
+                <div class="method-card-content">
+
+                    <h3>Identify</h3>
+
+                    <p>
+                        Identify reasonable assumptions the experience
+                        can create about how the product works.
+                    </p>
+
+                </div>
+
+                <span class="method-arrow">↗</span>
+
+            </article>
+
+
+            <article class="method-card reveal">
+
+                <div class="card-index">
+                    03
+                </div>
+
+                <div class="method-card-content">
+
+                    <h3>Validate</h3>
+
+                    <p>
+                        Where needed, test the relevant implementation
+                        against the API, SDK, sandbox, or developer environment.
+                    </p>
+
+                </div>
+
+                <span class="method-arrow">↗</span>
+
+            </article>
+
+
+            <article class="method-card reveal reveal-delay">
+
+                <div class="card-index">
+                    04
+                </div>
+
+                <div class="method-card-content">
+
+                    <h3>Report</h3>
+
+                    <p>
+                        Document the finding, the underlying assumption,
+                        the implementation gap, and its potential downstream impact.
+                    </p>
+
+                </div>
+
+                <span class="method-arrow">↗</span>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     VALIDATION
+========================================================= -->
+
+<section class="section validation-section" id="validation">
+
+    <div class="container">
+
+        <div class="validation-layout">
+
+            <div class="validation-copy reveal">
+
+                <div class="section-number">
+                    03 / VALIDATION
+                </div>
+
+                <h2>
+                    When documentation isn't enough,
+                    <span>we test the implementation.</span>
+                </h2>
+
+                <p>
+                    Some findings depend on actual product behavior.
+                    In those cases, DaxMac can go beyond examining the
+                    developer experience and attempt the relevant implementation.
+                </p>
+
+                <p>
+                    Live testing is used to validate specific implementation
+                    assumptions. It is not general QA or feature testing.
+                </p>
+
+            </div>
+
+
+            <div class="validation-panel reveal reveal-delay">
+
+                <div class="validation-panel-top">
+
+                    <span>
+                        IMPLEMENTATION VALIDATION
+                    </span>
+
+                    <span class="live-indicator">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="validation-chain">
+
+                    <div class="validation-step">
+
+                        <span>01</span>
+
+                        <div>
+                            <strong>Documentation</strong>
+                            <small>What the product presents</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chain-arrow">↓</div>
+
+
+                    <div class="validation-step">
+
+                        <span>02</span>
+
+                        <div>
+                            <strong>Expectation</strong>
+                            <small>What the developer believes</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chain-arrow">↓</div>
+
+
+                    <div class="validation-step active">
+
+                        <span>03</span>
+
+                        <div>
+                            <strong>Implementation</strong>
+                            <small>What we attempt</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chain-arrow">↓</div>
+
+
+                    <div class="validation-step">
+
+                        <span>04</span>
+
+                        <div>
+                            <strong>Observed Behavior</strong>
+                            <small>What the product actually does</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chain-arrow">↓</div>
+
+
+                    <div class="validation-step final">
+
+                        <span>05</span>
+
+                        <div>
+                            <strong>Validated Finding</strong>
+                            <small>Documented implementation gap</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section class="section services-section" id="services">
+
+    <div class="container">
+
+        <div class="section-intro reveal">
+
+            <div class="section-number">
+                04 / SERVICES
+            </div>
+
+            <h2>
+                Choose the depth of
+                <span>investigation.</span>
+            </h2>
+
+            <p>
+                The difference between the reviews is how deeply the
+                implementation experience is investigated and whether
+                relevant implementation is tested against the actual product.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <!-- Developer Experience Review -->
+
+            <article class="service-card reveal">
+
+                <div class="service-top">
+
+                    <span class="service-label">
+                        EXPERIENCE REVIEW
+                    </span>
+
+                    <span class="service-price">
+                        $549
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Developer Experience Review
+                </h3>
+
+
+                <p class="service-lead">
+                    Understand what your developer experience can lead
+                    customers to expect.
+                </p>
+
+
+                <p>
+                    We examine a core developer journey, including relevant
+                    onboarding, documentation, examples, and implementation
+ 
