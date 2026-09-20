@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Monitoring &amp; Observability Audit | DaxMac</title>
   <meta name="description" content="A DaxMac audit examining how monitoring onboarding can make coverage feel more complete than what the platform actually takes responsibility for.">
-
   <link rel="icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
 
@@ -20,132 +17,248 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+<body data-nav="audits.html" data-root="../">
 
-<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
+      </a>
 
-<header>
-  <nav>
-    <div class="logo">
-      <img src="../assets/logo.png" alt="DaxMac Logo">
-      <span>DaxMac</span>
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ AUDIT ============ -->
+    <article class="article">
+      <div class="wrap">
+
+        <header class="article__head">
+          <p class="eyebrow">Monitoring &amp; Observability</p>
+
+          <h1 class="article__title">
+            Monitoring &amp; Observability Developer Onboarding Audit
+          </h1>
+
+          <p class="article__meta">
+            Live audit. Company identity withheld for privacy.
+          </p>
+        </header>
+
+        <div class="article__body">
+
+          <p class="article__finding">
+            <strong>Finding:</strong> A Check can make monitoring coverage feel more
+            complete than what the platform actually takes responsibility for.
+          </p>
+
+          <h2>Finding</h2>
+
+          <p>
+            The onboarding presents Checks as automated monitoring that executes a
+            configured workflow, retries failures, stores the result, and alerts when
+            the final attempt fails.
+          </p>
+
+          <p>
+            It also describes Checks as experiencing the application in a way
+            comparable to real users.
+          </p>
+
+          <p>
+            The experience therefore makes the operational side of monitoring feel
+            largely handled by the platform: the Check runs, evaluates the configured
+            flow, records the result, and reports failures.
+          </p>
+
+          <p>
+            The important boundary is that the developer still determines what the
+            Check actually verifies.
+          </p>
+
+          <h2>Developer Assumption</h2>
+
+          <p>A developer can reasonably come away believing:</p>
+
+          <blockquote>
+            <p>
+              "Once I put an important application flow into a Check, the platform
+              is continuously validating that part of my application."
+            </p>
+          </blockquote>
+
+          <p>
+            The deeper assumption is that the platform has taken responsibility for
+            monitoring the reliability of that application behavior, rather than
+            primarily executing the monitoring logic the developer has defined.
+          </p>
+
+          <h2>Where the Boundary Appears</h2>
+
+          <p>The platform absorbs the operational work of running the Check.</p>
+
+          <p>
+            The developer remains responsible for defining the workflow, assertions,
+            authentication behavior, data interactions, and other test logic that
+            determine what the Check actually covers.
+          </p>
+
+          <p>This creates an important distinction:</p>
+
+          <p class="article__statement">
+            Check execution ≠ complete monitoring coverage.
+          </p>
+
+          <p>
+            A Check can be running continuously while still representing only the
+            portion of production behavior that the developer has chosen to encode.
+          </p>
+
+          <h2>Production Trigger</h2>
+
+          <p>
+            The application changes, or a production failure occurs outside what the
+            configured Check actually exercises.
+          </p>
+
+          <p>
+            The Check can continue executing successfully because the behavior it was
+            designed to verify still passes, while an important production behavior
+            remains outside its coverage.
+          </p>
+
+          <h2>Trust Consequence</h2>
+
+          <p>
+            A consistently passing Check can create confidence that an important
+            production flow is protected when significant failure conditions may still
+            sit outside its configured coverage.
+          </p>
+
+          <p>The risk is therefore not that the Check fails to run.</p>
+
+          <p>
+            The risk is that successful monitoring execution can be interpreted as
+            broader application protection than the configured Check actually provides.
+          </p>
+
+          <h2>Possible Interventions</h2>
+
+          <p>Make the boundary between Check execution and monitoring coverage explicit.</p>
+
+          <p>
+            Clarify that the reliability of the monitoring result depends on how
+            completely the developer models the production behavior being monitored.
+          </p>
+
+          <p>
+            Show examples of what should be included in a production-critical Check,
+            including relevant assertions and failure conditions.
+          </p>
+
+          <p>
+            Explain the difference between a Check passing and the broader application
+            behavior being healthy.
+          </p>
+
+          <h2>DaxMac Finding</h2>
+
+          <p class="article__statement">
+            The platform absorbs the operational work of running the Check, while the
+            developer remains responsible for defining what the Check actually protects.
+          </p>
+
+          <h2>Scope</h2>
+
+          <p>
+            This finding does not claim that the monitoring platform promises complete
+            application coverage.
+          </p>
+
+          <p>
+            The finding is narrower: the onboarding experience can cause developers
+            to associate an active, consistently passing Check with broader application
+            validation than the configured monitoring logic necessarily represents.
+          </p>
+
+        </div>
+
+        <!-- Risk rating -->
+        <aside class="audit-risk">
+          <span class="audit-risk__label">Trust Risk</span>
+          <span class="audit-risk__value">Medium</span>
+          <span class="audit-risk__sep">·</span>
+          <span class="audit-risk__label">Priority</span>
+          <span class="audit-risk__value">High</span>
+        </aside>
+
+        <p class="audit-risk__note">
+          The consequence is primarily a monitoring-confidence risk rather than direct
+          data loss or service failure. However, the assumption can matter in production
+          when teams rely on passing Checks as evidence that an important application
+          flow remains healthy.
+        </p>
+
+        <footer class="article__foot">
+          <a class="article__back" href="../audits.html">Back to Audit Library</a>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation &amp; API adoption.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Experience Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Custom Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Contact">
+        <h2 class="footer__head">Contact</h2>
+        <ul>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Audit</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h2 class="footer__head">Company</h2>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
     </div>
 
-    <div class="menu-toggle">
-      ☰
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="#">LinkedIn</a> · <a href="#">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
     </div>
+  </footer>
 
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../audits.html">Audits</a></li>
-      <li><a href="../field-notes.html">Field Notes</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section class="section">
-  <h1>Monitoring &amp; Observability Developer Onboarding Audit</h1>
-
-  <p>Finding: A Check can make monitoring coverage feel more complete than what the platform actually takes responsibility for.</p>
-
-  <p><em>Live audit. Company identity withheld for privacy.</em></p>
-</section>
-
-<section class="section">
-  <h2>Finding</h2>
-
-  <p>The onboarding presents Checks as automated monitoring that executes a configured workflow, retries failures, stores the result, and alerts when the final attempt fails.</p>
-
-  <p>It also describes Checks as experiencing the application in a way comparable to real users.</p>
-
-  <p>The experience therefore makes the operational side of monitoring feel largely handled by the platform: the Check runs, evaluates the configured flow, records the result, and reports failures.</p>
-
-  <p>The important boundary is that the developer still determines what the Check actually verifies.</p>
-</section>
-
-<section class="section">
-  <h2>Developer Assumption</h2>
-
-  <p>A developer can reasonably come away believing:</p>
-
-  <p><strong>“Once I put an important application flow into a Check, the platform is continuously validating that part of my application.”</strong></p>
-
-  <p>The deeper assumption is that the platform has taken responsibility for monitoring the reliability of that application behavior, rather than primarily executing the monitoring logic the developer has defined.</p>
-</section>
-
-<section class="section">
-  <h2>Where the Boundary Appears</h2>
-
-  <p>The platform absorbs the operational work of running the Check.</p>
-
-  <p>The developer remains responsible for defining the workflow, assertions, authentication behavior, data interactions, and other test logic that determine what the Check actually covers.</p>
-
-  <p>This creates an important distinction:</p>
-
-  <p><strong>Check execution ≠ complete monitoring coverage.</strong></p>
-
-  <p>A Check can be running continuously while still representing only the portion of production behavior that the developer has chosen to encode.</p>
-</section>
-
-<section class="section">
-  <h2>Production Trigger</h2>
-
-  <p>The application changes, or a production failure occurs outside what the configured Check actually exercises.</p>
-
-  <p>The Check can continue executing successfully because the behavior it was designed to verify still passes, while an important production behavior remains outside its coverage.</p>
-</section>
-
-<section class="section">
-  <h2>Trust Consequence</h2>
-
-  <p>A consistently passing Check can create confidence that an important production flow is protected when significant failure conditions may still sit outside its configured coverage.</p>
-
-  <p>The risk is therefore not that the Check fails to run.</p>
-
-  <p>The risk is that successful monitoring execution can be interpreted as broader application protection than the configured Check actually provides.</p>
-</section>
-
-<section class="section">
-  <h2>Possible Interventions</h2>
-
-  <p>Make the boundary between Check execution and monitoring coverage explicit.</p>
-
-  <p>Clarify that the reliability of the monitoring result depends on how completely the developer models the production behavior being monitored.</p>
-
-  <p>Show examples of what should be included in a production-critical Check, including relevant assertions and failure conditions.</p>
-
-  <p>Explain the difference between a Check passing and the broader application behavior being healthy.</p>
-</section>
-
-<section class="section">
-  <h2>DaxMac Finding</h2>
-
-  <p><strong>The platform absorbs the operational work of running the Check, while the developer remains responsible for defining what the Check actually protects.</strong></p>
-</section>
-
-<section class="section">
-  <h2>Scope</h2>
-
-  <p>This finding does not claim that the monitoring platform promises complete application coverage.</p>
-
-  <p>The finding is narrower: the onboarding experience can cause developers to associate an active, consistently passing Check with broader application validation than the configured monitoring logic necessarily represents.</p>
-</section>
-
-<section class="section">
-  <h2>Trust Risk: Medium · Priority: High</h2>
-
-  <p>The consequence is primarily a monitoring-confidence risk rather than direct data loss or service failure. However, the assumption can matter in production when teams rely on passing Checks as evidence that an important application flow remains healthy.</p>
-</section>
-
-<section class="section" style="text-align:center;">
-  <a href="../audits.html">← Back to Audit Library</a>
-</section>
-
-<footer>
-  <p>© 2026 DaxMac. All rights reserved.</p>
-</footer>
-
-<script src="../script.js"></script>
-
+  <script src="../script.js"></script>
 </body>
   </html>
