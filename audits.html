@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Developer Onboarding Audits | DaxMac</title>
-
   <meta name="description" content="A collection of DaxMac developer onboarding audits examining the assumptions onboarding experiences can naturally create and the production or business risks they may introduce.">
-
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
-
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -22,101 +17,122 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+<body data-nav="audits.html">
 
-<body>
-
-<header>
-  <nav>
-
-    <div class="logo">
-      <img src="assets/logo.png" alt="DaxMac Logo">
-      <span>DaxMac</span>
-    </div>
-
-    <div class="menu-toggle">
-      ☰
-    </div>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="audits.html">Audits</a></li>
-      <li><a href="field-notes.html">Field Notes</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-
-  </nav>
-</header>
-
-<section class="section">
-
-  <h1>Developer Onboarding Audits</h1>
-
-  <p>
-    A collection of developer onboarding audits examining the assumptions onboarding experiences can naturally create and the production or business risks they may introduce.
-  </p>
-
-</section>
-
-<section class="section">
-
-  <div class="cards">
-
-    <div class="card">
-
-      <h3>AI Infrastructure</h3>
-
-      <p>
-        A unified API can make model switching appear more application-transparent than it actually is.
-      </p>
-
-      <a href="audits/ai-infrastructure.html">
-        Read Audit →
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="assets/logo.png" alt="DaxMac">
       </a>
 
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ PAGE INTRO ============ -->
+    <section class="page-intro">
+      <div class="wrap">
+        <p class="eyebrow">DaxMac Audits</p>
+
+        <h1 class="page-intro__title">Developer Onboarding Audits</h1>
+
+        <p class="page-intro__lede">
+          A collection of developer onboarding audits examining the assumptions
+          onboarding experiences can naturally create and the production or business
+          risks they may introduce.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ AUDITS ============ -->
+    <section class="section notes">
+      <div class="wrap">
+        <div class="notes-grid">
+
+          <a class="note-card" href="audits/ai-infrastructure.html">
+            <h2 class="note-card__title">AI Infrastructure</h2>
+            <p class="note-card__text">
+              A unified API can make model switching appear more
+              application-transparent than it actually is.
+            </p>
+            <span class="note-card__link">Read Audit</span>
+          </a>
+
+          <a class="note-card" href="audits/digital-wallet-infrastructure.html">
+            <h2 class="note-card__title">Digital Wallet Infrastructure</h2>
+            <p class="note-card__text">
+              A notification abstraction can make customer delivery appear more
+              reliable than it is.
+            </p>
+            <span class="note-card__link">Read Audit</span>
+          </a>
+
+          <a class="note-card" href="audits/monitoring-observability.html">
+            <h2 class="note-card__title">Monitoring &amp; Observability</h2>
+            <p class="note-card__text">
+              A Check can make monitoring coverage feel more complete than what the
+              platform actually takes responsibility for.
+            </p>
+            <span class="note-card__link">Read Audit</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation &amp; API adoption.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="index.html#services">Developer Experience Review</a></li>
+          <li><a href="index.html#services">Developer Implementation Review</a></li>
+          <li><a href="index.html#services">Custom Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Contact">
+        <h2 class="footer__head">Contact</h2>
+        <ul>
+          <li><a href="field-notes.html">Field Notes</a></li>
+          <li><a href="audits.html">Audit</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h2 class="footer__head">Company</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
     </div>
 
-    <div class="card">
-
-      <h3>Digital Wallet Infrastructure</h3>
-
-      <p>
-        A notification abstraction can make customer delivery appear more reliable than it is.
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="#">LinkedIn</a> · <a href="#">X</a>
       </p>
-
-      <a href="audits/digital-wallet-infrastructure.html">
-        Read Audit →
-      </a>
-
+      <p class="footer__copy">© 2026 DaxMac</p>
     </div>
+  </footer>
 
-    <div class="card">
-
-      <h3>Monitoring &amp; Observability</h3>
-
-      <p>
-        A Check can make monitoring coverage feel more complete than what the platform actually takes responsibility for.
-      </p>
-
-      <a href="audits/monitoring-observability.html">
-        Read Audit →
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-<footer>
-
-  <p>
-    © 2026 DaxMac. All rights reserved.
-  </p>
-
-</footer>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
-        </html>
+  </html>
