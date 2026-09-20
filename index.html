@@ -10,7 +10,7 @@
     <title>DaxMac | Developer Implementation Risk</title>
 
     <meta name="description"
-          content="DaxMac helps developer-facing companies uncover implementation assumptions that can create support burden, engineering work, and production risk.">
+          content="DaxMac helps developer-facing companies find implementation problems before they become support and engineering work. We follow the developer journey and validate important assumptions against the product.">
 
     <link rel="stylesheet" href="style.css">
 
@@ -21,7 +21,10 @@
 
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag(){
+            dataLayer.push(arguments);
+        }
 
         gtag('js', new Date());
 
@@ -50,25 +53,33 @@
 
             </div>
 
+
             <div class="menu-toggle">
-
                 ☰
-
             </div>
+
 
             <ul class="nav-links">
 
-                <li><a href="#services">Services</a></li>
+                <li>
+                    <a href="#services">Services</a>
+                </li>
 
-                <li><a href="audits.html">Audits</a></li>
+                <li>
+                    <a href="field-notes.html">Field Notes</a>
+                </li>
 
-                <li><a href="field-notes.html">Field Notes</a></li>
+                <li>
+                    <a href="#methodology">How It Works</a>
+                </li>
 
-                <li><a href="#methodology">Methodology</a></li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
 
-                <li><a href="#about">About</a></li>
-
-                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
 
             </ul>
 
@@ -88,33 +99,46 @@
             <div class="hero-text">
 
                 <p class="badge">
-                    Developer Implementation Risk
+                    Developer Experience • API Integration
                 </p>
+
 
                 <h1>
-                    Find the assumptions creating problems for your developer customers.
+                    Find implementation problems before they become support and engineering work.
                 </h1>
 
+
                 <p>
-                    DaxMac uncovers where reasonable developer assumptions can turn into failed integrations, support burden, engineering intervention, and production risk.
+                    DaxMac helps developer-facing companies uncover where developers can
+                    misunderstand, misimplement, or struggle with a product during integration.
                 </p>
+
+
+                <p>
+                    We follow the developer journey and, when needed, test the API or SDK
+                    directly to validate important implementation assumptions.
+                </p>
+
 
                 <div class="hero-buttons">
 
-                    <a href="#services">See How We Help</a>
+                    <a href="#services">
+                        See Services
+                    </a>
 
-                    <a href="#audits">View Audits</a>
+                    <a href="#methodology">
+                        How It Works
+                    </a>
 
                 </div>
 
             </div>
 
-            <!-- Single retained image -->
 
             <div class="hero-image">
 
                 <img src="assets/hero-illustration.png"
-                     alt="Developer implementation risk illustration">
+                     alt="Developer implementation journey">
 
             </div>
 
@@ -130,37 +154,223 @@
     <section id="trust">
 
         <p>
-            Independent Analysis • Evidence-Based Findings • Production-Focused
+            Independent Analysis • Evidence-Based Findings • Hands-On Validation
         </p>
 
     </section>
 
 
     <!-- ========================= -->
-    <!-- The Problem -->
+    <!-- Problem -->
     <!-- ========================= -->
 
     <section id="problem" class="section">
 
-        <h2>Where Integration Problems Begin</h2>
+        <h2>
+            Your developers are implementing the product — not just reading the docs.
+        </h2>
+
 
         <p>
-            Developers make decisions based on what they understand about a product.
-            Sometimes a reasonable assumption about how the product behaves leads to an implementation that does not match reality.
+            Developers make implementation decisions based on what they understand
+            about how a product works.
         </p>
 
-        <p>
-            The problem may not surface until the integration reaches an edge case,
-            production environment, asynchronous workflow, failure condition, or another part of the product lifecycle.
-        </p>
 
         <p>
-            By then, the company may be dealing with support questions, engineering intervention,
-            failed implementations, customer frustration, or production incidents.
+            A reasonable assumption can become an implementation decision.
+            If that assumption does not match the actual product behavior,
+            the problem may surface later during integration, support,
+            engineering, or production.
         </p>
 
+
+        <div class="problem-flow">
+
+            <div>
+                <strong>Developer experience</strong>
+                <span>What the developer encounters</span>
+            </div>
+
+
+            <div>
+                <strong>Developer assumption</strong>
+                <span>What they reasonably believe</span>
+            </div>
+
+
+            <div>
+                <strong>Implementation decision</strong>
+                <span>What they build around</span>
+            </div>
+
+
+            <div>
+                <strong>Product behavior</strong>
+                <span>What actually happens</span>
+            </div>
+
+
+            <div>
+                <strong>Downstream problem</strong>
+                <span>
+                    Friction, support, engineering, or production impact
+                </span>
+            </div>
+
+        </div>
+
+
         <p>
-            DaxMac investigates those assumptions before they become someone else's production problem.
+            DaxMac investigates these gaps before they become someone else's problem.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- Methodology -->
+    <!-- ========================= -->
+
+    <section id="methodology" class="section">
+
+        <h2>
+            We follow the developer journey.
+        </h2>
+
+
+        <p>
+            DaxMac examines the path a developer takes to understand and implement
+            your product — then validates important assumptions where actual
+            product behavior matters.
+        </p>
+
+
+        <div class="method-grid">
+
+
+            <div class="method-card">
+
+                <h3>
+                    01. Follow
+                </h3>
+
+                <p>
+                    Take a real implementation path from the perspective of a developer
+                    trying to get the product working.
+                </p>
+
+            </div>
+
+
+            <div class="method-card">
+
+                <h3>
+                    02. Identify
+                </h3>
+
+                <p>
+                    Identify assumptions the developer experience can reasonably create
+                    and the implementation decisions those assumptions can influence.
+                </p>
+
+            </div>
+
+
+            <div class="method-card">
+
+                <h3>
+                    03. Validate
+                </h3>
+
+                <p>
+                    Where relevant, use the API, SDK, sandbox, or developer environment
+                    to test important assumptions against actual product behavior.
+                </p>
+
+            </div>
+
+
+            <div class="method-card">
+
+                <h3>
+                    04. Report
+                </h3>
+
+                <p>
+                    Document the evidence, implementation implication,
+                    and potential downstream risk in a structured findings report.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- Live Validation -->
+    <!-- ========================= -->
+
+    <section id="validation" class="section">
+
+        <h2>
+            Not just a documentation review.
+        </h2>
+
+
+        <p>
+            When a finding depends on actual product behavior, DaxMac can go beyond
+            reading the developer experience and attempt the relevant implementation.
+        </p>
+
+
+        <p>
+            We use the available API, SDK, sandbox, or developer environment
+            to test specific implementation assumptions encountered during
+            the developer journey.
+        </p>
+
+
+        <div class="validation-flow">
+
+
+            <div>
+                <strong>Documentation</strong>
+                <span>What the developer is told</span>
+            </div>
+
+
+            <div>
+                <strong>Expectation</strong>
+                <span>What the developer can reasonably expect</span>
+            </div>
+
+
+            <div>
+                <strong>Implementation</strong>
+                <span>What we actually attempt</span>
+            </div>
+
+
+            <div>
+                <strong>Observed behavior</strong>
+                <span>What the product actually does</span>
+            </div>
+
+
+            <div>
+                <strong>Finding</strong>
+                <span>Where the gap creates implementation risk</span>
+            </div>
+
+        </div>
+
+
+        <p class="section-note">
+            Live testing is used to validate implementation assumptions.
+            It is not general QA or feature testing.
         </p>
 
     </section>
@@ -172,138 +382,364 @@
 
     <section id="services" class="section">
 
-        <h2>Services</h2>
+        <h2>
+            Services
+        </h2>
+
 
         <p>
-            DaxMac provides structured reviews of the assumptions developers can form while integrating a product
-            and the risks those assumptions can create.
+            Choose the level of investigation that matches how deeply you want
+            to examine the developer implementation experience.
         </p>
+
 
         <div class="cards">
 
+
+            <!-- ========================= -->
+            <!-- Developer Experience Review -->
+            <!-- ========================= -->
+
             <article class="card">
 
-                <h3>Developer Onboarding Audit — $399</h3>
+                <h3>
+                    Developer Experience Review
+                </h3>
+
+
+                <div class="price">
+                    $549
+                </div>
+
 
                 <p>
-                    <strong>Find the assumptions that can become production risks.</strong>
+                    <strong>
+                        Understand what your developer experience can lead customers to expect.
+                    </strong>
                 </p>
+
 
                 <p>
-                    A focused audit of the path from first setup to working integration, examining what developers can reasonably believe about your product along the way.
+                    We examine a core developer journey, including relevant onboarding,
+                    documentation, examples, and implementation surfaces, to identify
+                    assumptions that could create integration or implementation problems.
                 </p>
 
-                <h4>Areas examined</h4>
+
+                <h4>
+                    Includes
+                </h4>
+
 
                 <ul>
 
-                    <li>First-time setup and Getting Started</li>
+                    <li>
+                        Developer journey review
+                    </li>
 
-                    <li>Quickstart and first API interaction</li>
+                    <li>
+                        Relevant onboarding and implementation surfaces
+                    </li>
 
-                    <li>Authentication, credentials, and configuration</li>
+                    <li>
+                        Assumption analysis
+                    </li>
 
-                    <li>Sandbox → production transition</li>
+                    <li>
+                        Up to 10 validated findings
+                    </li>
 
-                    <li>Core integration and product setup dependencies</li>
-
-                    <li>Other onboarding surfaces that materially affect implementation</li>
-
-                </ul>
-
-                <h4>You receive</h4>
-
-                <ul>
-
-                    <li>Review of up to 10 relevant onboarding documents/items</li>
-
-                    <li>Evidence-based assumption-risk findings</li>
-
-                    <li>The developer assumption behind each finding</li>
-
-                    <li>Potential implementation and production impact</li>
-
-                    <li>Prioritized written audit report</li>
+                    <li>
+                        Structured findings report
+                    </li>
 
                 </ul>
+
+
+                <p class="service-note">
+                    Live API/SDK testing is not included.
+                </p>
+
+
+                <a href="#contact" class="service-button">
+                    Start a Review
+                </a>
 
             </article>
 
 
-            <article class="card">
+            <!-- ========================= -->
+            <!-- Developer Implementation Review -->
+            <!-- ========================= -->
 
-                <h3>Production Readiness Review — $699</h3>
+            <article class="card featured">
+
+                <h3>
+                    Developer Implementation Review
+                </h3>
+
+
+                <div class="price">
+                    $849
+                </div>
+
 
                 <p>
-                    <strong>Stress-test the developer experience beyond the first successful integration.</strong>
+                    <strong>
+                        Follow the developer journey and test important assumptions against the actual product.
+                    </strong>
                 </p>
+
 
                 <p>
-                    Everything in the Developer Onboarding Audit, plus a deeper examination of the assumptions developers can carry into production.
+                    Everything in the Developer Experience Review, plus targeted
+                    hands-on API or SDK testing to validate findings where actual
+                    product behavior matters.
                 </p>
 
-                <h4>Additional production surfaces</h4>
+
+                <h4>
+                    Includes
+                </h4>
+
 
                 <ul>
 
-                    <li>API and SDK behavior</li>
+                    <li>
+                        Developer journey review
+                    </li>
 
-                    <li>Errors, failures, retries, and recovery</li>
+                    <li>
+                        Relevant API and SDK flows
+                    </li>
 
-                    <li>Webhooks, events, and asynchronous state</li>
+                    <li>
+                        Live implementation testing
+                    </li>
 
-                    <li>Rate limits and operational constraints</li>
+                    <li>
+                        Behavioral validation
+                    </li>
 
-                    <li>Production configuration and guidance</li>
+                    <li>
+                        Authentication and configuration testing where relevant
+                    </li>
 
-                    <li>Cross-surface assumptions affecting implementation</li>
+                    <li>
+                        Up to 20 validated findings
+                    </li>
 
-                </ul>
-
-                <h4>You receive</h4>
-
-                <ul>
-
-                    <li>Review of up to 20 relevant onboarding and production-facing documents/items</li>
-
-                    <li>Everything included in the Developer Onboarding Audit</li>
-
-                    <li>Additional production-risk findings</li>
-
-                    <li>Executive summary</li>
-
-                    <li>Prioritized remediation roadmap</li>
-
-                    <li>Written audit report</li>
+                    <li>
+                        Structured findings report
+                    </li>
 
                 </ul>
+
+
+                <p class="service-note">
+                    Live testing is performed against the agreed developer journey,
+                    not as general product QA.
+                </p>
+
+
+                <a href="#contact" class="service-button">
+                    Start an Implementation Review
+                </a>
 
             </article>
 
         </div>
 
 
-        <div class="service-note">
+        <!-- ========================= -->
+        <!-- Service Comparison -->
+        <!-- ========================= -->
+
+        <div class="comparison">
+
+            <h3>
+                What does live validation add?
+            </h3>
+
 
             <p>
-                <strong>Findings are never manufactured to meet a quota.</strong>
+                The $549 review examines what the developer experience can lead
+                a developer to believe. The $849 review goes further by attempting
+                the relevant implementation and comparing expectations with actual
+                product behavior.
             </p>
 
-            <p>
-                The review scope is defined by the product and experience being examined, not by a promised number of findings.
-                Each finding must be supported by evidence, a reasonable developer assumption,
-                and a credible path to consequential implementation or production risk.
-            </p>
+
+            <div class="comparison-grid">
+
+
+                <div class="comparison-item">
+
+                    <h4>
+                        $549
+                    </h4>
+
+
+                    <p>
+                        Developer Experience Review
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            Developer journey
+                        </li>
+
+                        <li>
+                            Implementation assumptions
+                        </li>
+
+                        <li>
+                            Risk analysis
+                        </li>
+
+                        <li>
+                            Up to 10 findings
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="comparison-item">
+
+                    <h4>
+                        $849
+                    </h4>
+
+
+                    <p>
+                        Developer Implementation Review
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            Everything in $549
+                        </li>
+
+                        <li>
+                            Live API/SDK testing
+                        </li>
+
+                        <li>
+                            Observed behavior
+                        </li>
+
+                        <li>
+                            Behavioral validation
+                        </li>
+
+                        <li>
+                            Up to 20 findings
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
 
         </div>
 
+
+        <!-- ========================= -->
+        <!-- Custom -->
+        <!-- ========================= -->
+
+        <div class="custom-service">
+
+            <h3>
+                Need a broader assessment?
+            </h3>
+
+
+            <h2>
+                Custom Implementation Assessment
+            </h2>
+
+
+            <div class="price">
+                From $1,650
+            </div>
+
+
+            <p>
+                For products with multiple implementation paths, APIs, SDKs,
+                complex integrations, or deeper production-facing requirements.
+            </p>
+
+
+            <div class="custom-list">
+
+                <span>
+                    Multiple developer journeys
+                </span>
+
+                <span>
+                    Multiple APIs or SDKs
+                </span>
+
+                <span>
+                    Complex authentication
+                </span>
+
+                <span>
+                    Webhooks and asynchronous workflows
+                </span>
+
+                <span>
+                    Lifecycle and state behavior
+                </span>
+
+                <span>
+                    Environment differences
+                </span>
+
+                <span>
+                    Production implementation paths
+                </span>
+
+                <span>
+                    Deeper live API validation
+                </span>
+
+            </div>
+
+
+            <a href="#contact">
+                Discuss a Custom Assessment →
+            </a>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Findings Note -->
+        <!-- ========================= -->
 
         <div class="service-contact">
 
-            <h3>Not sure whether this problem exists in your product?</h3>
+            <p>
+                <strong>
+                    Findings are never manufactured to meet a quota.
+                </strong>
+            </p>
+
 
             <p>
-                Email <a href="mailto:info@daxmac.cc">info@daxmac.cc</a> to discuss whether a review is relevant.
+                The number of findings depends on what the product and developer
+                experience actually support. Each finding must have a reasonable
+                basis in the developer journey and sufficient evidence to explain
+                the implementation risk.
             </p>
 
         </div>
@@ -312,29 +748,40 @@
 
 
     <!-- ========================= -->
-    <!-- Featured Audits -->
+    <!-- Example Findings -->
     <!-- ========================= -->
 
-    <section id="audits" class="section">
+    <section id="examples" class="section">
 
-        <h2>Featured Audits</h2>
+        <h2>
+            Example Implementation Findings
+        </h2>
+
 
         <p>
-            Examples of the implementation assumptions and production risks DaxMac investigates.
+            Anonymized examples of the implementation assumptions and product
+            behavior DaxMac investigates.
         </p>
+
 
         <div class="cards">
 
+
             <div class="card">
 
-                <h3>AI Infrastructure</h3>
+                <h3>
+                    AI Infrastructure
+                </h3>
+
 
                 <p>
-                    A unified API can make model switching appear more application-transparent than it actually is.
+                    An anonymized example of a developer assumption examined
+                    through an API implementation journey.
                 </p>
 
+
                 <a href="audits/ai-infrastructure.html">
-                    Read Audit →
+                    Read Example →
                 </a>
 
             </div>
@@ -342,14 +789,19 @@
 
             <div class="card">
 
-                <h3>Digital Wallet Infrastructure</h3>
+                <h3>
+                    Digital Wallet Infrastructure
+                </h3>
+
 
                 <p>
-                    A notification abstraction can make customer delivery appear more reliable than it is.
+                    An anonymized example of an implementation assumption
+                    identified in a developer-facing product experience.
                 </p>
 
+
                 <a href="audits/digital-wallet-infrastructure.html">
-                    Read Audit →
+                    Read Example →
                 </a>
 
             </div>
@@ -359,8 +811,8 @@
 
         <div style="text-align:center;margin-top:40px;">
 
-            <a href="audits.html">
-                View All Audits →
+            <a href="field-notes.html">
+                Read DaxMac Field Notes →
             </a>
 
         </div>
@@ -369,69 +821,59 @@
 
 
     <!-- ========================= -->
-    <!-- Methodology -->
+    <!-- Who It Is For -->
     <!-- ========================= -->
 
-    <section id="methodology" class="section">
+    <section id="audience" class="section">
 
-        <h2>How We Find the Problem</h2>
+        <h2>
+            Built for developer-facing companies.
+        </h2>
+
 
         <p>
-            Every DaxMac review starts with one question:
-            <strong>What can a reasonable developer believe from this experience?</strong>
+            DaxMac is designed for companies where developers are customers,
+            users, or critical integrators of the product.
         </p>
 
 
-        <div class="method-grid">
+        <div class="audience-list">
 
-            <div class="method-card">
+            <span>
+                APIs
+            </span>
 
-                <h3>01. Experience</h3>
+            <span>
+                Developer Tools
+            </span>
 
-                <p>
-                    Examine what the developer encounters while moving through setup,
-                    integration, and production-facing flows.
-                </p>
+            <span>
+                AI Infrastructure
+            </span>
 
-            </div>
+            <span>
+                Fintech Infrastructure
+            </span>
 
+            <span>
+                Authentication
+            </span>
 
-            <div class="method-card">
+            <span>
+                Observability
+            </span>
 
-                <h3>02. Assumption</h3>
-
-                <p>
-                    Identify the mental model a competent developer can naturally form,
-                    including what they believe the product will handle for them.
-                </p>
-
-            </div>
-
-
-            <div class="method-card">
-
-                <h3>03. Product Reality</h3>
-
-                <p>
-                    Examine what the available product and technical evidence implies about
-                    what the developer will actually encounter and what responsibility remains with them.
-                </p>
-
-            </div>
-
-
-            <div class="method-card">
-
-                <h3>04. Consequence</h3>
-
-                <p>
-                    Identify where the assumption can meet reality and create implementation friction,
-                    production problems, trust issues, support burden, or other business consequences.
-                </p>
-
-            </div>
+            <span>
+                Infrastructure SaaS
+            </span>
 
         </div>
+
+
+        <p>
+            If developers are responsible for implementing your product,
+            their implementation experience is part of your product experience.
+        </p>
 
     </section>
 
@@ -446,22 +888,34 @@
 
             <div class="about-text">
 
-                <h2>About DaxMac</h2>
+                <h2>
+                    About DaxMac
+                </h2>
+
 
                 <p>
-                    DaxMac is an independent research and audit company focused on
-                    developer implementation and API adoption risk.
+                    DaxMac is an independent service focused on developer
+                    implementation and API adoption.
                 </p>
 
-                <p>
-                    We examine how developers can interpret a product,
-                    what implementation decisions those interpretations can produce,
-                    and where those decisions can meet product reality in ways that create risk.
-                </p>
 
                 <p>
-                    Our work connects developer behavior to potential engineering,
-                    support, adoption, trust, production, and business consequences through evidence-based analysis.
+                    We examine the gap between what a developer can reasonably
+                    expect from a product and what the implementation actually requires.
+                </p>
+
+
+                <p>
+                    Our work connects the developer experience to potential
+                    implementation, support, engineering, adoption, and production
+                    consequences through evidence-based analysis and, where relevant,
+                    hands-on technical validation.
+                </p>
+
+
+                <p>
+                    We are not a documentation agency or general QA service.
+                    The focus is the developer's path to implementation.
                 </p>
 
             </div>
@@ -477,18 +931,25 @@
 
     <section id="contact" class="section">
 
-        <h2>Contact</h2>
+        <h2>
+            Start an Assessment
+        </h2>
+
 
         <p>
-            Think your developer experience may be creating hidden implementation risk?
+            Want an independent look at how developers experience and implement your product?
         </p>
 
 
         <div class="contact-grid">
 
+
             <div class="contact-card">
 
-                <h3>📧 Email</h3>
+                <h3>
+                    📧 Email
+                </h3>
+
 
                 <a href="mailto:info@daxmac.cc">
                     info@daxmac.cc
@@ -499,9 +960,14 @@
 
             <div class="contact-card">
 
-                <h3>💼 LinkedIn</h3>
+                <h3>
+                    💼 LinkedIn
+                </h3>
 
-                <a href="https://www.linkedin.com/company/daxmac/" target="_blank">
+
+                <a href="https://www.linkedin.com/company/daxmac/"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     DaxMac Company
                 </a>
 
@@ -510,9 +976,14 @@
 
             <div class="contact-card">
 
-                <h3>𝕏 X</h3>
+                <h3>
+                    𝕏 X
+                </h3>
 
-                <a href="https://x.com/daxmachq" target="_blank">
+
+                <a href="https://x.com/daxmachq"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     @daxmachq
                 </a>
 
@@ -521,9 +992,14 @@
 
             <div class="contact-card">
 
-                <h3>🌐 Website</h3>
+                <h3>
+                    🌐 Website
+                </h3>
 
-                <a href="https://daxmac.cc" target="_blank">
+
+                <a href="https://daxmac.cc"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     daxmac.cc
                 </a>
 
@@ -545,28 +1021,48 @@
             <img src="assets/logo.png"
                  alt="DaxMac Logo">
 
-            <h3>DaxMac</h3>
+
+            <h3>
+                DaxMac
+            </h3>
+
 
             <p>
                 Developer Implementation Risk
             </p>
 
+
             <p class="footer-tagline">
-                Built for API-first engineering teams.
+                Helping developer-facing companies reduce implementation
+                and integration friction.
             </p>
 
 
             <div class="footer-links">
 
-                <a href="#services">Services</a>
+                <a href="#services">
+                    Services
+                </a>
 
-                <a href="audits.html">Audits</a>
 
-                <a href="field-notes.html">Field Notes</a>
+                <a href="field-notes.html">
+                    Field Notes
+                </a>
 
-                <a href="#about">About</a>
 
-                <a href="#contact">Contact</a>
+                <a href="#methodology">
+                    How It Works
+                </a>
+
+
+                <a href="#about">
+                    About
+                </a>
+
+
+                <a href="#contact">
+                    Contact
+                </a>
 
             </div>
 
@@ -584,4 +1080,4 @@
 
 </body>
 
-    </html>
+</html>
