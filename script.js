@@ -1,34 +1,255 @@
-/* =======================================
-   DAXMAC — WEBSITE JAVASCRIPT
-======================================= */
+/* =========================================================
+   DAXMAC — MAIN JAVASCRIPT
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =======================================
-       SMOOTH SCROLLING
-    ======================================= */
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const header = document.querySelector(".site-header");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-menu a");
+    const revealElements = document.querySelectorAll(".reveal");
+    const currentYear = document.querySelector("#current-year");
 
-        link.addEventListener("click", function (e) {
 
-            const targetId = this.getAttribute("href");
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
 
-            if (!targetId || targetId === "#") {
+    function openMenu() {
+        if (!menuToggle || !mobileMenu) return;
+
+        menuToggle.classList.add("active");
+        mobileMenu.classList.add("open");
+        document.body.classList.add("menu-open");
+
+        menuToggle.setAttribute("aria-expanded", "true");
+    }
+
+
+    function closeMenu() {
+        if (!menuToggle || !mobileMenu) return;
+
+        menuToggle.classList.remove("active");
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+
+    function toggleMenu() {
+        if (!mobileMenu) return;
+
+        if (mobileMenu.classList.contains("open")) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+
+
+    if (menuToggle && mobileMenu) {
+
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Toggle navigation");
+
+        menuToggle.addEventListener("click", toggleMenu);
+
+
+        /* Close after selecting a navigation item */
+
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                closeMenu();
+            });
+        });
+
+
+        /* Close with Escape */
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+
+
+        /* Close when clicking outside the menu */
+
+        document.addEventListener("click", event => {
+
+            const clickedInsideMenu =
+                mobileMenu.contains(event.target);
+
+            const clickedToggle =
+                menuToggle.contains(event.target);
+
+            if (
+                mobileMenu.classList.contains("open") &&
+                !clickedInsideMenu &&
+                !clickedToggle
+            ) {
+                closeMenu();
+            }
+
+        });
+
+
+        /* Close when returning to desktop layout */
+
+        window.addEventListener("resize", () => {
+
+            if (window.innerWidth > 900) {
+                closeMenu();
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       STICKY HEADER
+    ===================================================== */
+
+    function updateHeader() {
+
+        if (!header) return;
+
+        if (window.scrollY > 25) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+    }
+
+
+    updateHeader();
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const reducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    if (
+        revealElements.length &&
+        !reducedMotion &&
+        "IntersectionObserver" in window
+    ) {
+
+        const revealObserver =
+            new IntersectionObserver(
+                (entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        entry.target.classList.add("revealed");
+
+                        observer.unobserve(entry.target);
+
+                    });
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin: "0px 0px -50px 0px"
+                }
+            );
+
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+    } else {
+
+        /* If animation is unsupported or reduced,
+           show everything immediately. */
+
+        revealElements.forEach(element => {
+            element.classList.add("revealed");
+        });
+
+    }
+
+
+    /* =====================================================
+       CURRENT YEAR
+    ===================================================== */
+
+    if (currentYear) {
+        currentYear.textContent =
+            new Date().getFullYear();
+    }
+
+
+    /* =====================================================
+       SMOOTH INTERNAL NAVIGATION
+    ===================================================== */
+
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const targetId =
+                link.getAttribute("href");
+
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
                 return;
             }
 
-            const target = document.querySelector(targetId);
+            const target =
+                document.querySelector(targetId);
 
             if (!target) {
                 return;
             }
 
-            e.preventDefault();
+            event.preventDefault();
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 0;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                headerHeight -
+                18;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: reducedMotion
+                    ? "auto"
+                    : "smooth"
             });
 
         });
@@ -36,137 +257,110 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =======================================
-       MOBILE NAVIGATION
-    ======================================= */
+    /* =====================================================
+       ACTIVE SECTION TRACKING
+       Adds .active-section to the navigation link
+       corresponding to the section currently in view.
+    ===================================================== */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
+        );
 
-    if (menuToggle && navLinks) {
+    const navigationLinks =
+        document.querySelectorAll(
+            '.desktop-nav a[href^="#"]'
+        );
 
-        menuToggle.addEventListener("click", () => {
 
-            const isOpen = navLinks.classList.toggle("active");
+    if (
+        sections.length &&
+        navigationLinks.length &&
+        "IntersectionObserver" in window
+    ) {
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
+        const sectionObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        const id =
+                            entry.target.getAttribute("id");
+
+                        navigationLinks.forEach(link => {
+
+                            link.classList.remove(
+                                "active-section"
+                            );
+
+                            if (
+                                link.getAttribute("href") ===
+                                `#${id}`
+                            ) {
+                                link.classList.add(
+                                    "active-section"
+                                );
+                            }
+
+                        });
+
+                    });
+
+                },
+                {
+                    rootMargin:
+                        "-35% 0px -55% 0px"
+                }
             );
 
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
         });
 
+    }
 
-        document.querySelectorAll(".nav-links a").forEach(link => {
 
-            link.addEventListener("click", () => {
+    /* =====================================================
+       ESCAPE HATCH FOR BROKEN HASH LINKS
+       ===================================================== */
 
-                navLinks.classList.remove("active");
+    if (
+        window.location.hash &&
+        document.querySelector(window.location.hash)
+    ) {
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
+        setTimeout(() => {
+
+            const target =
+                document.querySelector(
+                    window.location.hash
                 );
 
+            if (!target) return;
+
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 0;
+
+            window.scrollTo({
+                top:
+                    target.getBoundingClientRect().top +
+                    window.scrollY -
+                    headerHeight -
+                    18,
+                behavior: "auto"
             });
 
-        });
+        }, 50);
 
     }
-
-
-    /* =======================================
-       STICKY HEADER STATE
-    ======================================= */
-
-    const header = document.querySelector(".site-header");
-
-    if (header) {
-
-        const updateHeader = () => {
-
-            header.classList.toggle(
-                "scrolled",
-                window.scrollY > 40
-            );
-
-        };
-
-        updateHeader();
-
-        window.addEventListener(
-            "scroll",
-            updateHeader,
-            { passive: true }
-        );
-
-    }
-
-
-    /* =======================================
-       SCROLL REVEAL
-    ======================================= */
-
-    const revealElements = document.querySelectorAll(
-        ".section-heading, " +
-        ".problem-flow, " +
-        ".method-grid, " +
-        ".validation-flow, " +
-        ".services-grid, " +
-        ".comparison-grid, " +
-        ".custom-service, " +
-        ".examples-grid, " +
-        ".audience-list, " +
-        ".about-grid"
-    );
-
-
-    if ("IntersectionObserver" in window) {
-
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-
-                entries.forEach(entry => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-                    entry.target.classList.add("is-visible");
-
-                    observer.unobserve(entry.target);
-
-                });
-
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -40px 0px"
-            }
-        );
-
-
-        revealElements.forEach(element => {
-
-            element.classList.add("reveal");
-
-            observer.observe(element);
-
-        });
-
-    } else {
-
-        revealElements.forEach(element => {
-            element.classList.add("is-visible");
-        });
-
-    }
-
-
-    /* =======================================
-       DAXMAC READY
-    ======================================= */
-
-    console.log("DaxMac website loaded.");
 
 });
