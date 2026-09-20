@@ -190,3 +190,7 @@
   }
 
 })();
+
+'.page-intro__title',
+'.page-intro__lede',
+'.note-card',
