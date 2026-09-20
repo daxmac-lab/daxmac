@@ -150,6 +150,9 @@
     '.article__finding',
     '.article__statement',
     '.audit-risk'
+    '.about-body',
+    '.about-founder',
+    '.about-links'
   ];
 
   function initReveals() {
