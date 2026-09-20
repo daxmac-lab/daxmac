@@ -146,10 +146,10 @@
     '.note-card',
     '.article__title',
     '.article__meta',
-    '.article__back'
+    '.article__back',
     '.article__finding',
     '.article__statement',
-    '.audit-risk'
+    '.audit-risk',
     '.about-body',
     '.about-founder',
     '.about-links'
