@@ -147,6 +147,9 @@
     '.article__title',
     '.article__meta',
     '.article__back'
+    '.article__finding',
+    '.article__statement',
+    '.audit-risk'
   ];
 
   function initReveals() {
