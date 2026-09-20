@@ -35,16 +35,21 @@
     var nav = document.getElementById('site-nav');
     if (!nav) return;
 
-    var here = currentPage();
+    /* Root-relative prefix. Empty on root pages, "../" inside subfolders. */
+    var root = document.body.dataset.root || '';
+
+    /* Which link should be highlighted.
+       Normally the current filename; overridable via <body data-nav="...">. */
+    var here = document.body.dataset.nav || currentPage();
+
     var fragment = document.createDocumentFragment();
 
     NAV_LINKS.forEach(function (link) {
       var a = document.createElement('a');
       a.textContent = link.label;
-      a.href = link.href;
+      a.href = root + link.href;           /* "../index.html" from a subfolder */
 
-      /* Mark the current page. External links (mailto:, http) never match. */
-      if (link.href === here) {
+      if (link.href === here) {            /* compare WITHOUT the prefix */
         a.classList.add('is-active');
         a.setAttribute('aria-current', 'page');
       }
@@ -70,7 +75,6 @@
       toggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    /* Close the menu after tapping a link on mobile */
     nav.addEventListener('click', function (event) {
       if (event.target.tagName === 'A' && nav.classList.contains('is-open')) {
         nav.classList.remove('is-open');
@@ -78,7 +82,6 @@
       }
     });
 
-    /* Close on Escape */
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && nav.classList.contains('is-open')) {
         nav.classList.remove('is-open');
@@ -91,8 +94,6 @@
 
   /* ========================================================================
      3. HEADER SCROLL STATE
-     Adds .is-scrolled once the page moves past a small threshold,
-     which fades in the hairline border under the header.
      ======================================================================== */
 
   function initHeaderScroll() {
@@ -119,8 +120,6 @@
 
   /* ========================================================================
      4. SCROLL REVEALS
-     Adds .reveal to the elements that should animate in, then observes
-     them. Each element reveals once and is unobserved.
      ======================================================================== */
 
   var REVEAL_TARGETS = [
@@ -141,14 +140,17 @@
     '.work__more',
     '.cta__title',
     '.cta .btn',
-    '.cta__email'
+    '.cta__email',
+    '.page-intro__title',
+    '.page-intro__lede',
+    '.note-card',
+    '.article__title',
+    '.article__meta',
+    '.article__back'
   ];
 
   function initReveals() {
-    /* Respect the user's motion preference — skip entirely. */
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    /* No IntersectionObserver? Show everything, move on. */
     if (!('IntersectionObserver' in window)) return;
 
     var elements = document.querySelectorAll(REVEAL_TARGETS.join(','));
@@ -190,7 +192,3 @@
   }
 
 })();
-
-'.page-intro__title',
-'.page-intro__lede',
-'.note-card',
