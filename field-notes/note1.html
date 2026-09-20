@@ -1,219 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Field Note #1 | DaxMac</title>
-
-<meta name="description"
-content="When documentation defines concepts but not their relationship, developers are forced to construct architectural assumptions on their own.">
-
-<link rel="stylesheet" href="../style.css">
-
-<link rel="icon" href="../assets/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Note #1 | DaxMac</title>
+  <meta name="description" content="When documentation defines concepts but not their relationship, developers are forced to construct architectural assumptions on their own.">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../style.css">
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-3G8JYVSPW5');
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
   </script>
-  
 </head>
+<body data-nav="field-notes.html">
 
-<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
+      </a>
 
-<header>
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
 
-<nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
 
-<div class="logo">
+  <main>
 
-<img src="../assets/logo.png" alt="DaxMac Logo">
-
-<span>DaxMac</span>
-
-</div>
-
-<div class="menu-toggle">
-
-☰
-
-</div>
-
-<ul class="nav-links">
-
-<li><a href="../index.html">Home</a></li>
-
-<li><a href="../audits.html">Audits</a></li>
-
-<li><a href="../field-notes.html">Field Notes</a></li>
-
-<li><a href="../index.html#contact">Contact</a></li>
-
-</ul>
-
-</nav>
-
-</header>
-
-<section class="section">
-
-<p class="badge">
-Field Note #1
-</p>
-
-<h1>
-When Documentation Defines Concepts but Not Their Relationship
-</h1>
-
-<p>
-
-Published by DaxMac
-
-</p>
-
-</section>
-
-<section class="section">
-
-<p>
-
-One documentation pattern appears repeatedly across developer platforms: concepts are documented individually, but their operational relationship is left for developers to infer.
-
-</p>
-
-<p>
-
-Consider a common example.
-
-</p>
-
-<p>
-
-A platform may introduce a compute resource, such as a Pod, and separately introduce persistent storage, such as a Network Volume. Each concept is explained correctly on its own.
-
-</p>
-
-<p>
-
-The documentation might describe the compute resource as the environment where workloads run, while persistent storage is introduced as storage that can be attached to multiple compute resources to share data.
-
-</p>
-
-<p>
-
-Nothing in those descriptions is incorrect.
-
-</p>
-
-<p>
-
-The challenge is what the documentation does not explain.
-
-</p>
-
-<p>
-
-A developer reading these concepts for the first time is left to build a mental model about how they interact. If the documentation never explains the lifecycle of data written inside the compute resource—or explicitly distinguishes temporary storage from persistent storage—the developer must fill in that gap themselves.
-
-</p>
-
-<p>
-
-That assumption may be correct.
-
-</p>
-
-<p>
-
-It may also be wrong.
-
-</p>
-
-<p>
-
-The documentation has transferred an architectural decision from explicit guidance to developer interpretation.
-
-</p>
-
-<p>
-
-This pattern is worth paying attention to because onboarding documentation does more than define terminology. It teaches developers how a system behaves.
-
-</p>
-
-<p>
-
-When relationships between concepts remain implicit, documentation may unintentionally encourage assumptions that are only challenged much later during implementation.
-
-</p>
-
-<p>
-
-Good onboarding documentation doesn't just explain individual components.
-
-</p>
-
-<p>
-
-It explains how those components work together to shape production behavior.
-
-</p>
-
-</section>
-
-<section class="section" style="text-align:center;">
-
-<a href="../field-notes.html">
-
-← Back to Field Notes
-
-</a>
-
-</section>
-
-<footer>
-
-<div class="footer-content">
-
-<img src="../assets/logo.png"
-alt="DaxMac Logo">
-
-<h3>DaxMac</h3>
-
-<p>
-
-Independent Developer Onboarding Audits
-
-</p>
-
-<p class="footer-tagline">
-
-Built for API-first engineering teams.
-
-</p>
-
-<p class="copyright">
-
-© 2026 DaxMac. All rights reserved.
-
-</p>
-
-</div>
-
-</footer>
-
-<script src="../script.js"></script>
-
+    <!-- ============ ARTICLE ============ -->
+    <article class="article">
+      <div class="wrap">
+
+        <header class="article__head">
+          <p class="eyebrow">Field Note #1</p>
+
+          <h1 class="article__title">
+            When Documentation Defines Concepts but Not Their Relationship
+          </h1>
+
+          <p class="article__meta">Published by DaxMac</p>
+        </header>
+
+        <div class="article__body">
+
+          <p>
+            One documentation pattern appears repeatedly across developer platforms:
+            concepts are documented individually, but their operational relationship
+            is left for developers to infer.
+          </p>
+
+          <p>Consider a common example.</p>
+
+          <p>
+            A platform may introduce a compute resource, such as a Pod, and separately
+            introduce persistent storage, such as a Network Volume. Each concept is
+            explained correctly on its own.
+          </p>
+
+          <p>
+            The documentation might describe the compute resource as the environment
+            where workloads run, while persistent storage is introduced as storage that
+            can be attached to multiple compute resources to share data.
+          </p>
+
+          <p>Nothing in those descriptions is incorrect.</p>
+
+          <p>The challenge is what the documentation does not explain.</p>
+
+          <p>
+            A developer reading these concepts for the first time is left to build a
+            mental model about how they interact. If the documentation never explains
+            the lifecycle of data written inside the compute resource—or explicitly
+            distinguishes temporary storage from persistent storage—the developer must
+            fill in that gap themselves.
+          </p>
+
+          <p>That assumption may be correct.</p>
+
+          <p>It may also be wrong.</p>
+
+          <p>
+            The documentation has transferred an architectural decision from explicit
+            guidance to developer interpretation.
+          </p>
+
+          <p>
+            This pattern is worth paying attention to because onboarding documentation
+            does more than define terminology. It teaches developers how a system behaves.
+          </p>
+
+          <p>
+            When relationships between concepts remain implicit, documentation may
+            unintentionally encourage assumptions that are only challenged much later
+            during implementation.
+          </p>
+
+          <p>
+            Good onboarding documentation doesn't just explain individual components.
+          </p>
+
+          <p>
+            It explains how those components work together to shape production behavior.
+          </p>
+
+        </div>
+
+        <footer class="article__foot">
+          <a class="article__back" href="../field-notes.html">Back to Field Notes</a>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation &amp; API adoption.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Experience Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Custom Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Contact">
+        <h2 class="footer__head">Contact</h2>
+        <ul>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Audit</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h2 class="footer__head">Company</h2>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="#">LinkedIn</a> · <a href="#">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
 </body>
-
-</html>
+            </html>
