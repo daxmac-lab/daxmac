@@ -120,6 +120,8 @@
 
   /* ========================================================================
      4. SCROLL REVEALS
+     Every target below MUST end with a comma except the last one.
+     A single missing comma is a syntax error and kills the whole file.
      ======================================================================== */
 
   var REVEAL_TARGETS = [
@@ -134,7 +136,6 @@
     '.panel__title',
     '.panel__lede',
     '.panel__note',
-    '.custom__card',
     '.audience__list',
     '.about__more',
     '.work__more',
@@ -152,7 +153,7 @@
     '.audit-risk',
     '.about-body',
     '.about-founder',
-    '.about-links'
+    '.about-links',
     '.services-table',
     '.plan__header',
     '.plan__section'
