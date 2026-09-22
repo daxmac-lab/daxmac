@@ -73,6 +73,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block; }
@@ -135,7 +136,6 @@ p { margin: 0; }
   margin-top: 28px;
 }
 
-/* Small editorial label */
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -227,6 +227,7 @@ p { margin: 0; }
   align-items: center;
   gap: 32px;
   min-height: 68px;
+  position: relative;
 }
 
 .brand { display: inline-flex; align-items: center; }
@@ -369,7 +370,7 @@ p { margin: 0; }
 
 
 /* ==========================================================================
-   7. CHAIN  (see → assume → implement → happens)
+   7. CHAIN
    ========================================================================== */
 
 .chain {
@@ -397,7 +398,6 @@ p { margin: 0; }
   opacity: 0.55;
 }
 
-/* Vertical variant — used inside the dark testing panel */
 .chain--vertical {
   flex-direction: column;
   align-items: flex-start;
@@ -499,11 +499,19 @@ p { margin: 0; }
    10. SERVICES
    ========================================================================== */
 
-/* Comparison table */
+/* Wrapper allows the table to scroll on narrow screens
+   instead of forcing the whole page wider than the viewport. */
+.services-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: clamp(36px, 4.5vw, 52px);
+}
+
 .services-table {
   width: 100%;
+  min-width: 520px;
   border-collapse: collapse;
-  margin-bottom: clamp(36px, 4.5vw, 52px);
+  margin-bottom: 0;
   font-size: 0.9375rem;
 }
 
@@ -579,7 +587,6 @@ p { margin: 0; }
   border-color: var(--accent);
 }
 
-/* Header: name left, price right */
 .plan__header {
   display: flex;
   align-items: baseline;
@@ -614,7 +621,6 @@ p { margin: 0; }
   max-width: 68ch;
 }
 
-/* Section within a plan */
 .plan__section {
   margin-bottom: 28px;
 }
@@ -658,7 +664,6 @@ p { margin: 0; }
   background: var(--accent);
 }
 
-/* Best-for note */
 .plan__note {
   margin-top: 26px;
   padding-top: 22px;
@@ -674,7 +679,6 @@ p { margin: 0; }
   font-weight: 500;
 }
 
-/* Difference callout — accent card only */
 .plan__difference {
   margin-top: 26px;
   padding: 20px 24px;
@@ -895,7 +899,6 @@ p { margin: 0; }
   transform: none;
 }
 
-/* Stagger siblings — no inline styles needed in HTML */
 .chain .reveal:nth-child(1),
 .steps .reveal:nth-child(1),
 .work__grid .reveal:nth-child(1) { transition-delay: 0ms; }
@@ -912,7 +915,8 @@ p { margin: 0; }
 
 .chain .reveal:nth-child(5) { transition-delay: calc(var(--stagger) * 4); }
 
-/* Vertical chain in the dark panel — sequential, mirrors the process */
 .chain--vertical .reveal:nth-child(1) { transition-delay: 0ms; }
 .chain--vertical .reveal:nth-child(2) { transition-delay: 90ms; }
-.chain--vertical .reveal:nth-child(3) {
+.chain--vertical .reveal:nth-child(3) { transition-delay: 180ms; }
+.chain--vertical .reveal:nth-child(4) { transition-delay: 270ms; }
+.chain--vertical .reveal:
