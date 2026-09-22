@@ -11,7 +11,6 @@
    ========================================================================== */
 
 :root {
-  /* Color */
   --bg:            #FBFAF8;
   --surface:       #FFFFFF;
   --ink:           #14161A;
@@ -29,23 +28,19 @@
   --accent-soft:   rgba(169, 117, 36, 0.07);
   --accent-line:   rgba(169, 117, 36, 0.32);
 
-  /* Type */
   --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Space */
   --wrap:       1120px;
   --gutter:     24px;
   --section-y:  clamp(72px, 9vw, 132px);
 
-  /* Motion */
   --ease:       cubic-bezier(0.22, 0.61, 0.36, 1);
   --dur:        520ms;
   --dur-fast:   160ms;
   --rise:       14px;
   --stagger:    70ms;
 
-  /* Shape */
   --radius:     4px;
   --radius-lg:  6px;
 }
@@ -73,7 +68,6 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block; }
@@ -227,7 +221,6 @@ p { margin: 0; }
   align-items: center;
   gap: 32px;
   min-height: 68px;
-  position: relative;
 }
 
 .brand { display: inline-flex; align-items: center; }
@@ -237,7 +230,6 @@ p { margin: 0; }
   width: auto;
 }
 
-/* Primary nav — built by script.js */
 .site-nav {
   display: flex;
   align-items: center;
@@ -274,7 +266,6 @@ p { margin: 0; }
 }
 .site-nav a.is-active::after { transform: scaleX(1); }
 
-/* Mobile toggle */
 .nav-toggle {
   display: none;
   margin-left: auto;
@@ -346,7 +337,6 @@ p { margin: 0; }
   object-position: 30% 72%;
 }
 
-/* Hero entrance — plays once on load, staggered */
 .hero__copy > * {
   opacity: 0;
   transform: translateY(var(--rise));
@@ -499,67 +489,10 @@ p { margin: 0; }
    10. SERVICES
    ========================================================================== */
 
-/* Wrapper allows the table to scroll on narrow screens
-   instead of forcing the whole page wider than the viewport. */
-.services-table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: clamp(36px, 4.5vw, 52px);
-}
-
-.services-table {
-  width: 100%;
-  min-width: 520px;
-  border-collapse: collapse;
-  margin-bottom: 0;
-  font-size: 0.9375rem;
-}
-
-.services-table th,
-.services-table td {
-  padding: 16px 20px;
-  text-align: left;
-  border-bottom: 1px solid var(--line);
-  vertical-align: middle;
-}
-
-.services-table thead th {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--line-strong);
-  padding-bottom: 14px;
-}
-
-.services-table tbody th {
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  font-weight: 400;
-  color: var(--ink);
-  letter-spacing: -0.005em;
-}
-
-.services-table tbody tr:last-child th,
-.services-table tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-.services-table td {
-  font-variant-numeric: tabular-nums;
-  color: var(--ink);
-}
-
-.services-table .is-yes { color: var(--accent); }
-.services-table .is-no  { color: var(--line-strong); }
-
-/* Plans — stacked vertically */
 .plans {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(20px, 2.5vw, 28px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.5vw, 32px);
   align-items: start;
 }
 
@@ -587,42 +520,23 @@ p { margin: 0; }
   border-color: var(--accent);
 }
 
-.plan__header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding-bottom: 20px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid var(--line);
+.plan__price {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+  color: var(--ink);
+  margin-bottom: 6px;
 }
 
 .plan__name {
-  font-size: clamp(1.25rem, 1.1rem + 0.65vw, 1.5rem);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.plan__price {
-  font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 1.1rem + 0.65vw, 1.5rem);
-  color: var(--accent-deep);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
+  font-size: 1.1875rem;
+  margin-bottom: 14px;
 }
 
 .plan__tagline {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.6;
-  color: var(--ink);
-  margin-bottom: 32px;
-  max-width: 68ch;
-}
-
-.plan__section {
-  margin-bottom: 28px;
+  color: var(--accent-deep);
+  margin-bottom: 24px;
 }
 
 .plan__section-title {
@@ -638,12 +552,7 @@ p { margin: 0; }
 .plan__list {
   display: grid;
   gap: 10px;
-  margin: 0;
-}
-
-.plan__list--cols {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 32px;
+  margin: 0 0 22px;
 }
 
 .plan__list li {
@@ -664,31 +573,15 @@ p { margin: 0; }
   background: var(--accent);
 }
 
-.plan__note {
-  margin-top: 26px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-  font-size: 0.9375rem;
-  line-height: 1.62;
-  color: var(--muted);
-  max-width: 72ch;
-}
-
-.plan__note strong {
-  color: var(--ink);
-  font-weight: 500;
-}
-
 .plan__difference {
-  margin-top: 26px;
-  padding: 20px 24px;
+  margin-bottom: 22px;
+  padding: 18px 20px;
   background: var(--accent-soft);
   border-left: 2px solid var(--accent);
   border-radius: 0 var(--radius) var(--radius) 0;
-  font-size: 0.9375rem;
-  line-height: 1.62;
+  font-size: 0.875rem;
+  line-height: 1.6;
   color: var(--ink);
-  max-width: 72ch;
 }
 
 .plan__difference strong {
@@ -696,14 +589,62 @@ p { margin: 0; }
   font-weight: 500;
 }
 
+.plan__note {
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.plan__note strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
 .plan .btn {
   align-self: flex-start;
-  margin-top: 8px;
 }
 
 
 /* ==========================================================================
-   11. SELECTED WORK
+   11. CUSTOM ASSESSMENT
+   ========================================================================== */
+
+.custom__card {
+  margin-top: 36px;
+  padding: clamp(28px, 3.5vw, 40px);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius-lg);
+  max-width: 780px;
+}
+
+.custom__name {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.custom__price {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--accent-deep);
+  margin-bottom: 18px;
+}
+
+.custom__meta {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 28px;
+  max-width: 58ch;
+}
+
+
+/* ==========================================================================
+   12. SELECTED WORK
    ========================================================================== */
 
 .work__grid {
@@ -758,7 +699,7 @@ p { margin: 0; }
 
 
 /* ==========================================================================
-   12. AUDIENCE
+   13. AUDIENCE
    ========================================================================== */
 
 .audience__list {
@@ -772,7 +713,7 @@ p { margin: 0; }
 
 
 /* ==========================================================================
-   13. ABOUT (homepage section)
+   14. ABOUT (homepage section)
    ========================================================================== */
 
 .about .section__title { margin-bottom: 20px; }
@@ -781,7 +722,7 @@ p { margin: 0; }
 
 
 /* ==========================================================================
-   14. FINAL CTA
+   15. FINAL CTA
    ========================================================================== */
 
 .cta {
@@ -812,7 +753,7 @@ p { margin: 0; }
 
 
 /* ==========================================================================
-   15. FOOTER
+   16. FOOTER
    ========================================================================== */
 
 .site-footer {
@@ -883,7 +824,7 @@ p { margin: 0; }
 
 
 /* ==========================================================================
-   16. SCROLL REVEALS
+   17. SCROLL REVEALS
    ========================================================================== */
 
 .reveal {
@@ -919,4 +860,47 @@ p { margin: 0; }
 .chain--vertical .reveal:nth-child(2) { transition-delay: 90ms; }
 .chain--vertical .reveal:nth-child(3) { transition-delay: 180ms; }
 .chain--vertical .reveal:nth-child(4) { transition-delay: 270ms; }
-.chain--vertical .reveal:
+.chain--vertical .reveal:nth-child(5) { transition-delay: 360ms; }
+
+.notes-grid .reveal:nth-child(1) { transition-delay: 0ms; }
+.notes-grid .reveal:nth-child(2) { transition-delay: calc(var(--stagger) * 1); }
+.notes-grid .reveal:nth-child(3) { transition-delay: calc(var(--stagger) * 2); }
+.notes-grid .reveal:nth-child(4) { transition-delay: calc(var(--stagger) * 3); }
+
+
+/* ==========================================================================
+   18. FIELD NOTES  (index page + audit library)
+   ========================================================================== */
+
+.page-intro {
+  padding-block: clamp(56px, 7vw, 96px) clamp(36px, 4vw, 56px);
+}
+
+.page-intro__title {
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+  letter-spacing: -0.022em;
+  margin-bottom: 22px;
+}
+
+.page-intro__lede {
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+  line-height: 1.62;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.5vw, 28px);
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 3.5vw, 40px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  transition:
+    border-c
