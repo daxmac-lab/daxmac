@@ -153,6 +153,9 @@
     '.about-body',
     '.about-founder',
     '.about-links'
+    '.services-table',
+    '.plan__header',
+    '.plan__section'
   ];
 
   function initReveals() {
