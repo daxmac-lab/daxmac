@@ -528,6 +528,79 @@ p { margin: 0; }
 }
 
 .plan:hover {
+/* ==========================================================================
+   10. SERVICES
+   ========================================================================== */
+
+/* Comparison table */
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: clamp(36px, 4.5vw, 52px);
+  font-size: 0.9375rem;
+}
+
+.services-table th,
+.services-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.services-table thead th {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 14px;
+}
+
+.services-table tbody th {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.services-table tbody tr:last-child th,
+.services-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.services-table td {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.services-table .is-yes { color: var(--accent); }
+.services-table .is-no  { color: var(--line-strong); }
+
+/* Plans — stacked vertically */
+.plans {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 2.5vw, 28px);
+  align-items: start;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3.5vw, 44px);
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    transform    var(--dur-fast) var(--ease);
+}
+
+.plan:hover {
   transform: translateY(-3px);
   border-color: var(--line-strong);
 }
@@ -539,35 +612,65 @@ p { margin: 0; }
   border-color: var(--accent);
 }
 
-.plan__price {
-  font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
-  color: var(--ink);
-  margin-bottom: 6px;
+/* Header: name left, price right */
+.plan__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
 }
 
 .plan__name {
-  font-size: 1.1875rem;
-  margin-bottom: 10px;
+  font-size: clamp(1.25rem, 1.1rem + 0.65vw, 1.5rem);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.plan__price {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.1rem + 0.65vw, 1.5rem);
+  color: var(--accent-deep);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .plan__tagline {
-  font-size: 0.9375rem;
-  color: var(--accent-deep);
-  margin-bottom: 18px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 32px;
+  max-width: 68ch;
 }
 
-.plan__desc {
-  font-size: 0.9375rem;
-  line-height: 1.62;
+/* Section within a plan */
+.plan__section {
+  margin-bottom: 28px;
+}
+
+.plan__section-title {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 26px;
+  margin: 0 0 14px;
 }
 
 .plan__list {
   display: grid;
   gap: 10px;
-  margin-bottom: 26px;
+  margin: 0;
+}
+
+.plan__list--cols {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 32px;
 }
 
 .plan__list li {
@@ -588,17 +691,44 @@ p { margin: 0; }
   background: var(--accent);
 }
 
-.plan__exclude {
-  font-size: 0.875rem;
-  color: var(--muted);
-  padding-top: 18px;
-  margin-top: auto;
-  margin-bottom: 22px;
+/* Best-for note */
+.plan__note {
+  margin-top: 26px;
+  padding-top: 22px;
   border-top: 1px solid var(--line);
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: var(--muted);
+  max-width: 72ch;
 }
 
-.plan .btn { align-self: flex-start; margin-top: auto; }
-.plan__list + .plan__exclude + .btn { margin-top: 0; }
+.plan__note strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Difference callout — accent card only */
+.plan__difference {
+  margin-top: 26px;
+  padding: 20px 24px;
+  background: var(--accent-soft);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: var(--ink);
+  max-width: 72ch;
+}
+
+.plan__difference strong {
+  color: var(--accent-deep);
+  font-weight: 500;
+}
+
+.plan .btn {
+  align-self: flex-start;
+  margin-top: 8px;
+   }
 
 
 /* ==========================================================================
