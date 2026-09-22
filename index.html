@@ -26,7 +26,6 @@
         <img class="brand__mark" src="assets/logo.png" alt="DaxMac">
       </a>
 
-      <!-- Links injected by script.js: Home · Audit · Field Notes · Contact -->
       <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
 
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
@@ -156,69 +155,32 @@
       <div class="wrap">
         <h2 class="section__title">Choose how deeply to investigate.</h2>
 
-        <!-- Comparison table -->
-        <table class="services-table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Journey reviewed</th>
-              <th scope="col">API tested</th>
-              <th scope="col">Findings</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Experience Review</th>
-              <td class="is-yes">✓</td>
-              <td class="is-no">—</td>
-              <td>10+</td>
-            </tr>
-            <tr>
-              <th scope="row">Implementation Review</th>
-              <td class="is-yes">✓</td>
-              <td class="is-yes">✓</td>
-              <td>20+</td>
-            </tr>
-            <tr>
-              <th scope="row">Custom</th>
-              <td class="is-yes">✓</td>
-              <td class="is-yes">✓</td>
-              <td>Scoped</td>
-            </tr>
-          </tbody>
-        </table>
-
         <div class="plans">
 
           <!-- Experience Review -->
           <article class="plan">
-            <header class="plan__header">
-              <h3 class="plan__name">Developer Experience Review</h3>
-              <p class="plan__price">$549</p>
-            </header>
+            <p class="plan__price">$549</p>
+            <h3 class="plan__name">Developer Experience Review</h3>
 
             <p class="plan__tagline">
               Find risky assumptions in the developer experience before they become
               support or engineering work.
             </p>
 
-            <div class="plan__section">
-              <h4 class="plan__section-title">What you receive</h4>
-              <ul class="plan__list plan__list--cols">
-                <li>Review of the developer journey and implementation surfaces</li>
-                <li>10+ evidence-backed findings</li>
-                <li>The assumption a developer could reasonably form</li>
-                <li>What in the experience creates that assumption</li>
-                <li>The implementation decision it leads to</li>
-                <li>What it costs in production</li>
-                <li>Prioritized, structured report</li>
-              </ul>
-            </div>
+            <p class="plan__section-title">What you receive</p>
+            <ul class="plan__list">
+              <li>Review of the developer journey and implementation surfaces</li>
+              <li>10+ evidence-backed findings</li>
+              <li>The assumption a developer could reasonably form</li>
+              <li>What in the experience creates that assumption</li>
+              <li>The implementation decision it leads to</li>
+              <li>What it costs in production</li>
+              <li>Prioritized, structured report</li>
+            </ul>
 
             <p class="plan__note">
               <strong>Best for:</strong> Teams that want an independent read on where
-              their onboarding creates the wrong mental model — before developers
-              act on it.
+              their onboarding creates the wrong mental model — before developers act on it.
             </p>
 
             <a class="btn btn--ghost" href="mailto:info@daxmac.cc">Start a Review →</a>
@@ -226,27 +188,23 @@
 
           <!-- Implementation Review -->
           <article class="plan plan--accent">
-            <header class="plan__header">
-              <h3 class="plan__name">Developer Implementation Review</h3>
-              <p class="plan__price">$849</p>
-            </header>
+            <p class="plan__price">$849</p>
+            <h3 class="plan__name">Developer Implementation Review</h3>
 
             <p class="plan__tagline">
               Find the assumptions — then test the important ones against the actual
               API or SDK.
             </p>
 
-            <div class="plan__section">
-              <h4 class="plan__section-title">What you receive</h4>
-              <ul class="plan__list plan__list--cols">
-                <li>Everything in the Developer Experience Review</li>
-                <li>API / SDK implementation testing</li>
-                <li>What the product actually does, measured against what it implies</li>
-                <li>Authentication and configuration testing where relevant</li>
-                <li>20+ findings</li>
-                <li>Prioritized, structured report</li>
-              </ul>
-            </div>
+            <p class="plan__section-title">What you receive</p>
+            <ul class="plan__list">
+              <li>Everything in the Developer Experience Review</li>
+              <li>API / SDK implementation testing</li>
+              <li>What the product actually does, measured against what it implies</li>
+              <li>Authentication and configuration testing where relevant</li>
+              <li>20+ findings</li>
+              <li>Prioritized, structured report</li>
+            </ul>
 
             <p class="plan__difference">
               <strong>The difference:</strong> The Experience Review reads the journey.
@@ -262,56 +220,37 @@
             <a class="btn btn--primary" href="mailto:info@daxmac.cc">Start an Implementation Review →</a>
           </article>
 
-          <!-- Custom -->
-          <article class="plan">
-            <header class="plan__header">
-              <h3 class="plan__name">Custom Implementation Assessment</h3>
-              <p class="plan__price">From $1,650</p>
-            </header>
-
-            <p class="plan__tagline">
-              For complex developer products where implementation risk spans multiple
-              journeys, APIs, or surfaces.
-            </p>
-
-            <div class="plan__section">
-              <h4 class="plan__section-title">Can cover</h4>
-              <ul class="plan__list plan__list--cols">
-                <li>Multiple developer journeys</li>
-                <li>APIs and SDKs</li>
-                <li>Authentication and configuration</li>
-                <li>Webhooks and asynchronous workflows</li>
-                <li>Resource lifecycle</li>
-                <li>Environments</li>
-                <li>Production implementation requirements</li>
-              </ul>
-            </div>
-
-            <div class="plan__section">
-              <h4 class="plan__section-title">What you receive</h4>
-              <ul class="plan__list plan__list--cols">
-                <li>A tailored implementation-risk assessment</li>
-                <li>Findings across the agreed scope</li>
-                <li>Supporting evidence and observations</li>
-                <li>The developer assumptions behind each finding</li>
-                <li>Implementation and production implications</li>
-                <li>Prioritized risk summary</li>
-                <li>Final assessment report</li>
-              </ul>
-            </div>
-
-            <p class="plan__note">
-              Scope is defined around the surfaces, journeys, and validation required.
-            </p>
-
-            <a class="btn btn--ghost" href="mailto:info@daxmac.cc">Send the scope →</a>
-          </article>
-
         </div>
       </div>
     </section>
 
-    <!-- ============ 6. SELECTED WORK ============ -->
+    <!-- ============ 6. CUSTOM ============ -->
+    <section class="section custom">
+      <div class="wrap">
+        <h2 class="section__title">
+          Multiple APIs. Multiple journeys. Deeper assessment.
+        </h2>
+
+        <p class="lede">
+          For complex developer products where implementation risk spans multiple
+          journeys, APIs, or surfaces.
+        </p>
+
+        <div class="custom__card">
+          <h3 class="custom__name">Custom Implementation Assessment</h3>
+          <p class="custom__price">From $1,650</p>
+          <p class="custom__meta">
+            Multiple journeys · APIs/SDKs · authentication · webhooks ·
+            lifecycle · environments · production implementation
+          </p>
+          <a class="btn btn--ghost" href="mailto:info@daxmac.cc">
+            Send the scope →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. SELECTED WORK ============ -->
     <section class="section work">
       <div class="wrap">
         <h2 class="section__title">Selected Work</h2>
@@ -334,7 +273,7 @@
       </div>
     </section>
 
-    <!-- ============ 7. WHO IT'S FOR ============ -->
+    <!-- ============ 8. WHO IT'S FOR ============ -->
     <section class="section audience">
       <div class="wrap">
         <h2 class="section__title">
@@ -353,7 +292,7 @@
       </div>
     </section>
 
-    <!-- ============ 8. ABOUT ============ -->
+    <!-- ============ 9. ABOUT ============ -->
     <section class="section about">
       <div class="wrap">
         <h2 class="section__title">DaxMac</h2>
@@ -374,7 +313,7 @@
       </div>
     </section>
 
-    <!-- ============ 9. FINAL CTA ============ -->
+    <!-- ============ 10. FINAL CTA ============ -->
     <section class="section cta">
       <div class="wrap">
         <h2 class="cta__title">
@@ -397,7 +336,7 @@
 
   </main>
 
-  <!-- ============ 10. FOOTER ============ -->
+  <!-- ============ 11. FOOTER ============ -->
   <footer class="site-footer">
     <div class="wrap site-footer__inner">
 
