@@ -1308,3 +1308,19 @@ p { margin: 0; }
   .hero__copy > *,
   .hero__art { opacity: 1; transform: none; }
 }
+
+/* ==========================================================================
+   23. ARTICLE FIGURE
+   ========================================================================== */
+
+.article__figure {
+  margin: 0 0 clamp(44px, 5.5vw, 72px);
+  max-width: 780px;
+}
+
+.article__figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+   }
