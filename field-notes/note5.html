@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Note #5 | DaxMac</title>
+  <meta name="description" content="A support ticket can look like a support problem. Sometimes it is. But sometimes the ticket is only where the problem becomes visible.">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
+  </script>
+</head>
+<body data-nav="field-notes.html" data-root="../">
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ ARTICLE ============ -->
+    <article class="article">
+      <div class="wrap">
+
+        <header class="article__head">
+          <p class="eyebrow">Field Note #5</p>
+
+          <h1 class="article__title">
+            When a Support Ticket Becomes an Engineering Problem
+          </h1>
+
+          <p class="article__meta">Published by DaxMac</p>
+        </header>
+
+        <div class="article__body">
+
+          <p>A support ticket can look like a support problem.</p>
+
+          <p>Sometimes it is.</p>
+
+          <p>But sometimes the ticket is only where the problem becomes visible.</p>
+
+          <p>Hatch is a good example.</p>
+
+          <p>
+            When Adam Jacox joined Hatch as VP of Engineering, integrations had
+            become a significant bottleneck.
+          </p>
+
+          <p>
+            Hatch's platform depended on data from customers' CRMs and lead-source
+            systems. The team had been building bespoke integrations for individual
+            customers.
+          </p>
+
+          <p>
+            One customer would need specific data from a CRM, so Hatch would build
+            an integration for them.
+          </p>
+
+          <p>
+            Another customer would need something slightly different, so the team
+            would build more custom code.
+          </p>
+
+          <p>Over time, maintaining those integrations became difficult.</p>
+
+          <p>
+            The integrations were unreliable. Customers were reporting problems.
+            And Hatch's engineering team was spending 30–40% of its engineering
+            capacity on integrations.
+          </p>
+
+          <p>That number is easy to focus on.</p>
+
+          <p>But there is something more interesting underneath it.</p>
+
+          <p>The customer wasn't buying an integration.</p>
+
+          <p>They were trying to use Hatch.</p>
+
+          <p>
+            The integration was simply part of the implementation path required to
+            make the product work for them.
+          </p>
+
+          <p>
+            When that path became difficult or unreliable, the consequences didn't
+            stay inside the integration itself.
+          </p>
+
+          <p>Customers experienced problems.</p>
+
+          <p>Support had to deal with those problems.</p>
+
+          <p>Engineering had to maintain and troubleshoot the underlying systems.</p>
+
+          <p>
+            And engineering capacity that could have gone toward the core product
+            was being consumed by integration work.
+          </p>
+
+          <p>Hatch eventually changed how it handled integrations.</p>
+
+          <p>
+            Instead of continuing to build one-off integrations for individual
+            customers, the team moved toward productized, configurable integrations
+            that customers could activate themselves.
+          </p>
+
+          <p>The result was not just an engineering change.</p>
+
+          <p>
+            Hatch reported fewer support and bug tickets, faster customer onboarding,
+            and increased customer satisfaction.
+          </p>
+
+          <p>That distinction matters.</p>
+
+          <p>The visible problem was integration work.</p>
+
+          <p>
+            The larger problem was what customers had to go through to successfully
+            implement the product.
+          </p>
+
+          <h2>The support ticket is often not the starting point</h2>
+
+          <p>
+            This is something I pay attention to when looking at developer-facing
+            products.
+          </p>
+
+          <p>A customer doesn't usually wake up and decide to create a support ticket.</p>
+
+          <p>They are trying to accomplish something.</p>
+
+          <p>They are trying to authenticate.</p>
+
+          <p>They are trying to connect an API.</p>
+
+          <p>They are trying to configure an SDK.</p>
+
+          <p>They are trying to deploy something.</p>
+
+          <p>They are trying to move data from one system to another.</p>
+
+          <p>
+            They make a decision based on what the product appears to require.
+          </p>
+
+          <p>
+            Then they discover that the actual implementation is different from
+            what they expected.
+          </p>
+
+          <p>That's where friction starts.</p>
+
+          <p>Sometimes the customer figures it out themselves.</p>
+
+          <p>Sometimes they search through documentation.</p>
+
+          <p>Sometimes they ask support.</p>
+
+          <p>Sometimes the problem eventually reaches an engineer.</p>
+
+          <p>The ticket is visible.</p>
+
+          <p>
+            The implementation problem that created the ticket is often less visible.
+          </p>
+
+          <h2>This is where implementation risk shows up</h2>
+
+          <p>
+            A developer-facing product can look straightforward from the outside
+            while still creating difficult implementation paths for customers.
+          </p>
+
+          <p>
+            The product may expose an API, SDK, integration, deployment workflow,
+            or configuration system that appears to work one way.
+          </p>
+
+          <p>
+            But the customer may still have to handle something they didn't expect.
+          </p>
+
+          <p>
+            Or make a decision they didn't realize they were responsible for.
+          </p>
+
+          <p>
+            Or discover a limitation only after they have already built around
+            an assumption.
+          </p>
+
+          <p>
+            Those details matter because they affect what happens after the customer
+            starts implementing.
+          </p>
+
+          <p>A small mismatch can become:</p>
+
+          <ul>
+            <li>another support conversation</li>
+            <li>a failed integration</li>
+            <li>engineering investigation</li>
+            <li>implementation delays</li>
+            <li>repeated questions from different customers</li>
+            <li>production problems</li>
+          </ul>
+
+          <p>None of those necessarily start as an obvious product problem.</p>
+
+          <p>They can start with the customer's implementation path.</p>
+
+          <h2>That's what I look for at DaxMac</h2>
+
+          <p>
+            At DaxMac, I investigate how customers actually implement
+            developer-facing products.
+          </p>
+
+          <p>
+            I look beyond whether a product has good-looking documentation or a
+            clean API reference.
+          </p>
+
+          <p>The question is:</p>
+
+          <p class="article__statement">
+            What can a customer reasonably believe they need to do, and what
+            actually happens when they try to do it?
+          </p>
+
+          <p>
+            That means following the implementation path from the customer's side.
+          </p>
+
+          <p>
+            For API and SDK products, that can include validating the actual API
+            behavior.
+          </p>
+
+          <p>
+            For other developer-facing products, it can mean looking at configuration,
+            deployment, integrations, authentication, or other parts of the
+            implementation process.
+          </p>
+
+          <p>
+            The goal isn't to produce another documentation review.
+          </p>
+
+          <p>
+            It's to find the points where implementation can go wrong before they
+            become expensive problems for the company.
+          </p>
+
+          <p>Hatch's story is a useful reminder of why that matters.</p>
+
+          <p>The support ticket may be what the company sees.</p>
+
+          <p>
+            But the customer's implementation experience is often where the problem
+            started.
+          </p>
+
+        </div>
+
+        <footer class="article__foot">
+          <a class="article__back" href="../field-notes.html">Back to Field Notes</a>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation &amp; API adoption.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Experience Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Custom Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Contact">
+        <h2 class="footer__head">Contact</h2>
+        <ul>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Audit</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h2 class="footer__head">Company</h2>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+  </html>
