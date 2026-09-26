@@ -62,6 +62,21 @@
             are changed?
           </p>
 
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            A simulation scenario defines more than the caller's goal. The
+            information available to the tester, actions it can take, constraints,
+            acceptable alternatives, and stopping condition all affect the
+            interaction being tested. Changing those conditions can change what
+            the simulation actually exercises.
+          </p>
+
           <!-- ============ WHAT WE INVESTIGATED ============ -->
           <h2>What we investigated</h2>
 
@@ -159,11 +174,18 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates what a product's testing configuration actually
-            establishes, not simply whether a test produces a passing result.
+            A simulation result is conditional on the scenario configuration used
+            to produce it. Changing the scenario can leave different implementation
+            paths untested even when the assistant itself has not changed.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a narrowly configured scenario can give
+            a team confidence in a workflow while important caller paths remain
+            untested until customers encounter them.
           </p>
 
         </div>
@@ -174,7 +196,7 @@
         </aside>
 
         <p class="audit-risk__note">
-          The actual JSON/code, company name, URLs, screenshots, and detailed test
+          The actual company name, URLs, screenshots, JSON/code, and detailed test
           configuration are kept out of the public case study. Those belong in the
           confidential review delivered to the client.
         </p>
@@ -237,4 +259,4 @@
 
   <script src="../script.js"></script>
 </body>
-</html>
+ </html>
