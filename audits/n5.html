@@ -60,6 +60,20 @@
             chat versus voice, and what does each mode actually validate?
           </p>
 
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            The same assistant can produce a successful result in chat while leaving
+            voice-specific behavior untested. Chat and voice exercise overlapping
+            conversational behavior, but voice adds speech recognition, voice output,
+            pronunciation, pacing, and turn-taking.
+          </p>
+
           <!-- ============ WHAT WE INVESTIGATED ============ -->
           <h2>What we investigated</h2>
 
@@ -129,12 +143,18 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates what each testing mode actually validates, including
-            the implementation surfaces that a successful result does and does not
-            cover.
+            Chat and voice simulations do not validate the same implementation
+            surface. A successful chat result does not establish that the configured
+            voice experience behaves correctly.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a successful chat test can give a team
+            confidence in an interaction whose voice-specific behavior has not yet
+            been exercised.
           </p>
 
         </div>
