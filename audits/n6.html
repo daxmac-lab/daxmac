@@ -60,6 +60,20 @@
             validates about the assistant's interaction with external systems?
           </p>
 
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            A simulation can successfully complete a workflow using a mocked tool
+            response. The assistant can receive the expected result and report that
+            the action succeeded even though the live external service was never
+            called.
+          </p>
+
           <!-- ============ WHAT WE INVESTIGATED ============ -->
           <h2>What we investigated</h2>
 
@@ -128,12 +142,18 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates what a product's testing surface actually validates,
-            including the boundary between simulated tool behavior and real
-            external-system execution.
+            A passing simulation with a mocked tool validates how the assistant
+            handles the supplied tool result. It does not automatically establish
+            that the corresponding external action occurred.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a team can move toward production believing
+            an external action works when the test only proved that the assistant
+            handled a simulated tool response.
           </p>
 
         </div>
