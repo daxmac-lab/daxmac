@@ -1411,3 +1411,37 @@ p { margin: 0; }
   color: var(--accent-deep);
   font-weight: 500;
    }
+
+
+/* ==========================================================================
+   26. CASE STUDY — IMPL DETAILS & CTA
+   ========================================================================== */
+
+/* The Risk examined / Finding pair inside each impl-item */
+.impl-item__detail {
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--muted);
+  max-width: 62ch;
+  margin-bottom: 10px;
+}
+
+.impl-item__detail:last-of-type {
+  margin-bottom: 18px;
+}
+
+.impl-item__detail strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Closing CTA block at the end of the case study */
+.cta-block {
+  padding-top: clamp(32px, 4vw, 48px);
+  margin-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+}
+
+.cta-block .btn {
+  margin-top: 28px;
+}
