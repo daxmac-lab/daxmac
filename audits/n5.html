@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat vs. Voice Testing | DaxMac</title>
+  <meta name="description" content="What changes in a simulation when the same assistant is tested through chat versus voice, and what does each mode actually validate?">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
+  </script>
+</head>
+<body data-nav="audits.html" data-root="../">
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="article">
+      <div class="wrap">
+
+        <!-- ============ HEAD ============ -->
+        <header class="article__head">
+          <p class="eyebrow">Developer Implementation Review · Area 05</p>
+
+          <h1 class="article__title">
+            Chat vs. Voice Testing
+          </h1>
+
+          <p class="article__meta">Voice AI Platform</p>
+        </header>
+
+        <div class="article__body">
+
+          <!-- ============ THE QUESTION ============ -->
+          <h2>The question</h2>
+
+          <p class="article__statement">
+            What changes in a simulation when the same assistant is tested through
+            chat versus voice, and what does each mode actually validate?
+          </p>
+
+          <!-- ============ WHAT WE INVESTIGATED ============ -->
+          <h2>What we investigated</h2>
+
+          <p>
+            We compared how the same assistant and scenario are exercised through
+            chat and voice simulation modes, focusing on the implementation surfaces
+            each mode actually tests.
+          </p>
+
+          <!-- ============ WHAT WE FOUND ============ -->
+          <h2>What we found</h2>
+
+          <p>
+            Chat and voice simulations exercise overlapping conversational behavior,
+            but they do not validate the same implementation surface.
+          </p>
+
+          <p>
+            Chat tests the conversation without audio. Voice additionally exercises
+            speech recognition, voice output, pronunciation, pacing, and turn-taking.
+          </p>
+
+          <p>
+            A successful chat simulation therefore does not establish that the
+            configured voice implementation works correctly.
+          </p>
+
+          <!-- ============ WHY IT MATTERS ============ -->
+          <h2>Why it matters</h2>
+
+          <p>
+            A developer can see a successful chat result and conclude that the
+            assistant is ready for voice interaction without having tested the
+            audio layer that the voice experience depends on.
+          </p>
+
+          <p>
+            A voice simulation provides additional evidence, but still does not
+            establish behavior across every real caller or audio environment.
+          </p>
+
+          <!-- ============ EVIDENCE ============ -->
+          <h2>Evidence</h2>
+
+          <p>
+            A controlled comparison of the same assistant and scenario across chat
+            and voice showed that the two modes exercise different parts of the
+            implementation.
+          </p>
+
+          <!-- ============ RESULT ============ -->
+          <h2>Result</h2>
+
+          <p class="article__statement">
+            The chat result validates the conversation without audio. The voice
+            result adds evidence about the speech and turn-taking layers that chat
+            does not exercise.
+          </p>
+
+          <!-- ============ IMPLEMENTATION IMPLICATION ============ -->
+          <h2>Implementation implication</h2>
+
+          <p>
+            Developers need to distinguish what a chat result validates from what
+            requires voice testing, and what a voice simulation still leaves to
+            real-world validation.
+          </p>
+
+          <!-- ============ WHAT THIS DEMONSTRATES ============ -->
+          <h2>What this demonstrates</h2>
+
+          <p>
+            DaxMac investigates what each testing mode actually validates, including
+            the implementation surfaces that a successful result does and does not
+            cover.
+          </p>
+
+        </div>
+
+        <!-- ============ CONFIDENTIALITY ============ -->
+        <aside class="audit-risk">
+          <span class="audit-risk__label">Confidentiality</span>
+        </aside>
+
+        <p class="audit-risk__note">
+          The actual company name, URLs, screenshots, JSON/code, and detailed test
+          configuration are kept out of the public case study. Those belong in the
+          confidential review delivered to the client.
+        </p>
+
+        <footer class="article__foot">
+          <a class="article__back" href="../audits.html">Back to Voice AI Platform Review</a>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation risk.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Explore">
+        <h2 class="footer__head">Explore</h2>
+        <ul>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Case Study</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Connect">
+        <h2 class="footer__head">Connect</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
