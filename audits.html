@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developer Implementation Review — Voice AI Platform | DaxMac</title>
-  <meta name="description" content="A Developer Implementation Review examining how developers move from simulation to confidence about production behavior.">
+  <title>Case Studies | DaxMac</title>
+  <meta name="description" content="A confidential Developer Implementation Review examining how developers can interpret, configure, test, and validate an AI voice platform before relying on simulation results in production.">
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css">
 
@@ -36,35 +36,52 @@
 
   <main>
 
+    <!-- ============ PAGE INTRO ============ -->
+    <section class="page-intro">
+      <div class="wrap">
+        <p class="eyebrow">DaxMac</p>
+        <h1 class="page-intro__title">Case Studies</h1>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDY ============ -->
     <article class="article">
       <div class="wrap">
 
-        <!-- ============ HEAD ============ -->
         <header class="article__head">
           <p class="eyebrow">Developer Implementation Review</p>
 
-          <h1 class="article__title">Voice AI Platform</h1>
+          <h2 class="article__title">Voice AI Platform</h2>
 
           <p class="lede">
-            A Developer Implementation Review examining how developers move from
-            simulation to confidence about production behavior.
+            A confidential Developer Implementation Review examining how developers
+            can interpret, configure, test, and validate an AI voice platform before
+            relying on simulation results in production.
+          </p>
+
+          <p class="lede">
+            The review followed the implementation path from simulation setup
+            through testing, evaluation, tool execution, and production decisions.
           </p>
         </header>
 
-        <!-- ============ REVIEW QUESTION ============ -->
         <div class="article__body">
+
           <h2>Review Question</h2>
 
-          <p class="article__statement">
-            What can a developer reasonably conclude from a successful simulation
-            about how the assistant will behave with a real caller?
-          </p>
+          <blockquote>
+            <p>
+              What can a developer reasonably conclude from a successful simulation,
+              and where can the implementation still behave differently from what
+              the test appears to establish?
+            </p>
+          </blockquote>
+
         </div>
 
         <!-- ============ IMPLEMENTATION AREAS ============ -->
         <div class="article__body">
           <h2>Implementation Areas</h2>
-          <p>This review follows the implementation path across 10 related areas.</p>
         </div>
 
         <ol class="impl-list">
@@ -73,136 +90,171 @@
             <span class="impl-item__num">01</span>
             <h3 class="impl-item__title">Simulation vs. Real Caller Behavior</h3>
             <p class="impl-item__question">
-              What can a successful simulation actually establish about behavior
-              with a real caller?
+              A passing simulation validates the caller behavior and conditions
+              represented by the test. It does not automatically establish
+              equivalent behavior with real callers or real-world conditions.
             </p>
-            <a class="impl-item__link" href="audits/n1.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n1.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">02</span>
             <h3 class="impl-item__title">Scenario Configuration</h3>
             <p class="impl-item__question">
-              How does the configuration of the simulated caller affect what is
-              actually being tested?
+              Simulation scenarios determine the caller goal, available information,
+              constraints, actions, and stopping conditions being exercised.
             </p>
-            <a class="impl-item__link" href="audits/n2.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n2.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">03</span>
             <h3 class="impl-item__title">AI Tester Behavior</h3>
             <p class="impl-item__question">
-              What aspects of the test are determined by the AI tester itself?
+              The AI tester's configured behavior affects which conversational
+              conditions the simulation actually exercises.
             </p>
-            <a class="impl-item__link" href="audits/n3.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n3.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">04</span>
             <h3 class="impl-item__title">Success Criteria</h3>
             <p class="impl-item__question">
-              What does a passing simulation criterion actually establish?
+              A simulation passes according to the specific conditions defined by
+              its success criteria. A pass does not automatically establish the
+              complete real-world outcome.
             </p>
-            <a class="impl-item__link" href="audits/n4.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n4.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">05</span>
             <h3 class="impl-item__title">Chat vs. Voice Testing</h3>
             <p class="impl-item__question">
-              What changes between chat and voice simulations, and what does each
-              actually validate?
+              Chat and voice simulations exercise overlapping conversation behavior
+              but do not validate the same implementation surface.
             </p>
-            <a class="impl-item__link" href="audits/n5.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n5.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">06</span>
             <h3 class="impl-item__title">Tool Execution and Mocking</h3>
             <p class="impl-item__question">
-              What does a simulated tool result establish about the actual integration?
+              A successful simulation using a mocked tool can establish that the
+              assistant handled the supplied result without establishing that the
+              external action actually occurred.
             </p>
-            <a class="impl-item__link" href="audits/n6.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n6.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">07</span>
             <h3 class="impl-item__title">Variables and Configuration</h3>
             <p class="impl-item__question">
-              Does the simulation exercise the same configuration the developer
-              expects to use?
+              Simulation results are conditional on the variables and configuration
+              represented by the test. Different runtime values or data sources may
+              require separate validation.
             </p>
-            <a class="impl-item__link" href="audits/n7.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n7.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">08</span>
             <h3 class="impl-item__title">Simulation Webhooks</h3>
             <p class="impl-item__question">
-              What can a developer rely on from the simulation lifecycle and webhook
-              behavior?
+              Simulation webhooks provide lifecycle and run information. Receiving
+              an ended event does not by itself establish that the simulation passed
+              or that the intended business outcome occurred.
             </p>
-            <a class="impl-item__link" href="audits/n8.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n8.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">09</span>
             <h3 class="impl-item__title">Assistant and Squad Testing</h3>
             <p class="impl-item__question">
-              What changes when the implementation involves multiple assistants?
+              Testing individual assistants provides evidence about individual
+              behavior. Squad testing exercises the composed implementation,
+              including interactions between assistants.
             </p>
-            <a class="impl-item__link" href="audits/n9.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n9.html">View implementation area</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">10</span>
-            <h3 class="impl-item__title">Simulation Results → Production Decisions</h3>
+            <h3 class="impl-item__title">From Simulation Results to Production Decisions</h3>
             <p class="impl-item__question">
-              What can a developer reasonably infer from simulation results before
-              moving toward production?
+              A passing simulation demonstrates successful behavior under the tested
+              conditions. It is not, by itself, a production-readiness signal.
             </p>
-            <a class="impl-item__link" href="audits/n10.html">View implementation review</a>
+            <a class="impl-item__link" href="audits/n10.html">View implementation area</a>
           </li>
 
         </ol>
 
-        <!-- ============ CONFIDENTIAL ============ -->
+        <!-- ============ WHAT DAXMAC INVESTIGATES ============ -->
         <div class="article__body">
+
+          <h2>What DaxMac Investigates</h2>
+
+          <p>
+            A Developer Implementation Review follows the implementation path a
+            developer would actually take.
+          </p>
+
+          <p>We look at:</p>
+
+          <ul>
+            <li>what the product exposes</li>
+            <li>what the developer is expected to configure</li>
+            <li>what the testing surface actually exercises</li>
+            <li>what a successful result establishes</li>
+            <li>what remains outside the test boundary</li>
+            <li>where different implementation conditions can produce different outcomes</li>
+          </ul>
+
+          <p>
+            The goal is not to judge whether a product is good or bad.
+          </p>
+
+          <p>
+            The question is what a developer can reasonably conclude at each point
+            in the implementation.
+          </p>
+
+        </div>
+
+        <!-- ============ CONFIDENTIAL REVIEW ============ -->
+        <div class="article__body">
+
           <h2>Confidential Review</h2>
 
           <p>
-            This case study is based on a confidential Developer Implementation Review.
+            This public case study is a condensed, anonymized example of a
+            Developer Implementation Review.
           </p>
 
           <p>
-            The detailed review contains the underlying implementation evidence,
-            including JSON/code, requests and responses, screenshots, URLs,
-            company/product identification, test configuration, and other testing
-            details.
+            The confidential review delivered to the client contains the full
+            developer journey for each implementation area, including the related
+            product pages and sources reviewed, implementation steps, validation
+            performed, screenshots, requests and responses, JSON/code, test
+            configuration, and supporting evidence.
           </p>
-
-          <p>Those materials are intentionally not published here.</p>
 
           <p>
-            The public case study shows the implementation areas and nature of the
-            investigation, while the detailed evidence belongs in the confidential
-            review delivered to the client.
+            Company-identifying information and sensitive testing details are
+            intentionally omitted from this public case study.
           </p>
 
-          <h2>What DaxMac investigates</h2>
-
-          <p>
-            DaxMac traces how a developer actually implements a product, then
-            investigates what the product's behavior, configuration, and testing
-            surfaces actually establish — including where the developer may still
-            need to validate something separately.
+          <p class="article__statement">
+            The public case study shows the finding. The confidential review shows
+            how we got there.
           </p>
+
         </div>
-
-        <footer class="article__foot">
-          <a class="article__back" href="index.html">Back to Home</a>
-        </footer>
 
       </div>
     </article>
@@ -231,8 +283,8 @@
         <h2 class="footer__head">Explore</h2>
         <ul>
           <li><a href="field-notes.html">Field Notes</a></li>
+          <li><a href="audits.html">Case Studies</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
         </ul>
       </nav>
 
@@ -241,6 +293,7 @@
         <ul>
           <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
         </ul>
       </nav>
 
@@ -257,4 +310,4 @@
 
   <script src="script.js"></script>
 </body>
-                                                                                         </html>
+</html>
