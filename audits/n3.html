@@ -52,12 +52,25 @@
 
         <div class="article__body">
 
-          <!-- ============ INVESTIGATION QUESTION ============ -->
-          <h2>Investigation question</h2>
+          <!-- ============ THE QUESTION ============ -->
+          <h2>The question</h2>
 
           <p class="article__statement">
             How does the AI tester's behavior affect what a simulation actually
             exercises and validates?
+          </p>
+
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            The AI tester is not simply a neutral caller. Its personality, patience,
+            interruptions, follow-up behavior, turn-taking, and other configured
+            behaviors determine how it interacts with the assistant during the test.
           </p>
 
           <!-- ============ WHAT WE INVESTIGATED ============ -->
@@ -102,15 +115,6 @@
             wants the simulation to validate them.
           </p>
 
-          <!-- ============ IMPLEMENTATION IMPLICATION ============ -->
-          <h2>Implementation implication</h2>
-
-          <p>
-            Developers need to understand what caller behavior each AI tester
-            configuration actually exercises before treating a simulation result
-            as evidence about broader caller interactions.
-          </p>
-
           <!-- ============ EVIDENCE ============ -->
           <h2>Evidence</h2>
 
@@ -128,13 +132,29 @@
             to produce it.
           </p>
 
-          <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <!-- ============ IMPLEMENTATION IMPLICATION ============ -->
+          <h2>Implementation implication</h2>
 
           <p>
-            DaxMac investigates what a product's testing and implementation
-            surfaces actually establish, including the conditions under which a
-            successful result is valid.
+            Developers need to understand what caller behavior each AI tester
+            configuration actually exercises before treating a simulation result
+            as evidence about broader caller interactions.
+          </p>
+
+          <!-- ============ WHAT THIS DEMONSTRATES ============ -->
+          <h2>What This Demonstrates</h2>
+
+          <p>
+            A simulation validates the assistant against the specific AI tester
+            behavior configured for that run. It does not automatically establish
+            how the assistant will behave under caller behaviors that the tester
+            never exercises.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> an overly cooperative tester can leave
+            interruptions, unclear responses, or caller pushback untested until
+            they occur in production.
           </p>
 
         </div>
@@ -145,7 +165,7 @@
         </aside>
 
         <p class="audit-risk__note">
-          The actual JSON/code, company name, URLs, screenshots, and detailed test
+          The actual company name, URLs, screenshots, JSON/code, and detailed test
           configuration are kept out of the public case study. Those belong in the
           confidential review delivered to the client.
         </p>
@@ -208,4 +228,4 @@
 
   <script src="../script.js"></script>
 </body>
-  </html>
+</html>
