@@ -1123,20 +1123,6 @@ p { margin: 0; }
    20. ABOUT PAGE
    ========================================================================== */
 
-.about-body {
-  max-width: 68ch;
-}
-
-.about-body p {
-  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
-  line-height: 1.72;
-  color: var(--ink);
-}
-
-.about-body p + p {
-  margin-top: 1.35em;
-}
-
 .about-founder {
   display: flex;
   align-items: center;
@@ -1160,6 +1146,10 @@ p { margin: 0; }
   display: block;
 }
 
+.about-founder__meta {
+  min-width: 0;
+}
+
 .about-founder__name {
   font-family: var(--font-serif);
   font-size: 1.15rem;
@@ -1171,16 +1161,6 @@ p { margin: 0; }
 .about-founder__role {
   font-size: 0.875rem;
   color: var(--muted);
-   }
-
-.about-founder__copy p {
-  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
-  line-height: 1.72;
-  color: var(--ink);
-}
-
-.about-founder__copy p + p {
-  margin-top: 1.35em;
 }
 
 .about-links {
@@ -1203,7 +1183,7 @@ p { margin: 0; }
 
 .about-links a:hover {
   border-bottom-color: var(--accent);
-}
+   }
 
 
 /* ==========================================================================
