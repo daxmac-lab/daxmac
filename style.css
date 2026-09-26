@@ -1324,3 +1324,69 @@ p { margin: 0; }
   display: block;
   border-radius: var(--radius-lg);
    }
+
+/* ==========================================================================
+   24. IMPLEMENTATION AREAS  (case study index)
+   ========================================================================== */
+
+.impl-list {
+  display: grid;
+  gap: 0;
+  margin-block: clamp(36px, 4.5vw, 56px);
+  border-top: 1px solid var(--line);
+  max-width: 780px;
+}
+
+.impl-item {
+  padding-block: clamp(26px, 3vw, 40px);
+  border-bottom: 1px solid var(--line);
+}
+
+.impl-item__num {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.impl-item__title {
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.impl-item__question {
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--muted);
+  margin-bottom: 18px;
+  max-width: 62ch;
+}
+
+.impl-item__link {
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--accent-deep);
+  border-bottom: 1px solid var(--accent-line);
+  padding-bottom: 2px;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.impl-item__link::after {
+  content: " →";
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.impl-item__link:hover {
+  border-bottom-color: var(--accent);
+}
+
+.impl-item__link:hover::after {
+  transform: translateX(2px);
+}
