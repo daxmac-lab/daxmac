@@ -1138,16 +1138,18 @@ p { margin: 0; }
 }
 
 .about-founder {
-  display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
-  gap: clamp(40px, 5vw, 72px);
-  align-items: start;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 32px;
 }
 
 .about-founder__portrait {
-  aspect-ratio: 4 / 5;
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
   overflow: hidden;
-  border-radius: var(--radius-lg);
   background: var(--line);
 }
 
@@ -1159,9 +1161,17 @@ p { margin: 0; }
 }
 
 .about-founder__name {
-  font-size: clamp(1.5rem, 1.3rem + 0.9vw, 1.95rem);
-  margin-bottom: 22px;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  color: var(--ink);
 }
+
+.about-founder__role {
+  font-size: 0.875rem;
+  color: var(--muted);
+   }
 
 .about-founder__copy p {
   font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
