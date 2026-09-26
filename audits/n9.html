@@ -60,6 +60,20 @@
             actually validates about the implementation?
           </p>
 
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            Individual assistants can each pass their own simulations while the
+            composed squad introduces additional behavior that those isolated tests
+            do not exercise, including routing, handoffs, and context transfer
+            between assistants.
+          </p>
+
           <!-- ============ WHAT WE INVESTIGATED ============ -->
           <h2>What we investigated</h2>
 
@@ -131,11 +145,18 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates whether testing a component in isolation actually
-            validates the composed implementation developers intend to deploy.
+            Testing assistants individually validates their behavior in isolation.
+            It does not automatically establish that the composed squad behaves
+            correctly across the interactions between those assistants.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> individually successful assistants can
+            still expose handoff or context-transfer problems when they are composed
+            into the production squad.
           </p>
 
         </div>
