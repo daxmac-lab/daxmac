@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Tester Behavior | DaxMac</title>
+  <meta name="description" content="How does the AI tester's behavior affect what a simulation actually exercises and validates?">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
+  </script>
+</head>
+<body data-nav="audits.html" data-root="../">
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="article">
+      <div class="wrap">
+
+        <!-- ============ HEAD ============ -->
+        <header class="article__head">
+          <p class="eyebrow">Developer Implementation Review · Area 03</p>
+
+          <h1 class="article__title">
+            AI Tester Behavior
+          </h1>
+
+          <p class="article__meta">Voice AI Platform</p>
+        </header>
+
+        <div class="article__body">
+
+          <!-- ============ INVESTIGATION QUESTION ============ -->
+          <h2>Investigation question</h2>
+
+          <p class="article__statement">
+            How does the AI tester's behavior affect what a simulation actually
+            exercises and validates?
+          </p>
+
+          <!-- ============ WHAT WE INVESTIGATED ============ -->
+          <h2>What we investigated</h2>
+
+          <p>
+            We examined how the AI tester's personality, turn-taking behavior,
+            interruptions, follow-up questions, speaking behavior, and other
+            configurable behaviors affect the interaction with the assistant.
+          </p>
+
+          <!-- ============ WHAT WE FOUND ============ -->
+          <h2>What we found</h2>
+
+          <p>
+            A simulation validates the assistant against the specific behavior
+            configured for the AI tester.
+          </p>
+
+          <p>
+            Changing how the tester behaves can change the interaction being
+            exercised, even when the assistant and scenario remain the same.
+          </p>
+
+          <p>
+            A passing simulation therefore does not establish how the assistant
+            will behave with caller behaviors that the configured tester never
+            exercises.
+          </p>
+
+          <!-- ============ WHY IT MATTERS ============ -->
+          <h2>Why it matters</h2>
+
+          <p>
+            A highly cooperative tester may allow an assistant to complete a
+            workflow without exercising interruptions, unclear responses,
+            follow-up questions, pushback, or other conversational conditions.
+          </p>
+
+          <p>
+            Those behaviors need to be represented in the test if the developer
+            wants the simulation to validate them.
+          </p>
+
+          <!-- ============ IMPLEMENTATION IMPLICATION ============ -->
+          <h2>Implementation implication</h2>
+
+          <p>
+            Developers need to understand what caller behavior each AI tester
+            configuration actually exercises before treating a simulation result
+            as evidence about broader caller interactions.
+          </p>
+
+          <!-- ============ EVIDENCE ============ -->
+          <h2>Evidence</h2>
+
+          <p>
+            A controlled comparison of tester behavior can show whether changing
+            the tester's behavior changes the interaction exercised by the same
+            assistant and scenario.
+          </p>
+
+          <!-- ============ RESULT ============ -->
+          <h2>Result</h2>
+
+          <p class="article__statement">
+            The simulation result is conditional on the AI tester behavior used
+            to produce it.
+          </p>
+
+          <!-- ============ WHAT THIS DEMONSTRATES ============ -->
+          <h2>What this demonstrates</h2>
+
+          <p>
+            DaxMac investigates what a product's testing and implementation
+            surfaces actually establish, including the conditions under which a
+            successful result is valid.
+          </p>
+
+        </div>
+
+        <!-- ============ CONFIDENTIALITY ============ -->
+        <aside class="audit-risk">
+          <span class="audit-risk__label">Confidentiality</span>
+        </aside>
+
+        <p class="audit-risk__note">
+          The actual JSON/code, company name, URLs, screenshots, and detailed test
+          configuration are kept out of the public case study. Those belong in the
+          confidential review delivered to the client.
+        </p>
+
+        <footer class="article__foot">
+          <a class="article__back" href="../audits.html">Back to Voice AI Platform Review</a>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation risk.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Explore">
+        <h2 class="footer__head">Explore</h2>
+        <ul>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Case Study</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Connect">
+        <h2 class="footer__head">Connect</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+  </html>
