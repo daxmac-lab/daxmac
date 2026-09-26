@@ -152,7 +152,8 @@
     '.audit-risk',
     '.about-body',
     '.about-founder',
-    '.about-links'
+    '.about-links',
+    '.impl-item'
   ];
 
   function initReveals() {
