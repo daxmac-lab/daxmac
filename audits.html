@@ -48,40 +48,74 @@
     <article class="article">
       <div class="wrap">
 
+        <!-- ============ HEAD ============ -->
         <header class="article__head">
           <p class="eyebrow">Developer Implementation Review</p>
 
-          <h2 class="article__title">Voice AI Platform</h2>
+          <h2 class="article__title">
+            Finding implementation risk before it becomes customer work
+          </h2>
 
           <p class="lede">
-            A confidential Developer Implementation Review examining how developers
-            can interpret, configure, test, and validate an AI voice platform before
-            relying on simulation results in production.
+            Developer-facing products can appear straightforward to implement
+            while leaving important questions unanswered about what developers
+            will actually experience in practice.
           </p>
 
           <p class="lede">
-            The review followed the implementation path from simulation setup
-            through testing, evaluation, tool execution, and production decisions.
+            A Developer Implementation Review examines those implementation paths
+            from the outside — identifying where a reasonable developer could make
+            an incorrect implementation decision, what the product actually
+            validates, and what that could create downstream.
+          </p>
+
+          <p class="lede">
+            This case study shows that process using a Voice AI Platform.
           </p>
         </header>
 
         <div class="article__body">
 
-          <h2>Review Question</h2>
+          <!-- ============ THE PROBLEM ============ -->
+          <h2>The Problem We Investigated</h2>
 
-          <blockquote>
-            <p>
-              What can a developer reasonably conclude from a successful simulation,
-              and where can the implementation still behave differently from what
-              the test appears to establish?
-            </p>
-          </blockquote>
+          <p>
+            A developer can get a successful test result without having validated
+            everything they may assume it proves.
+          </p>
+
+          <p>
+            For a voice AI platform, that can affect questions such as:
+          </p>
+
+          <ul>
+            <li>Does a passing simulation represent real caller behavior?</li>
+            <li>Does a mocked tool result represent a real external action?</li>
+            <li>Does testing one assistant validate the full squad?</li>
+            <li>Does a successful simulation represent the values used at runtime?</li>
+            <li>When does a passing test provide enough evidence to make a production decision?</li>
+          </ul>
+
+          <p>
+            These are implementation questions, not simply documentation questions.
+          </p>
 
         </div>
 
-        <!-- ============ IMPLEMENTATION AREAS ============ -->
+        <!-- ============ THE REVIEW ============ -->
         <div class="article__body">
-          <h2>Implementation Areas</h2>
+          <h2>The Review</h2>
+
+          <p class="eyebrow">Voice AI Platform</p>
+
+          <p>
+            We followed the implementation path from simulation configuration
+            through testing, evaluation, tool execution, and production decisions.
+          </p>
+
+          <p>
+            The review covered 10 implementation areas.
+          </p>
         </div>
 
         <ol class="impl-list">
@@ -89,139 +123,225 @@
           <li class="impl-item">
             <span class="impl-item__num">01</span>
             <h3 class="impl-item__title">Simulation vs. Real Caller Behavior</h3>
-            <p class="impl-item__question">
-              A passing simulation validates the caller behavior and conditions
-              represented by the test. It does not automatically establish
-              equivalent behavior with real callers or real-world conditions.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> treating a successful simulation as
+              evidence of equivalent real-caller behavior.
             </p>
-            <a class="impl-item__link" href="audits/n1.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> a simulation is conditional on the caller
+              behavior and conditions represented by the test.
+            </p>
+
+            <a class="impl-item__link" href="audits/n1.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">02</span>
             <h3 class="impl-item__title">Scenario Configuration</h3>
-            <p class="impl-item__question">
-              Simulation scenarios determine the caller goal, available information,
-              constraints, actions, and stopping conditions being exercised.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> assuming a scenario tests broader
+              caller behavior than its configuration actually represents.
             </p>
-            <a class="impl-item__link" href="audits/n2.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> changing the scenario changes the
+              implementation path being exercised.
+            </p>
+
+            <a class="impl-item__link" href="audits/n2.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">03</span>
             <h3 class="impl-item__title">AI Tester Behavior</h3>
-            <p class="impl-item__question">
-              The AI tester's configured behavior affects which conversational
-              conditions the simulation actually exercises.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> relying on a cooperative tester
+              without exercising other caller behaviors.
             </p>
-            <a class="impl-item__link" href="audits/n3.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> tester configuration determines which
+              conversational conditions the simulation exercises.
+            </p>
+
+            <a class="impl-item__link" href="audits/n3.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">04</span>
             <h3 class="impl-item__title">Success Criteria</h3>
-            <p class="impl-item__question">
-              A simulation passes according to the specific conditions defined by
-              its success criteria. A pass does not automatically establish the
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> treating "Passed" as proof of the
               complete real-world outcome.
             </p>
-            <a class="impl-item__link" href="audits/n4.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> a simulation passes according to its
+              configured success criteria.
+            </p>
+
+            <a class="impl-item__link" href="audits/n4.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">05</span>
             <h3 class="impl-item__title">Chat vs. Voice Testing</h3>
-            <p class="impl-item__question">
-              Chat and voice simulations exercise overlapping conversation behavior
-              but do not validate the same implementation surface.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> treating a successful chat simulation
+              as evidence that the voice implementation works.
             </p>
-            <a class="impl-item__link" href="audits/n5.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> chat and voice exercise different
+              implementation surfaces.
+            </p>
+
+            <a class="impl-item__link" href="audits/n5.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">06</span>
             <h3 class="impl-item__title">Tool Execution and Mocking</h3>
-            <p class="impl-item__question">
-              A successful simulation using a mocked tool can establish that the
-              assistant handled the supplied result without establishing that the
-              external action actually occurred.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> interpreting a successful mocked tool
+              execution as proof that an external action occurred.
             </p>
-            <a class="impl-item__link" href="audits/n6.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> a mocked result can validate assistant
+              behavior without changing the external system.
+            </p>
+
+            <a class="impl-item__link" href="audits/n6.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">07</span>
             <h3 class="impl-item__title">Variables and Configuration</h3>
-            <p class="impl-item__question">
-              Simulation results are conditional on the variables and configuration
-              represented by the test. Different runtime values or data sources may
-              require separate validation.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> assuming simulation inputs represent
+              the values and data sources used during normal runtime.
             </p>
-            <a class="impl-item__link" href="audits/n7.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> a simulation validates the variables and
+              configuration represented by that test.
+            </p>
+
+            <a class="impl-item__link" href="audits/n7.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">08</span>
             <h3 class="impl-item__title">Simulation Webhooks</h3>
-            <p class="impl-item__question">
-              Simulation webhooks provide lifecycle and run information. Receiving
-              an ended event does not by itself establish that the simulation passed
-              or that the intended business outcome occurred.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> treating a simulation lifecycle event
+              as proof that the simulation passed.
             </p>
-            <a class="impl-item__link" href="audits/n8.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> an ended webhook establishes that the run
+              ended, not independently that the configured success criteria passed.
+            </p>
+
+            <a class="impl-item__link" href="audits/n8.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">09</span>
             <h3 class="impl-item__title">Assistant and Squad Testing</h3>
-            <p class="impl-item__question">
-              Testing individual assistants provides evidence about individual
-              behavior. Squad testing exercises the composed implementation,
-              including interactions between assistants.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> assuming individually successful
+              assistants prove that the composed squad works.
             </p>
-            <a class="impl-item__link" href="audits/n9.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> squad testing exercises interactions between
+              assistants that isolated tests do not necessarily exercise.
+            </p>
+
+            <a class="impl-item__link" href="audits/n9.html">View finding</a>
           </li>
 
           <li class="impl-item">
             <span class="impl-item__num">10</span>
             <h3 class="impl-item__title">From Simulation Results to Production Decisions</h3>
-            <p class="impl-item__question">
-              A passing simulation demonstrates successful behavior under the tested
-              conditions. It is not, by itself, a production-readiness signal.
+
+            <p class="impl-item__detail">
+              <strong>Risk examined:</strong> treating a passing simulation as a
+              production-readiness signal.
             </p>
-            <a class="impl-item__link" href="audits/n10.html">View implementation area</a>
+
+            <p class="impl-item__detail">
+              <strong>Finding:</strong> a passing simulation demonstrates success
+              under the tested conditions, while real-world and untested conditions
+              may remain.
+            </p>
+
+            <a class="impl-item__link" href="audits/n10.html">View finding</a>
           </li>
 
         </ol>
 
-        <!-- ============ WHAT DAXMAC INVESTIGATES ============ -->
+        <!-- ============ WHAT THIS MEANS FOR THE BUYER ============ -->
         <div class="article__body">
 
-          <h2>What DaxMac Investigates</h2>
+          <h2>What This Means for the Buyer</h2>
 
           <p>
-            A Developer Implementation Review follows the implementation path a
-            developer would actually take.
+            The value of the review is not a list of documentation observations.
           </p>
 
-          <p>We look at:</p>
+          <p>
+            It is evidence about <strong>where a developer's implementation can
+            diverge from what the product appears to establish.</strong>
+          </p>
+
+          <p>That can surface risks before they become:</p>
 
           <ul>
-            <li>what the product exposes</li>
-            <li>what the developer is expected to configure</li>
-            <li>what the testing surface actually exercises</li>
-            <li>what a successful result establishes</li>
-            <li>what remains outside the test boundary</li>
-            <li>where different implementation conditions can produce different outcomes</li>
+            <li>customer support work</li>
+            <li>integration failures</li>
+            <li>engineering intervention</li>
+            <li>production issues</li>
+            <li>implementation friction</li>
+          </ul>
+
+        </div>
+
+        <!-- ============ WHAT THE CLIENT RECEIVES ============ -->
+        <div class="article__body">
+
+          <h2>What the Client Receives</h2>
+
+          <p>Depending on scope, the confidential review can include:</p>
+
+          <ul>
+            <li>the complete developer implementation path</li>
+            <li>related product and API/SDK sources</li>
+            <li>controlled validation</li>
+            <li>live API or SDK testing where included</li>
+            <li>screenshots</li>
+            <li>requests and responses</li>
+            <li>JSON/code</li>
+            <li>test configuration</li>
+            <li>findings and supporting evidence</li>
+            <li>implementation implications</li>
           </ul>
 
           <p>
-            The goal is not to judge whether a product is good or bad.
-          </p>
-
-          <p>
-            The question is what a developer can reasonably conclude at each point
-            in the implementation.
+            The result is a documented view of <strong>customer implementation
+            risk</strong>, rather than a generic review of documentation quality.
           </p>
 
         </div>
@@ -253,6 +373,23 @@
             The public case study shows the finding. The confidential review shows
             how we got there.
           </p>
+
+        </div>
+
+        <!-- ============ CTA ============ -->
+        <div class="article__body cta-block">
+
+          <h2>Have an implementation path worth examining?</h2>
+
+          <p>
+            DaxMac reviews how developers actually implement developer-facing
+            products and identifies where implementation risk can become support
+            work, engineering load, integration failure, or production issues.
+          </p>
+
+          <a class="btn btn--primary" href="mailto:info@daxmac.cc">
+            Discuss a review
+          </a>
 
         </div>
 
