@@ -1390,3 +1390,24 @@ p { margin: 0; }
 .impl-item__link:hover::after {
   transform: translateX(2px);
 }
+
+
+
+/* ==========================================================================
+   25. IMPLEMENTATION PRACTICE NOTE
+   ========================================================================== */
+
+.impl-practice {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: var(--ink);
+  max-width: 68ch;
+}
+
+.impl-practice strong {
+  color: var(--accent-deep);
+  font-weight: 500;
+   }
