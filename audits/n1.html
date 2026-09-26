@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Simulation vs. Real-World Behavior | DaxMac</title>
+  <title>Simulation vs. Real Caller Behavior | DaxMac</title>
   <meta name="description" content="What can a developer reasonably conclude from a successful simulation about how the assistant will behave with a real caller?">
   <link rel="icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
@@ -44,10 +44,10 @@
           <p class="eyebrow">Developer Implementation Review · Area 01</p>
 
           <h1 class="article__title">
-            Simulation vs. Real-World Behavior
+            Simulation vs. Real Caller Behavior
           </h1>
 
-          <p class="article__meta">Voice AI platform</p>
+          <p class="article__meta">Voice AI Platform</p>
         </header>
 
         <div class="article__body">
@@ -58,6 +58,20 @@
           <p class="article__statement">
             What can a developer reasonably conclude from a successful simulation
             about how the assistant will behave with a real caller?
+          </p>
+
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            A simulation can pass because the assistant successfully handled the
+            caller behavior represented by the test. That result does not establish
+            that the same interaction will behave equivalently with real callers or
+            real-world conditions.
           </p>
 
           <!-- ============ WHAT WE INVESTIGATED ============ -->
@@ -118,12 +132,28 @@
             tool result, not the external system's state.
           </p>
 
-          <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <!-- ============ IMPLEMENTATION IMPLICATION ============ -->
+          <h2>Implementation implication</h2>
 
           <p>
-            DaxMac traces what a product's testing surface actually establishes — and
-            where the developer still has to validate something separately.
+            Developers need to distinguish what a passing simulation establishes
+            about the assistant's behavior from what still requires validation
+            against real callers or real-world conditions.
+          </p>
+
+          <!-- ============ WHAT THIS DEMONSTRATES ============ -->
+          <h2>What This Demonstrates</h2>
+
+          <p>
+            A passing simulation validates the caller behavior and conditions
+            represented by the test. It does not automatically establish equivalent
+            behavior with real callers or real-world conditions.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a team treating a passing simulation as
+            evidence of real-caller readiness may discover untested caller behaviors
+            only after launch.
           </p>
 
         </div>
@@ -134,7 +164,7 @@
         </aside>
 
         <p class="audit-risk__note">
-          The actual JSON/code, company name, URLs, screenshots, and detailed test
+          The actual company name, URLs, screenshots, JSON/code, and detailed test
           configuration are kept out of the public case study. Those belong in the
           confidential review delivered to the client.
         </p>
@@ -197,4 +227,4 @@
 
   <script src="../script.js"></script>
 </body>
-</html>
+ </html>
