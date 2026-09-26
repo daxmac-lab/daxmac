@@ -61,6 +61,20 @@
             about the simulation's outcome?
           </p>
 
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            A simulation webhook can tell a system that a simulation run started or
+            ended and provide information about that run. That lifecycle event is
+            separate from determining whether the simulation actually satisfied its
+            success criteria.
+          </p>
+
           <!-- ============ WHAT WE INVESTIGATED ============ -->
           <h2>What we investigated</h2>
 
@@ -127,12 +141,18 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates what product events actually establish and whether
-            developers can safely use those events as evidence of the outcome they
-            intend to validate.
+            A simulation webhook provides lifecycle and run evidence. It does not
+            automatically establish that the simulation passed or that the intended
+            external outcome occurred.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a system can react to a completed
+            simulation run as though the underlying test succeeded even though its
+            success criteria or external outcome have not been verified.
           </p>
 
         </div>
