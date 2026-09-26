@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assistant and Squad Testing | DaxMac</title>
+  <meta name="description" content="How does testing an assistant versus a squad affect what a simulation actually validates about the implementation?">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
+  </script>
+</head>
+<body data-nav="audits.html" data-root="../">
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="article">
+      <div class="wrap">
+
+        <!-- ============ HEAD ============ -->
+        <header class="article__head">
+          <p class="eyebrow">Developer Implementation Review · Area 09</p>
+
+          <h1 class="article__title">
+            Assistant and Squad Testing
+          </h1>
+
+          <p class="article__meta">Voice AI Platform</p>
+        </header>
+
+        <div class="article__body">
+
+          <!-- ============ THE QUESTION ============ -->
+          <h2>The question</h2>
+
+          <p class="article__statement">
+            How does testing an assistant versus a squad affect what a simulation
+            actually validates about the implementation?
+          </p>
+
+          <!-- ============ WHAT WE INVESTIGATED ============ -->
+          <h2>What we investigated</h2>
+
+          <p>
+            We examined how simulations target individual assistants or squads, and
+            what additional implementation behavior is exercised when multiple
+            assistants operate together.
+          </p>
+
+          <!-- ============ WHAT WE FOUND ============ -->
+          <h2>What we found</h2>
+
+          <p>
+            An individual assistant simulation validates that assistant under the
+            tested scenario.
+          </p>
+
+          <p>
+            A squad simulation exercises the composed behavior of the configured
+            assistants, including the interactions and transitions between them.
+          </p>
+
+          <p>
+            Passing tests for individual assistants therefore do not automatically
+            establish that the squad implementation works correctly as a whole.
+          </p>
+
+          <!-- ============ WHY IT MATTERS ============ -->
+          <h2>Why it matters</h2>
+
+          <p>
+            A developer can test each assistant independently and see successful
+            results while leaving the handoff, routing, context transfer, or
+            downstream behavior between those assistants untested.
+          </p>
+
+          <p>
+            The composed implementation needs to be exercised as the target when
+            those interactions matter.
+          </p>
+
+          <!-- ============ EVIDENCE ============ -->
+          <h2>Evidence</h2>
+
+          <p>
+            A comparison between individual assistant testing and squad testing
+            shows that the squad introduces an additional implementation layer: the
+            behavior between assistants, rather than only the behavior of each
+            assistant in isolation.
+          </p>
+
+          <!-- ============ RESULT ============ -->
+          <h2>Result</h2>
+
+          <p class="article__statement">
+            Individual assistant tests provide evidence about individual behavior.
+            A squad simulation provides evidence about the configured end-to-end
+            interaction between the assistants under the tested conditions.
+          </p>
+
+          <!-- ============ IMPLEMENTATION IMPLICATION ============ -->
+          <h2>Implementation implication</h2>
+
+          <p>
+            Developers need to distinguish between validating each assistant
+            independently and validating the composed squad. A successful individual
+            assistant test does not by itself validate the handoffs, routing, or
+            context transfer required by the squad.
+          </p>
+
+          <!-- ============ WHAT THIS DEMONSTRATES ============ -->
+          <h2>What this demonstrates</h2>
+
+          <p>
+            DaxMac investigates whether testing a component in isolation actually
+            validates the composed implementation developers intend to deploy.
+          </p>
+
+        </div>
+
+        <!-- ============ CONFIDENTIALITY ============ -->
+        <aside class="audit-risk">
+          <span class="audit-risk__label">Confidentiality</span>
+        </aside>
+
+        <p class="audit-risk__note">
+          The actual company name, URLs, screenshots, JSON/code, and detailed test
+          configuration are kept out of the public case study. Those belong in the
+          confidential review delivered to the client.
+        </p>
+
+        <footer class="article__foot">
+          <a class="article__back" href="../audits.html">Back to Voice AI Platform Review</a>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation risk.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Explore">
+        <h2 class="footer__head">Explore</h2>
+        <ul>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Case Study</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Connect">
+        <h2 class="footer__head">Connect</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
