@@ -52,12 +52,26 @@
 
         <div class="article__body">
 
-          <!-- ============ INVESTIGATION QUESTION ============ -->
-          <h2>Investigation question</h2>
+          <!-- ============ THE QUESTION ============ -->
+          <h2>The question</h2>
 
           <p class="article__statement">
             How do success criteria determine what a simulation considers a
             successful outcome?
+          </p>
+
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            A simulation can pass because its configured success criteria were
+            satisfied. The important question is what those criteria actually
+            measure: an assistant's response, a tool call, a reported result, or
+            the underlying external outcome.
           </p>
 
           <!-- ============ WHAT WE INVESTIGATED ============ -->
@@ -107,12 +121,18 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates what a product's testing results actually establish,
-            including the boundary between a successful test result and the
-            real-world outcome the developer intends to validate.
+            A passing simulation establishes that the configured success criteria
+            were satisfied. It does not automatically establish that the complete
+            real-world outcome occurred.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a team can treat a passing evaluation as
+            proof of a successful workflow when the criterion only verified what
+            the assistant reported.
           </p>
 
         </div>
@@ -123,7 +143,7 @@
         </aside>
 
         <p class="audit-risk__note">
-          The actual JSON/code, company name, URLs, screenshots, and detailed test
+          The actual company name, URLs, screenshots, JSON/code, and detailed test
           configuration are kept out of the public case study. Those belong in the
           confidential review delivered to the client.
         </p>
@@ -186,4 +206,4 @@
 
   <script src="../script.js"></script>
 </body>
-</html>
+  </html>
