@@ -61,6 +61,20 @@
             simulation still leave unvalidated?
           </p>
 
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            A passing simulation establishes that the defined outcome was achieved
+            under the specific scenario, configuration, evaluation criteria, and
+            run conditions represented by the test. It does not by itself establish
+            production readiness.
+          </p>
+
           <!-- ============ WHAT WE INVESTIGATED ============ -->
           <h2>What we investigated</h2>
 
@@ -130,11 +144,17 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates whether a successful test result provides enough
-            evidence for the implementation decision a developer is about to make.
+            A simulation pass provides evidence of successful behavior within its
+            test boundary, not a standalone production-readiness signal.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a team can move toward production on the
+            strength of a successful simulation while important failure paths,
+            repeated-run behavior, or real-world conditions remain unvalidated.
           </p>
 
         </div>
