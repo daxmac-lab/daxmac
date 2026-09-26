@@ -2,4 +2,4 @@ User-agent: *
 
 Allow: /
 
-Sitemap: https://daxmac-lab.github.io/daxmac/sitemap.xml
+Sitemap: https://daxmac.cc/sitemap.xml
