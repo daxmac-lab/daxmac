@@ -61,6 +61,20 @@
             normal runtime configuration?
           </p>
 
+          <!-- ============ WHAT THE REVIEW IDENTIFIED ============ -->
+          <h2>What the Review Identified</h2>
+
+          <p>
+            One finding illustrates the implementation risk examined in this area.
+          </p>
+
+          <p>
+            A simulation runs against the variables and configuration supplied for
+            that test. A successful result therefore establishes behavior for those
+            inputs, not automatically for different runtime values, account states,
+            or data sources.
+          </p>
+
           <!-- ============ WHAT WE INVESTIGATED ============ -->
           <h2>What we investigated</h2>
 
@@ -127,12 +141,18 @@
           </p>
 
           <!-- ============ WHAT THIS DEMONSTRATES ============ -->
-          <h2>What this demonstrates</h2>
+          <h2>What This Demonstrates</h2>
 
           <p>
-            DaxMac investigates whether a successful test actually represents the
-            inputs and configuration a developer expects the product to encounter
-            at runtime.
+            A passing simulation is valid for the variables and configuration
+            represented by that test. It does not automatically cover different
+            values or data paths that may exist at runtime.
+          </p>
+
+          <p class="impl-practice">
+            <strong>In practice:</strong> a workflow can pass with test values while
+            a different runtime account state or data source produces behavior that
+            was never exercised.
           </p>
 
         </div>
@@ -206,4 +226,4 @@
 
   <script src="../script.js"></script>
 </body>
-</html>
+  </html>
