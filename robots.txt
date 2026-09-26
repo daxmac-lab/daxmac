@@ -1,5 +1,4 @@
 User-agent: *
-
 Allow: /
 
 Sitemap: https://daxmac.cc/sitemap.xml
