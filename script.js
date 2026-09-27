@@ -18,8 +18,8 @@
 
   var NAV_LINKS = [
     { label: 'Home',        href: 'index.html' },
-    { label: 'Audit',       href: 'audits.html' },
-    { label: 'Field Notes', href: 'field-notes.html' },
+    { label: 'Case Study',       href: 'audits.html' },
+    { label: 'Blog', href: 'field-notes.html' },
     { label: 'Contact',     href: 'mailto:info@daxmac.cc' }
   ];
 
