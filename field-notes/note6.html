@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The test passed. The integration still broke. | DaxMac</title>
+  <meta name="description" content="Every product validates something. Each validation covers less than the developer believes it does. A look at where implementation boundaries can quietly diverge from what a customer assumes the product establishes.">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
+  </script>
+</head>
+<body data-nav="field-notes.html" data-root="../">
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html" aria-label="DaxMac home">
+        <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="article">
+      <div class="wrap">
+
+        <!-- ============ HEAD ============ -->
+        <header class="article__head">
+          <p class="eyebrow">Blog · Post 6</p>
+
+          <h1 class="article__title">
+            The test passed. The integration still broke.
+          </h1>
+
+          <p class="article__meta">Published by DaxMac</p>
+        </header>
+
+        <div class="article__body">
+
+          <p>
+            A developer signs up for your product. They follow the quickstart.
+            They run the test. It passes. They ship.
+          </p>
+
+          <p>
+            Two weeks later, something breaks in production — and when you trace
+            it back, the test that passed was never testing the thing that failed.
+          </p>
+
+          <p>
+            This isn't a story about bad code or careless engineers. It's a pattern
+            that shows up across almost every developer product, and it's remarkably
+            consistent once you start looking for it.
+          </p>
+
+          <h2>The pattern</h2>
+
+          <p>
+            Every product validates something. A test suite, a sandbox, a status
+            code, a preview environment, a webhook — each one confirms that a
+            specific thing worked.
+          </p>
+
+          <p>
+            The problem is that each one covers less than the developer believes
+            it does.
+          </p>
+
+          <p>
+            Not because the product is misleading. Not because the docs are wrong.
+            Because validation is always narrower than the assumption it creates.
+          </p>
+
+          <p class="article__statement">
+            A product can only confirm what it controls. A developer assumes it
+            confirms what they depend on.
+          </p>
+
+          <p>Those are rarely the same set.</p>
+
+          <p>Here's what that looks like in practice.</p>
+
+          <h2>A messaging API: a status code that means two different things</h2>
+
+          <p>
+            A transactional messaging platform's sandbox mode returns a realistic
+            202 QUEUED response. Same shape as production. Same fields. The docs
+            recommend using it for CI smoke tests.
+          </p>
+
+          <p>
+            That's a sensible testing story. The sandbox skips execution entirely —
+            no message is sent, no provider is called, no balance is touched. You
+            can run thousands of tests without sending a single real message.
+          </p>
+
+          <p>
+            The catch is what happens when a developer wires it into CI and sees
+            green across the board.
+          </p>
+
+          <p>The test passes. The integration looks validated.</p>
+
+          <p>
+            But sandbox skips the layer that determines whether a message actually
+            gets delivered.
+          </p>
+
+          <p>
+            Delivery failures, carrier behavior, provider errors — none of it can
+            occur in sandbox, because execution never happens.
+          </p>
+
+          <p>
+            So a suite can pass for months, and the first real delivery failure is
+            the first signal the team gets.
+          </p>
+
+          <p>Not as a failing test.</p>
+
+          <p>As a customer saying the message never arrived.</p>
+
+          <h2>A CI platform: a migration that ran successfully</h2>
+
+          <p>
+            A CI platform lets teams migrate existing GitHub Actions workflows. The
+            blog frames it simply: migrated workflows "just work."
+          </p>
+
+          <p>And they do run.</p>
+
+          <p>
+            The migration command discovers workflows, maps runner labels, applies
+            compatibility fixes, and writes the new files. The build goes green.
+          </p>
+
+          <p>So far, so good.</p>
+
+          <p>
+            Then the CLI reference adds something important further down:
+            unsupported triggers like release and schedule get removed. Jobs using
+            unsupported features can be commented out entirely, with a note
+            explaining why.
+          </p>
+
+          <p>The migration succeeded.</p>
+
+          <p>
+            But the workflow may no longer behave like the workflow the customer
+            migrated.
+          </p>
+
+          <p>
+            A workflow can migrate cleanly and simply never fire again on the
+            trigger it used to fire on.
+          </p>
+
+          <p>Nothing errors.</p>
+
+          <p>
+            There's no failed run to investigate because the run that would have
+            happened never happens.
+          </p>
+
+          <p>
+            A release pipeline can therefore look successfully migrated while
+            quietly stopping part of the customer's deployment process.
+          </p>
+
+          <h2>A serverless code platform: a secret that stays private</h2>
+
+          <p>
+            A hosted code platform tells developers their environment variables are
+            private, even in public functions.
+          </p>
+
+          <p>That's true, and it's a genuine reassurance.</p>
+
+          <p>
+            The same docs also say that anyone who knows an HTTP or email trigger
+            URL can invoke the code behind it.
+          </p>
+
+          <p>Both things are true.</p>
+
+          <p>The secret stays hidden.</p>
+
+          <p>The operation stays callable.</p>
+
+          <p>
+            And until you reach the Permissions page — which puts it plainly as
+            "neither one implies the other" — it's easy to read the first statement
+            as covering the second.
+          </p>
+
+          <p>
+            A developer can build a public function with an HTTP trigger, keep an
+            API key in an environment variable, and reasonably feel the whole setup
+            is protected.
+          </p>
+
+          <p>
+            Then someone with the URL fires the trigger, the function reads the key,
+            and the external service does whatever the code allows.
+          </p>
+
+          <p>The key never leaked.</p>
+
+          <p>The operation was still accessible.</p>
+
+          <h2>A browser automation platform: an execution that succeeded</h2>
+
+          <p>
+            A browser automation platform runs workflows against real software —
+            Slack, GitHub, Stripe — and reports a clear status: execution.success.
+          </p>
+
+          <p>That status is accurate for what it describes.</p>
+
+          <p>
+            The defined browser steps completed and returned the workflow's output.
+          </p>
+
+          <p>But look at the dry_run option.</p>
+
+          <p>
+            It lets a workflow execute successfully while skipping the write in the
+            target system.
+          </p>
+
+          <p>
+            That feature exists because execution and business-state change are
+            different things. The platform knows this, and built for it.
+          </p>
+
+          <p>
+            Which means in production, execution.success confirms the agent finished.
+          </p>
+
+          <p>
+            It doesn't necessarily confirm that the order was placed, the ticket
+            was closed, or the record was updated.
+          </p>
+
+          <p>
+            And the retrieve endpoint returns an errors array even on successful
+            runs, with was_recovered: true.
+          </p>
+
+          <p>A run can succeed while errors happened during it.</p>
+
+          <p>For anything that writes to another system, that's an important distinction.</p>
+
+          <p>The agent finished.</p>
+
+          <p>The status is green.</p>
+
+          <p>The customer's actual state is still a separate question.</p>
+
+          <h2>Why this keeps happening</h2>
+
+          <p>Products test what they control.</p>
+
+          <p>Developers depend on what happens beyond that boundary.</p>
+
+          <p>
+            A sandbox tests the request contract. A developer depends on the
+            delivery outcome.
+          </p>
+
+          <p>
+            A migration tool tests that files were written. A developer depends on
+            the workflow continuing to run.
+          </p>
+
+          <p>
+            A secret store protects the value. A developer depends on the operation
+            being protected.
+          </p>
+
+          <p>
+            An automation platform tests that the steps ran. A developer depends on
+            the target system changing.
+          </p>
+
+          <p>None of these are necessarily bugs.</p>
+
+          <p>Every one of them can be reasonable product behavior.</p>
+
+          <p>
+            The problem appears when the boundary between what the product confirms
+            and what the customer needs to know isn't obvious during implementation.
+          </p>
+
+          <p>
+            That's where an implementation can look healthy until it reaches
+            production.
+          </p>
+
+          <h2>Why it's expensive</h2>
+
+          <p>The cost isn't always the production failure itself.</p>
+
+          <p>Sometimes the cost appears much earlier.</p>
+
+          <p>
+            A developer gets stuck during implementation and never opens a support
+            ticket. They close the tab, try another product, or decide the
+            integration isn't worth the effort.
+          </p>
+
+          <p>The company may never know exactly what happened.</p>
+
+          <p>
+            A different developer gets the integration working but encounters an
+            edge case in production. Now there's a support ticket, an engineering
+            investigation, and potentially a customer whose confidence in the
+            product has dropped.
+          </p>
+
+          <p>Both outcomes can originate from the same underlying issue:</p>
+
+          <p class="article__statement">
+            the customer's implementation path depended on something the product's
+            validation did not actually establish.
+          </p>
+
+          <p>One outcome is visible.</p>
+
+          <p>The other can disappear without a trace.</p>
+
+          <h2>What to look for</h2>
+
+          <p>You can't test everything.</p>
+
+          <p>The useful question is not simply:</p>
+
+          <blockquote>
+            <p>Does the test pass?</p>
+          </blockquote>
+
+          <p>It's:</p>
+
+          <blockquote>
+            <p>
+              What does this test actually prove, and what does a customer need it
+              to prove before they can safely move forward?
+            </p>
+          </blockquote>
+
+          <p>Those answers don't always match.</p>
+
+          <p>The same applies beyond tests.</p>
+
+          <p>
+            Look at the API response a developer treats as confirmation.
+          </p>
+
+          <p>
+            Look at the SDK method they assume completed the operation.
+          </p>
+
+          <p>
+            Look at the webhook they rely on to represent a real-world event.
+          </p>
+
+          <p>
+            Look at the sandbox they use before moving into production.
+          </p>
+
+          <p>
+            Look at the deployment or migration step they assume preserved
+            existing behavior.
+          </p>
+
+          <p>
+            Look at the authentication and permissions model they believe protects
+            the operation.
+          </p>
+
+          <p>
+            Those are implementation boundaries worth examining because that's
+            where customer expectations and actual product behavior can diverge.
+          </p>
+
+          <p>
+            And those gaps are much easier to deal with when they are found during
+            implementation review than after a customer discovers them in production.
+          </p>
+
+          <h2>The bigger question</h2>
+
+          <p>
+            For a developer-facing product, the important question isn't only
+            whether the product works.
+          </p>
+
+          <p>
+            It's whether a customer can successfully implement what they believe
+            the product enables them to implement.
+          </p>
+
+          <p>That's a different question.</p>
+
+          <p>
+            It crosses the API, SDK, authentication, configuration, deployment,
+            third-party dependencies, and the customer's own application logic.
+          </p>
+
+          <p>
+            And the further a customer gets from the controlled environment into a
+            real production integration, the more those boundaries matter.
+          </p>
+
+          <p>That's the part of the implementation path worth examining.</p>
+
+          <hr>
+
+          <p>
+            At DaxMac, I look at developer-facing products from the customer's
+            implementation side: how a developer would actually integrate,
+            configure, deploy, and operate the product, and where that path can
+            create support work, integration failures, or production issues.
+          </p>
+
+          <p>
+            The goal isn't to review whether a product has "good docs."
+          </p>
+
+          <p>
+            It's to identify the implementation gaps that are easy to miss from
+            inside the product.
+          </p>
+
+          <p>
+            I wrote a case study showing what this looks like in practice
+            <a href="../audits.html">here</a>.
+          </p>
+
+        </div>
+
+        <footer class="article__foot">
+          <a class="article__back" href="../field-notes.html">Back to Blog</a>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">Developer implementation risk.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Explore">
+        <h2 class="footer__head">Explore</h2>
+        <ul>
+          <li><a href="../field-notes.html">Blog</a></li>
+          <li><a href="../audits.html">Case Study</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Connect">
+        <h2 class="footer__head">Connect</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a></li>
+          <li><a href="mailto:info@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="wrap site-footer__base">
+      <p class="footer__social">
+        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+      </p>
+      <p class="footer__copy">© 2026 DaxMac</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+  </html>
