@@ -17,11 +17,12 @@
      ======================================================================== */
 
   var NAV_LINKS = [
-    { label: 'Home',        href: 'index.html' },
-    { label: 'Case Study',       href: 'audits.html' },
-    { label: 'Blog', href: 'field-notes.html' },
-    { label: 'Contact',     href: 'mailto:info@daxmac.cc' }
-  ];
+  { label: 'Home',       href: 'index.html' },
+  { label: 'Case Study', href: 'audits.html' },
+  { label: 'Blog',       href: 'field-notes.html' },
+  { label: 'About',      href: 'about.html' },
+  { label: 'Contact',    href: 'mailto:info@daxmac.cc' }
+];
 
   /* Returns the filename of the current page, e.g. "audits.html".
      Falls back to "index.html" when the path ends in "/". */
