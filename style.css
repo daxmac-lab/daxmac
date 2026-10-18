@@ -1344,3 +1344,21 @@ main > .section:first-of-type { border-top: 0; }
   .hero__copy > *,
   .hero__art { opacity: 1; transform: none; }
 }
+
+/* ==========================================================================
+   22. MOBILE OVERFLOW FIX
+   ========================================================================== */
+
+/* Prevent the page from stretching wider than the screen */
+body {
+  overflow-x: hidden;
+}
+
+/* Allow long buttons to wrap on mobile instead of breaking the layout */
+@media (max-width: 680px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+  }
+     }
