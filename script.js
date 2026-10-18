@@ -1,74 +1,21 @@
 /* ==========================================================================
    DaxMac — script.js
-   1. Builds the header navigation
-   2. Marks the active page
-   3. Mobile nav toggle
-   4. Header scroll state
-   5. Scroll reveals
+   1. Mobile nav toggle
+   2. Header scroll state
+   3. Scroll reveals
    ========================================================================== */
 
 (function () {
   'use strict';
 
   /* ========================================================================
-     1. NAVIGATION
-     Single source of truth for the header links.
-     To add a page later, add one line here — every page updates.
-     ======================================================================== */
-
-  var NAV_LINKS = [
-  { label: 'Home',       href: 'index.html' },
-  { label: 'Case Study', href: 'audits.html' },
-  { label: 'Blog',       href: 'field-notes.html' },
-  { label: 'About',      href: 'about.html' },
-  { label: 'Contact',    href: 'mailto:goodness@daxmac.cc' }
-];
-
-  /* Returns the filename of the current page, e.g. "audits.html".
-     Falls back to "index.html" when the path ends in "/". */
-  function currentPage() {
-    var path = window.location.pathname;
-    var file = path.substring(path.lastIndexOf('/') + 1);
-    return file === '' ? 'index.html' : file;
-  }
-
-  function buildNav() {
-    var nav = document.getElementById('site-nav');
-    if (!nav) return;
-
-    /* Root-relative prefix. Empty on root pages, "../" inside subfolders. */
-    var root = document.body.dataset.root || '';
-
-    /* Which link should be highlighted.
-       Normally the current filename; overridable via <body data-nav="...">. */
-    var here = document.body.dataset.nav || currentPage();
-
-    var fragment = document.createDocumentFragment();
-
-    NAV_LINKS.forEach(function (link) {
-      var a = document.createElement('a');
-      a.textContent = link.label;
-      a.href = root + link.href;           /* "../index.html" from a subfolder */
-
-      if (link.href === here) {            /* compare WITHOUT the prefix */
-        a.classList.add('is-active');
-        a.setAttribute('aria-current', 'page');
-      }
-
-      fragment.appendChild(a);
-    });
-
-    nav.appendChild(fragment);
-  }
-
-
-  /* ========================================================================
-     2. MOBILE NAV TOGGLE
+     1. MOBILE NAV TOGGLE
+     Targets the hardcoded navigation in the HTML.
      ======================================================================== */
 
   function initNavToggle() {
-    var toggle = document.getElementById('nav-toggle');
-    var nav    = document.getElementById('site-nav');
+    var toggle = document.querySelector('.nav-toggle');
+    var nav    = document.querySelector('.site-nav');
     if (!toggle || !nav) return;
 
     toggle.addEventListener('click', function () {
@@ -94,7 +41,7 @@
 
 
   /* ========================================================================
-     3. HEADER SCROLL STATE
+     2. HEADER SCROLL STATE
      ======================================================================== */
 
   function initHeaderScroll() {
@@ -120,7 +67,7 @@
 
 
   /* ========================================================================
-     4. SCROLL REVEALS
+     3. SCROLL REVEALS
      ======================================================================== */
 
   var REVEAL_TARGETS = [
@@ -135,7 +82,6 @@
     '.panel__title',
     '.panel__lede',
     '.panel__note',
-    '.custom__card',
     '.audience__list',
     '.about__more',
     '.work__more',
@@ -154,7 +100,8 @@
     '.about-body',
     '.about-founder',
     '.about-links',
-    '.impl-item'
+    '.impl-item',
+    '.impl-practice'
   ];
 
   function initReveals() {
@@ -183,11 +130,10 @@
 
 
   /* ========================================================================
-     5. INIT
+     4. INIT
      ======================================================================== */
 
   function init() {
-    buildNav();
     initNavToggle();
     initHeaderScroll();
     initReveals();
