@@ -21,7 +21,7 @@
   { label: 'Case Study', href: 'audits.html' },
   { label: 'Blog',       href: 'field-notes.html' },
   { label: 'About',      href: 'about.html' },
-  { label: 'Contact',    href: 'mailto:info@daxmac.cc' }
+  { label: 'Contact',    href: 'mailto:goodness@daxmac.cc' }
 ];
 
   /* Returns the filename of the current page, e.g. "audits.html".
