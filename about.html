@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About | DaxMac</title>
-  <meta name="description" content="DaxMac helps developer-facing companies identify implementation risks before they become customer problems. We examine the implementation path from the customer's side.">
+  <meta name="description" content="DaxMac independently examines how customers implement developer-facing products to identify gaps, assumptions, and potential risks.">
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css">
 
@@ -17,7 +17,7 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
-<body data-nav="about.html">
+<body>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
@@ -26,9 +26,17 @@
         <img class="brand__mark" src="assets/logo.png" alt="DaxMac">
       </a>
 
-      <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
+      <!-- Hardcoded nav (matches your homepage setup) -->
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#method">How It Works</a>
+        <a href="field-notes.html">Blog</a>
+        <a href="audits.html">Case Study</a>
+        <a href="about.html" class="is-active">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
         Menu
       </button>
     </div>
@@ -40,11 +48,9 @@
     <section class="page-intro">
       <div class="wrap">
         <p class="eyebrow">About DaxMac</p>
-
-        <h1 class="page-intro__title">DaxMac</h1>
-
+        <h1 class="page-intro__title">We examine how customers actually implement developer-facing products.</h1>
         <p class="page-intro__lede">
-          We examine how customers actually implement developer-facing products.
+          DaxMac helps developer-facing companies identify implementation gaps and potential risks by independently examining how customers work through their products.
         </p>
       </div>
     </section>
@@ -55,18 +61,15 @@
         <!-- ============ WHAT IS DAXMAC ============ -->
         <div class="article__body">
           <p>
-            DaxMac helps developer-facing companies identify implementation risks
-            before they become customer problems.
+            A developer builds an understanding of a product from the APIs, SDKs, examples, configuration, interfaces, and behavior they encounter. That understanding can be reasonable but incomplete or incorrect.
           </p>
 
           <p>
-            When a developer evaluates a product, they build an understanding of
-            how it works from the product, API, SDK, examples, configuration, and
-            behavior they encounter.
+            When an implementation assumption doesn't match what the product actually requires or does, the consequences can extend beyond the developer. They may appear as failed integrations, additional support requests, engineering escalations, implementation delays, or production issues.
           </p>
 
           <p>
-            DaxMac examines that implementation path from the customer's side.
+            DaxMac examines these implementation paths from the customer's perspective, providing evidence-backed findings that help teams understand where implementation can break down and prioritize concerns that warrant attention.
           </p>
         </div>
 
@@ -75,59 +78,56 @@
           <h2>What DaxMac Does</h2>
 
           <p>
-            DaxMac examines how a developer would actually implement a
-            developer-facing product.
+            DaxMac examines how a developer would implement a developer-facing product to achieve a specific result.
           </p>
 
           <p>
-            We take a real implementation path — such as integrating an API,
-            configuring an SDK, setting up a deployment, connecting a tool, or
-            testing a workflow — and work through it from the customer's side.
+            We take a defined implementation path—such as integrating an API, configuring an SDK, setting up a deployment, connecting a tool, or testing a workflow—and work through it from the customer's side.
           </p>
 
           <p>
-            We check what the product leads the developer to believe, what the
-            implementation actually requires, and where those two can diverge.
+            We examine what the product leads the developer to believe, what the implementation actually requires, and where those two can diverge.
           </p>
 
           <p>
-            Where needed, we validate the behavior directly through the API, SDK,
-            product, or deployment workflow rather than relying only on what the
-            product says should happen.
+            Where necessary, we validate behavior directly through the API, SDK, product, or deployment workflow rather than relying only on what the product says should happen.
           </p>
 
           <p>
-            The result is a practical view of customer implementation risk: where
-            a reasonable implementation decision can create problems after the
-            customer starts building.
+            The objective is to identify the assumptions, gaps, and potential risks that may otherwise be difficult for internal teams to recognize, then explain why the findings matter and what the team could consider addressing.
           </p>
         </div>
 
-        <!-- ============ WHAT DAXMAC SOLVES ============ -->
+        <!-- ============ WHAT DAXMAC HELPS ADDRESS ============ -->
         <div class="article__body">
-          <h2>What DaxMac Solves</h2>
+          <h2>What DaxMac Helps Companies Address</h2>
 
           <p>
-            When customers misunderstand an implementation, the problem usually
-            does not stay with the customer.
+            Implementation difficulties don't always indicate that a product is broken. A product can work as designed while customers struggle to understand how to implement it correctly.
           </p>
 
-          <p>It can show up as:</p>
+          <p>
+            For example, a developer may misunderstand a configuration requirement, overlook a resource dependency, misinterpret authentication behavior, or miss a step needed to move an integration into production.
+          </p>
+
+          <p>Depending on the product and implementation path, these gaps can contribute to:</p>
 
           <ul>
-            <li>support tickets</li>
-            <li>repeated implementation questions</li>
-            <li>failed integrations</li>
-            <li>engineering escalations</li>
-            <li>broken customer workflows</li>
-            <li>production issues</li>
-            <li>delayed adoption</li>
-            <li>customers struggling to get the product working as expected</li>
+            <li>Failed or incomplete integrations</li>
+            <li>Repeated implementation questions and additional support requests</li>
+            <li>Engineering escalations</li>
+            <li>Delayed implementations and customer onboarding</li>
+            <li>Broken customer workflows</li>
+            <li>Production-readiness issues</li>
+            <li>Difficulty adopting or using the product as intended</li>
           </ul>
 
           <p>
-            DaxMac helps identify the implementation paths that can create those
-            problems before they reach customers.
+            DaxMac helps companies investigate these implementation concerns, understand their potential consequences, and prioritize which findings deserve attention.
+          </p>
+
+          <p class="note">
+            These are potential consequences to investigate, not outcomes that every review will necessarily uncover.
           </p>
         </div>
 
@@ -136,39 +136,32 @@
           <h2>How We Investigate</h2>
 
           <p>
-            We don't start by asking whether a product's documentation is well
-            written.
+            We don't start by asking whether a product's documentation is well written. We start with the implementation itself.
           </p>
 
-          <p>We start with the implementation itself.</p>
-
-          <p>A review can involve:</p>
+          <p>A Developer Implementation Review can involve:</p>
 
           <ul>
             <li>
-              <strong>Following the customer path.</strong> We work through the
-              steps a developer would take to implement the product.
+              <strong>Following the customer path.</strong> We work through the steps a developer would take to implement the product and achieve the intended result.
             </li>
             <li>
-              <strong>Examining the product surfaces involved.</strong> We look at
-              the API, SDK, configuration, examples, workflows, product behavior,
-              and other surfaces the developer relies on.
+              <strong>Examining the relevant product surfaces.</strong> We investigate the APIs, SDKs, configuration, examples, workflows, product behavior, and other elements the developer relies on.
             </li>
             <li>
-              <strong>Validating behavior.</strong> Where the implementation
-              depends on actual system behavior, we test it directly through the
-              product, API, SDK, or deployment workflow.
+              <strong>Validating behavior.</strong> Where the implementation depends on actual system behavior, we can test it directly through the product, API, SDK, or deployment workflow.
             </li>
             <li>
-              <strong>Tracing the implementation boundary.</strong> We identify
-              what the product handles, what the customer is responsible for, and
-              where an incorrect assumption can enter the implementation.
+              <strong>Tracing implementation responsibilities.</strong> We identify what the product handles, what the customer must configure or manage, and where an incorrect assumption can enter the implementation.
             </li>
             <li>
-              <strong>Documenting the evidence.</strong> Findings are tied to the
-              implementation path and the evidence used to establish them.
+              <strong>Documenting the evidence.</strong> We connect findings to the relevant implementation steps and the evidence used to establish them.
             </li>
           </ul>
+
+          <p class="note">
+            The scope depends on the implementation path and the questions the review needs to answer. Live testing and other validation activities are included when appropriate to the agreed scope.
+          </p>
         </div>
 
         <!-- ============ WHAT A REVIEW PRODUCES ============ -->
@@ -176,32 +169,32 @@
           <h2>What a Developer Implementation Review Produces</h2>
 
           <p>
-            The client receives a documented view of the implementation path and
-            the risks identified within it.
+            The client receives a documented assessment of the implementation path examined and the concerns identified within it.
           </p>
 
-          <p>Depending on scope, this can include:</p>
+          <p>Depending on the agreed scope, deliverables can include:</p>
 
           <ul>
-            <li>the complete developer implementation path</li>
-            <li>relevant product and API/SDK sources</li>
-            <li>controlled validation</li>
-            <li>live API or SDK testing</li>
-            <li>screenshots</li>
-            <li>requests and responses</li>
-            <li>JSON or code</li>
-            <li>test configuration</li>
-            <li>findings and supporting evidence</li>
-            <li>implementation implications</li>
+            <li>A mapped developer implementation path</li>
+            <li>Relevant product, API, and SDK sources</li>
+            <li>Findings supported by implementation evidence</li>
+            <li>Controlled validation and live API or SDK testing</li>
+            <li>Screenshots and relevant requests and responses</li>
+            <li>JSON, code, and test configuration where applicable</li>
+            <li>An explanation of implementation assumptions and potential consequences</li>
+            <li>Prioritized findings and directions for addressing identified gaps</li>
           </ul>
 
           <p>
-            The purpose is not to produce another general review of the product.
+            Each finding connects the implementation step, the assumption a developer could reasonably make, the available evidence, and the potential consequences.
           </p>
 
           <p>
-            It is to show where the customer implementation can break down, why
-            it happens, and what that means for the company.
+            The result is more than a list of observations. It gives product and engineering teams an independent assessment they can use to evaluate implementation concerns and decide which ones warrant further investigation or remediation.
+          </p>
+
+          <p>
+            The purpose isn't to produce another general review of the product. It's to establish where the customer implementation can break down, why, and what that could mean for the company.
           </p>
         </div>
 
@@ -209,6 +202,7 @@
         <div class="article__body">
           <h2>Why I Built DaxMac</h2>
 
+          <!-- Founder block inline -->
           <div class="about-founder">
             <div class="about-founder__portrait">
               <img src="assets/goodness.png" alt="Goodness Nwajichukwu">
@@ -221,35 +215,29 @@
           </div>
 
           <p>
-            Developer-facing products are built by people who already understand
-            how they work.
+            Developer-facing products are built by people who understand how they work. Their customers approach them from the outside.
           </p>
-
-          <p>Their customers don't have that advantage.</p>
 
           <p>
-            A customer encounters the product from the outside. They make
-            decisions based on the interfaces, behavior, examples, configuration,
-            and information available to them.
+            Customers make implementation decisions based on the interfaces, behavior, examples, configuration, and information available to them. They don't automatically share the assumptions or internal knowledge of the people who built the product.
           </p>
 
-          <p>That difference is where implementation risk can appear.</p>
+          <p>That difference can create implementation gaps even when the product works as intended.</p>
 
           <p>
-            I built DaxMac to examine that gap from the customer's side — not as
-            an internal engineer, but as the developer who has to take the product
-            and make it work.
+            I built DaxMac to examine that gap independently, from the customer's side. The goal is to understand how developers interpret a product, what they need to do to implement it successfully, and where the available evidence reveals concerns worth addressing.
           </p>
 
-          <p>The goal is simple:</p>
+          <p>
+            The aim is to help companies identify and evaluate implementation risks before those risks create further customer or engineering problems.
+          </p>
 
           <p class="article__statement">
-            Find the implementation problems before customers have to find them
-            for you.
+            Find the implementation problems before customers have to find them for you.
           </p>
 
           <div class="about-links">
-            <a href="https://www.linkedin.com/in/nwajichukwu-goodness-audits" target="_blank" rel="noopener">Goodness on LinkedIn</a>
+            <a href="https://www.linkedin.com/in/nwajichukwu-goodness-audits" target="_blank" rel="noopener">Connect with Goodness</a>
             <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">DaxMac on LinkedIn</a>
             <a href="https://x.com/daxmachq" target="_blank" rel="noopener">DaxMac on X</a>
           </div>
@@ -260,24 +248,24 @@
           <h2>In Simple Terms</h2>
 
           <p>
-            You give us the product. We work through how a customer would
-            implement it. We find where the implementation can go wrong before
-            the customer does.
+            You give us a product and a defined implementation path. We examine how a customer would work through it, validate behavior where needed, and document the assumptions, gaps, and potential risks supported by the evidence.
+          </p>
+
+          <p>
+            You receive an independent assessment to help your team understand the implementation experience and prioritize what deserves attention.
           </p>
         </div>
 
         <!-- ============ CTA ============ -->
         <div class="article__body cta-block">
-          <h2>Ready to examine an implementation path?</h2>
+          <h2>Ready to Examine an Implementation Path?</h2>
 
           <p>
-            If your product is something developers have to integrate, configure,
-            deploy, connect, or operate, DaxMac can examine that implementation
-            path from the customer's side.
+            If your product is something developers must integrate, configure, deploy, connect, or operate, DaxMac can independently examine that implementation path from the customer's perspective.
           </p>
 
           <a class="btn btn--primary" href="mailto:goodness@daxmac.cc">
-            Discuss a Developer Implementation Review
+            Discuss a Developer Implementation Review →
           </a>
         </div>
 
@@ -308,17 +296,17 @@
         <h2 class="footer__head">Explore</h2>
         <ul>
           <li><a href="field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Studies</a></li>
+          <li><a href="audits.html">Case Study</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
         </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Connect">
         <h2 class="footer__head">Connect</h2>
         <ul>
-          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a></li>
-          <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
+          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a></li>
         </ul>
       </nav>
 
@@ -326,8 +314,8 @@
 
     <div class="wrap site-footer__base">
       <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+        <a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a>
       </p>
       <p class="footer__copy">© 2026 DaxMac</p>
     </div>
