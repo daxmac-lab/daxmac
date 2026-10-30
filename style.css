@@ -77,7 +77,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--surface);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -207,7 +207,7 @@ main > .section:first-of-type { border-top: 0; }
 }
 .btn--ghost:hover {
   border-color: var(--ink);
-  background: var(--bg);
+  background: var(--surface);
 }
 
 .btn--lg { padding: 16px 32px; font-size: 1rem; }
@@ -495,7 +495,7 @@ main > .section:first-of-type { border-top: 0; }
 .plan {
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background: var(--surface);
   border: 1px solid var(--line);
   padding: clamp(32px, 4vw, 48px);
   border-top: 4px solid var(--line-strong); /* Strong top frame */
@@ -647,7 +647,7 @@ main > .section:first-of-type { border-top: 0; }
   display: flex;
   flex-direction: column;
   padding: clamp(24px, 3vw, 36px);
-  background: var(--bg);
+  background: var(--surface);
   border: 1px solid var(--line);
   transition: border-color var(--dur-fast) var(--ease);
 }
@@ -734,7 +734,7 @@ main > .section:first-of-type { border-top: 0; }
 }
 
 .cta .btn--primary {
-  background: var(--bg);
+  background: var(--surface);
   color: var(--ink);
   border-color: var(--bg);
 }
@@ -770,7 +770,7 @@ main > .section:first-of-type { border-top: 0; }
   border-top: 1px solid var(--line);
   padding-top: clamp(56px, 7vw, 80px);
   padding-bottom: 36px;
-  background: var(--bg);
+  background: var(--surface);
 }
 
 .site-footer__inner {
@@ -1092,7 +1092,7 @@ main > .section:first-of-type { border-top: 0; }
   margin-bottom: 40px;
   padding: 24px;
   border: 1px solid var(--line);
-  background: var(--bg);
+  background: var(--surface);
 }
 
 .about-founder__portrait {
@@ -1297,7 +1297,7 @@ main > .section:first-of-type { border-top: 0; }
     gap: 0;
     margin-left: 0;
     padding: 12px var(--gutter) 24px;
-    background: var(--bg);
+    background: var(--surface);
     border-bottom: 1px solid var(--line);
     display: none;
   }
