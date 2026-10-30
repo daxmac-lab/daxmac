@@ -165,6 +165,49 @@ main > .section:first-of-type { border-top: 0; }
   margin-bottom: 16px;
 }
 
+/* ==========================================================================
+   SECTION BACKGROUND SYSTEM
+   ========================================================================== */
+
+.hero {
+  background: var(--bg);
+}
+
+.problem {
+  background: var(--surface);
+}
+
+.method {
+  background: var(--surface-soft);
+}
+
+.testing {
+  background: var(--bg);
+}
+
+.services {
+  background: var(--surface);
+}
+
+.deliver {
+  background: var(--surface-soft);
+}
+
+.work {
+  background: var(--surface);
+}
+
+.audience {
+  background: var(--bg);
+}
+
+.about {
+  background: var(--surface-soft);
+}
+
+.site-footer {
+  background: var(--bg);
+}
 
 /* ==========================================================================
    4. BUTTONS
