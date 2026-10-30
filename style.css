@@ -545,24 +545,23 @@ main > .section:first-of-type { border-top: 0; }
 .plan {
   display: flex;
   flex-direction: column;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: clamp(32px, 4vw, 48px);
-  border-top: 4px solid var(--line-strong); /* Strong top frame */
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line-strong);
+  padding: clamp(32px, 4vw, 48px) 0;
   transition: border-color var(--dur-fast) var(--ease);
 }
 
 .plan:hover {
-  border-color: var(--ink);
-  border-top-color: var(--ink);
+  border-top-color: var(--navy);
 }
 
 .plan--accent {
-  border-color: var(--accent-line);
-  border-top-color: var(--accent);
+  border-top: 3px solid var(--accent);
 }
+
 .plan--accent:hover {
-  border-color: var(--accent);
+  border-top-color: var(--accent-deep);
 }
 
 .plan__num {
@@ -571,8 +570,8 @@ main > .section:first-of-type { border-top: 0; }
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: var(--ink);
-  background: var(--line);
+  color: var(--navy);
+  background: var(--surface-soft);
   padding: 4px 8px;
   margin-bottom: 24px;
 }
@@ -593,7 +592,7 @@ main > .section:first-of-type { border-top: 0; }
   font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
   font-weight: 500;
   line-height: 1;
-  color: var(--ink);
+  color: var(--navy);
   letter-spacing: -0.04em;
   margin-bottom: 8px;
 }
