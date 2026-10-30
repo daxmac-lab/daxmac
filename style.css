@@ -191,10 +191,11 @@ main > .section:first-of-type { border-top: 0; }
 }
 
 .btn--primary {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  background: var(--navy-deep);
+  color: var(--panel-ink);
+  border-color: var(--navy-deep);
 }
+
 .btn--primary:hover {
   background: var(--accent-deep);
   border-color: var(--accent-deep);
@@ -202,12 +203,14 @@ main > .section:first-of-type { border-top: 0; }
 
 .btn--ghost {
   background: transparent;
-  color: var(--ink);
-  border-color: var(--line-strong);
+  color: var(--navy);
+  border-color: var(--navy);
 }
+
 .btn--ghost:hover {
-  border-color: var(--ink);
-  background: var(--surface);
+  background: var(--surface-soft);
+  border-color: var(--navy-deep);
+  color: var(--navy-deep);
 }
 
 .btn--lg { padding: 16px 32px; font-size: 1rem; }
