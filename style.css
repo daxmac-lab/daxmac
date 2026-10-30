@@ -77,7 +77,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--surface);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -252,11 +252,15 @@ main > .section:first-of-type { border-top: 0; }
   position: relative;
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--muted);
+  color: var(--navy);
   padding-block: 4px;
   transition: color var(--dur-fast) var(--ease);
 }
 
+.site-nav a:hover,
+.site-nav a.is-active {
+  color: var(--accent-deep);
+}
 .site-nav a:hover { color: var(--ink); }
 .site-nav a.is-active { color: var(--ink); }
 
@@ -265,9 +269,9 @@ main > .section:first-of-type { border-top: 0; }
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -24px; /* Align with header border */
+  bottom: -24px;
   height: 2px;
-  background: var(--ink);
+  background: var(--accent);
 }
 
 .nav-toggle {
