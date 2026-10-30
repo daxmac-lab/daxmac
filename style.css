@@ -752,12 +752,12 @@ main > .section:first-of-type { border-top: 0; }
    ========================================================================== */
 
 .audience__list {
-  font-family: var(--font-mono);
-  font-size: clamp(0.9375rem, 0.9rem + 0.3vw, 1.0625rem);
+  font-family: var(--font-sans);
+  font-size: 1rem;
   color: var(--ink);
   margin-block: 8px 32px;
   max-width: 70ch;
-  line-height: 2;
+  line-height: 1.85;
 }
 
 
@@ -937,14 +937,16 @@ main > .section:first-of-type { border-top: 0; }
 }
 
 .page-intro__title {
-  font-size: clamp(2.5rem, 1.8rem + 3vw, 3.75rem);
-  letter-spacing: -0.04em;
-  margin-bottom: 24px;
+  font-size: clamp(2rem, 1.6rem + 2vw, 3rem);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  max-width: 22ch;
+  margin-bottom: 20px;
 }
 
 .page-intro__lede {
-  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.35rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 0.96rem + 0.3vw, 1.125rem);
+  line-height: 1.7;
   color: var(--muted);
   max-width: 62ch;
 }
