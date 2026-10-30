@@ -11,24 +11,31 @@
    ========================================================================== */
 
 :root {
-  /* Colour System */
-  --bg:            #FAF9F6;
-  --surface:       #FFFFFF;
-  --surface-soft:  #F0F1F2;
+  /* Backgrounds */
+  --bg:            #F4F1E9;
+  --surface:       #FBFAF7;
+  --surface-soft:  #E8EDF0;
 
-  --ink:           #252A30;
-  --muted:         #626A73;
-  --line:          #E1E3E5;
-  --line-strong:   #C5C9CD;
+  /* Text */
+  --ink:           #202B36;
+  --muted:         #626D78;
 
-  --panel:         #20272E;
-  --panel-ink:     #F7F7F5;
-  --panel-muted:   #B8BEC5;
-  --panel-line:    #3B444D;
+  /* Borders */
+  --line:          #D9DDE0;
+  --line-strong:   #BBC4CB;
 
-  /* Bronze Accent */
+  /* Dark Panels */
+  --panel:         #172B3A;
+  --panel-ink:     #F7F5EF;
+  --panel-muted:   #B8C4CC;
+  --panel-line:    #354B5A;
+
+  /* Brand Colours */
+  --navy:          #203B50;
+  --navy-deep:     #172B3A;
+
   --accent:        #A97524;
-  --accent-deep:   #87591B;
+  --accent-deep:   #80551B;
   --accent-soft:   rgba(169, 117, 36, 0.08);
   --accent-line:   rgba(169, 117, 36, 0.35);
 
