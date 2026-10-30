@@ -1,563 +1,833 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DaxMac — Developer Implementation Risk</title>
-  <meta name="description" content="DaxMac helps developer-facing companies identify implementation assumptions that can create support work, engineering work, and production risk.">
+
+  <title>DaxMac — Independent Developer Implementation Reviews</title>
+
+  <meta
+    name="description"
+    content="DaxMac provides independent, evidence-backed Developer Implementation Reviews to help teams assess how developers interpret and implement their products."
+  >
+
   <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+
 <body>
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap site-header__inner">
+
       <a class="brand" href="index.html" aria-label="DaxMac home">
         <img class="brand__mark" src="assets/logo.png" alt="DaxMac">
       </a>
 
-      <nav class="site-nav" aria-label="Primary">
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#method">How It Works</a>
-        <a href="field-notes.html">Blog</a>
-        <a href="audits.html">Case Study</a>
+        <a href="field-notes.html">Field Notes</a>
         <a href="about.html">About</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
         Menu
       </button>
+
     </div>
   </header>
 
+
   <main>
 
-    <!-- ============ 1. HERO ============ -->
+    <!-- 1. HERO -->
     <section class="hero">
       <div class="wrap hero__inner">
+
         <div class="hero__copy">
-          <p class="eyebrow">Developer Implementation Risk</p>
+
+          <p class="eyebrow">
+            Independent Developer Implementation Reviews
+          </p>
 
           <h1 class="hero__title">
-            Find the implementation assumptions that create support and engineering work.
+            Understand what developers assume when implementing your product.
           </h1>
 
           <p class="hero__lede">
-            DaxMac helps developer-facing companies identify where their product
-            experience can lead developers to make the wrong implementation
-            assumptions — before those assumptions become expensive to fix.
+            DaxMac independently examines specific implementation paths
+            across APIs, SDKs, configuration, examples, and product behavior.
+            We identify the assumptions developers can reasonably form,
+            assess what the evidence establishes, and highlight concerns
+            worth addressing.
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#services">Start an Assessment</a>
-            <a class="btn btn--ghost" href="#method">See How It Works</a>
+            <a class="btn btn--primary" href="#contact">
+              Discuss an Implementation Review
+            </a>
+
+            <a class="btn btn--ghost" href="#method">
+              How It Works
+            </a>
           </div>
+
         </div>
 
         <div class="hero__art">
           <img src="assets/hero-illustration.png" alt="">
         </div>
+
       </div>
     </section>
 
-    <!-- ============ 2. THE PROBLEM ============ -->
+
+    <!-- 2. WHY IMPLEMENTATION ASSUMPTIONS MATTER -->
     <section class="section problem">
       <div class="wrap">
+
         <h2 class="section__title">
-          Your product experience teaches developers how to implement it.
+          Where Developer Assumptions Meet Implementation Reality
         </h2>
 
         <p class="lede">
-          Developers don't only follow instructions. They build a mental model of
-          what the product handles, what they need to configure, what happens
-          automatically, and what responsibility remains theirs.
+          Developers build an understanding of a product through its
+          documentation, APIs, SDKs, examples, configuration options,
+          and observed behavior. That understanding shapes what they
+          implement and which responsibilities they believe the product handles.
         </p>
 
         <ol class="steps">
+
           <li class="step">
             <span class="step__num">01</span>
-            <h3 class="step__title">What they see</h3>
+
+            <h3 class="step__title">What Developers See</h3>
+
             <p class="step__text">
-              The documentation, product presentation, examples, defaults, and
-              implementation flow they encounter.
+              Documentation, examples, interfaces, configuration options,
+              and product behavior presented during implementation.
             </p>
           </li>
+
           <li class="step">
             <span class="step__num">02</span>
-            <h3 class="step__title">What they assume</h3>
+
+            <h3 class="step__title">What They Assume</h3>
+
             <p class="step__text">
-              The responsibilities and behaviors they reasonably believe the
-              product handles for them.
+              Conclusions developers draw about how the product works,
+              what it handles automatically, and what remains their responsibility.
             </p>
           </li>
+
           <li class="step">
             <span class="step__num">03</span>
-            <h3 class="step__title">What they implement</h3>
+
+            <h3 class="step__title">What They Implement</h3>
+
             <p class="step__text">
-              The implementation decisions they make based on that mental model.
+              Technical decisions, configurations, and workflows built
+              based on their understanding of the product.
             </p>
           </li>
+
           <li class="step">
             <span class="step__num">04</span>
-            <h3 class="step__title">What actually happens</h3>
+
+            <h3 class="step__title">What the Evidence Establishes</h3>
+
             <p class="step__text">
-              The responsibilities, conditions, or behaviors that remain once the
-              implementation meets the real product.
+              Whether the implementation behaves as the developer could
+              reasonably expect, and which responsibilities or conditions
+              may have been overlooked.
             </p>
           </li>
+
         </ol>
 
         <p class="note">
-          When those don't line up, the resulting problem can surface as support
-          questions, engineering work, failed implementation, or production surprises.
+          Incomplete assumptions can contribute to support work, engineering
+          intervention, integration delays, or production concerns. DaxMac
+          investigates these possibilities rather than assuming they exist.
         </p>
+
       </div>
     </section>
 
-    <!-- ============ 3. METHOD ============ -->
-    <section class="section method" id="method">
+
+    <!-- 3. WHAT DAXMAC EXAMINES -->
+    <section class="section audience" id="examines">
       <div class="wrap">
+
         <h2 class="section__title">
-          We investigate where implementation assumptions form.
+          What DaxMac Examines
         </h2>
 
         <p class="lede">
-          DaxMac follows the implementation experience from the developer's
-          perspective, identifies the assumptions it can naturally create, and
-          evaluates where those assumptions can create downstream risk.
-        </p>
-
-        <ol class="steps">
-          <li class="step">
-            <span class="step__num">01</span>
-            <h3 class="step__title">Trace</h3>
-            <p class="step__text">
-              Follow the developer journey across the relevant onboarding and
-              implementation surfaces.
-            </p>
-          </li>
-          <li class="step">
-            <span class="step__num">02</span>
-            <h3 class="step__title">Identify</h3>
-            <p class="step__text">
-              Find the points where the experience can reasonably create an
-              assumption about product responsibility or behavior.
-            </p>
-          </li>
-          <li class="step">
-            <span class="step__num">03</span>
-            <h3 class="step__title">Assess</h3>
-            <p class="step__text">
-              Examine what the developer may implement as a result and where
-              responsibility may remain with the customer.
-            </p>
-          </li>
-          <li class="step">
-            <span class="step__num">04</span>
-            <h3 class="step__title">Evidence</h3>
-            <p class="step__text">
-              Document the assumption, the experience that creates it, and why it
-              can matter to implementation or production.
-            </p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ 4. LIVE TESTING ============ -->
-    <section class="section testing">
-      <div class="wrap">
-        <div class="panel">
-          <h2 class="panel__title">
-            Some assumptions need to be tested against the product.
-          </h2>
-
-          <p class="panel__lede">
-            Some implementation risks can be identified from the developer experience
-            alone. Others depend on how the product actually behaves when the relevant
-            implementation path is exercised.
-          </p>
-
-          <ol class="chain chain--vertical">
-            <li class="chain__item">Developer experience</li>
-            <li class="chain__item">Developer expectation</li>
-            <li class="chain__item">Implementation attempt</li>
-            <li class="chain__item">Observed behavior</li>
-            <li class="chain__item">Validated finding</li>
-          </ol>
-
-          <p class="panel__note">
-            Live testing is included only where observed product behavior is necessary
-            to establish the finding. It is not general QA.
-          </p>
-        </div>
-      </div>
-    </section>
-
-<!-- ============ 5. SERVICES ============ -->
-<section class="section services" id="services">
-  <div class="wrap">
-    <h2 class="section__title">Developer Implementation Reviews</h2>
-
-    <p class="lede">
-      Your product can work exactly as designed and still leave developers
-      with the wrong assumptions about how to implement it.
-    </p>
-
-    <p class="lede">
-      DaxMac investigates the implementation experience around your APIs,
-      SDKs, infrastructure, and developer-facing products to identify gaps
-      between what developers are led to expect and what successful
-      implementation actually requires.
-    </p>
-
-    <p class="lede">
-      The result is an evidence-based assessment of implementation risks,
-      their potential business consequences, and where changes may be needed.
-    </p>
-
-    <div class="plans">
-
-      <!-- 01. Developer Implementation Review -->
-      <article class="plan">
-        <span class="plan__num">01</span>
-        <h3 class="plan__name">Developer Implementation Review</h3>
-        <p class="plan__price">
-          $750 <span class="plan__timeline">· 5 business days</span>
-        </p>
-
-        <p class="plan__tagline">
-          An independent review of a defined customer implementation journey,
-          using publicly available product material.
-        </p>
-
-        <p class="plan__section-title">What's included</p>
-        <ul class="plan__list">
-          <li>Review of up to 10 relevant implementation surfaces.</li>
-          <li>Examination of setup, authentication, configuration, integration, and migration instructions where relevant.</li>
-          <li>Identification of assumptions developers may form during implementation.</li>
-          <li>Evidence supporting each finding.</li>
-          <li>Analysis of potential implementation and business consequences.</li>
-          <li>Prioritised findings and remediation direction.</li>
-          <li>A written implementation-risk report.</li>
-        </ul>
-
-        <p class="plan__exclude">
-          <strong>Not included:</strong> Live API/SDK execution or runtime validation.
-        </p>
-
-        <p class="plan__note">
-          <strong>Best for:</strong> Teams introducing new capabilities,
-          changing implementation workflows, or seeking an independent
-          assessment of their existing developer experience.
-        </p>
-
-        <a class="btn btn--ghost" href="mailto:goodness@daxmac.cc">
-          Request an Implementation Review →
-        </a>
-      </article>
-
-      <!-- 02. Developer Implementation Review + Live Testing -->
-      <article class="plan plan--accent">
-        <span class="plan__num">02</span>
-        <h3 class="plan__name">Developer Implementation Review + Live Testing</h3>
-        <p class="plan__price">
-          $1,250 <span class="plan__timeline">· 7–10 business days</span>
-        </p>
-
-        <p class="plan__tagline">
-          Some implementation risks cannot be confirmed by reading
-          documentation alone.
-        </p>
-
-        <p class="plan__tagline">
-          This engagement combines the implementation review with targeted
-          testing against the actual product to investigate whether observed
-          behavior matches the expectations created by the implementation
-          experience.
-        </p>
-
-        <p class="plan__section-title">Everything in the Implementation Review, plus</p>
-        <ul class="plan__list">
-          <li>Targeted API/SDK testing within an agreed scope.</li>
-          <li>Validation of selected implementation assumptions against actual product behavior.</li>
-          <li>Evidence from observed responses and tested scenarios.</li>
-          <li>Identification of discrepancies between documented expectations and observed behavior.</li>
-          <li>Clear distinction between confirmed findings and risks that remain unverified.</li>
-        </ul>
-
-        <p class="plan__exclude">
-          Testing scenarios are agreed upon before the engagement begins.
-        </p>
-
-        <p class="plan__note">
-          <strong>Best for:</strong> Teams that need stronger evidence about
-          how a particular integration, configuration, or migration workflow
-          behaves in practice.
-        </p>
-
-        <a class="btn btn--primary" href="mailto:goodness@daxmac.cc">
-          Request a Live-Testing Review →
-        </a>
-      </article>
-
-      <!-- 03. Custom Implementation Assessment -->
-      <article class="plan">
-        <span class="plan__num">03</span>
-        <h3 class="plan__name">Custom Implementation Assessment</h3>
-        <p class="plan__price">
-          Starting at $2,500 <span class="plan__timeline">· Timeline agreed before work begins</span>
-        </p>
-
-        <p class="plan__tagline">
-          For products with multiple implementation paths, complex migrations,
-          or broader integration requirements.
-        </p>
-
-        <p class="plan__tagline">
-          The assessment is scoped around the specific product areas,
-          workflows, and implementation risks that matter to your team.
-        </p>
-
-        <p class="plan__section-title">Possible scope</p>
-        <ul class="plan__list">
-          <li>Multiple related implementation journeys.</li>
-          <li>Complex API or SDK integrations.</li>
-          <li>Migration and configuration workflows.</li>
-          <li>Cross-product implementation dependencies.</li>
-          <li>Additional live testing where agreed.</li>
-          <li>A prioritised assessment tailored to the engagement.</li>
-        </ul>
-
-        <p class="plan__exclude">
-          The final scope, deliverables, price, and delivery timeline are
-          agreed before work begins.
-        </p>
-
-        <p class="plan__note">
-          <strong>Best for:</strong> Teams that need a broader investigation
-          than the standard review packages provide.
-        </p>
-
-        <a class="btn btn--ghost" href="mailto:goodness@daxmac.cc">
-          Discuss a Custom Assessment →
-        </a>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ 6. WHAT EVERY ENGAGEMENT DELIVERS ============ -->
-<section class="section deliver">
-  <div class="wrap">
-    <h2 class="section__title">What Every Engagement Delivers</h2>
-
-    <p class="lede">
-  Each assessment produces a written report containing:
-</p>
-
-<ul class="plan__list">
-  <li>Evidence supporting each finding</li>
-  <li>The developer assumption and how it forms</li>
-  <li>Potential implementation and business consequences</li>
-  <li>Prioritised findings and remediation direction</li>
-</ul>
-
-<p class="lede">
-  Live-testing engagements also include evidence from the agreed testing scenarios.
-</p>
-    <p class="note">
-      Findings are based on available evidence. DaxMac does not guarantee that every production issue will be identified or prevented.
-    </p>
-  </div>
-  </section>
-    
-
-    <!-- ============ 7. SELECTED ANALYSIS ============ -->
-    <section class="section work">
-      <div class="wrap">
-        <h2 class="section__title">Selected Blog Post</h2>
-
-        <p class="lede">
-          Examples of implementation assumptions examined across developer-facing products.
+          DaxMac examines defined implementation paths developers must work
+          through to integrate, configure, deploy, or operate a product.
+          Depending on the product and agreed scope, an investigation may cover:
         </p>
 
         <div class="notes-grid">
-          <a class="note-card" href="field-notes.html">
-            <h3 class="note-card__title">AI Infrastructure</h3>
-            <p class="note-card__text">
-              Examining where apparent integration portability can lead developers
-              to assume behavioral equivalence across providers or implementations.
-            </p>
-            <span class="note-card__link">Read Blog Post</span>
-          </a>
 
-          <a class="note-card" href="field-notes.html">
-            <h3 class="note-card__title">Digital Wallet Infrastructure</h3>
+          <article class="note-card">
+            <h3 class="note-card__title">API and SDK Integration</h3>
+
             <p class="note-card__text">
-              Examining where a developer-facing product experience can make
-              responsibility boundaries appear different from what implementation
-              actually requires.
+              Initialization, authentication, configuration, and the
+              responsibilities involved in integrating a product.
             </p>
-            <span class="note-card__link">Read Blog Post</span>
-          </a>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Authentication and Permissions</h3>
+
+            <p class="note-card__text">
+              Credentials, access controls, permissions, and authorization
+              responsibilities during implementation.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Configuration and Dependencies</h3>
+
+            <p class="note-card__text">
+              Required settings, dependencies, and the distinction between
+              what the product handles automatically and what customers manage.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Resource and State Management</h3>
+
+            <p class="note-card__text">
+              How developers create, update, manage, and maintain resources
+              throughout their lifecycle.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Testing and Validation</h3>
+
+            <p class="note-card__text">
+              What tests, simulations, examples, and validation processes
+              actually establish, and what remains unverified.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Deployment and Production Workflows</h3>
+
+            <p class="note-card__text">
+              The transition from initial setup and testing to deployment,
+              production use, and ongoing operation.
+            </p>
+          </article>
+
         </div>
+
+        <p class="note">
+          Each review focuses on an agreed implementation path, not the
+          entire product. Investigation may draw on documentation, examples,
+          APIs, SDKs, product interfaces, and observed behavior depending
+          on the scope.
+        </p>
+
       </div>
     </section>
 
-    <!-- ============ 8. WHO IT'S FOR ============ -->
-    <section class="section audience">
+
+    <!-- 4. HOW THE REVIEW WORKS -->
+    <section class="section method" id="method">
       <div class="wrap">
+
         <h2 class="section__title">
-          Built for developer-facing products.
+          How the Review Works
         </h2>
 
-        <p class="audience__list">
-          APIs · DevTools · AI Infrastructure · Fintech · Authentication ·
-          Observability · Infrastructure SaaS
+        <p class="lede">
+          Every Developer Implementation Review begins with a defined
+          implementation path and the outcome a developer is trying to achieve.
+          We follow that path from the developer's perspective, examining
+          the product surfaces, decisions, and responsibilities involved.
         </p>
 
-        <p class="lede">
-          If developers are responsible for getting your product working, their
-          implementation experience is part of the product.
+        <ol class="steps">
+
+          <li class="step">
+            <span class="step__num">01</span>
+
+            <h3 class="step__title">Trace the Implementation Path</h3>
+
+            <p class="step__text">
+              Establish the specific outcome being examined and follow
+              the steps a developer would take to achieve it.
+            </p>
+          </li>
+
+          <li class="step">
+            <span class="step__num">02</span>
+
+            <h3 class="step__title">Identify Developer Assumptions</h3>
+
+            <p class="step__text">
+              Examine what a developer could reasonably understand from
+              the available documentation, examples, interfaces,
+              configuration, and product behavior.
+            </p>
+          </li>
+
+          <li class="step">
+            <span class="step__num">03</span>
+
+            <h3 class="step__title">Assess Responsibilities and Implications</h3>
+
+            <p class="step__text">
+              Compare those assumptions with what the implementation
+              actually requires or establishes. Where differences exist,
+              assess their potential consequences.
+            </p>
+          </li>
+
+          <li class="step">
+            <span class="step__num">04</span>
+
+            <h3 class="step__title">Document Evidence and Findings</h3>
+
+            <p class="step__text">
+              Connect each supported finding to the relevant implementation
+              steps and evidence, explaining the assumption, responsibility
+              boundary, potential consequence, and priority for further attention.
+            </p>
+          </li>
+
+        </ol>
+
+        <p class="note">
+          Where necessary and included in the agreed scope, we validate
+          behavior through controlled API, SDK, or product testing.
+          The investigation does not begin with a predetermined problem.
+          Findings are determined by what the implementation path and
+          available evidence establish.
         </p>
+
       </div>
     </section>
 
-    <!-- ============ 9. WHEN IMPLEMENTATION RISK DESERVES ATTENTION ============ -->
-<section class="section audience">
-  <div class="wrap">
-    <h2 class="section__title">
-      When implementation risk deserves attention.
-    </h2>
 
-    <p class="lede">
-      An independent implementation review can be useful when:
-    </p>
-
-    <ul class="plan__list">
-      <li>You're launching a new API, SDK, or developer-facing capability.</li>
-      <li>You've changed authentication, configuration, deployment, or migration workflows.</li>
-      <li>Customers repeatedly need engineering help to complete integrations.</li>
-      <li>You want to investigate implementation assumptions before they create larger problems.</li>
-    </ul>
-
-    <p class="note">
-      DaxMac examines where the implementation experience can lead developers
-      to misunderstand what your product handles and what they still need to
-      manage themselves.
-    </p>
-  </div>
-</section>
-
-    <!-- ============ 9. WHAT WE LOOK FOR ============ -->
-    <section class="section about">
+    <!-- 5. SERVICES AND PRICING -->
+    <section class="section services" id="services">
       <div class="wrap">
-        <h2 class="section__title">Not Just a Documentation Review</h2>
+
+        <h2 class="section__title">
+          Developer Implementation Review Services
+        </h2>
 
         <p class="lede">
-          A technically accurate implementation guide can still leave developers with the wrong assumptions about what a product handles.
-
+          Every engagement examines a defined implementation path from
+          the developer's perspective. Scope, evidence requirements,
+          and validation activities depend on the product and questions
+          being investigated.
         </p>
 
-        <p class="lede">
-          DaxMac investigates the gap between what the implementation experience leads developers to expect and what they must actually manage themselves.
+        <div class="plans">
+
+          <!-- STANDARD REVIEW -->
+          <article class="plan">
+
+            <span class="plan__num">01</span>
+
+            <h3 class="plan__name">
+              Developer Implementation Review
+            </h3>
+
+            <p class="plan__price">
+              $750–$1,000
+            </p>
+
+            <p class="plan__tagline">
+              An independent, evidence-backed examination of a specific
+              developer implementation path.
+            </p>
+
+            <p class="plan__tagline">
+              The review examines relevant documentation, APIs, SDKs,
+              examples, configuration, and product interfaces to identify
+              the assumptions developers could reasonably form and assess
+              what the available evidence establishes.
+            </p>
+
+            <p class="plan__section-title">What's included</p>
+
+            <ul class="plan__list">
+              <li>Examination of an agreed implementation path.</li>
+              <li>Review of relevant product and technical sources.</li>
+              <li>Identification of developer assumptions and responsibility boundaries.</li>
+              <li>Evidence-backed findings and potential consequences.</li>
+              <li>Prioritization of concerns worth addressing.</li>
+              <li>Directions for further investigation or remediation.</li>
+            </ul>
+
+            <p class="plan__note">
+              <strong>Best for:</strong> Teams seeking an independent
+              assessment of how developers understand and implement
+              a specific part of their product.
+            </p>
+
+            <a
+              class="btn btn--ghost"
+              href="mailto:goodness@daxmac.cc?subject=Developer%20Implementation%20Review"
+            >
+              Discuss a Standard Review →
+            </a>
+
+          </article>
+
+
+          <!-- REVIEW WITH LIVE TESTING -->
+          <article class="plan plan--accent">
+
+            <span class="plan__num">02</span>
+
+            <h3 class="plan__name">
+              Developer Implementation Review + Live Testing
+            </h3>
+
+            <p class="plan__price">
+              $1,250–$1,750
+            </p>
+
+            <p class="plan__tagline">
+              An evidence-backed implementation review that includes
+              controlled testing of actual product, API, or SDK behavior.
+            </p>
+
+            <p class="plan__tagline">
+              In addition to examining the documented implementation path,
+              we execute agreed test scenarios where direct observation
+              is necessary to validate assumptions or establish how
+              the product behaves.
+            </p>
+
+            <p class="plan__section-title">
+              Everything in the standard review, plus
+            </p>
+
+            <ul class="plan__list">
+              <li>Agreed live API, SDK, or product testing.</li>
+              <li>Relevant test configurations and code.</li>
+              <li>Observed requests, responses, and behavior.</li>
+              <li>Screenshots and supporting test evidence.</li>
+              <li>Assessment of documented expectations against observed behavior.</li>
+            </ul>
+
+            <p class="plan__note">
+              <strong>Best for:</strong> Teams whose implementation
+              questions require direct validation beyond publicly
+              available documentation and examples.
+            </p>
+
+            <a
+              class="btn btn--primary"
+              href="mailto:goodness@daxmac.cc?subject=Implementation%20Review%20with%20Live%20Testing"
+            >
+              Discuss a Live-Testing Review →
+            </a>
+
+          </article>
+
+
+          <!-- CUSTOM ASSESSMENT -->
+          <article class="plan">
+
+            <span class="plan__num">03</span>
+
+            <h3 class="plan__name">
+              Custom Implementation Assessment
+            </h3>
+
+            <p class="plan__price">
+              Starting at $2,500
+            </p>
+
+            <p class="plan__tagline">
+              For broader or more complex investigations involving
+              multiple implementation paths, interconnected product
+              workflows, or additional validation requirements.
+            </p>
+
+            <p class="plan__section-title">Possible scope</p>
+
+            <ul class="plan__list">
+              <li>Multiple related implementation journeys.</li>
+              <li>Complex API or SDK integrations.</li>
+              <li>Migration and configuration workflows.</li>
+              <li>Cross-product implementation dependencies.</li>
+              <li>Additional live testing where agreed.</li>
+              <li>A prioritized assessment tailored to the engagement.</li>
+            </ul>
+
+            <p class="plan__exclude">
+              Scope, testing activities, deliverables, and timeline
+              are agreed before the engagement begins.
+            </p>
+
+            <p class="plan__note">
+              <strong>Best for:</strong> Teams requiring a more extensive
+              independent examination than the standard review packages provide.
+            </p>
+
+            <a
+              class="btn btn--ghost"
+              href="mailto:goodness@daxmac.cc?subject=Custom%20Implementation%20Assessment"
+            >
+              Discuss a Custom Assessment →
+            </a>
+
+          </article>
+
+        </div>
+
+        <p class="note">
+          Final pricing depends on the implementation path, its complexity,
+          the evidence required, and whether live validation is necessary.
+          Scope and price are agreed before work begins.
         </p>
 
-        <p class="about__more">
-          <a href="about.html">About DaxMac →</a>
-        </p>
       </div>
     </section>
 
-<!-- ============ 10. FINAL CTA ============ -->
-<section class="section cta" id="contact">
-  <div class="wrap">
-    <h2 class="cta__title">
-      Find the implementation risks your team may be missing.
-    </h2>
 
-    <p class="lede">
-      Get an independent assessment of where your product's implementation
-      experience can create incorrect assumptions, implementation friction,
-      or additional engineering work.
-    </p>
+    <!-- 6. WHAT BUYERS RECEIVE -->
+    <section class="section deliver" id="deliverables">
+      <div class="wrap">
 
-    <p class="lede">
-      Tell me which product or implementation workflow you want investigated.
-      I'll confirm whether it fits a standard review or requires a custom
-      scope before any engagement begins.
-    </p>
+        <h2 class="section__title">
+          What You Receive
+        </h2>
 
-    <a class="btn btn--primary btn--lg" href="mailto:goodness@daxmac.cc">
-      Discuss an Implementation Review
-    </a>
+        <p class="lede">
+          Every Developer Implementation Review produces a structured,
+          evidence-backed assessment of the agreed implementation path.
+          The deliverable is designed to help product and engineering
+          teams understand what developers could reasonably assume,
+          what the implementation actually requires or establishes,
+          and which concerns deserve further attention.
+        </p>
 
-    <p class="cta__email">
-      <a href="mailto:info@daxmac.cc">goodness@daxmac.cc</a>
-    </p>
-  </div>
-      </section>
+        <ol class="steps">
 
-  <!-- ============ 11. FOOTER ============ -->
+          <li class="step">
+            <span class="step__num">01</span>
+
+            <h3 class="step__title">Implementation Path Overview</h3>
+
+            <p class="step__text">
+              A documented view of the implementation path examined,
+              including the intended outcome, relevant steps, product
+              surfaces, sources examined, and agreed review boundaries.
+            </p>
+          </li>
+
+          <li class="step">
+            <span class="step__num">02</span>
+
+            <h3 class="step__title">Evidence-Backed Findings</h3>
+
+            <p class="step__text">
+              Each finding connects a developer assumption to its supporting
+              evidence, explains what that evidence establishes, and
+              identifies the responsibility or condition that may be overlooked.
+            </p>
+          </li>
+
+          <li class="step">
+            <span class="step__num">03</span>
+
+            <h3 class="step__title">Prioritized Assessment</h3>
+
+            <p class="step__text">
+              Findings are organized by their significance within the
+              examined implementation path, highlighting concerns that
+              may warrant attention or further investigation.
+            </p>
+          </li>
+
+          <li class="step">
+            <span class="step__num">04</span>
+
+            <h3 class="step__title">Supporting Evidence</h3>
+
+            <p class="step__text">
+              Relevant source references and supporting material allow
+              teams to trace how each finding was reached. Live-testing
+              engagements also include agreed test scenarios, configurations,
+              code, requests, responses, and observed behavior where relevant.
+            </p>
+          </li>
+
+          <li class="step">
+            <span class="step__num">05</span>
+
+            <h3 class="step__title">Review Summary</h3>
+
+            <p class="step__text">
+              A concise summary of the investigation, its key findings,
+              and the areas that may deserve further attention from
+              product and engineering teams.
+            </p>
+          </li>
+
+        </ol>
+
+        <p class="note">
+          The purpose is to give your team an independent view of how
+          developers may interpret and implement a defined part of your
+          product, supported by evidence rather than assumptions about
+          what might be going wrong.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- 7. WHO DAXMAC WORKS WITH -->
+    <section class="section audience" id="who-we-work-with">
+      <div class="wrap">
+
+        <h2 class="section__title">
+          Who DaxMac Works With
+        </h2>
+
+        <p class="lede">
+          DaxMac works with companies building developer-facing products
+          where customers must integrate, configure, deploy, or manage
+          technical workflows.
+        </p>
+
+        <div class="notes-grid">
+
+          <article class="note-card">
+            <h3 class="note-card__title">API-first Platforms</h3>
+
+            <p class="note-card__text">
+              Products that customers integrate into their own
+              applications and systems.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Developer Tools and Infrastructure</h3>
+
+            <p class="note-card__text">
+              Platforms that abstract infrastructure responsibilities
+              but still require customer configuration and operational decisions.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">AI and Agent Platforms</h3>
+
+            <p class="note-card__text">
+              Products involving model integrations, tools, agents,
+              workflows, and execution environments.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Authentication and Security</h3>
+
+            <p class="note-card__text">
+              Products where credentials, permissions, access controls,
+              and authorization responsibilities shape implementation.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Fintech Infrastructure</h3>
+
+            <p class="note-card__text">
+              APIs and platforms supporting payments, financial operations,
+              and connected services.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <h3 class="note-card__title">Data and Communication Infrastructure</h3>
+
+            <p class="note-card__text">
+              Products involving data pipelines, event processing,
+              messaging, and service integrations.
+            </p>
+          </article>
+
+        </div>
+
+        <h3 class="section__title">
+          When an Independent Review Is Worth Considering
+        </h3>
+
+        <ul class="plan__list">
+          <li>You're introducing new APIs, SDKs, integrations, or implementation workflows.</li>
+          <li>You've changed authentication, configuration, deployment, or migration requirements.</li>
+          <li>You want an independent assessment of how developers interpret a specific implementation path.</li>
+          <li>You need to examine what product behavior or validation actually establishes.</li>
+          <li>You want evidence to support product and engineering decisions.</li>
+        </ul>
+
+        <p class="note">
+          DaxMac examines a defined implementation path rather than
+          assuming every product area needs a review.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- 8. FINAL CTA -->
+    <section class="section cta" id="contact">
+      <div class="wrap">
+
+        <h2 class="cta__title">
+          Have an Implementation Path Worth Examining?
+        </h2>
+
+        <p class="lede">
+          If your product requires developers to integrate, configure,
+          deploy, or manage technical workflows, DaxMac can independently
+          examine a defined implementation path.
+        </p>
+
+        <p class="lede">
+          Share the product area or workflow you want examined. We'll assess
+          whether it fits the review process, establish the appropriate
+          scope, and agree on pricing and timelines before work begins.
+        </p>
+
+        <a
+          class="btn btn--primary btn--lg"
+          href="mailto:goodness@daxmac.cc?subject=Discuss%20an%20Implementation%20Review"
+        >
+          Discuss an Implementation Review
+        </a>
+
+        <p class="cta__email">
+          <a href="mailto:goodness@daxmac.cc">
+            goodness@daxmac.cc
+          </a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="wrap site-footer__inner">
 
       <div class="footer__brand">
         <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
-        <p class="footer__tagline">Developer implementation risk.</p>
+
+        <p class="footer__tagline">
+          Independent Developer Implementation Reviews.
+        </p>
       </div>
 
       <nav class="footer__col" aria-label="Services">
-  <h2 class="footer__head">Services</h2>
-  <ul>
-    <li><a href="#services">Developer Implementation Review</a></li>
-    <li><a href="#services">Developer Implementation Review + Live Testing</a></li>
-    <li><a href="#services">Custom Implementation Assessment</a></li>
-  </ul>
+        <h2 class="footer__head">Services</h2>
+
+        <ul>
+          <li>
+            <a href="#services">Developer Implementation Review</a>
+          </li>
+
+          <li>
+            <a href="#services">Review + Live Testing</a>
+          </li>
+
+          <li>
+            <a href="#services">Custom Implementation Assessment</a>
+          </li>
+        </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Explore">
         <h2 class="footer__head">Explore</h2>
+
         <ul>
-          <li><a href="field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Study</a></li>
+          <li><a href="field-notes.html">Field Notes</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Connect">
         <h2 class="footer__head">Connect</h2>
+
         <ul>
-          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/daxmac/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://x.com/daxmachq"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              X
+            </a>
+          </li>
         </ul>
       </nav>
 
     </div>
 
     <div class="wrap site-footer__base">
-      <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a>
+      <p class="footer__copy">
+        © 2026 DaxMac
       </p>
-      <p class="footer__copy">© 2026 DaxMac</p>
     </div>
-    </footer>
+
+  </footer>
+
 
   <script src="script.js"></script>
+
 </body>
 </html>
