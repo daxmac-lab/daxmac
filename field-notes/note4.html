@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog Post #4 | DaxMac</title>
-  <meta name="description" content="AI has accelerated software delivery, but it hasn't solved developer onboarding. Engineering velocity and production success are two different metrics.">
+
+  <title>AI Can Generate Integration Code. It Cannot Establish the Implementation Contract | DaxMac</title>
+
+  <meta name="description" content="AI-assisted development can accelerate integration code generation, but developers still need to understand product behavior, implementation requirements, and the responsibilities that remain theirs.">
+
   <link rel="icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
 
@@ -17,198 +20,220 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+
 <body data-nav="field-notes.html" data-root="../">
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap site-header__inner">
+
       <a class="brand" href="../index.html" aria-label="DaxMac home">
         <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav">
         Menu
       </button>
+
     </div>
   </header>
 
   <main>
 
-    <!-- ============ ARTICLE ============ -->
+    <!-- ARTICLE -->
     <article class="article">
       <div class="wrap">
 
         <header class="article__head">
-          <p class="eyebrow">Blog Post #4</p>
+
+          <p class="eyebrow">Field Notes · Implementation Analysis</p>
 
           <h1 class="article__title">
-            AI Increased Engineering Velocity. It Didn't Fix Developer Onboarding.
+            AI Can Generate Integration Code. It Cannot Establish the Implementation Contract.
           </h1>
 
-          <p class="article__meta">Published by DaxMac</p>
+          <p class="article__meta">An independent DaxMac observation</p>
+
         </header>
 
         <div class="article__body">
 
-          <p>Every week I see another announcement.</p>
-
-          <blockquote>
-            <p>"AI increased our engineering throughput."</p>
-            <p>"We now ship features 6x faster."</p>
-            <p>"Developers can generate code in seconds."</p>
-          </blockquote>
-
-          <p>Those improvements are real.</p>
-
-          <p>But there's a question almost nobody asks.</p>
-
-          <p>How many developers actually reach production successfully?</p>
-
           <p>
-            Because shipping code faster and helping developers succeed are two
-            completely different problems.
+            AI-assisted development has made it easier to produce code from
+            examples, descriptions, and existing project context. A developer
+            can ask an AI tool to generate an API integration, configure an
+            SDK, or connect two services without writing every part manually.
           </p>
 
-          <h2>The Metric Everyone Celebrates</h2>
+          <p>
+            But generating an implementation is not the same as establishing
+            that the implementation reflects how a product is actually
+            expected to work.
+          </p>
 
-          <p>Engineering leaders love velocity.</p>
+          <p>
+            The distinction matters because integration code depends on more
+            than syntax. It depends on product behavior, configuration
+            requirements, authentication rules, resource lifecycles, and the
+            responsibilities assigned to the application.
+          </p>
+
+          <h2>Code generation does not establish product behavior</h2>
+
+          <p>
+            Consider a developer integrating an external API with the help
+            of an AI coding assistant.
+          </p>
+
+          <p>
+            The developer provides an API reference and asks the assistant
+            to produce a working integration. The generated code may contain
+            the expected request structure, handle a response, and fit into
+            the application's existing codebase.
+          </p>
+
+          <p>
+            That is useful progress. But the generated implementation still
+            depends on assumptions about the product.
+          </p>
+
+          <p>
+            For example:
+          </p>
 
           <ul>
-            <li>Commits.</li>
-            <li>Pull requests.</li>
-            <li>Features shipped.</li>
-            <li>Lines of code.</li>
-            <li>Cycle time.</li>
+            <li>Does the API require additional permissions for this operation?</li>
+            <li>Is the configuration valid across development and production environments?</li>
+            <li>Does the product automatically manage retries, or must the application implement them?</li>
+            <li>Does a successful response establish that the requested operation is complete?</li>
+            <li>Which parts of the workflow remain the application's responsibility?</li>
           </ul>
 
-          <p>Now AI has accelerated every one of those metrics.</p>
-
-          <p>Teams are producing more software than ever before.</p>
-
           <p>
-            Yet many companies never measure what happens after a developer reads
-            the documentation.
+            These questions concern the implementation contract, not simply
+            whether the generated code is syntactically valid.
           </p>
 
-          <p>Did they finish onboarding?</p>
-
-          <p>Did they integrate successfully?</p>
-
-          <p>Did they deploy to production?</p>
-
-          <p>Or did they quietly disappear?</p>
-
-          <h2>The Silent Failures Nobody Sees</h2>
-
-          <p>If documentation contains a broken link, you'll notice.</p>
-
-          <p>A 404 is obvious.</p>
-
-          <p>A missing page gets reported quickly.</p>
-
-          <p>But onboarding assumptions are different.</p>
-
-          <p>They don't crash immediately.</p>
-
-          <p>They create false confidence.</p>
+          <h2>Where an incorrect assumption can enter</h2>
 
           <p>
-            A developer believes they're following the correct path because every
-            step appears to work.
+            AI-generated code is influenced by the instructions, examples,
+            documentation, and context provided to the model. If that
+            information does not establish an important implementation
+            requirement, the generated code may rely on an assumption
+            instead.
           </p>
 
-          <p>Days or weeks later, production behaves differently.</p>
+          <p>
+            A developer might accept the result because its structure looks
+            reasonable and the first request succeeds.
+          </p>
 
-          <p>The support ticket arrives.</p>
+          <p>
+            But a successful request does not necessarily establish that
+            the integration handles every relevant condition. The application
+            may still need to manage token renewal, resource state, error
+            recovery, environment-specific configuration, or other behavior
+            that the initial example does not demonstrate.
+          </p>
 
-          <p>The engineering team starts debugging.</p>
+          <p>
+            The concern is not that AI-generated code is inherently
+            unreliable. It is that generated code can make an incomplete
+            understanding of the product easier to turn into an implementation.
+          </p>
 
-          <p>Product teams investigate.</p>
+          <h2>The responsibility does not disappear</h2>
 
-          <p>Everyone assumes the bug is in the code.</p>
+          <p>
+            AI can reduce the effort required to write an integration.
+            It does not automatically transfer responsibility for the
+            integration's behavior to the AI tool or the underlying platform.
+          </p>
 
-          <p>Sometimes it isn't.</p>
-
-          <p>Sometimes the problem started in the documentation.</p>
-
-          <h2>The Cost of Hidden Assumptions</h2>
-
-          <p>A single undocumented assumption can create:</p>
+          <p>
+            Developers still need to establish:
+          </p>
 
           <ul>
-            <li>Developers abandoning onboarding</li>
-            <li>Higher support volume</li>
-            <li>Longer debugging sessions</li>
-            <li>Delayed production launches</li>
-            <li>Lost trust in the platform</li>
-            <li>Slower enterprise evaluations</li>
+            <li>Which requirements the product handles automatically.</li>
+            <li>Which decisions must be made by the application.</li>
+            <li>Which assumptions need to be verified against actual product behavior.</li>
+            <li>How the integration should behave outside the initial successful example.</li>
           </ul>
 
-          <p>The expensive part isn't fixing the documentation.</p>
-
           <p>
-            The expensive part is finding out that documentation caused the problem
-            in the first place.
+            Without that understanding, an implementation can appear complete
+            while important responsibilities remain unaccounted for.
           </p>
 
-          <h2>AI Didn't Create This Problem</h2>
-
-          <p>AI simply made it easier to ship software faster.</p>
-
-          <p>But faster software doesn't automatically create better onboarding.</p>
-
-          <p>If anything, the gap becomes larger.</p>
-
-          <p>Documentation changes more frequently.</p>
-
-          <p>Products evolve faster.</p>
-
-          <p>New features appear every week.</p>
+          <h2>Why the implementation path still matters</h2>
 
           <p>
-            If onboarding isn't reviewed with the same urgency as the product itself,
-            hidden assumptions accumulate.
+            A product's documentation and examples help developers form an
+            understanding of how its capabilities fit together. AI tools
+            may use those same materials as context when generating code.
           </p>
-
-          <h2>What Should Teams Measure Instead?</h2>
-
-          <p>Instead of asking:</p>
-
-          <p>"How much faster are we shipping?"</p>
-
-          <p>Ask:</p>
-
-          <ul>
-            <li>How many developers reach production without contacting support?</li>
-            <li>Where do developers abandon onboarding?</li>
-            <li>Which documentation assumptions create the most confusion?</li>
-            <li>How long does it take a new developer to reach a successful production deployment?</li>
-          </ul>
-
-          <p>Those metrics tell you whether your platform is actually usable.</p>
-
-          <h2>The Real Competitive Advantage</h2>
-
-          <p>The companies that win won't simply write code faster.</p>
 
           <p>
-            They'll remove the invisible friction between "Hello World" and production.
+            If an implementation requirement is explicit, it is easier for
+            developers to identify and account for it. If an important
+            relationship or responsibility is left implicit, developers
+            may have to infer it themselves.
           </p>
 
-          <p>Because developers don't choose platforms based only on features.</p>
+          <p>
+            That inference can happen whether the developer writes the code
+            manually or asks an AI assistant to generate it.
+          </p>
 
-          <p>They choose platforms they can trust.</p>
+          <p>
+            This is why reviewing the implementation path remains important.
+            The relevant question is not only whether a developer can
+            generate code that makes an initial request, but whether the
+            product's instructions and behavior establish the assumptions
+            needed to build the wider integration correctly.
+          </p>
 
-          <p>And trust isn't built by AI-generated code.</p>
+          <h2>Faster implementation is not the same as clearer implementation</h2>
 
-          <p>It's built by onboarding that doesn't leave developers guessing.</p>
+          <p>
+            AI-assisted development changes how quickly developers can
+            produce and modify code. It does not, by itself, clarify
+            product boundaries or determine which responsibilities
+            belong to the developer.
+          </p>
+
+          <p>
+            Those questions still depend on the product's implementation
+            requirements and the evidence available to the developer.
+          </p>
+
+          <p>
+            The important distinction is between generating an implementation
+            and understanding what that implementation must do.
+          </p>
+
+          <p>
+            As AI becomes a more common part of software development,
+            the quality of the underlying implementation path remains
+            important. Developers need more than code that looks plausible.
+            They need a clear understanding of the product they are
+            integrating and the responsibilities they are taking on.
+          </p>
 
         </div>
 
         <footer class="article__foot">
-          <a class="article__back" href="../field-notes.html">Back to Field Notes</a>
+          <a class="article__back" href="../field-notes.html">
+            Back to Field Notes
+          </a>
         </footer>
 
       </div>
@@ -216,30 +241,33 @@
 
   </main>
 
-  <!-- ============ 11. FOOTER ============ -->
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="wrap site-footer__inner">
 
       <div class="footer__brand">
-        <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
-        <p class="footer__tagline">Developer implementation risk.</p>
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">
+          Independent assessment of developer implementation paths.
+        </p>
       </div>
 
       <nav class="footer__col" aria-label="Services">
-  <h2 class="footer__head">Services</h2>
-  <ul>
-    <li><a href="#services">Developer Implementation Review</a></li>
-    <li><a href="#services">Developer Implementation Review + Live Testing</a></li>
-    <li><a href="#services">Custom Implementation Assessment</a></li>
-  </ul>
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Explore">
         <h2 class="footer__head">Explore</h2>
         <ul>
-          <li><a href="../field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Study</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Independent Research</a></li>
+          <li><a href="../about.html">About</a></li>
           <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
         </ul>
       </nav>
@@ -247,22 +275,40 @@
       <nav class="footer__col" aria-label="Connect">
         <h2 class="footer__head">Connect</h2>
         <ul>
-          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li>
+            <a href="https://www.linkedin.com/company/daxmac/"
+               target="_blank"
+               rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://x.com/daxmachq"
+               target="_blank"
+               rel="noopener noreferrer">X</a>
+          </li>
         </ul>
       </nav>
 
     </div>
 
     <div class="wrap site-footer__base">
+
       <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.linkedin.com/company/daxmac/"
+           target="_blank"
+           rel="noopener noreferrer">LinkedIn</a>
+        ·
+        <a href="https://x.com/daxmachq"
+           target="_blank"
+           rel="noopener noreferrer">X</a>
       </p>
+
       <p class="footer__copy">© 2026 DaxMac</p>
+
     </div>
+
   </footer>
 
   <script src="../script.js"></script>
+
 </body>
 </html>
