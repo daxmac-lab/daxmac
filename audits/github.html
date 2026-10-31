@@ -15,6 +15,15 @@
 
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3G8JYVSPW5');
+  </script>
+
   <style>
     :root {
       --bg: #F4F1E9;
@@ -65,6 +74,8 @@
     /* Navigation */
 
     .site-header {
+      position: relative;
+      z-index: 50;
       border-bottom: 1px solid var(--line);
       background: var(--bg);
     }
@@ -106,6 +117,17 @@
     .nav-links a:hover,
     .footer-links a:hover {
       color: var(--accent-deep);
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink);
+      padding: 9px 13px;
+      font-family: var(--sans);
+      font-size: 12px;
+      cursor: pointer;
     }
 
     /* Research heading */
@@ -498,12 +520,34 @@
         min-height: 68px;
       }
 
-      .nav-links {
-        gap: 14px;
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
       }
 
-      .nav-links a {
-        font-size: 11px;
+      .site-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 12px 18px 20px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 13px;
       }
 
       .research-hero {
@@ -550,26 +594,27 @@
 
   <header class="site-header">
     <div class="container nav">
+
       <a href="../index.html" class="brand">Dax<span>Mac</span></a>
 
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="audits.html">Independent Research</a>
-      <a href="field-notes.html">Field Notes</a>
-      <a href="about.html">About</a>
-      <a href="index.html#contact">Contact</a>
+      <nav class="nav-links site-nav" id="site-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../audits.html">Independent Research</a>
+        <a href="../field-notes.html">Field Notes</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
       </nav>
 
       <button
-      class="nav-toggle"
-      id="nav-toggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-      aria-controls="site-nav">
-      Menu
+        class="nav-toggle"
+        id="nav-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-nav">
+        Menu
       </button>
-      
+
     </div>
   </header>
 
@@ -602,7 +647,6 @@
             width="48"
             height="48"
           >
-        </div>
 
           <div>
             <span class="company-label">Company examined</span>
@@ -656,10 +700,11 @@
           <h2>The assumption identified</h2>
 
           <blockquote>
-            Installing a GitHub App and approving its requested
-            permissions establishes the authorization needed for the
-            application to perform its intended operations, including
-            actions on behalf of the installing user.
+            Installing a GitHub App and granting its requested
+            repository permissions establishes the authorization
+            context needed for the integration's intended GitHub
+            operations, including operations the developer expects
+            to perform on behalf of an individual user.
           </blockquote>
 
           <p>
@@ -1015,7 +1060,7 @@
       <div class="footer-links">
         <a href="../index.html">Home</a>
         <a href="../about.html">About</a>
-        <a href="../audits.html">Research</a>
+        <a href="../audits.html">Independent Research</a>
         <a href="mailto:goodness@daxmac.cc">Contact</a>
       </div>
 
@@ -1024,20 +1069,6 @@
   </footer>
 
   <script src="../script.js"></script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-    gtag('config', 'G-3G8JYVSPW5');
-  </script>
 
 </body>
 </html>
