@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog Post #5 | DaxMac</title>
-  <meta name="description" content="A support ticket can look like a support problem. Sometimes it is. But sometimes the ticket is only where the problem becomes visible.">
+
+  <title>When Support Tickets Reveal a Deeper Implementation Problem | DaxMac</title>
+
+  <meta name="description" content="What Hatch's integration challenges reveal about the relationship between customer implementation paths, product architecture, support work, and engineering capacity.">
+
   <link rel="icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
 
@@ -17,282 +20,308 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+
 <body data-nav="field-notes.html" data-root="../">
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap site-header__inner">
+
       <a class="brand" href="../index.html" aria-label="DaxMac home">
         <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav">
         Menu
       </button>
+
     </div>
   </header>
 
   <main>
 
-    <!-- ============ ARTICLE ============ -->
+    <!-- ARTICLE -->
     <article class="article">
       <div class="wrap">
 
         <header class="article__head">
-          <p class="eyebrow">Blog Post#5</p>
+
+          <p class="eyebrow">Field Notes · Implementation Analysis</p>
 
           <h1 class="article__title">
-            When a Support Ticket Becomes an Engineering Problem
+            When Support Tickets Reveal a Deeper Implementation Problem
           </h1>
 
-          <p class="article__meta">Published by DaxMac</p>
+          <p class="article__meta">An independent DaxMac observation</p>
+
         </header>
 
         <figure class="article__figure">
-        <img src="note5.png" alt="">
+          <img src="note5.png" alt="">
         </figure>
-        
+
         <div class="article__body">
 
-          <p>A support ticket can look like a support problem.</p>
-
-          <p>Sometimes it is.</p>
-
-          <p>But sometimes the ticket is only where the problem becomes visible.</p>
-
-          <p>Hatch is a good example.</p>
-
           <p>
-            When Adam Jacox joined Hatch as VP of Engineering, integrations had
-            become a significant bottleneck.
+            A support ticket tells a company that something has gone wrong
+            or that a customer needs help. It does not necessarily explain
+            why the customer reached that point.
           </p>
 
           <p>
-            Hatch's platform depended on data from customers' CRMs and lead-source
-            systems. The team had been building bespoke integrations for individual
-            customers.
+            Sometimes the issue is isolated. A customer needs clarification,
+            an operation fails, or an unexpected condition requires
+            troubleshooting.
           </p>
 
           <p>
-            One customer would need specific data from a CRM, so Hatch would build
-            an integration for them.
+            But recurring support problems can also expose something deeper:
+            the way customers are expected to implement and use the product
+            may be creating work that the company has not accounted for.
           </p>
 
           <p>
-            Another customer would need something slightly different, so the team
-            would build more custom code.
+            Hatch provides an interesting example of how that problem can
+            extend beyond individual customer issues.
           </p>
 
-          <p>Over time, maintaining those integrations became difficult.</p>
+          <h2>When integrations become an engineering bottleneck</h2>
 
           <p>
-            The integrations were unreliable. Customers were reporting problems.
-            And Hatch's engineering team was spending 30–40% of its engineering
-            capacity on integrations.
-          </p>
-
-          <p>That number is easy to focus on.</p>
-
-          <p>But there is something more interesting underneath it.</p>
-
-          <p>The customer wasn't buying an integration.</p>
-
-          <p>They were trying to use Hatch.</p>
-
-          <p>
-            The integration was simply part of the implementation path required to
-            make the product work for them.
+            In a customer story published by Prismatic, Adam Jacox,
+            Hatch's VP of Engineering, described how integrations had
+            become a significant bottleneck for the company.
           </p>
 
           <p>
-            When that path became difficult or unreliable, the consequences didn't
-            stay inside the integration itself.
-          </p>
-
-          <p>Customers experienced problems.</p>
-
-          <p>Support had to deal with those problems.</p>
-
-          <p>Engineering had to maintain and troubleshoot the underlying systems.</p>
-
-          <p>
-            And engineering capacity that could have gone toward the core product
-            was being consumed by integration work.
-          </p>
-
-          <p>Hatch eventually changed how it handled integrations.</p>
-
-          <p>
-            Instead of continuing to build one-off integrations for individual
-            customers, the team moved toward productized, configurable integrations
-            that customers could activate themselves.
-          </p>
-
-          <p>The result was not just an engineering change.</p>
-
-          <p>
-            Hatch reported fewer support and bug tickets, faster customer onboarding,
-            and increased customer satisfaction.
-          </p>
-
-          <p>That distinction matters.</p>
-
-          <p>The visible problem was integration work.</p>
-
-          <p>
-            The larger problem was what customers had to go through to successfully
-            implement the product.
-          </p>
-
-          <h2>The support ticket is often not the starting point</h2>
-
-          <p>
-            This is something I pay attention to when looking at developer-facing
-            products.
-          </p>
-
-          <p>A customer doesn't usually wake up and decide to create a support ticket.</p>
-
-          <p>They are trying to accomplish something.</p>
-
-          <p>They are trying to authenticate.</p>
-
-          <p>They are trying to connect an API.</p>
-
-          <p>They are trying to configure an SDK.</p>
-
-          <p>They are trying to deploy something.</p>
-
-          <p>They are trying to move data from one system to another.</p>
-
-          <p>
-            They make a decision based on what the product appears to require.
+            Hatch's platform depended on data from customers' CRMs and
+            lead-source systems. To meet individual customer requirements,
+            the engineering team had been building bespoke integrations.
           </p>
 
           <p>
-            Then they discover that the actual implementation is different from
-            what they expected.
-          </p>
-
-          <p>That's where friction starts.</p>
-
-          <p>Sometimes the customer figures it out themselves.</p>
-
-          <p>Sometimes they search through documentation.</p>
-
-          <p>Sometimes they ask support.</p>
-
-          <p>Sometimes the problem eventually reaches an engineer.</p>
-
-          <p>The ticket is visible.</p>
-
-          <p>
-            The implementation problem that created the ticket is often less visible.
-          </p>
-
-          <h2>This is where implementation risk shows up</h2>
-
-          <p>
-            A developer-facing product can look straightforward from the outside
-            while still creating difficult implementation paths for customers.
+            One customer needed particular information from a CRM.
+            The team built an integration to support that requirement.
+            Another customer needed different data from the same system,
+            so the team developed additional custom code.
           </p>
 
           <p>
-            The product may expose an API, SDK, integration, deployment workflow,
-            or configuration system that appears to work one way.
+            Over time, maintaining these separate integrations became
+            increasingly difficult.
           </p>
 
           <p>
-            But the customer may still have to handle something they didn't expect.
+            The integrations were unreliable, customers reported frequent
+            problems, and Hatch was spending approximately 30–40% of its
+            engineering capacity on integration work.
           </p>
 
           <p>
-            Or make a decision they didn't realize they were responsible for.
+            That figure illustrates the scale of the operational burden.
+            But the more important question is what was creating it.
+          </p>
+
+          <h2>The customer needed an outcome, not another custom integration</h2>
+
+          <p>
+            Customers were not approaching Hatch because they wanted
+            bespoke integration code.
           </p>
 
           <p>
-            Or discover a limitation only after they have already built around
-            an assumption.
+            They wanted to use the platform with data from the systems
+            they already depended on.
           </p>
 
           <p>
-            Those details matter because they affect what happens after the customer
-            starts implementing.
-          </p>
-
-          <p>A small mismatch can become:</p>
-
-          <ul>
-            <li>another support conversation</li>
-            <li>a failed integration</li>
-            <li>engineering investigation</li>
-            <li>implementation delays</li>
-            <li>repeated questions from different customers</li>
-            <li>production problems</li>
-          </ul>
-
-          <p>None of those necessarily start as an obvious product problem.</p>
-
-          <p>They can start with the customer's implementation path.</p>
-
-          <h2>That's what I look for at DaxMac</h2>
-
-          <p>
-            At DaxMac, I investigate how customers actually implement
-            developer-facing products.
+            Integrations were part of the implementation path required
+            to make that possible.
           </p>
 
           <p>
-            I look beyond whether a product has good-looking documentation or a
-            clean API reference.
+            Under Hatch's previous approach, meeting each customer's
+            requirements meant additional engineering work. As the
+            number of customer-specific integrations grew, so did the
+            maintenance burden.
           </p>
 
-          <p>The question is:</p>
+          <p>
+            The issue was therefore larger than an individual support
+            conversation. The integration model itself was contributing
+            to recurring operational work.
+          </p>
+
+          <h2>Changing the implementation model</h2>
+
+          <p>
+            Hatch eventually moved away from building every integration
+            as a separate customer-specific project.
+          </p>
+
+          <p>
+            The team adopted Prismatic's embedded integration platform
+            and began building productized, configurable integrations
+            that could be reused across customers.
+          </p>
+
+          <p>
+            Hatch also embedded an integration marketplace into its
+            application, allowing customers to configure and activate
+            integrations themselves.
+          </p>
+
+          <p>
+            This changed more than the technology used to build
+            integrations. It changed how customers could access and
+            manage those integrations.
+          </p>
+
+          <p>
+            Instead of waiting for Hatch's engineering team to handle
+            each setup, customers could configure their integrations
+            during onboarding.
+          </p>
+
+          <p>
+            Prismatic's published case study reports that Hatch
+            subsequently experienced 25% fewer support tickets,
+            significantly faster onboarding, and increased customer
+            satisfaction.
+          </p>
+
+          <h2>What the example actually demonstrates</h2>
+
+          <p>
+            Hatch's experience does not establish that documentation
+            caused its earlier integration problems. The published
+            account points to a different issue: a customer-specific
+            integration model that became difficult to maintain
+            as the business scaled.
+          </p>
+
+          <p>
+            That distinction matters.
+          </p>
+
+          <p>
+            Not every recurring support issue originates in
+            documentation or developer misunderstanding. Some arise
+            from product architecture, integration design, operational
+            requirements, or the way responsibilities are distributed
+            between a product and its customers.
+          </p>
+
+          <p>
+            The support ticket is where a customer problem becomes
+            visible to the company. Understanding the underlying
+            implementation path helps explain what may be contributing
+            to that problem.
+          </p>
+
+          <h2>Why this matters for developer-facing products</h2>
+
+          <p>
+            Developers interact with products through specific
+            implementation paths. They follow setup instructions,
+            configure credentials, connect services, manage resources,
+            and make decisions about how the product fits into
+            their applications.
+          </p>
+
+          <p>
+            Each step establishes expectations about what the product
+            handles and what the developer must handle themselves.
+          </p>
+
+          <p>
+            When those expectations do not match the actual
+            implementation requirements, additional work may follow.
+          </p>
+
+          <p>
+            A developer may need clarification from support.
+            An engineer may need to investigate an integration.
+            A customer may need to change an implementation decision
+            that was already built into their application.
+          </p>
+
+          <p>
+            These outcomes are not inevitable, and they do not all
+            have the same cause. But they illustrate why examining
+            the implementation path can reveal useful information
+            beyond the initial support request.
+          </p>
+
+          <h2>What DaxMac investigates</h2>
+
+          <p>
+            At DaxMac, we examine defined implementation paths
+            through the evidence available to developers.
+          </p>
+
+          <p>
+            That can include APIs, SDKs, configuration requirements,
+            authentication, integration workflows, examples,
+            and documented product behavior.
+          </p>
+
+          <p>
+            The central question is:
+          </p>
 
           <p class="article__statement">
-            What can a customer reasonably believe they need to do, and what
-            actually happens when they try to do it?
+            What can a developer reasonably understand about the
+            implementation, what does the available evidence establish,
+            and which responsibilities or assumptions deserve further attention?
           </p>
 
           <p>
-            That means following the implementation path from the customer's side.
+            The purpose is not to assume that every support issue
+            originates in documentation or that every implementation
+            path contains a problem.
           </p>
 
           <p>
-            For API and SDK products, that can include validating the actual API
-            behavior.
+            It is to assess the implementation experience independently
+            and identify concerns that product and engineering teams
+            may want to investigate further.
+          </p>
+
+          <h2>The visible issue is not always the whole story</h2>
+
+          <p>
+            Hatch's experience shows how an integration model can
+            create substantial engineering work as customer
+            requirements grow.
           </p>
 
           <p>
-            For other developer-facing products, it can mean looking at configuration,
-            deployment, integrations, authentication, or other parts of the
-            implementation process.
+            Its response involved changing the underlying approach
+            to integrations, not simply resolving individual
+            support conversations.
           </p>
 
           <p>
-            The goal isn't to produce another documentation review.
-          </p>
-
-          <p>
-            It's to find the points where implementation can go wrong before they
-            become expensive problems for the company.
-          </p>
-
-          <p>Hatch's story is a useful reminder of why that matters.</p>
-
-          <p>The support ticket may be what the company sees.</p>
-
-          <p>
-            But the customer's implementation experience is often where the problem
-            started.
+            For developer-facing companies, that is an important
+            distinction: understanding where customers encounter
+            difficulties is useful, but understanding the
+            implementation path behind those difficulties can
+            reveal where further investigation is needed.
           </p>
 
         </div>
 
         <footer class="article__foot">
-          <a class="article__back" href="../field-notes.html">Back to Field Notes</a>
+          <a class="article__back" href="../field-notes.html">
+            Back to Field Notes
+          </a>
         </footer>
 
       </div>
@@ -300,52 +329,86 @@
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="wrap site-footer__inner">
 
       <div class="footer__brand">
         <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
-        <p class="footer__tagline">Developer implementation &amp; API adoption.</p>
+        <p class="footer__tagline">
+          Independent assessment of developer implementation paths.
+        </p>
       </div>
 
       <nav class="footer__col" aria-label="Services">
         <h2 class="footer__head">Services</h2>
         <ul>
-          <li><a href="../index.html#services">Developer Experience Review</a></li>
-          <li><a href="../index.html#services">Developer Implementation Review</a></li>
-          <li><a href="../index.html#services">Custom Assessment</a></li>
+          <li>
+            <a href="../index.html#services">
+              Developer Implementation Review
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#services">
+              Developer Implementation Review + Live Testing
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#services">
+              Custom Implementation Assessment
+            </a>
+          </li>
         </ul>
       </nav>
 
-      <nav class="footer__col" aria-label="Contact">
-        <h2 class="footer__head">Contact</h2>
+      <nav class="footer__col" aria-label="Explore">
+        <h2 class="footer__head">Explore</h2>
         <ul>
-          <li><a href="../field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Study</a></li>
-          <li><a href="../audits.html">Audit</a></li>
-        </ul>
-      </nav>
-
-      <nav class="footer__col" aria-label="Company">
-        <h2 class="footer__head">Company</h2>
-        <ul>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Independent Research</a></li>
           <li><a href="../about.html">About</a></li>
           <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Connect">
+        <h2 class="footer__head">Connect</h2>
+        <ul>
+          <li>
+            <a href="https://www.linkedin.com/company/daxmac/"
+               target="_blank"
+               rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://x.com/daxmachq"
+               target="_blank"
+               rel="noopener noreferrer">X</a>
+          </li>
         </ul>
       </nav>
 
     </div>
 
     <div class="wrap site-footer__base">
+
       <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+        <a href="https://www.linkedin.com/company/daxmac/"
+           target="_blank"
+           rel="noopener noreferrer">LinkedIn</a>
+        ·
+        <a href="https://x.com/daxmachq"
+           target="_blank"
+           rel="noopener noreferrer">X</a>
       </p>
+
       <p class="footer__copy">© 2026 DaxMac</p>
+
     </div>
+
   </footer>
 
   <script src="../script.js"></script>
+
 </body>
 </html>
