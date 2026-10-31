@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog Post #3 | DaxMac</title>
-  <meta name="description" content="Why creating a resource is not the same as managing its lifecycle, and how onboarding documentation should make that distinction explicit.">
+
+  <title>Creating a Resource Is Not the Same as Managing Its Lifecycle | DaxMac</title>
+
+  <meta name="description" content="Why resource creation alone does not explain how developers should retrieve, reuse, manage, and terminate resources throughout an application workflow.">
+
   <link rel="icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
 
@@ -17,107 +20,199 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+
 <body data-nav="field-notes.html" data-root="../">
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap site-header__inner">
+
       <a class="brand" href="../index.html" aria-label="DaxMac home">
         <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav">
         Menu
       </button>
+
     </div>
   </header>
 
   <main>
 
-    <!-- ============ ARTICLE ============ -->
+    <!-- ARTICLE -->
     <article class="article">
       <div class="wrap">
 
         <header class="article__head">
-          <p class="eyebrow">Blog Post #3</p>
+
+          <p class="eyebrow">Field Notes · Implementation Analysis</p>
 
           <h1 class="article__title">
             Creating a Resource Is Not the Same as Managing Its Lifecycle
           </h1>
 
-          <p class="article__meta">Published by DaxMac</p>
+          <p class="article__meta">An independent DaxMac observation</p>
+
         </header>
 
         <div class="article__body">
 
           <p>
-            Many onboarding guides are excellent at teaching developers how to create a
-            resource. Far fewer explain how that resource should be managed throughout
-            its lifetime.
+            A successful resource creation call establishes that a developer
+            can create something through an API. It does not necessarily explain
+            how that resource should be handled throughout the rest of an
+            application workflow.
           </p>
 
           <p>
-            This distinction becomes especially important when developers build
-            applications that span multiple requests, long-running workflows, or
-            autonomous agents.
+            That distinction matters when an application needs to work with
+            resources beyond the initial request. Depending on the product,
+            developers may need to retrieve an existing resource, continue
+            working with it, update its state, or eventually terminate it.
           </p>
 
           <p>
-            The first example a developer encounters is often a simple resource creation
-            call. It is easy to understand, easy to copy, and ideal for getting started.
+            An onboarding example that demonstrates only creation can leave
+            these later decisions outside the developer's initial mental model.
           </p>
 
-          <p>Nothing about that approach is wrong.</p>
+          <h2>Creation is only one part of the resource model</h2>
 
           <p>
-            The problem begins when the documentation does not clearly explain that
-            creating a resource is only the beginning of its lifecycle.
-          </p>
-
-          <p>
-            Developers naturally extend the first example into more complex workflows.
-            If onboarding focuses only on creating new resources, it is easy to assume
-            that repeating the same creation step is the correct way to continue a workflow.
+            Consider an illustrative API that allows developers to create a
+            resource for a long-running workflow.
           </p>
 
           <p>
-            In reality, many production systems depend on reconnecting to, reusing, or
-            managing an existing resource rather than creating a new one each time.
-          </p>
-
-          <p>Those are very different architectural decisions.</p>
-
-          <p>
-            When documentation postpones lifecycle guidance until later reference pages,
-            developers may build their initial mental model around creation instead of
-            continuity. The result is not necessarily a misunderstanding of the API
-            itself, but an incomplete understanding of how the system is intended to be
-            used over time.
+            The first example might show a request that creates the resource
+            and returns an identifier. The developer can copy the request,
+            receive a successful response, and move on to the next step.
           </p>
 
           <p>
-            Good onboarding documentation should teach more than the first successful
-            API call.
+            But a production application may need to answer several additional
+            questions:
+          </p>
+
+          <ul>
+            <li>How does the application retrieve an existing resource?</li>
+            <li>Can the same resource be reused across multiple requests?</li>
+            <li>What happens when the application or process restarts?</li>
+            <li>Does the resource expire automatically, or must the application manage its lifetime?</li>
+            <li>How should the application handle resources that are no longer needed?</li>
+          </ul>
+
+          <p>
+            These are not necessarily problems with the creation endpoint.
+            They concern the broader resource model: the operations, state,
+            and responsibilities that determine how the resource behaves
+            over time.
+          </p>
+
+          <h2>Where the developer's assumption forms</h2>
+
+          <p>
+            Developers naturally use the first working example as a starting
+            point for their own implementation.
           </p>
 
           <p>
-            It should also establish when developers are expected to create something new,
-            when they should reconnect to an existing resource, and how those choices
-            affect long-running workflows.
+            If that example creates a new resource whenever a workflow begins,
+            a developer may extend the same pattern to subsequent requests.
+            They might assume that creating another resource is the intended
+            way to continue, or that the product will manage the relationship
+            between previous and new resources automatically.
           </p>
 
           <p>
-            The first example shapes the developer's mental model. If lifecycle
-            expectations are introduced too late, that initial model can become
-            surprisingly difficult to replace.
+            Neither assumption is necessarily correct. The intended behavior
+            depends on the product's resource semantics, including how
+            resources are identified, persisted, reused, and expired.
+          </p>
+
+          <p>
+            The important distinction is between what the creation example
+            demonstrates and what the wider API actually supports.
+          </p>
+
+          <h2>What remains the developer's responsibility?</h2>
+
+          <p>
+            Resource lifecycle decisions can affect application architecture.
+            If developers do not understand how resources persist or how
+            existing resources should be accessed, they may implement
+            unnecessary creation calls, lose access to existing state, or
+            retain resources longer than intended.
+          </p>
+
+          <p>
+            The consequences depend on the system. They might involve
+            duplicated resources, unexpected state behavior, additional
+            application logic, or avoidable operational work.
+          </p>
+
+          <p>
+            The product may provide the operations needed to manage these
+            resources, but developers still need to understand when to use
+            them and which responsibilities remain within their application.
+          </p>
+
+          <h2>What onboarding should establish</h2>
+
+          <p>
+            A useful onboarding path should make the resource lifecycle
+            understandable alongside the initial creation example.
+          </p>
+
+          <p>
+            That does not mean every possible operation needs to appear in
+            the first tutorial. It means developers should be able to establish
+            the basic relationship between creating a resource, identifying
+            an existing one, continuing to use it, and determining when its
+            lifetime ends.
+          </p>
+
+          <p>
+            The documentation should also make clear which behaviors are
+            handled by the product and which require application-level
+            decisions.
+          </p>
+
+          <h2>A successful first request is not a complete implementation model</h2>
+
+          <p>
+            Resource creation is often the easiest part of an integration
+            to demonstrate. Managing that resource over time requires a
+            broader understanding of the product's behavior and the
+            application's responsibilities.
+          </p>
+
+          <p>
+            When onboarding explains only how to create something, developers
+            may understand the first operation without understanding the
+            lifecycle they are building around it.
+          </p>
+
+          <p>
+            The implementation question is therefore not just whether a
+            developer can create a resource successfully. It is whether
+            they can understand how that resource is expected to behave
+            throughout the workflow that depends on it.
           </p>
 
         </div>
 
         <footer class="article__foot">
-          <a class="article__back" href="../field-notes.html">Back to Field Notes</a>
+          <a class="article__back" href="../field-notes.html">
+            Back to Field Notes
+          </a>
         </footer>
 
       </div>
@@ -125,30 +220,33 @@
 
   </main>
 
-  <!-- ============ 11. FOOTER ============ -->
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="wrap site-footer__inner">
 
       <div class="footer__brand">
-        <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
-        <p class="footer__tagline">Developer implementation risk.</p>
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">
+          Independent assessment of developer implementation paths.
+        </p>
       </div>
 
       <nav class="footer__col" aria-label="Services">
-  <h2 class="footer__head">Services</h2>
-  <ul>
-    <li><a href="#services">Developer Implementation Review</a></li>
-    <li><a href="#services">Developer Implementation Review + Live Testing</a></li>
-    <li><a href="#services">Custom Implementation Assessment</a></li>
-  </ul>
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Explore">
         <h2 class="footer__head">Explore</h2>
         <ul>
-          <li><a href="../field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Study</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Independent Research</a></li>
+          <li><a href="../about.html">About</a></li>
           <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
         </ul>
       </nav>
@@ -156,22 +254,40 @@
       <nav class="footer__col" aria-label="Connect">
         <h2 class="footer__head">Connect</h2>
         <ul>
-          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li>
+            <a href="https://www.linkedin.com/company/daxmac/"
+               target="_blank"
+               rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://x.com/daxmachq"
+               target="_blank"
+               rel="noopener noreferrer">X</a>
+          </li>
         </ul>
       </nav>
 
     </div>
 
     <div class="wrap site-footer__base">
+
       <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.linkedin.com/company/daxmac/"
+           target="_blank"
+           rel="noopener noreferrer">LinkedIn</a>
+        ·
+        <a href="https://x.com/daxmachq"
+           target="_blank"
+           rel="noopener noreferrer">X</a>
       </p>
+
       <p class="footer__copy">© 2026 DaxMac</p>
+
     </div>
+
   </footer>
 
   <script src="../script.js"></script>
+
 </body>
 </html>
