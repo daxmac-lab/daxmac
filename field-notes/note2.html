@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog Post #2 | DaxMac</title>
-  <meta name="description" content="Why initial validation should not automatically become a developer's mental model for long-term reliability.">
+
+  <title>When Initial Test Validation Is Mistaken for Long-Term Reliability | DaxMac</title>
+
+  <meta name="description" content="Why successful initial validation of AI-generated tests does not guarantee continued reliability, meaningful coverage, or maintainability as applications evolve.">
+
   <link rel="icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
 
@@ -17,139 +20,268 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+
 <body data-nav="field-notes.html" data-root="../">
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap site-header__inner">
+
       <a class="brand" href="../index.html" aria-label="DaxMac home">
         <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav">
         Menu
       </button>
+
     </div>
   </header>
 
   <main>
 
-    <!-- ============ ARTICLE ============ -->
+    <!-- ARTICLE -->
     <article class="article">
+
       <div class="wrap">
 
         <header class="article__head">
-          <p class="eyebrow">Blog post #2</p>
+
+          <p class="eyebrow">Field Notes · Implementation Analysis</p>
 
           <h1 class="article__title">
-            When Initial Validation Is Mistaken for Long-Term Reliability
+            When Initial Test Validation Is Mistaken for Long-Term Reliability
           </h1>
 
-          <p class="article__meta">Published by DaxMac</p>
+          <p class="article__meta">
+            An independent DaxMac observation
+          </p>
+
         </header>
 
         <div class="article__body">
 
           <p>
-            One pattern appears repeatedly in AI-powered developer tools: documentation
-            explains that something has been successfully generated or validated, but it
-            does not always distinguish that momentary success from long-term reliability.
-          </p>
-
-          <p>Consider an AI-generated end-to-end test.</p>
-
-          <p>
-            The onboarding experience may explain that an AI agent creates a test,
-            validates it against the application, and marks it as active. That sequence
-            naturally communicates progress. A developer sees a generated test, watches
-            it pass validation, and concludes that the workflow has produced something
-            ready for production.
-          </p>
-
-          <p>Nothing about that explanation is necessarily incorrect.</p>
-
-          <p>The question is what developers are likely to infer from it.</p>
-
-          <p>
-            Validation is evidence that a test worked against the current version of an
-            application. It is not, by itself, evidence that the same test will continue
-            to represent the correct user journey as the application changes.
-          </p>
-
-          <p>Those are two different ideas.</p>
-
-          <p>
-            If documentation introduces validation without clearly separating it from
-            long-term maintainability, developers may unconsciously treat the initial
-            success as evidence of future reliability. The documentation has not
-            explicitly made that claim, but it also has not helped distinguish between a
-            successful execution today and a resilient test over time.
+            AI-powered testing tools can reduce the effort required to create
+            and validate end-to-end tests. A developer describes a workflow,
+            generates a test, and sees it execute successfully against an
+            application.
           </p>
 
           <p>
-            This distinction matters because applications evolve continuously. Interfaces
-            change. Workflows are reorganized. Intermediate steps appear. A test that once
-            reflected the intended behavior may eventually require regeneration or manual
-            updates simply because the product itself has changed.
+            That is a meaningful result. But it establishes something narrower
+            than long-term test reliability.
+          </p>
+
+          <h2>What initial validation actually establishes</h2>
+
+          <p>
+            Consider an AI agent that generates an end-to-end test from an
+            application's existing interface and validates that test against
+            the current application.
           </p>
 
           <p>
-            Good onboarding documentation does more than describe what happened during setup.
+            A successful validation provides evidence that the generated test
+            executed under the conditions in which it was tested. Depending on
+            the validation process, it may also establish that the expected
+            interactions and assertions worked at that point in time.
           </p>
 
           <p>
-            It also teaches developers what they should and should not expect after deployment.
+            However, it does not automatically establish that the test will
+            remain accurate, maintainable, or useful as the application changes.
           </p>
 
           <p>
-            One successful validation demonstrates that a test works under current
-            conditions. It should not automatically become the developer's mental model
-            for long-term stability.
+            These are separate properties:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Execution:</strong>
+              Can the test run successfully under the current conditions?
+            </li>
+
+            <li>
+              <strong>Correctness:</strong>
+              Does the test verify the intended application behavior?
+            </li>
+
+            <li>
+              <strong>Maintainability:</strong>
+              Can the test continue to work as the application evolves?
+            </li>
+
+            <li>
+              <strong>Coverage:</strong>
+              Does the test continue to represent the user journey and
+              behavior the team needs to protect?
+            </li>
+          </ul>
+
+          <p>
+            Passing an initial validation does not establish all four.
+          </p>
+
+          <h2>Where the assumption becomes important</h2>
+
+          <p>
+            Once a generated test passes, a developer may reasonably treat it
+            as a completed part of the testing workflow.
           </p>
 
           <p>
-            Documentation becomes stronger when it explicitly separates
-            <strong>initial validation</strong> from <strong>ongoing maintenance</strong>,
-            allowing developers to build expectations that better reflect how software evolves.
+            The distinction becomes important when the application changes.
+          </p>
+
+          <p>
+            A redesigned interface may invalidate selectors. A modified
+            authentication flow may introduce additional steps. A changed
+            business rule may make an existing assertion inaccurate.
+            Changes to test data or external dependencies may also affect
+            execution.
+          </p>
+
+          <p>
+            Some changes cause tests to fail visibly. Others create a more
+            subtle problem: a test continues to pass while no longer
+            verifying the behavior the team originally intended to protect.
+          </p>
+
+          <p>
+            A successful execution is therefore not sufficient evidence
+            that the test still provides meaningful coverage.
+          </p>
+
+          <h2>The responsibility that remains after generation</h2>
+
+          <p>
+            AI-generated tests can reduce the work involved in creating
+            automation, but generation does not remove the need to manage
+            that automation.
+          </p>
+
+          <p>
+            Teams still need to understand which workflows are covered,
+            whether assertions reflect current requirements, how failures
+            should be investigated, and when tests need to be updated.
+          </p>
+
+          <p>
+            They also need to understand what the testing product handles
+            automatically and what remains their responsibility.
+          </p>
+
+          <p>
+            Depending on the platform, this may include reviewing generated
+            steps, maintaining test data, managing authentication, handling
+            external dependencies, and deciding how application changes
+            should affect existing tests.
+          </p>
+
+          <h2>What developers should distinguish</h2>
+
+          <p>
+            When adopting an AI-powered testing platform, it is useful to
+            separate three questions:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Initial success:</strong>
+              Did the generated test execute successfully against the
+              application at the time of validation?
+            </li>
+
+            <li>
+              <strong>Ongoing validity:</strong>
+              What happens when the application, its workflows, or its
+              dependencies change?
+            </li>
+
+            <li>
+              <strong>Ongoing responsibility:</strong>
+              What must the development team monitor, review, maintain,
+              or update to keep the test useful?
+            </li>
+          </ul>
+
+          <p>
+            These questions help establish what the product's automation
+            actually provides and what responsibilities remain with
+            the development team.
+          </p>
+
+          <h2>Successful validation is a starting point</h2>
+
+          <p>
+            Initial validation is valuable evidence. It demonstrates that
+            a generated test worked under a particular set of conditions.
+          </p>
+
+          <p>
+            But long-term reliability depends on more than that initial
+            success. It also depends on how the test responds to application
+            changes, whether its assertions remain meaningful, and how
+            ongoing maintenance is handled.
+          </p>
+
+          <p>
+            The distinction matters when evaluating AI-powered testing
+            products: generating a test, validating a test, and maintaining
+            a reliable testing system are related capabilities, but they
+            are not interchangeable.
           </p>
 
         </div>
 
         <footer class="article__foot">
-          <a class="article__back" href="../field-notes.html">Back to Field Notes</a>
+          <a class="article__back" href="../field-notes.html">
+            Back to Field Notes
+          </a>
         </footer>
 
       </div>
+
     </article>
 
   </main>
 
-   <!-- ============ 11. FOOTER ============ -->
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="wrap site-footer__inner">
 
       <div class="footer__brand">
-        <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
-        <p class="footer__tagline">Developer implementation risk.</p>
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+
+        <p class="footer__tagline">
+          Independent assessment of developer implementation paths.
+        </p>
       </div>
 
       <nav class="footer__col" aria-label="Services">
-  <h2 class="footer__head">Services</h2>
-  <ul>
-    <li><a href="#services">Developer Implementation Review</a></li>
-    <li><a href="#services">Developer Implementation Review + Live Testing</a></li>
-    <li><a href="#services">Custom Implementation Assessment</a></li>
-  </ul>
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Explore">
         <h2 class="footer__head">Explore</h2>
         <ul>
-          <li><a href="../field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Study</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Independent Research</a></li>
+          <li><a href="../about.html">About</a></li>
           <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
         </ul>
       </nav>
@@ -157,23 +289,40 @@
       <nav class="footer__col" aria-label="Connect">
         <h2 class="footer__head">Connect</h2>
         <ul>
-          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li>
+            <a href="https://www.linkedin.com/company/daxmac/"
+               target="_blank"
+               rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://x.com/daxmachq"
+               target="_blank"
+               rel="noopener noreferrer">X</a>
+          </li>
         </ul>
       </nav>
 
     </div>
 
     <div class="wrap site-footer__base">
+
       <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.linkedin.com/company/daxmac/"
+           target="_blank"
+           rel="noopener noreferrer">LinkedIn</a>
+        ·
+        <a href="https://x.com/daxmachq"
+           target="_blank"
+           rel="noopener noreferrer">X</a>
       </p>
+
       <p class="footer__copy">© 2026 DaxMac</p>
+
     </div>
+
   </footer>
-  
 
   <script src="../script.js"></script>
+
 </body>
-  </html>
+</html>
