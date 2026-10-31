@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog Post #1 | DaxMac</title>
-  <meta name="description" content="When documentation defines concepts but not their relationship, developers are forced to construct architectural assumptions on their own.">
+
+  <title>When Documentation Explains Components but Not Their Relationships | DaxMac</title>
+
+  <meta name="description" content="Exploring how developers infer operational relationships between documented product components, and why those assumptions matter during implementation.">
+
   <link rel="icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
 
@@ -17,136 +20,258 @@
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 </head>
+
 <body data-nav="field-notes.html">
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap site-header__inner">
+
       <a class="brand" href="../index.html" aria-label="DaxMac home">
         <img class="brand__mark" src="../assets/logo.png" alt="DaxMac">
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Primary"></nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav">
         Menu
       </button>
+
     </div>
   </header>
 
   <main>
 
-    <!-- ============ ARTICLE ============ -->
+    <!-- ARTICLE -->
     <article class="article">
+
       <div class="wrap">
 
         <header class="article__head">
-          <p class="eyebrow">Blog Post #1</p>
+
+          <p class="eyebrow">Field Notes · Implementation Analysis</p>
 
           <h1 class="article__title">
-            When Documentation Defines Concepts but Not Their Relationship
+            When Documentation Explains Components but Not Their Relationships
           </h1>
 
-          <p class="article__meta">Published by DaxMac</p>
+          <p class="article__meta">
+            An independent DaxMac observation
+          </p>
+
         </header>
 
         <div class="article__body">
 
           <p>
-            One documentation pattern appears repeatedly across developer platforms:
-            concepts are documented individually, but their operational relationship
-            is left for developers to infer.
-          </p>
-
-          <p>Consider a common example.</p>
-
-          <p>
-            A platform may introduce a compute resource, such as a Pod, and separately
-            introduce persistent storage, such as a Network Volume. Each concept is
-            explained correctly on its own.
+            Developer documentation often explains individual product components
+            clearly while leaving their operational relationships less explicit.
           </p>
 
           <p>
-            The documentation might describe the compute resource as the environment
-            where workloads run, while persistent storage is introduced as storage that
-            can be attached to multiple compute resources to share data.
-          </p>
-
-          <p>Nothing in those descriptions is incorrect.</p>
-
-          <p>The challenge is what the documentation does not explain.</p>
-
-          <p>
-            A developer reading these concepts for the first time is left to build a
-            mental model about how they interact. If the documentation never explains
-            the lifecycle of data written inside the compute resource—or explicitly
-            distinguishes temporary storage from persistent storage—the developer must
-            fill in that gap themselves.
-          </p>
-
-          <p>That assumption may be correct.</p>
-
-          <p>It may also be wrong.</p>
-
-          <p>
-            The documentation has transferred an architectural decision from explicit
-            guidance to developer interpretation.
+            A compute resource may have its own documentation. Persistent storage
+            may have a separate explanation. Authentication, networking, and
+            deployment may each have dedicated guides.
           </p>
 
           <p>
-            This pattern is worth paying attention to because onboarding documentation
-            does more than define terminology. It teaches developers how a system behaves.
+            Each explanation can be technically accurate without giving a
+            developer a complete understanding of how those components behave
+            together during an actual implementation.
+          </p>
+
+          <h2>The difference between knowing components and understanding their relationship</h2>
+
+          <p>
+            Consider a hypothetical infrastructure platform that provides
+            compute resources and persistent network volumes.
           </p>
 
           <p>
-            When relationships between concepts remain implicit, documentation may
-            unintentionally encourage assumptions that are only challenged much later
-            during implementation.
+            Its documentation explains how to create a compute resource and
+            separately explains how to create and attach persistent storage.
+            A developer can understand both operations individually.
           </p>
 
           <p>
-            Good onboarding documentation doesn't just explain individual components.
+            But several implementation questions remain:
+          </p>
+
+          <ul>
+            <li>
+              Does data written to the compute resource automatically persist?
+            </li>
+            <li>
+              What happens to that data when the compute resource is restarted
+              or replaced?
+            </li>
+            <li>
+              Does attaching a persistent volume require an additional
+              configuration step?
+            </li>
+            <li>
+              Can multiple compute resources access the same volume
+              simultaneously?
+            </li>
+            <li>
+              Which component is responsible for preserving the application's
+              data across its lifecycle?
+            </li>
+          </ul>
+
+          <p>
+            These are not necessarily defects in the product or its
+            documentation. They are questions about the operational
+            relationship between its components.
+          </p>
+
+          <h2>Where developer assumptions enter</h2>
+
+          <p>
+            When the relationship is not explicitly established, developers
+            have to construct their own mental model using the information
+            available to them.
           </p>
 
           <p>
-            It explains how those components work together to shape production behavior.
+            A developer might understand that persistent storage exists and
+            assume that data written by an application is automatically
+            preserved. Another might assume that attaching a volume establishes
+            every dependency needed for the application to use it.
+          </p>
+
+          <p>
+            Those interpretations may or may not match the actual
+            implementation requirements.
+          </p>
+
+          <p>
+            The important distinction is that understanding what two
+            components do individually does not automatically establish
+            how responsibility, state, and behavior are distributed between them.
+          </p>
+
+          <h2>Why this matters during implementation</h2>
+
+          <p>
+            The consequences of an incomplete mental model may not become
+            apparent during initial setup.
+          </p>
+
+          <p>
+            An implementation can appear successful while relying on an
+            assumption that becomes important only during a restart,
+            replacement, scaling operation, migration, or production deployment.
+          </p>
+
+          <p>
+            Depending on the actual system behavior, the developer may need
+            additional configuration, lifecycle management, or operational
+            safeguards that were not apparent from the individual component
+            descriptions.
+          </p>
+
+          <p>
+            This is why implementation guidance needs to communicate more
+            than the capabilities of individual resources. It also needs
+            to establish the relationships and responsibilities that
+            determine how those resources behave together.
+          </p>
+
+          <h2>The implementation question worth asking</h2>
+
+          <p>
+            When examining a developer implementation path, it is useful
+            to distinguish three things:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Component capability:</strong>
+              What does each product component provide independently?
+            </li>
+
+            <li>
+              <strong>Operational relationship:</strong>
+              How do those components interact throughout the intended workflow?
+            </li>
+
+            <li>
+              <strong>Implementation responsibility:</strong>
+              What must the developer configure, manage, or verify to achieve
+              the expected result?
+            </li>
+          </ul>
+
+          <p>
+            The answers should be supported by the actual product behavior
+            and implementation requirements, not assumptions about how
+            the components are likely to work.
+          </p>
+
+          <p>
+            Documentation does not need to explain every possible interaction
+            between every product component. It does need to make the
+            relationships relevant to an intended implementation sufficiently
+            clear.
+          </p>
+
+          <p>
+            A developer should not have to mistake a reasonable interpretation
+            of individual capabilities for a complete understanding of the
+            system's operational behavior.
+          </p>
+
+          <p>
+            The distinction between those two things is an important part
+            of understanding the real developer implementation experience.
           </p>
 
         </div>
 
         <footer class="article__foot">
-          <a class="article__back" href="../field-notes.html">Back to Field Notes</a>
+          <a class="article__back" href="../field-notes.html">
+            Back to Field Notes
+          </a>
         </footer>
 
       </div>
+
     </article>
 
   </main>
 
-  <!-- ============ 11. FOOTER ============ -->
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="wrap site-footer__inner">
 
       <div class="footer__brand">
-        <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
-        <p class="footer__tagline">Developer implementation risk.</p>
+        <img class="footer__logo" src="../assets/logo.png" alt="DaxMac">
+        <p class="footer__tagline">
+          Independent assessment of developer implementation paths.
+        </p>
       </div>
 
       <nav class="footer__col" aria-label="Services">
-  <h2 class="footer__head">Services</h2>
-  <ul>
-    <li><a href="#services">Developer Implementation Review</a></li>
-    <li><a href="#services">Developer Implementation Review + Live Testing</a></li>
-    <li><a href="#services">Custom Implementation Assessment</a></li>
-  </ul>
+        <h2 class="footer__head">Services</h2>
+        <ul>
+          <li><a href="../index.html#services">Developer Implementation Review</a></li>
+          <li><a href="../index.html#services">Developer Implementation Review + Live Testing</a></li>
+          <li><a href="../index.html#services">Custom Implementation Assessment</a></li>
+        </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Explore">
         <h2 class="footer__head">Explore</h2>
         <ul>
-          <li><a href="../field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Study</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="../field-notes.html">Field Notes</a></li>
+          <li><a href="../audits.html">Independent Research</a></li>
+          <li><a href="../about.html">About</a></li>
           <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
         </ul>
       </nav>
@@ -154,22 +279,40 @@
       <nav class="footer__col" aria-label="Connect">
         <h2 class="footer__head">Connect</h2>
         <ul>
-          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li>
+            <a href="https://www.linkedin.com/company/daxmac/"
+               target="_blank"
+               rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://x.com/daxmachq"
+               target="_blank"
+               rel="noopener noreferrer">X</a>
+          </li>
         </ul>
       </nav>
 
     </div>
 
     <div class="wrap site-footer__base">
+
       <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.linkedin.com/company/daxmac/"
+           target="_blank"
+           rel="noopener noreferrer">LinkedIn</a>
+        ·
+        <a href="https://x.com/daxmachq"
+           target="_blank"
+           rel="noopener noreferrer">X</a>
       </p>
+
       <p class="footer__copy">© 2026 DaxMac</p>
+
     </div>
+
   </footer>
 
   <script src="../script.js"></script>
+
 </body>
 </html>
