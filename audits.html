@@ -3,388 +3,507 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Independent Research | DaxMac</title>
-  <meta name="description" content="A confidential Developer Implementation Review examining how developers can interpret, configure, test, and validate an AI voice platform before relying on simulation results in production.">
+
+  <meta name="description" content="Explore independent DaxMac research examining developer implementation paths, reasonable developer assumptions, product behavior, and potential implementation consequences.">
+
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css">
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3GJYVSPW5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-3G8JYVSPW5');
+    gtag('config', 'G-3GJYVSPW5');
   </script>
+
+  <style>
+    .research-intro {
+      max-width: 760px;
+    }
+
+    .research-intro p {
+      max-width: 700px;
+    }
+
+    .research-section {
+      padding: 64px 0;
+    }
+
+    .research-section + .research-section {
+      border-top: 1px solid var(--line, #D9DDE0);
+    }
+
+    .research-card {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 28px;
+      padding: 36px;
+      border: 1px solid var(--line, #D9DDE0);
+      background: var(--surface, #FBFAF7);
+      margin-top: 30px;
+    }
+
+    .research-card__logo {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .research-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .research-card__tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid var(--line, #D9DDE0);
+      color: var(--muted, #626D78);
+      font-family: var(--mono, monospace);
+      font-size: 11px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .research-card__title {
+      margin: 0 0 14px;
+      font-size: clamp(23px, 3vw, 32px);
+      line-height: 1.2;
+    }
+
+    .research-card__description {
+      max-width: 650px;
+      color: var(--muted, #626D78);
+      line-height: 1.8;
+    }
+
+    .research-card__details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: 26px 0;
+      padding-top: 22px;
+      border-top: 1px solid var(--line, #D9DDE0);
+    }
+
+    .research-card__detail-label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted, #626D78);
+      font-family: var(--mono, monospace);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .research-card__detail-value {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .research-card__link {
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .research-method {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+      margin-top: 28px;
+    }
+
+    .research-method__item {
+      padding: 24px;
+      border: 1px solid var(--line, #D9DDE0);
+      background: var(--surface, #FBFAF7);
+    }
+
+    .research-method__number {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--accent, #A97524);
+      font-family: var(--mono, monospace);
+      font-size: 13px;
+    }
+
+    .research-method__item h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+    }
+
+    .research-method__item p {
+      margin: 0;
+      color: var(--muted, #626D78);
+      line-height: 1.7;
+    }
+
+    .research-scope {
+      padding: 30px;
+      background: var(--panel, #172B3A);
+      color: var(--panel-ink, #F7F5EF);
+    }
+
+    .research-scope h2 {
+      color: inherit;
+    }
+
+    .research-scope p {
+      max-width: 760px;
+      color: var(--panel-muted, #B8C4CC);
+      line-height: 1.8;
+    }
+
+    .research-scope strong {
+      color: inherit;
+    }
+
+    @media (max-width: 650px) {
+      .research-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 18px;
+      }
+
+      .research-card__logo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .research-card__details,
+      .research-method {
+        grid-template-columns: 1fr;
+      }
+
+      .research-section {
+        padding: 44px 0;
+      }
+    }
+  </style>
 </head>
+
 <body data-nav="audits.html">
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap site-header__inner">
+
       <a class="brand" href="index.html" aria-label="DaxMac home">
         <img class="brand__mark" src="assets/logo.png" alt="DaxMac">
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="field-notes.html">Field Notes</a>
+        <a href="audits.html" aria-current="page">Research</a>
+      </nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
         Menu
       </button>
+
     </div>
   </header>
 
   <main>
 
-    <!-- ============ PAGE INTRO ============ -->
+    <!-- PAGE INTRO -->
     <section class="page-intro">
-      <div class="wrap">
-        <p class="eyebrow">DaxMac</p>
-        <h1 class="page-intro__title">Independent Research</h1>
+      <div class="wrap research-intro">
+
+        <p class="eyebrow">DaxMac / Research</p>
+
+        <h1 class="page-intro__title">
+          Independent Research
+        </h1>
+
+        <p class="lede">
+          Examining how developers understand, configure, and implement
+          developer-facing products — and where reasonable implementation
+          assumptions can extend beyond what the product actually establishes.
+        </p>
+
+        <p>
+          DaxMac independently examines public implementation paths across
+          product documentation, APIs, SDKs, examples, and implementation
+          guidance.
+        </p>
+
+        <p>
+          The objective is to identify assumptions a developer could reasonably
+          form, establish what the available product evidence demonstrates,
+          and examine the potential consequences for implementation and the
+          teams supporting it.
+        </p>
+
       </div>
     </section>
 
-    <!-- ============ CASE STUDY ============ -->
-    <article class="article">
+
+    <!-- FEATURED RESEARCH -->
+    <section class="research-section">
       <div class="wrap">
 
-        <!-- ============ HEAD ============ -->
-        <header class="article__head">
-          <p class="eyebrow">Developer Implementation Review</p>
+        <p class="eyebrow">01 / Featured Research</p>
 
-          <h2 class="article__title">
-            Finding implementation risk before it becomes customer work
-          </h2>
+        <h2>Research and Implementation Reviews</h2>
 
-          <p class="lede">
-            Developer-facing products can appear straightforward to implement
-            while leaving important questions unanswered about what developers
-            will actually experience in practice.
-          </p>
+        <p>
+          Each research entry examines a defined implementation path and
+          presents the reasoning, product evidence, and implementation
+          implications behind the review.
+        </p>
 
-          <p class="lede">
-            A Developer Implementation Review examines those implementation paths
-            from the outside — identifying where a reasonable developer could make
-            an incorrect implementation decision, what the product actually
-            validates, and what that could create downstream.
-          </p>
+        <!-- GITHUB RESEARCH CARD -->
+        <article class="research-card">
 
-          <p class="lede">
-            This case study shows that process using a Voice AI Platform.
-          </p>
-        </header>
+          <div>
+            <img
+              class="research-card__logo"
+              src="github-logo.png"
+              alt="GitHub logo"
+              loading="lazy"
+            >
+          </div>
 
-        <div class="article__body">
+          <div>
 
-          <!-- ============ THE PROBLEM ============ -->
-          <h2>The Problem We Investigated</h2>
+            <div class="research-card__meta">
+              <span class="research-card__tag">Independent Research</span>
+              <span class="research-card__tag">Developer Implementation Review</span>
+            </div>
+
+            <h3 class="research-card__title">
+              GitHub Apps: Installation and User Authorization
+            </h3>
+
+            <p class="research-card__description">
+              Examining the implementation path involved in building an
+              application that accesses an organization's GitHub repositories
+              through a GitHub App.
+            </p>
+
+            <p class="research-card__description">
+              The research examines the distinction between installing a
+              GitHub App and authorizing it to act on behalf of an individual
+              user — including the assumptions a developer could form about
+              the access established during installation.
+            </p>
+
+            <div class="research-card__details">
+
+              <div>
+                <span class="research-card__detail-label">
+                  Implementation Path
+                </span>
+
+                <span class="research-card__detail-value">
+                  GitHub App installation, permissions, authentication,
+                  installation access, and user authorization.
+                </span>
+              </div>
+
+              <div>
+                <span class="research-card__detail-label">
+                  Research Method
+                </span>
+
+                <span class="research-card__detail-value">
+                  Public documentation and implementation guidance.
+                  No live API or SDK testing.
+                </span>
+              </div>
+
+            </div>
+
+            <a
+              class="research-card__link"
+              href="audits/github.html"
+              aria-label="Read the independent GitHub implementation research"
+            >
+              Read the research →
+            </a>
+
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- RESEARCH APPROACH -->
+    <section class="research-section">
+      <div class="wrap">
+
+        <p class="eyebrow">02 / Research Approach</p>
+
+        <h2>How We Examine Implementation Paths</h2>
+
+        <p>
+          We approach the product from the developer's perspective,
+          following the steps involved in implementing a specific capability.
+          The review focuses on the assumptions that can emerge along that path.
+        </p>
+
+        <div class="research-method">
+
+          <div class="research-method__item">
+            <span class="research-method__number">01</span>
+
+            <h3>Trace the implementation</h3>
+
+            <p>
+              Identify the developer's objective and follow the relevant
+              setup, configuration, authentication, integration, or
+              operational steps.
+            </p>
+          </div>
+
+          <div class="research-method__item">
+            <span class="research-method__number">02</span>
+
+            <h3>Identify reasonable assumptions</h3>
+
+            <p>
+              Examine what a developer could reasonably conclude about
+              product capabilities, expected behavior, and the
+              responsibilities handled by the product.
+            </p>
+          </div>
+
+          <div class="research-method__item">
+            <span class="research-method__number">03</span>
+
+            <h3>Examine the evidence</h3>
+
+            <p>
+              Review the relevant official documentation and implementation
+              guidance to establish what the product actually supports,
+              requires, or leaves to the developer.
+            </p>
+          </div>
+
+          <div class="research-method__item">
+            <span class="research-method__number">04</span>
+
+            <h3>Assess potential implications</h3>
+
+            <p>
+              Explain where an assumption could extend beyond the documented
+              behavior and what that distinction could mean for implementation,
+              engineering, or support.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- RESEARCH SCOPE -->
+    <section class="research-section">
+      <div class="wrap">
+
+        <div class="research-scope">
+
+          <p class="eyebrow">03 / Research Scope</p>
+
+          <h2>Evidence-led. Independent. Clearly scoped.</h2>
 
           <p>
-            A developer can get a successful test result without having validated
-            everything they may assume it proves.
+            Public research examines publicly available product documentation,
+            API and SDK references, implementation examples, and related
+            technical guidance.
           </p>
 
           <p>
-            For a voice AI platform, that can affect questions such as:
+            <strong>Independent research does not imply a commissioned
+            engagement, a partnership, or an endorsement by the company
+            whose product is examined.</strong>
           </p>
 
-          <ul>
-            <li>Does a passing simulation represent real caller behavior?</li>
-            <li>Does a mocked tool result represent a real external action?</li>
-            <li>Does testing one assistant validate the full squad?</li>
-            <li>Does a successful simulation represent the values used at runtime?</li>
-            <li>When does a passing test provide enough evidence to make a production decision?</li>
-          </ul>
-
           <p>
-            These are implementation questions, not simply documentation questions.
+            Where live API execution, SDK testing, or controlled validation
+            has not been performed, that limitation is stated explicitly.
+            Findings are based on the evidence reviewed, and potential
+            consequences are distinguished from observed customer incidents.
           </p>
 
         </div>
 
-        <!-- ============ THE REVIEW ============ -->
-        <div class="article__body">
-          <h2>The Review</h2>
+      </div>
+    </section>
 
-          <p class="eyebrow">Voice AI Platform</p>
 
-          <p>
-            We followed the implementation path from simulation configuration
-            through testing, evaluation, tool execution, and production decisions.
-          </p>
+    <!-- COMMERCIAL RELEVANCE -->
+    <section class="research-section">
+      <div class="wrap">
 
-          <p>
-            The review covered 10 implementation areas.
-          </p>
-        </div>
+        <p class="eyebrow">04 / Why This Work Matters</p>
 
-        <ol class="impl-list">
+        <h2>Product behavior is only part of the implementation experience.</h2>
 
-          <li class="impl-item">
-            <span class="impl-item__num">01</span>
-            <h3 class="impl-item__title">Simulation vs. Real Caller Behavior</h3>
+        <p>
+          Developers make decisions based on what a product's interfaces,
+          documentation, examples, and implementation guidance lead them
+          to understand.
+        </p>
 
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> treating a successful simulation as
-              evidence of equivalent real-caller behavior.
-            </p>
+        <p>
+          When a reasonable assumption extends beyond what the product
+          actually handles, the difference can create additional implementation
+          work, engineering intervention, support requests, or unexpected
+          operational responsibilities.
+        </p>
 
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> a simulation is conditional on the caller
-              behavior and conditions represented by the test.
-            </p>
+        <p>
+          Independent review gives product and engineering teams another
+          perspective on those implementation paths — one focused on what
+          developers may reasonably understand before the consequences
+          become visible internally.
+        </p>
 
-            <a class="impl-item__link" href="audits/n1.html">View finding</a>
-          </li>
+      </div>
+    </section>
 
-          <li class="impl-item">
-            <span class="impl-item__num">02</span>
-            <h3 class="impl-item__title">Scenario Configuration</h3>
 
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> assuming a scenario tests broader
-              caller behavior than its configuration actually represents.
-            </p>
+    <!-- CTA -->
+    <section class="research-section">
+      <div class="wrap">
 
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> changing the scenario changes the
-              implementation path being exercised.
-            </p>
-
-            <a class="impl-item__link" href="audits/n2.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">03</span>
-            <h3 class="impl-item__title">AI Tester Behavior</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> relying on a cooperative tester
-              without exercising other caller behaviors.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> tester configuration determines which
-              conversational conditions the simulation exercises.
-            </p>
-
-            <a class="impl-item__link" href="audits/n3.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">04</span>
-            <h3 class="impl-item__title">Success Criteria</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> treating "Passed" as proof of the
-              complete real-world outcome.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> a simulation passes according to its
-              configured success criteria.
-            </p>
-
-            <a class="impl-item__link" href="audits/n4.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">05</span>
-            <h3 class="impl-item__title">Chat vs. Voice Testing</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> treating a successful chat simulation
-              as evidence that the voice implementation works.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> chat and voice exercise different
-              implementation surfaces.
-            </p>
-
-            <a class="impl-item__link" href="audits/n5.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">06</span>
-            <h3 class="impl-item__title">Tool Execution and Mocking</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> interpreting a successful mocked tool
-              execution as proof that an external action occurred.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> a mocked result can validate assistant
-              behavior without changing the external system.
-            </p>
-
-            <a class="impl-item__link" href="audits/n6.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">07</span>
-            <h3 class="impl-item__title">Variables and Configuration</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> assuming simulation inputs represent
-              the values and data sources used during normal runtime.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> a simulation validates the variables and
-              configuration represented by that test.
-            </p>
-
-            <a class="impl-item__link" href="audits/n7.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">08</span>
-            <h3 class="impl-item__title">Simulation Webhooks</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> treating a simulation lifecycle event
-              as proof that the simulation passed.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> an ended webhook establishes that the run
-              ended, not independently that the configured success criteria passed.
-            </p>
-
-            <a class="impl-item__link" href="audits/n8.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">09</span>
-            <h3 class="impl-item__title">Assistant and Squad Testing</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> assuming individually successful
-              assistants prove that the composed squad works.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> squad testing exercises interactions between
-              assistants that isolated tests do not necessarily exercise.
-            </p>
-
-            <a class="impl-item__link" href="audits/n9.html">View finding</a>
-          </li>
-
-          <li class="impl-item">
-            <span class="impl-item__num">10</span>
-            <h3 class="impl-item__title">From Simulation Results to Production Decisions</h3>
-
-            <p class="impl-item__detail">
-              <strong>Risk examined:</strong> treating a passing simulation as a
-              production-readiness signal.
-            </p>
-
-            <p class="impl-item__detail">
-              <strong>Finding:</strong> a passing simulation demonstrates success
-              under the tested conditions, while real-world and untested conditions
-              may remain.
-            </p>
-
-            <a class="impl-item__link" href="audits/n10.html">View finding</a>
-          </li>
-
-        </ol>
-
-        <!-- ============ WHAT THIS MEANS FOR THE BUYER ============ -->
-        <div class="article__body">
-
-          <h2>What This Means for the Buyer</h2>
-
-          <p>
-            The value of the review is not a list of documentation observations.
-          </p>
-
-          <p>
-            It is evidence about <strong>where a developer's implementation can
-            diverge from what the product appears to establish.</strong>
-          </p>
-
-          <p>That can surface risks before they become:</p>
-
-          <ul>
-            <li>customer support work</li>
-            <li>integration failures</li>
-            <li>engineering intervention</li>
-            <li>production issues</li>
-            <li>implementation friction</li>
-          </ul>
-
-        </div>
-
-        <!-- ============ WHAT THE CLIENT RECEIVES ============ -->
-        <div class="article__body">
-
-          <h2>What the Client Receives</h2>
-
-          <p>Depending on scope, the confidential review can include:</p>
-
-          <ul>
-            <li>the complete developer implementation path</li>
-            <li>related product and API/SDK sources</li>
-            <li>controlled validation</li>
-            <li>live API or SDK testing where included</li>
-            <li>screenshots</li>
-            <li>requests and responses</li>
-            <li>JSON/code</li>
-            <li>test configuration</li>
-            <li>findings and supporting evidence</li>
-            <li>implementation implications</li>
-          </ul>
-
-          <p>
-            The result is a documented view of <strong>customer implementation
-            risk</strong>, rather than a generic review of documentation quality.
-          </p>
-
-        </div>
-
-        <!-- ============ CONFIDENTIAL REVIEW ============ -->
-        <div class="article__body">
-
-          <h2>Confidential Review</h2>
-
-          <p>
-            This public case study is a condensed, anonymized example of a
-            Developer Implementation Review.
-          </p>
-
-          <p>
-            The confidential review delivered to the client contains the full
-            developer journey for each implementation area, including the related
-            product pages and sources reviewed, implementation steps, validation
-            performed, screenshots, requests and responses, JSON/code, test
-            configuration, and supporting evidence.
-          </p>
-
-          <p>
-            Company-identifying information and sensitive testing details are
-            intentionally omitted from this public case study.
-          </p>
-
-          <p class="article__statement">
-            The public case study shows the finding. The confidential review shows
-            how we got there.
-          </p>
-
-        </div>
-
-        <!-- ============ CTA ============ -->
         <div class="article__body cta-block">
 
-          <h2>Have an implementation path worth examining?</h2>
+          <p class="eyebrow">DaxMac / Engagements</p>
+
+          <h2>
+            Have an implementation path worth examining?
+          </h2>
 
           <p>
-            DaxMac reviews how developers actually implement developer-facing
-            products and identifies where implementation risk can become support
-            work, engineering load, integration failure, or production issues.
+            DaxMac provides evidence-backed Developer Implementation Reviews
+            for companies building developer-facing products.
+          </p>
+
+          <p>
+            Each engagement examines a defined implementation path,
+            identifies reasonable developer assumptions, and documents
+            the implications worth the team's attention.
           </p>
 
           <a class="btn btn--primary" href="mailto:goodness@daxmac.cc">
@@ -394,12 +513,14 @@
         </div>
 
       </div>
-    </article>
+    </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
+
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="wrap site-footer__inner">
 
       <div class="footer__brand">
@@ -409,42 +530,87 @@
 
       <nav class="footer__col" aria-label="Services">
         <h2 class="footer__head">Services</h2>
+
         <ul>
-          <li><a href="index.html#services">Developer Implementation Review</a></li>
-          <li><a href="index.html#services">Developer Implementation Review + Live Testing</a></li>
-          <li><a href="index.html#services">Custom Implementation Assessment</a></li>
+          <li>
+            <a href="index.html#services">
+              Developer Implementation Review
+            </a>
+          </li>
+
+          <li>
+            <a href="index.html#services">
+              Developer Implementation Review + Live Testing
+            </a>
+          </li>
+
+          <li>
+            <a href="index.html#services">
+              Custom Implementation Assessment
+            </a>
+          </li>
         </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Explore">
         <h2 class="footer__head">Explore</h2>
+
         <ul>
-          <li><a href="field-notes.html">Blog</a></li>
-          <li><a href="audits.html">Case Studies</a></li>
+          <li><a href="field-notes.html">Field Notes</a></li>
+          <li><a href="audits.html">Independent Research</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Connect">
         <h2 class="footer__head">Connect</h2>
+
         <ul>
-          <li><a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a></li>
-          <li><a href="mailto:goodness@daxmac.cc">Contact</a></li>
+          <li>
+            <a href="https://www.linkedin.com/company/daxmac/"
+               target="_blank"
+               rel="noopener">
+              LinkedIn
+            </a>
+          </li>
+
+          <li>
+            <a href="https://x.com/daxmachq"
+               target="_blank"
+               rel="noopener">
+              X
+            </a>
+          </li>
+
+          <li>
+            <a href="mailto:goodness@daxmac.cc">
+              Contact
+            </a>
+          </li>
         </ul>
       </nav>
 
     </div>
 
     <div class="wrap site-footer__base">
+
       <p class="footer__social">
-        <a href="https://www.linkedin.com/company/daxmac/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://x.com/daxmachq" target="_blank" rel="noopener">X</a>
+        <a href="https://www.linkedin.com/company/daxmac/"
+           target="_blank"
+           rel="noopener">LinkedIn</a>
+        ·
+        <a href="https://x.com/daxmachq"
+           target="_blank"
+           rel="noopener">X</a>
       </p>
+
       <p class="footer__copy">© 2026 DaxMac</p>
+
     </div>
+
   </footer>
 
   <script src="script.js"></script>
+
 </body>
 </html>
