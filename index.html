@@ -1,697 +1,1294 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>DaxMac — Independent Developer Implementation Reviews</title>
 
   <meta
     name="description"
-    content="DaxMac provides independent Developer Implementation Reviews to help product and engineering teams understand developer assumptions, implementation responsibilities and potential consequences."
+    content="DaxMac independently examines developer implementation paths across APIs, SDKs, configuration, examples, and product behaviour."
   >
 
-  <meta name="theme-color" content="#f6f4ef">
+  <meta name="theme-color" content="#F4F1E9">
 
-  <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
-
-  <!-- Homepage-specific styling -->
-  <style>
-
-    /* =========================================
-       DAXMAC HOMEPAGE ENHANCEMENTS
-       These styles are contained in index.html.
-       They do not modify the shared style.css.
-    ========================================= */
-
-    :root {
-      --home-ivory: #f6f4ef;
-      --home-paper: #fffefa;
-      --home-navy: #172b43;
-      --home-navy-light: #263e59;
-      --home-muted: #697584;
-      --home-line: #e5e1d8;
-      --home-bronze: #a77b4b;
-      --home-bronze-light: #f3ede3;
-      --home-green: #416b5b;
-      --home-shadow: 0 18px 50px rgba(23, 43, 67, 0.07);
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 100px;
-    }
-
-    body {
-      background-color: var(--home-ivory);
-    }
-
-    ::selection {
-      background: var(--home-navy);
-      color: #ffffff;
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 480px;
-      height: 480px;
-      border-radius: 50%;
-      background: rgba(167, 123, 75, 0.055);
-      top: -180px;
-      right: -150px;
-      pointer-events: none;
-    }
-
-    .hero__copy {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero__title {
-      letter-spacing: -0.045em;
-      line-height: 1.12;
-    }
-
-    .hero__lede {
-      max-width: 650px;
-      line-height: 1.85;
-    }
-
-    .hero__art img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* GENERAL SECTION POLISH */
-
-    .section {
-      position: relative;
-    }
-
-    .section__title {
-      letter-spacing: -0.035em;
-      line-height: 1.2;
-    }
-
-    .lede {
-      line-height: 1.85;
-    }
-
-    .note {
-      line-height: 1.8;
-    }
-
-    .step,
-    .note-card {
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .step:hover,
-    .note-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--home-shadow);
-    }
-
-    /* =========================================
-       SERVICES SECTION
-    ========================================= */
-
-    .services {
-      padding-top: 110px;
-      padding-bottom: 115px;
-      background:
-        radial-gradient(
-          circle at 90% 5%,
-          rgba(167, 123, 75, 0.07),
-          transparent 28%
-        ),
-        #f0eee8;
-      overflow: hidden;
-    }
-
-    .services__heading {
-      max-width: 760px;
-      margin: 0 auto 58px;
-      text-align: center;
-    }
-
-    .services__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      color: var(--home-bronze);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .services__eyebrow::before,
-    .services__eyebrow::after {
-      content: "";
-      display: block;
-      width: 22px;
-      height: 1px;
-      background: var(--home-bronze);
-    }
-
-    .services__heading h2 {
-      margin-bottom: 18px;
-      color: var(--home-navy);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      letter-spacing: -0.055em;
-      line-height: 1.12;
-    }
-
-    .services__heading p {
-      max-width: 680px;
-      margin: 0 auto;
-      color: var(--home-muted);
-      font-size: 1.02rem;
-      line-height: 1.85;
-    }
-
-    /* Complimentary preliminary review */
-
-    .preliminary {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 38px;
-      align-items: center;
-      margin-bottom: 75px;
-      padding: 42px;
-      border: 1px solid #ddd5c7;
-      border-radius: 18px;
-      background: rgba(255, 254, 250, 0.88);
-      box-shadow: 0 12px 35px rgba(23, 43, 67, 0.035);
-    }
-
-    .preliminary__label {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 7px 12px;
-      border-radius: 3px;
-      background: var(--home-bronze-light);
-      color: #87643d;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .preliminary__title {
-      margin: 0 0 12px;
-      color: var(--home-navy);
-      font-size: clamp(1.55rem, 3vw, 2.1rem);
-      letter-spacing: -0.04em;
-      line-height: 1.2;
-    }
-
-    .preliminary__description {
-      max-width: 630px;
-      margin-bottom: 22px;
-      color: var(--home-muted);
-      line-height: 1.8;
-    }
-
-    .preliminary__price {
-      margin-bottom: 12px;
-      color: var(--home-navy);
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: -0.06em;
-    }
-
-    .preliminary__price span {
-      display: block;
-      margin-top: 2px;
-      color: var(--home-green);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .preliminary__list {
-      display: grid;
-      gap: 11px;
-      margin: 0 0 26px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .preliminary__list li {
-      position: relative;
-      padding-left: 24px;
-      color: var(--home-navy-light);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    .preliminary__list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--home-green);
-      font-weight: 700;
-    }
-
-    .preliminary__side {
-      padding: 28px;
-      border: 1px solid var(--home-line);
-      border-radius: 12px;
-      background: #f8f6f1;
-    }
-
-    .preliminary__side h4 {
-      margin: 0 0 12px;
-      color: var(--home-navy);
-      font-size: 0.95rem;
-    }
-
-    .preliminary__side p {
-      margin: 0 0 16px;
-      color: var(--home-muted);
-      font-size: 0.88rem;
-      line-height: 1.75;
-    }
-
-    .preliminary__scope {
-      padding-top: 15px;
-      border-top: 1px solid var(--home-line);
-      color: var(--home-muted);
-      font-size: 0.8rem;
-      line-height: 1.7;
-    }
-
-    .preliminary__scope strong {
-      color: var(--home-navy);
-    }
-
-    .preliminary__button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 12px 23px;
-      border: 1px solid var(--home-navy);
-      border-radius: 4px;
-      background: var(--home-navy);
-      color: #ffffff;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-    }
-
-    .preliminary__button:hover {
-      background: var(--home-navy-light);
-      transform: translateY(-2px);
-    }
-
-    /* Paid services heading */
-
-    .services__subheading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 28px;
-    }
-
-    .services__subheading h3 {
-      margin: 0;
-      color: var(--home-navy);
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      letter-spacing: -0.04em;
-    }
-
-    .services__subheading p {
-      max-width: 390px;
-      margin: 0;
-      color: var(--home-muted);
-      font-size: 0.85rem;
-      line-height: 1.7;
-    }
-
-    /* Paid service cards */
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      align-items: stretch;
-    }
-
-    .service-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      padding: 30px 27px;
-      border: 1px solid var(--home-line);
-      border-radius: 12px;
-      background: var(--home-paper);
-      box-shadow: 0 8px 28px rgba(23, 43, 67, 0.035);
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: #c9b69c;
-      box-shadow: var(--home-shadow);
-    }
-
-    .service-card--featured {
-      border: 1.5px solid var(--home-navy);
-      box-shadow: 0 14px 38px rgba(23, 43, 67, 0.09);
-    }
-
-    .service-card__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .service-card__number {
-      color: var(--home-bronze);
-      font-family: monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-    }
-
-    .service-card__badge {
-      display: inline-block;
-      padding: 6px 9px;
-      border-radius: 3px;
-      background: var(--home-bronze-light);
-      color: #87643d;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .service-card--featured .service-card__badge {
-      background: var(--home-navy);
-      color: #ffffff;
-    }
-
-    .service-card__title {
-      min-height: 66px;
-      margin: 0 0 16px;
-      color: var(--home-navy);
-      font-size: 1.22rem;
-      letter-spacing: -0.035em;
-      line-height: 1.35;
-    }
-
-    .service-card__price {
-      margin: 0 0 6px;
-      color: var(--home-navy);
-      font-size: 2.15rem;
-      font-weight: 700;
-      letter-spacing: -0.065em;
-      line-height: 1.1;
-    }
-
-    .service-card__price-note {
-      margin-bottom: 20px;
-      color: var(--home-muted);
-      font-size: 0.76rem;
-    }
-
-    .service-card__description {
-      min-height: 145px;
-      margin: 0 0 22px;
-      color: var(--home-muted);
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-
-    .service-card__divider {
-      width: 100%;
-      height: 1px;
-      margin-bottom: 22px;
-      background: var(--home-line);
-    }
-
-    .service-card__list-title {
-      margin-bottom: 15px;
-      color: var(--home-navy);
-      font-size: 0.83rem;
-      font-weight: 700;
-    }
-
-    .service-card__list {
-      display: grid;
-      gap: 13px;
-      margin: 0 0 25px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .service-card__list li {
-      position: relative;
-      padding-left: 21px;
-      color: var(--home-navy-light);
-      font-size: 0.83rem;
-      line-height: 1.6;
-    }
-
-    .service-card__list li::before {
-      content: "";
-      position: absolute;
-      top: 8px;
-      left: 0;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--home-bronze);
-    }
-
-    .service-card__scope {
-      margin-top: auto;
-      margin-bottom: 24px;
-      padding: 15px;
-      border-radius: 6px;
-      background: #f5f3ee;
-      color: var(--home-muted);
-      font-size: 0.79rem;
-      line-height: 1.7;
-    }
-
-    .service-card__scope strong {
-      color: var(--home-navy);
-    }
-
-    .service-card__button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 49px;
-      padding: 12px 15px;
-      border: 1px solid var(--home-navy);
-      border-radius: 4px;
-      background: transparent;
-      color: var(--home-navy);
-      font-size: 0.84rem;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-      transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        transform 0.2s ease;
-    }
-
-    .service-card__button:hover {
-      transform: translateY(-2px);
-      background: var(--home-navy);
-      color: #ffffff;
-    }
-
-    .service-card--featured .service-card__button {
-      background: var(--home-navy);
-      color: #ffffff;
-    }
-
-    .service-card--featured .service-card__button:hover {
-      background: var(--home-navy-light);
-    }
-
-    .services__footer-note {
-      max-width: 760px;
-      margin: 32px auto 0;
-      color: var(--home-muted);
-      font-size: 0.83rem;
-      line-height: 1.8;
-      text-align: center;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1050px) {
-      .service-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .service-card:last-child {
-        grid-column: 1 / -1;
-      }
-
-      .service-card__description {
-        min-height: auto;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .services {
-        padding-top: 75px;
-        padding-bottom: 80px;
-      }
-
-      .services__heading {
-        margin-bottom: 40px;
-        text-align: left;
-      }
-
-      .services__heading p {
-        margin-left: 0;
-      }
-
-      .preliminary {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        padding: 27px;
-        margin-bottom: 58px;
-      }
-
-      .services__subheading {
-        display: block;
-      }
-
-      .services__subheading p {
-        margin-top: 10px;
-      }
-
-      .service-grid {
-        grid-template-columns: 1fr;
-        gap: 17px;
-      }
-
-      .service-card:last-child {
-        grid-column: auto;
-      }
-
-      .service-card {
-        padding: 27px 23px;
-      }
-
-      .service-card__title {
-        min-height: auto;
-      }
-
-      .service-card__description {
-        min-height: auto;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .services {
-        padding-top: 60px;
-        padding-bottom: 65px;
-      }
-
-      .preliminary {
-        padding: 22px;
-      }
-
-      .preliminary__side {
-        padding: 21px;
-      }
-
-      .service-card {
-        padding: 23px 20px;
-      }
-
-      .service-card__price {
-        font-size: 1.95rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
-    }
-
-  </style>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G8JYVSPW5"></script>
-
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-3G8JYVSPW5');
   </script>
 
+  <!-- Homepage-specific styles -->
+  <style>
+
+    /* =========================================================
+       DAXMAC HOMEPAGE
+       Homepage-specific styles.
+       Shared styles remain in style.css.
+    ========================================================= */
+
+    body.home-page {
+      --home-ink: #202B36;
+      --home-muted: #626D78;
+      --home-bg: #F4F1E9;
+      --home-surface: #FBFAF7;
+      --home-soft: #E8EDF0;
+      --home-navy: #172B3A;
+      --home-accent: #A97524;
+      --home-line: #D9DDE0;
+      overflow-x: hidden;
+    }
+
+    body.home-page main {
+      overflow: hidden;
+    }
+
+    body.home-page .wrap {
+      max-width: 1180px;
+    }
+
+    body.home-page .section {
+      position: relative;
+      padding-block: clamp(76px, 9vw, 120px);
+    }
+
+    body.home-page .section__intro {
+      max-width: 760px;
+      margin-bottom: 48px;
+    }
+
+    body.home-page .section__title {
+      font-size: clamp(2rem, 1.5rem + 1.7vw, 2.8rem);
+      max-width: 24ch;
+      line-height: 1.14;
+      margin-bottom: 22px;
+    }
+
+    body.home-page .lede {
+      max-width: 68ch;
+    }
+
+    body.home-page .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    body.home-page .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--home-accent);
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    body.home-page .site-header {
+      background: rgba(244, 241, 233, 0.96);
+      border-bottom: 1px solid var(--home-line);
+    }
+
+    body.home-page .site-header__inner {
+      min-height: 78px;
+    }
+
+    body.home-page .brand {
+      flex-shrink: 0;
+    }
+
+    body.home-page .brand__mark {
+      height: 27px;
+    }
+
+    body.home-page .site-nav {
+      gap: clamp(18px, 2.4vw, 32px);
+    }
+
+    body.home-page .site-nav a {
+      font-size: 0.875rem;
+      transition: color 180ms ease;
+    }
+
+    body.home-page .site-nav a:hover {
+      color: var(--home-accent);
+    }
+
+    body.home-page .site-nav a:last-child {
+      border-bottom: none;
+    }
+
+    body.home-page .nav-toggle {
+      padding: 10px 14px;
+      border-color: var(--home-line);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    body.home-page .hero {
+      position: relative;
+      padding-block: clamp(90px, 11vw, 150px);
+      background: var(--home-bg);
+      border-bottom: 1px solid var(--home-line);
+    }
+
+    body.home-page .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 35%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(232, 237, 240, 0.48),
+        rgba(232, 237, 240, 0)
+      );
+      pointer-events: none;
+    }
+
+    body.home-page .hero__inner {
+      position: relative;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.75fr);
+      gap: clamp(48px, 7vw, 100px);
+    }
+
+    body.home-page .hero__copy {
+      max-width: 690px;
+    }
+
+    body.home-page .hero__copy .eyebrow {
+      margin-bottom: 28px;
+    }
+
+    body.home-page .hero__title {
+      max-width: 17ch;
+      font-size: clamp(2.65rem, 2rem + 3.3vw, 4.35rem);
+      line-height: 1.04;
+      letter-spacing: -0.055em;
+      margin-bottom: 30px;
+    }
+
+    body.home-page .hero__lede {
+      max-width: 58ch;
+      font-size: clamp(1.02rem, 0.96rem + 0.35vw, 1.16rem);
+      line-height: 1.8;
+    }
+
+    body.home-page .hero__actions {
+      margin-top: 38px;
+    }
+
+    body.home-page .hero__actions .btn {
+      min-height: 54px;
+    }
+
+    body.home-page .hero__art {
+      position: relative;
+      max-width: 440px;
+      aspect-ratio: 4 / 4.2;
+      justify-self: end;
+      border: 1px solid var(--home-line);
+      background: var(--home-soft);
+      box-shadow: 18px 18px 0 rgba(23, 43, 58, 0.045);
+    }
+
+    body.home-page .hero__art img {
+      object-position: center;
+      filter: none;
+    }
+
+
+    /* =========================================================
+       ASSUMPTIONS SECTION
+    ========================================================= */
+
+    body.home-page .problem {
+      background: var(--home-surface);
+    }
+
+    body.home-page .problem .section__intro {
+      margin-bottom: 54px;
+    }
+
+    body.home-page .assumption-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--home-line);
+      border-bottom: 1px solid var(--home-line);
+    }
+
+    body.home-page .assumption-card {
+      padding: 32px 26px 36px 0;
+      min-width: 0;
+    }
+
+    body.home-page .assumption-card:not(:last-child) {
+      border-right: 1px solid var(--home-line);
+      margin-right: 26px;
+    }
+
+    body.home-page .assumption-card__number {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--home-accent);
+      margin-bottom: 26px;
+    }
+
+    body.home-page .assumption-card h3 {
+      font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    body.home-page .assumption-card p {
+      color: var(--home-muted);
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    body.home-page .problem .note {
+      max-width: 760px;
+      margin-top: 38px;
+      padding: 20px 24px;
+      border-left: 2px solid var(--home-accent);
+      background: rgba(232, 237, 240, 0.48);
+    }
+
+
+    /* =========================================================
+       WHAT DAXMAC EXAMINES
+    ========================================================= */
+
+    body.home-page .examines {
+      background: var(--home-bg);
+    }
+
+    body.home-page .examines-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--home-line);
+      border: 1px solid var(--home-line);
+    }
+
+    body.home-page .examine-card {
+      min-width: 0;
+      padding: clamp(26px, 3vw, 38px);
+      background: var(--home-surface);
+      transition: background 180ms ease;
+    }
+
+    body.home-page .examine-card:hover {
+      background: #FFFFFF;
+    }
+
+    body.home-page .examine-card h3 {
+      font-size: 1.3rem;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    body.home-page .examine-card p {
+      color: var(--home-muted);
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    body.home-page .examines > .wrap > .note {
+      margin-top: 32px;
+    }
+
+
+    /* =========================================================
+       HOW THE REVIEW WORKS
+    ========================================================= */
+
+    body.home-page .method {
+      background: var(--home-soft);
+    }
+
+    body.home-page .method .section__intro {
+      max-width: 790px;
+    }
+
+    body.home-page .method-steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 44px;
+      border-top: 1px solid var(--home-line);
+    }
+
+    body.home-page .method-step {
+      padding-block: 34px;
+      border-bottom: 1px solid var(--home-line);
+    }
+
+    body.home-page .method-step__number {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--home-accent);
+      margin-bottom: 20px;
+    }
+
+    body.home-page .method-step h3 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    body.home-page .method-step p {
+      max-width: 54ch;
+      color: var(--home-muted);
+      font-size: 0.96rem;
+      line-height: 1.8;
+    }
+
+    body.home-page .method-boundary {
+      margin-top: 42px;
+      padding: clamp(28px, 4vw, 44px);
+      background: var(--home-navy);
+      color: #F7F5EF;
+    }
+
+    body.home-page .method-boundary p {
+      max-width: 78ch;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: #D1D9DE;
+    }
+
+    body.home-page .method-boundary p + p {
+      margin-top: 18px;
+    }
+
+
+    /* =========================================================
+       SERVICES INTRO
+    ========================================================= */
+
+    body.home-page .services {
+      background: var(--home-surface);
+    }
+
+    body.home-page .services .section__intro {
+      max-width: 760px;
+      margin-bottom: 54px;
+    }
+
+    body.home-page .service-group-heading {
+      padding-block: 24px;
+      margin-top: 66px;
+      border-top: 1px solid var(--home-line);
+      border-bottom: 1px solid var(--home-line);
+    }
+
+    body.home-page .service-group-heading h3 {
+      font-size: clamp(1.5rem, 1.2rem + 0.9vw, 2rem);
+      margin-bottom: 10px;
+    }
+
+    body.home-page .service-group-heading p {
+      color: var(--home-muted);
+      max-width: 65ch;
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       PRELIMINARY REVIEW
+    ========================================================= */
+
+    body.home-page .preliminary-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.65fr);
+      gap: 48px;
+      padding: clamp(30px, 5vw, 58px);
+      margin-top: 28px;
+      background: var(--home-soft);
+      border: 1px solid var(--home-line);
+      border-top: 3px solid var(--home-accent);
+    }
+
+    body.home-page .preliminary-card__label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--home-accent);
+      margin-bottom: 24px;
+    }
+
+    body.home-page .preliminary-card h3 {
+      font-size: clamp(1.65rem, 1.3rem + 1.1vw, 2.15rem);
+      margin-bottom: 14px;
+    }
+
+    body.home-page .preliminary-card__price {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      color: var(--home-navy);
+      margin-bottom: 24px;
+    }
+
+    body.home-page .preliminary-card__description {
+      max-width: 62ch;
+      color: var(--home-muted);
+      line-height: 1.8;
+      font-size: 0.96rem;
+    }
+
+    body.home-page .preliminary-card__right {
+      padding-left: 32px;
+      border-left: 1px solid var(--home-line);
+    }
+
+    body.home-page .preliminary-card__right h4 {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    body.home-page .preliminary-card__right ul {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    body.home-page .preliminary-card__right li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    body.home-page .preliminary-card__right li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--home-accent);
+    }
+
+    body.home-page .preliminary-card__scope {
+      padding-top: 20px;
+      border-top: 1px solid var(--home-line);
+    }
+
+    body.home-page .preliminary-card__scope p {
+      font-size: 0.87rem;
+      line-height: 1.7;
+      color: var(--home-muted);
+    }
+
+    body.home-page .preliminary-card__scope p + p {
+      margin-top: 12px;
+    }
+
+    body.home-page .preliminary-card__purpose {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--home-line);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--home-ink);
+    }
+
+    body.home-page .preliminary-card__action {
+      margin-top: 28px;
+    }
+
+
+    /* =========================================================
+       PAID SERVICES
+    ========================================================= */
+
+    body.home-page .paid-services {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+      align-items: stretch;
+    }
+
+    body.home-page .service-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: clamp(25px, 3vw, 36px);
+      background: #FFFFFF;
+      border: 1px solid var(--home-line);
+      border-top: 3px solid var(--home-navy);
+      transition:
+        transform 200ms ease,
+        border-color 200ms ease,
+        box-shadow 200ms ease;
+    }
+
+    body.home-page .service-card:hover {
+      transform: translateY(-4px);
+      border-top-color: var(--home-accent);
+      box-shadow: 0 14px 32px rgba(23, 43, 58, 0.07);
+    }
+
+    body.home-page .service-card--featured {
+      background: var(--home-navy);
+      color: #F7F5EF;
+      border-color: var(--home-navy);
+      border-top-color: var(--home-accent);
+    }
+
+    body.home-page .service-card--featured:hover {
+      border-top-color: #D6A14D;
+    }
+
+    body.home-page .service-card__number {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: var(--home-accent);
+      margin-bottom: 20px;
+    }
+
+    body.home-page .service-card__type {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--home-muted);
+      margin-bottom: 12px;
+    }
+
+    body.home-page .service-card--featured .service-card__type {
+      color: #C0CBD2;
+    }
+
+    body.home-page .service-card h3 {
+      font-size: clamp(1.35rem, 1.15rem + 0.55vw, 1.65rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    body.home-page .service-card__price {
+      font-family: var(--font-mono);
+      font-size: clamp(1.8rem, 1.45rem + 0.9vw, 2.3rem);
+      letter-spacing: -0.05em;
+      line-height: 1.15;
+      color: var(--home-navy);
+      margin-bottom: 22px;
+    }
+
+    body.home-page .service-card--featured .service-card__price {
+      color: #F1C77F;
+    }
+
+    body.home-page .service-card__description {
+      font-size: 0.91rem;
+      line-height: 1.75;
+      color: var(--home-muted);
+      margin-bottom: 22px;
+    }
+
+    body.home-page .service-card--featured .service-card__description {
+      color: #D1D9DE;
+    }
+
+    body.home-page .service-card__divider {
+      height: 1px;
+      background: var(--home-line);
+      margin-block: 20px;
+    }
+
+    body.home-page .service-card--featured .service-card__divider {
+      background: #354B5A;
+    }
+
+    body.home-page .service-card__list-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--home-muted);
+      margin-bottom: 16px;
+    }
+
+    body.home-page .service-card--featured .service-card__list-title {
+      color: #C0CBD2;
+    }
+
+    body.home-page .service-card ul {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    body.home-page .service-card li {
+      position: relative;
+      padding-left: 17px;
+      font-size: 0.87rem;
+      line-height: 1.65;
+      color: var(--home-ink);
+    }
+
+    body.home-page .service-card li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--home-accent);
+    }
+
+    body.home-page .service-card--featured li {
+      color: #E5E9EC;
+    }
+
+    body.home-page .service-card__scope {
+      padding-top: 18px;
+      border-top: 1px solid var(--home-line);
+      margin-top: auto;
+      margin-bottom: 24px;
+    }
+
+    body.home-page .service-card--featured .service-card__scope {
+      border-top-color: #354B5A;
+    }
+
+    body.home-page .service-card__scope p {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: var(--home-muted);
+    }
+
+    body.home-page .service-card--featured .service-card__scope p {
+      color: #C0CBD2;
+    }
+
+    body.home-page .service-card__scope p + p {
+      margin-top: 12px;
+    }
+
+    body.home-page .service-card .btn {
+      align-self: flex-start;
+      white-space: normal;
+      text-align: left;
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    body.home-page .service-card--featured .btn--primary {
+      background: #F7F5EF;
+      color: var(--home-navy);
+      border-color: #F7F5EF;
+    }
+
+    body.home-page .service-card--featured .btn--primary:hover {
+      background: #E8EDF0;
+      border-color: #E8EDF0;
+    }
+
+    body.home-page .service-card--featured .btn--ghost {
+      color: #F7F5EF;
+      border-color: #70808A;
+    }
+
+    body.home-page .service-card--featured .btn--ghost:hover {
+      background: #354B5A;
+    }
+
+    body.home-page .service-engagement-note {
+      margin-top: 38px;
+      padding: 24px 28px;
+      border-left: 2px solid var(--home-accent);
+      background: var(--home-soft);
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: var(--home-ink);
+    }
+
+
+    /* =========================================================
+       DELIVERABLES
+    ========================================================= */
+
+    body.home-page .deliver {
+      background: var(--home-soft);
+    }
+
+    body.home-page .deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 48px;
+      border-top: 1px solid var(--home-line);
+    }
+
+    body.home-page .deliver-item {
+      padding-block: 30px;
+      border-bottom: 1px solid var(--home-line);
+    }
+
+    body.home-page .deliver-item__number {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--home-accent);
+      margin-bottom: 18px;
+    }
+
+    body.home-page .deliver-item h3 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    body.home-page .deliver-item p {
+      max-width: 58ch;
+      font-size: 0.94rem;
+      line-height: 1.8;
+      color: var(--home-muted);
+    }
+
+    body.home-page .deliver-note {
+      margin-top: 34px;
+      padding: 24px 28px;
+      background: var(--home-surface);
+      border-left: 2px solid var(--home-accent);
+    }
+
+    body.home-page .deliver-note p {
+      font-size: 0.94rem;
+      line-height: 1.8;
+      color: var(--home-ink);
+    }
+
+    body.home-page .deliver-note p + p {
+      margin-top: 16px;
+    }
+
+
+    /* =========================================================
+       WHO DAXMAC WORKS WITH
+    ========================================================= */
+
+    body.home-page .audience {
+      background: var(--home-surface);
+    }
+
+    body.home-page .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--home-line);
+      border: 1px solid var(--home-line);
+      margin-top: 42px;
+    }
+
+    body.home-page .audience-card {
+      padding: clamp(25px, 3vw, 36px);
+      background: var(--home-surface);
+    }
+
+    body.home-page .audience-card h3 {
+      font-size: 1.28rem;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    body.home-page .audience-card p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--home-muted);
+    }
+
+
+    /* =========================================================
+       WHEN A REVIEW IS WORTH CONSIDERING
+    ========================================================= */
+
+    body.home-page .consider {
+      background: var(--home-bg);
+    }
+
+    body.home-page .consider-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(40px, 7vw, 90px);
+      align-items: start;
+    }
+
+    body.home-page .consider-list {
+      border-top: 1px solid var(--home-line);
+    }
+
+    body.home-page .consider-list li {
+      position: relative;
+      padding: 20px 10px 20px 28px;
+      border-bottom: 1px solid var(--home-line);
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: var(--home-ink);
+    }
+
+    body.home-page .consider-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--home-accent);
+      font-family: var(--font-mono);
+    }
+
+    body.home-page .consider-note {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: var(--home-surface);
+      border-left: 2px solid var(--home-accent);
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--home-muted);
+    }
+
+
+    /* =========================================================
+       FINAL CTA
+    ========================================================= */
+
+    body.home-page .cta {
+      position: relative;
+      overflow: hidden;
+      padding-block: clamp(90px, 11vw, 140px);
+      background: var(--home-navy);
+      border-top: 0;
+    }
+
+    body.home-page .cta::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -220px;
+      width: 460px;
+      height: 460px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    body.home-page .cta .wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    body.home-page .cta__title {
+      max-width: 19ch;
+      font-size: clamp(2.3rem, 1.7rem + 2.5vw, 3.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 26px;
+    }
+
+    body.home-page .cta .lede {
+      max-width: 68ch;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    body.home-page .cta .btn {
+      min-height: 54px;
+    }
+
+    body.home-page .cta__email {
+      padding-top: 24px;
+      border-top: 1px solid #354B5A;
+      max-width: 500px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    body.home-page .site-footer {
+      padding-top: clamp(58px, 7vw, 88px);
+      background: var(--home-bg);
+    }
+
+    body.home-page .site-footer__inner {
+      grid-template-columns: 1.5fr repeat(3, minmax(0, 1fr));
+      gap: clamp(28px, 4vw, 58px);
+    }
+
+    body.home-page .footer__logo {
+      height: 24px;
+    }
+
+    body.home-page .footer__col a {
+      display: inline-block;
+      transition:
+        color 180ms ease,
+        transform 180ms ease;
+    }
+
+    body.home-page .footer__col a:hover {
+      color: var(--home-accent);
+      transform: translateX(2px);
+    }
+
+    body.home-page .footer__social a {
+      margin-left: 12px;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE — TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+
+      body.home-page .hero__inner {
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 0.7fr);
+        gap: 42px;
+      }
+
+      body.home-page .hero__title {
+        font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+      }
+
+      body.home-page .assumption-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      body.home-page .assumption-card {
+        padding: 28px 22px 30px 0;
+        border-bottom: 1px solid var(--home-line);
+      }
+
+      body.home-page .assumption-card:not(:last-child) {
+        margin-right: 22px;
+      }
+
+      body.home-page .assumption-card:nth-child(even) {
+        border-right: 0;
+        margin-right: 0;
+        padding-left: 22px;
+      }
+
+      body.home-page .assumption-card:nth-last-child(-n+2) {
+        border-bottom: 0;
+      }
+
+      body.home-page .paid-services {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      body.home-page .service-card:last-child {
+        grid-column: 1 / -1;
+      }
+
+      body.home-page .examine-card,
+      body.home-page .audience-card {
+        padding: 26px;
+      }
+
+      body.home-page .site-footer__inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      body.home-page .footer__brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE — MOBILE
+    ========================================================= */
+
+    @media (max-width: 680px) {
+
+      body.home-page .section {
+        padding-block: 68px;
+      }
+
+      body.home-page .section__intro {
+        margin-bottom: 34px;
+      }
+
+      body.home-page .section__title {
+        font-size: clamp(1.85rem, 7vw, 2.35rem);
+      }
+
+      body.home-page .site-header__inner {
+        min-height: 68px;
+      }
+
+      body.home-page .brand__mark {
+        height: 23px;
+      }
+
+      body.home-page .hero {
+        padding-block: 70px 82px;
+      }
+
+      body.home-page .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      body.home-page .hero__art {
+        justify-self: start;
+        order: 0;
+        max-width: 100%;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        box-shadow: 10px 10px 0 rgba(23, 43, 58, 0.045);
+      }
+
+      body.home-page .hero__title {
+        font-size: clamp(2.45rem, 10vw, 3.25rem);
+        max-width: 15ch;
+        margin-bottom: 22px;
+      }
+
+      body.home-page .hero__lede {
+        font-size: 0.98rem;
+      }
+
+      body.home-page .hero__actions {
+        margin-top: 28px;
+        gap: 12px;
+      }
+
+      body.home-page .hero__actions .btn {
+        width: 100%;
+      }
+
+      body.home-page .assumption-grid {
+        grid-template-columns: 1fr;
+      }
+
+      body.home-page .assumption-card,
+      body.home-page .assumption-card:not(:last-child),
+      body.home-page .assumption-card:nth-child(even) {
+        padding: 26px 0;
+        margin: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--home-line);
+      }
+
+      body.home-page .assumption-card:last-child {
+        border-bottom: 0;
+      }
+
+      body.home-page .assumption-card__number {
+        margin-bottom: 14px;
+      }
+
+      body.home-page .problem .note {
+        padding: 18px;
+      }
+
+      body.home-page .examines-grid,
+      body.home-page .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      body.home-page .examine-card,
+      body.home-page .audience-card {
+        padding: 25px;
+      }
+
+      body.home-page .method-steps {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      body.home-page .method-step {
+        padding-block: 28px;
+      }
+
+      body.home-page .method-step h3 {
+        font-size: 1.35rem;
+      }
+
+      body.home-page .method-boundary {
+        padding: 26px 22px;
+      }
+
+      body.home-page .service-group-heading {
+        margin-top: 48px;
+      }
+
+      body.home-page .preliminary-card {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        padding: 26px 22px;
+      }
+
+      body.home-page .preliminary-card__right {
+        padding-left: 0;
+        border-left: 0;
+        padding-top: 26px;
+        border-top: 1px solid var(--home-line);
+      }
+
+      body.home-page .paid-services {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      body.home-page .service-card:last-child {
+        grid-column: auto;
+      }
+
+      body.home-page .service-card {
+        padding: 27px 23px;
+      }
+
+      body.home-page .service-card .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      body.home-page .service-engagement-note {
+        padding: 20px;
+      }
+
+      body.home-page .deliver-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      body.home-page .deliver-item {
+        padding-block: 26px;
+      }
+
+      body.home-page .deliver-note {
+        padding: 20px;
+      }
+
+      body.home-page .consider-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      body.home-page .consider-list li {
+        padding-block: 17px;
+      }
+
+      body.home-page .cta {
+        padding-block: 76px;
+      }
+
+      body.home-page .cta__title {
+        font-size: clamp(2.15rem, 9vw, 2.8rem);
+      }
+
+      body.home-page .cta .btn {
+        width: 100%;
+        white-space: normal;
+      }
+
+      body.home-page .site-footer__inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      body.home-page .footer__brand {
+        grid-column: auto;
+      }
+
+      body.home-page .site-footer__base {
+        align-items: flex-start;
+      }
+
+      body.home-page .footer__social a {
+        margin-left: 0;
+        margin-right: 16px;
+      }
+    }
+
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 380px) {
+
+      body.home-page .wrap {
+        padding-inline: 18px;
+      }
+
+      body.home-page .hero__title {
+        font-size: 2.25rem;
+      }
+
+      body.home-page .service-card__price {
+        font-size: 1.8rem;
+      }
+
+      body.home-page .btn {
+        padding: 13px 17px;
+      }
+    }
+
+
+    /* =========================================================
+       ACCESSIBILITY
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      body.home-page *,
+      body.home-page *::before,
+      body.home-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      body.home-page .service-card:hover {
+        transform: none;
+      }
+    }
+
+  </style>
 </head>
 
-<body>
 
-  <!-- HEADER -->
+<body class="home-page">
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
   <header class="site-header">
     <div class="wrap site-header__inner">
 
-      <a class="brand" href="index.html" aria-label="DaxMac home">
-        <img class="brand__mark" src="assets/logo.png" alt="DaxMac">
+      <a href="index.html" class="brand" aria-label="DaxMac Home">
+        <img
+          src="assets/logo.png"
+          alt="DaxMac"
+          class="brand__mark"
+        >
       </a>
-
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#method">How It Works</a>
-        <a href="audits.html">Independent Research</a>
-        <a href="field-notes.html">Field Notes</a>
-        <a href="about.html">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
 
       <button
         class="nav-toggle"
@@ -703,13 +1300,29 @@
         Menu
       </button>
 
+      <nav
+        class="site-nav"
+        id="site-nav"
+        aria-label="Primary navigation"
+      >
+        <a href="#services">Services</a>
+        <a href="#method">How It Works</a>
+        <a href="audits.html">Independent Research</a>
+        <a href="field-notes.html">Field Notes</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
     </div>
   </header>
 
 
   <main>
 
-    <!-- 1. HERO -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
     <section class="hero">
       <div class="wrap hero__inner">
 
@@ -724,391 +1337,459 @@
           </h1>
 
           <p class="hero__lede">
-            DaxMac independently examines specific implementation paths
-            across APIs, SDKs, configuration, examples, and product behavior.
-            We identify the assumptions developers can reasonably form,
-            assess what the evidence establishes, and highlight concerns
-            worth addressing.
+            DaxMac independently examines specific implementation paths across APIs, SDKs, configuration, examples, and product behaviour. We identify the assumptions developers can reasonably form, assess what the available evidence establishes, and highlight considerations worth addressing.
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#services">
+            <a href="#services" class="btn btn--primary btn--lg">
               Explore Review Services
-            </a>
-
-            <a class="btn btn--ghost" href="#method">
-              How It Works
             </a>
           </div>
 
         </div>
 
         <div class="hero__art">
-          <img src="assets/hero-illustration.png" alt="">
+          <img
+            src="assets/hero-illustration.png"
+            alt="DaxMac developer implementation review illustration"
+          >
         </div>
 
       </div>
     </section>
 
 
-    <!-- 2. WHY IMPLEMENTATION ASSUMPTIONS MATTER -->
+    <!-- =====================================================
+         DEVELOPER ASSUMPTIONS
+    ====================================================== -->
+
     <section class="section problem">
       <div class="wrap">
 
-        <h2 class="section__title">
-          Where Developer Assumptions Meet Implementation Reality
-        </h2>
+        <div class="section__intro">
 
-        <p class="lede">
-          Developers build an understanding of a product through its
-          documentation, APIs, SDKs, examples, configuration options,
-          and observed behavior. That understanding shapes what they
-          implement and which responsibilities they believe the product handles.
-        </p>
+          <p class="eyebrow">
+            Implementation Perspective
+          </p>
 
-        <ol class="steps">
+          <h2 class="section__title">
+            Where Developer Assumptions Meet Implementation Reality
+          </h2>
 
-          <li class="step">
-            <span class="step__num">01</span>
-            <h3 class="step__title">What Developers See</h3>
-            <p class="step__text">
-              Documentation, examples, interfaces, configuration options,
-              and product behavior presented during implementation.
-            </p>
-          </li>
+          <p class="lede">
+            Developers build an understanding of a product through its documentation, APIs, SDKs, examples, configuration options, and observed behaviour. That understanding shapes what they implement and which responsibilities they believe the product handles.
+          </p>
 
-          <li class="step">
-            <span class="step__num">02</span>
-            <h3 class="step__title">What They Assume</h3>
-            <p class="step__text">
-              Conclusions developers draw about how the product works,
-              what it handles automatically, and what remains their responsibility.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">03</span>
-            <h3 class="step__title">What They Implement</h3>
-            <p class="step__text">
-              Technical decisions, configurations, and workflows built
-              based on their understanding of the product.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">04</span>
-            <h3 class="step__title">What the Evidence Establishes</h3>
-            <p class="step__text">
-              Whether the implementation behaves as the developer could
-              reasonably expect, and which responsibilities or conditions
-              may have been overlooked.
-            </p>
-          </li>
-
-        </ol>
-
-        <p class="note">
-          Incomplete assumptions can contribute to support work, engineering
-          intervention, integration delays, or production concerns. DaxMac
-          investigates these possibilities rather than assuming they exist.
-        </p>
-
-      </div>
-    </section>
+        </div>
 
 
-    <!-- 3. WHAT DAXMAC EXAMINES -->
-    <section class="section audience" id="examines">
-      <div class="wrap">
+        <div class="assumption-grid">
 
-        <h2 class="section__title">
-          What DaxMac Examines
-        </h2>
+          <article class="assumption-card">
+            <span class="assumption-card__number">01</span>
 
-        <p class="lede">
-          DaxMac examines defined implementation paths developers must work
-          through to integrate, configure, deploy, or operate a product.
-          Depending on the product and agreed scope, an investigation may cover:
-        </p>
+            <h3>What Developers See</h3>
 
-        <div class="notes-grid">
-
-          <article class="note-card">
-            <h3 class="note-card__title">API and SDK Integration</h3>
-            <p class="note-card__text">
-              Initialization, authentication, configuration, and the
-              responsibilities involved in integrating a product.
+            <p>
+              Documentation, examples, interfaces, configuration options, and product behaviour presented during implementation.
             </p>
           </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Authentication and Permissions</h3>
-            <p class="note-card__text">
-              Credentials, access controls, permissions, and authorization
-              responsibilities during implementation.
+
+          <article class="assumption-card">
+            <span class="assumption-card__number">02</span>
+
+            <h3>What They Assume</h3>
+
+            <p>
+              Conclusions developers draw about how the product works, what it handles automatically, and what remains their responsibility.
             </p>
           </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Configuration and Dependencies</h3>
-            <p class="note-card__text">
-              Required settings, dependencies, and the distinction between
-              what the product handles automatically and what customers manage.
+
+          <article class="assumption-card">
+            <span class="assumption-card__number">03</span>
+
+            <h3>What They Implement</h3>
+
+            <p>
+              Technical decisions, configurations, and workflows built based on their understanding of the product.
             </p>
           </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Resource and State Management</h3>
-            <p class="note-card__text">
-              How developers create, update, manage, and maintain resources
-              throughout their lifecycle.
-            </p>
-          </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Testing and Validation</h3>
-            <p class="note-card__text">
-              What tests, simulations, examples, and validation processes
-              actually establish, and what remains unverified.
-            </p>
-          </article>
+          <article class="assumption-card">
+            <span class="assumption-card__number">04</span>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Deployment and Production Workflows</h3>
-            <p class="note-card__text">
-              The transition from initial setup and testing to deployment,
-              production use, and ongoing operation.
+            <h3>What the Evidence Establishes</h3>
+
+            <p>
+              What the available evidence establishes about the implementation, where developer expectations may differ from actual requirements, and which responsibilities or conditions deserve further attention.
             </p>
           </article>
 
         </div>
 
+
         <p class="note">
-          Each review focuses on an agreed implementation path, not the
-          entire product. Investigation may draw on documentation, examples,
-          APIs, SDKs, product interfaces, and observed behavior depending
-          on the scope.
+          Incomplete assumptions can contribute to support work, engineering intervention, integration delays, or production concerns. DaxMac investigates these possibilities rather than assuming they exist.
         </p>
 
       </div>
     </section>
 
 
-    <!-- 4. HOW THE REVIEW WORKS -->
+    <!-- =====================================================
+         WHAT DAXMAC EXAMINES
+    ====================================================== -->
+
+    <section class="section examines" id="examines">
+      <div class="wrap">
+
+        <div class="section__intro">
+
+          <p class="eyebrow">
+            Areas of Investigation
+          </p>
+
+          <h2 class="section__title">
+            What DaxMac Examines
+          </h2>
+
+          <p class="lede">
+            DaxMac examines defined implementation paths developers must work through to integrate, configure, deploy, or operate a product.
+          </p>
+
+          <p class="lede">
+            Depending on the product and agreed scope, an investigation may cover:
+          </p>
+
+        </div>
+
+
+        <div class="examines-grid">
+
+          <article class="examine-card">
+            <h3>API and SDK Integration</h3>
+
+            <p>
+              Initialization, authentication, configuration, and the responsibilities involved in integrating a product.
+            </p>
+          </article>
+
+
+          <article class="examine-card">
+            <h3>Authentication and Permissions</h3>
+
+            <p>
+              Credentials, access controls, permissions, and authorization responsibilities during implementation.
+            </p>
+          </article>
+
+
+          <article class="examine-card">
+            <h3>Configuration and Dependencies</h3>
+
+            <p>
+              Required settings, dependencies, and the distinction between what the product handles automatically and what customers manage.
+            </p>
+          </article>
+
+
+          <article class="examine-card">
+            <h3>Resource and State Management</h3>
+
+            <p>
+              How developers create, update, manage, and maintain resources throughout their lifecycle.
+            </p>
+          </article>
+
+
+          <article class="examine-card">
+            <h3>Testing and Validation</h3>
+
+            <p>
+              What tests, simulations, examples, and validation processes actually establish, and what remains unverified.
+            </p>
+          </article>
+
+
+          <article class="examine-card">
+            <h3>Deployment and Production Workflows</h3>
+
+            <p>
+              The transition from initial setup and testing to deployment, production use, and ongoing operation.
+            </p>
+          </article>
+
+        </div>
+
+
+        <p class="note">
+          Each review focuses on an agreed implementation path, not the entire product. Investigation may draw on documentation, examples, APIs, SDKs, product interfaces, and observed behaviour depending on the scope.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         HOW THE REVIEW WORKS
+    ====================================================== -->
+
     <section class="section method" id="method">
       <div class="wrap">
 
-        <h2 class="section__title">
-          How the Review Works
-        </h2>
+        <div class="section__intro">
 
-        <p class="lede">
-          Every Developer Implementation Review begins with a defined
-          implementation path and the outcome a developer is trying to achieve.
-          We follow that path from the developer's perspective, examining
-          the product surfaces, decisions, and responsibilities involved.
-        </p>
-
-        <ol class="steps">
-
-          <li class="step">
-            <span class="step__num">01</span>
-            <h3 class="step__title">Trace the Implementation Path</h3>
-            <p class="step__text">
-              Establish the specific outcome being examined and follow
-              the steps a developer would take to achieve it.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">02</span>
-            <h3 class="step__title">Identify Developer Assumptions</h3>
-            <p class="step__text">
-              Examine what a developer could reasonably understand from
-              the available documentation, examples, interfaces,
-              configuration, and product behavior.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">03</span>
-            <h3 class="step__title">Assess Responsibilities and Implications</h3>
-            <p class="step__text">
-              Compare those assumptions with what the implementation
-              actually requires or establishes. Where differences exist,
-              assess their potential consequences.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">04</span>
-            <h3 class="step__title">Document Evidence and Findings</h3>
-            <p class="step__text">
-              Connect each supported finding to the relevant implementation
-              steps and evidence, explaining the assumption, responsibility
-              boundary, potential consequence, and priority for further attention.
-            </p>
-          </li>
-
-        </ol>
-
-        <p class="note">
-          Where necessary and included in the agreed scope, we validate
-          behavior through controlled API, SDK, or product testing.
-          The investigation does not begin with a predetermined problem.
-          Findings are determined by what the implementation path and
-          available evidence establish.
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- 5. SERVICES -->
-    <section class="section services" id="services">
-      <div class="wrap">
-
-        <div class="services__heading">
-
-          <span class="services__eyebrow">
-            DaxMac Services
-          </span>
-
-          <h2>
-            Developer Implementation Reviews
-          </h2>
-
-          <p>
-            Understand how developers experience your product's implementation
-            journey, what they may reasonably assume your product handles,
-            and what responsibilities remain theirs.
+          <p class="eyebrow">
+            Review Methodology
           </p>
 
-          <p style="margin-top: 14px;">
-            DaxMac independently examines developer implementation paths
-            to help product and engineering teams identify important
-            considerations and make better-informed decisions.
+          <h2 class="section__title">
+            How the Review Works
+          </h2>
+
+          <p class="lede">
+            Every Developer Implementation Review begins with a defined implementation path and the outcome a developer is trying to achieve. We follow that path from the developer's perspective, examining the product surfaces, decisions, and responsibilities involved.
           </p>
 
         </div>
 
 
-        <!-- COMPLIMENTARY PRELIMINARY REVIEW -->
-        <div class="preliminary">
+        <div class="method-steps">
 
-          <div>
+          <article class="method-step">
+            <span class="method-step__number">01</span>
 
-            <span class="preliminary__label">
-              Start Here · Complimentary
+            <h3>Trace the Implementation Path</h3>
+
+            <p>
+              Establish the specific outcome being examined and follow the steps a developer would take to achieve it.
+            </p>
+          </article>
+
+
+          <article class="method-step">
+            <span class="method-step__number">02</span>
+
+            <h3>Identify Developer Assumptions</h3>
+
+            <p>
+              Examine what a developer could reasonably understand from the available documentation, examples, interfaces, configuration, and product behaviour.
+            </p>
+          </article>
+
+
+          <article class="method-step">
+            <span class="method-step__number">03</span>
+
+            <h3>Assess Responsibilities and Implications</h3>
+
+            <p>
+              Compare those assumptions with what the implementation actually requires or establishes. Where differences exist, assess their potential consequences.
+            </p>
+          </article>
+
+
+          <article class="method-step">
+            <span class="method-step__number">04</span>
+
+            <h3>Document Evidence and Findings</h3>
+
+            <p>
+              Connect each supported finding to the relevant implementation steps and evidence, explaining the assumption, responsibility boundary, potential consequence, and priority for further attention.
+            </p>
+          </article>
+
+        </div>
+
+
+        <div class="method-boundary">
+
+          <p>
+            Where necessary and included in the agreed scope, we validate behaviour through controlled API, SDK, or product testing.
+          </p>
+
+          <p>
+            The investigation does not begin with a predetermined problem. Findings are determined by what the implementation path and available evidence establish.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
+
+    <section class="section services" id="services">
+      <div class="wrap">
+
+        <div class="section__intro">
+
+          <p class="eyebrow">
+            Engagement Options
+          </p>
+
+          <h2 class="section__title">
+            DaxMac Services
+          </h2>
+
+          <p class="lede">
+            Four ways to engage DaxMac, depending on the depth of investigation your team requires.
+          </p>
+
+        </div>
+
+
+        <!-- PRELIMINARY REVIEW -->
+
+        <div class="service-group-heading">
+
+          <p class="eyebrow">
+            Start Here — Complimentary
+          </p>
+
+          <h3>Preliminary Implementation Review</h3>
+
+          <p>
+            A preliminary engagement to demonstrate the DaxMac review approach.
+          </p>
+
+        </div>
+
+
+        <article class="preliminary-card">
+
+          <div class="preliminary-card__left">
+
+            <span class="preliminary-card__label">
+              Preliminary Review
             </span>
 
-            <h3 class="preliminary__title">
-              Preliminary Implementation Review
-            </h3>
+            <h3>Preliminary Implementation Review</h3>
 
-            <p class="preliminary__description">
-              A short, preliminary examination of one implementation area
-              to demonstrate how DaxMac approaches developer implementation reviews.
+            <p class="preliminary-card__price">
+              No charge
             </p>
 
-            <p class="preliminary__price">
-              Complimentary
-              <span>No charge</span>
+            <p class="preliminary-card__description">
+              A short, preliminary examination of one selected implementation area to demonstrate how DaxMac approaches developer implementation reviews.
             </p>
 
-            <h4>What you'll receive</h4>
 
-            <ul class="preliminary__list">
-              <li>One selected implementation observation.</li>
+            <div class="preliminary-card__purpose">
+              <p>
+                <strong>Purpose:</strong> Demonstrate the review approach and establish whether a broader paid review is worth discussing.
+              </p>
+            </div>
+
+
+            <div class="preliminary-card__action">
+              <a
+                href="mailto:goodness@daxmac.cc?subject=Preliminary%20Implementation%20Review"
+                class="btn btn--primary"
+              >
+                Request a Preliminary Review →
+              </a>
+            </div>
+
+          </div>
+
+
+          <div class="preliminary-card__right">
+
+            <h4>What you'll receive:</h4>
+
+            <ul>
+              <li>One preliminary implementation observation.</li>
               <li>The developer assumption behind that observation.</li>
               <li>Limited supporting public evidence.</li>
               <li>A brief explanation of why the observation may matter.</li>
             </ul>
 
-            <a
-              class="preliminary__button"
-              href="mailto:goodness@daxmac.cc?subject=Request%20a%20Preliminary%20Review"
-            >
-              Request a Preliminary Review →
-            </a>
+
+            <div class="preliminary-card__scope">
+
+              <h4>Scope:</h4>
+
+              <p>One product and one selected implementation area.</p>
+
+              <p>Publicly available materials only.</p>
+
+              <p>No live API or SDK testing.</p>
+
+              <p>No comprehensive implementation mapping.</p>
+
+              <p>No full investigation report or prioritized recommendations.</p>
+
+              <p>Requests are assessed for suitability before acceptance.</p>
+
+              <p>
+                This is a preliminary assessment, not a comprehensive investigation or a substitute for a paid review.
+              </p>
+
+            </div>
 
           </div>
 
-          <aside class="preliminary__side">
-
-            <h4>Defined preliminary scope</h4>
-
-            <p>
-              One product and one selected implementation area.
-              Based on publicly available materials.
-            </p>
-
-            <p>
-              This is a preliminary assessment, not a comprehensive
-              investigation or a full set of recommendations.
-            </p>
-
-            <div class="preliminary__scope">
-              <strong>Purpose:</strong> Demonstrate the review approach
-              and establish whether a broader paid review is worth discussing.
-            </div>
-
-          </aside>
-
-        </div>
+        </article>
 
 
-        <!-- FULL PAID REVIEWS -->
-        <div class="services__subheading">
+        <!-- PAID REVIEWS -->
+
+        <div class="service-group-heading">
+
+          <p class="eyebrow">
+            Paid Engagements
+          </p>
 
           <h3>Full Developer Implementation Reviews</h3>
 
           <p>
-            Independent assessments for teams that need a closer examination
-            of a defined implementation journey.
+            Independent assessments for teams that need a closer examination of a defined implementation journey.
           </p>
 
         </div>
 
 
-        <div class="service-grid">
+        <div class="paid-services">
 
 
           <!-- STANDARD REVIEW -->
+
           <article class="service-card service-card--featured">
 
-            <div class="service-card__top">
-              <span class="service-card__number">01 / STANDARD</span>
-              <span class="service-card__badge">Core Service</span>
-            </div>
+            <span class="service-card__number">01 / STANDARD</span>
 
-            <h3 class="service-card__title">
-              Developer Implementation Review
-            </h3>
+            <p class="service-card__type">
+              Core Service
+            </p>
 
-            <p class="service-card__price">$750</p>
+            <h3>Developer Implementation Review</h3>
 
-            <p class="service-card__price-note">
-              Fixed starting package
+            <p class="service-card__price">
+              $750 — Fixed fee
             </p>
 
             <p class="service-card__description">
-              An independent examination of an agreed developer implementation
-              journey, from the developer's initial setup through the relevant
-              implementation steps.
-              <br><br>
-              The review examines how product behaviour, implementation
-              instructions and technical requirements shape developer
-              expectations and responsibilities.
+              An independent examination of an agreed developer implementation journey, from the developer's initial setup through the relevant implementation steps.
+            </p>
+
+            <p class="service-card__description">
+              The review examines how product behaviour, implementation instructions, and technical requirements shape developer expectations and responsibilities.
             </p>
 
             <div class="service-card__divider"></div>
 
             <p class="service-card__list-title">
-              What you'll receive
+              What you'll receive:
             </p>
 
-            <ul class="service-card__list">
+            <ul>
               <li>A structured examination of the agreed implementation journey.</li>
               <li>Identification of significant developer assumptions.</li>
               <li>Analysis of product and developer responsibility boundaries.</li>
@@ -1119,16 +1800,20 @@
             </ul>
 
             <div class="service-card__scope">
-              <strong>Scope:</strong> One agreed implementation journey,
-              using publicly available product materials. No live API
-              or SDK execution.
-              <br><br>
-              <strong>Delivery:</strong> 5 business days.
+
+              <p>
+                <strong>Scope:</strong> One agreed implementation journey, using publicly available product materials. No live API or SDK execution.
+              </p>
+
+              <p>
+                <strong>Delivery:</strong> 5 business days after scope approval, payment, and receipt of all required materials.
+              </p>
+
             </div>
 
             <a
-              class="service-card__button"
-              href="mailto:goodness@daxmac.cc?subject=Request%20a%20Developer%20Implementation%20Review"
+              href="mailto:goodness@daxmac.cc?subject=Developer%20Implementation%20Review"
+              class="btn btn--primary"
             >
               Request a Developer Implementation Review →
             </a>
@@ -1136,40 +1821,37 @@
           </article>
 
 
-          <!-- LIVE TESTING -->
+          <!-- LIVE TESTING REVIEW -->
+
           <article class="service-card">
 
-            <div class="service-card__top">
-              <span class="service-card__number">02 / VALIDATION</span>
-              <span class="service-card__badge">Extended Review</span>
-            </div>
+            <span class="service-card__number">02 / VALIDATION</span>
 
-            <h3 class="service-card__title">
-              Developer Implementation Review + Live Testing
-            </h3>
+            <p class="service-card__type">
+              Extended Review
+            </p>
 
-            <p class="service-card__price">$1,250</p>
+            <h3>Developer Implementation Review + Live Testing</h3>
 
-            <p class="service-card__price-note">
-              Review with practical validation
+            <p class="service-card__price">
+              $1,250
             </p>
 
             <p class="service-card__description">
-              A deeper examination that combines independent implementation
-              analysis with practical testing of the agreed implementation path.
-              <br><br>
-              In addition to the standard review, DaxMac works through the
-              agreed implementation steps to examine how the documented
-              experience translates into actual implementation behaviour.
+              A deeper examination combining independent implementation analysis with practical testing of the agreed implementation path.
+            </p>
+
+            <p class="service-card__description">
+              In addition to the standard review, DaxMac works through the agreed implementation steps to examine how the documented experience translates into actual implementation behaviour.
             </p>
 
             <div class="service-card__divider"></div>
 
             <p class="service-card__list-title">
-              Everything in the standard review, plus
+              Everything in the standard review, plus:
             </p>
 
-            <ul class="service-card__list">
+            <ul>
               <li>Practical testing of the agreed implementation path.</li>
               <li>Examination of relevant implementation behaviour.</li>
               <li>Evidence from the testing process.</li>
@@ -1177,16 +1859,20 @@
             </ul>
 
             <div class="service-card__scope">
-              <strong>Scope:</strong> One agreed implementation journey.
-              Testing requirements, access and boundaries are agreed
-              before work begins.
-              <br><br>
-              <strong>Delivery:</strong> 7–10 business days.
+
+              <p>
+                <strong>Scope:</strong> One agreed implementation journey. Testing scenarios, requirements, access, and boundaries are established before work begins.
+              </p>
+
+              <p>
+                <strong>Delivery:</strong> 7–10 business days after scope approval, payment, and receipt of required access and materials.
+              </p>
+
             </div>
 
             <a
-              class="service-card__button"
-              href="mailto:goodness@daxmac.cc?subject=Discuss%20a%20Live%20Testing%20Review"
+              href="mailto:goodness@daxmac.cc?subject=Live%20Testing%20Review"
+              class="btn btn--ghost"
             >
               Discuss a Live Testing Review →
             </a>
@@ -1195,40 +1881,36 @@
 
 
           <!-- CUSTOM ASSESSMENT -->
+
           <article class="service-card">
 
-            <div class="service-card__top">
-              <span class="service-card__number">03 / CUSTOM</span>
-              <span class="service-card__badge">Broader Scope</span>
-            </div>
+            <span class="service-card__number">03 / CUSTOM</span>
 
-            <h3 class="service-card__title">
-              Custom Implementation Assessment
-            </h3>
-
-            <p class="service-card__price">
-              $2,500+
+            <p class="service-card__type">
+              Broader Scope
             </p>
 
-            <p class="service-card__price-note">
-              Starting price
+            <h3>Custom Implementation Assessment</h3>
+
+            <p class="service-card__price">
+              Starting at $2,500
             </p>
 
             <p class="service-card__description">
-              For teams that need a broader or more specialized examination
-              of their developer implementation experience.
-              <br><br>
-              The assessment is scoped around the company's specific product,
-              implementation paths and business priorities.
+              For teams that need a broader or more specialized examination of their developer implementation experience.
+            </p>
+
+            <p class="service-card__description">
+              The assessment is scoped around the company's specific product, implementation paths, and business priorities.
             </p>
 
             <div class="service-card__divider"></div>
 
             <p class="service-card__list-title">
-              Potential scope includes
+              Potential scope includes:
             </p>
 
-            <ul class="service-card__list">
+            <ul>
               <li>Multiple implementation journeys.</li>
               <li>More complex integrations and workflows.</li>
               <li>Specific developer responsibility boundaries.</li>
@@ -1237,13 +1919,16 @@
             </ul>
 
             <div class="service-card__scope">
-              The final scope, deliverables and timeline are agreed
-              before work begins.
+
+              <p>
+                The final scope, deliverables, access requirements, pricing, and timeline are agreed before work begins.
+              </p>
+
             </div>
 
             <a
-              class="service-card__button"
-              href="mailto:goodness@daxmac.cc?subject=Discuss%20a%20Custom%20Assessment"
+              href="mailto:goodness@daxmac.cc?subject=Custom%20Implementation%20Assessment"
+              class="btn btn--ghost"
             >
               Discuss a Custom Assessment →
             </a>
@@ -1253,212 +1938,324 @@
         </div>
 
 
-        <p class="services__footer-note">
-          Every engagement begins with an agreed scope. Final deliverables,
-          evidence requirements, access needs and timelines are established
-          before work begins.
-        </p>
+        <div class="service-engagement-note">
+          Every paid engagement begins with an agreed scope. Deliverables, evidence requirements, access needs, and timelines are established before work begins.
+        </div>
 
       </div>
     </section>
 
 
-    <!-- 6. WHAT BUYERS RECEIVE -->
+    <!-- =====================================================
+         DELIVERABLES
+    ====================================================== -->
+
     <section class="section deliver" id="deliverables">
       <div class="wrap">
 
-        <h2 class="section__title">
-          What You Receive
-        </h2>
+        <div class="section__intro">
 
-        <p class="lede">
-          Every full Developer Implementation Review produces a structured,
-          evidence-backed assessment of the agreed implementation path.
-          The deliverable is designed to help product and engineering
-          teams understand what developers could reasonably assume,
-          what the implementation actually requires or establishes,
-          and which concerns deserve further attention.
-        </p>
+          <p class="eyebrow">
+            Review Deliverables
+          </p>
 
-        <ol class="steps">
+          <h2 class="section__title">
+            What You Receive
+          </h2>
 
-          <li class="step">
-            <span class="step__num">01</span>
-            <h3 class="step__title">Implementation Path Overview</h3>
-            <p class="step__text">
-              A documented view of the implementation path examined,
-              including the intended outcome, relevant steps, product
-              surfaces, sources examined, and agreed review boundaries.
+          <p class="lede">
+            Every full Developer Implementation Review produces a structured, evidence-backed assessment of the agreed implementation path.
+          </p>
+
+          <p class="lede">
+            The deliverable is designed to help product and engineering teams understand what developers could reasonably assume, what the implementation actually requires or establishes, and which concerns deserve further attention.
+          </p>
+
+        </div>
+
+
+        <div class="deliver-grid">
+
+          <article class="deliver-item">
+
+            <span class="deliver-item__number">01</span>
+
+            <h3>Implementation Path Overview</h3>
+
+            <p>
+              A documented view of the implementation path examined, including the intended outcome, relevant steps, product surfaces, sources examined, and agreed review boundaries.
             </p>
-          </li>
 
-          <li class="step">
-            <span class="step__num">02</span>
-            <h3 class="step__title">Evidence-Backed Findings</h3>
-            <p class="step__text">
-              Each finding connects a developer assumption to its supporting
-              evidence, explains what that evidence establishes, and
-              identifies the responsibility or condition that may be overlooked.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">03</span>
-            <h3 class="step__title">Prioritized Assessment</h3>
-            <p class="step__text">
-              Findings are organized by their significance within the
-              examined implementation path, highlighting concerns that
-              may warrant attention or further investigation.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">04</span>
-            <h3 class="step__title">Supporting Evidence</h3>
-            <p class="step__text">
-              Relevant source references and supporting material allow
-              teams to trace how each finding was reached. Live-testing
-              engagements also include agreed test scenarios, configurations,
-              code, requests, responses, and observed behavior where relevant.
-            </p>
-          </li>
-
-          <li class="step">
-            <span class="step__num">05</span>
-            <h3 class="step__title">Review Summary</h3>
-            <p class="step__text">
-              A concise summary of the investigation, its key findings,
-              and the areas that may deserve further attention from
-              product and engineering teams.
-            </p>
-          </li>
-
-        </ol>
-
-        <p class="note">
-          The purpose is to give your team an independent view of how
-          developers may interpret and implement a defined part of your
-          product, supported by evidence rather than assumptions about
-          what might be going wrong.
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- 7. WHO DAXMAC WORKS WITH -->
-    <section class="section audience" id="who-we-work-with">
-      <div class="wrap">
-
-        <h2 class="section__title">
-          Who DaxMac Works With
-        </h2>
-
-        <p class="lede">
-          DaxMac works with companies building developer-facing products
-          where customers must integrate, configure, deploy, or manage
-          technical workflows.
-        </p>
-
-        <div class="notes-grid">
-
-          <article class="note-card">
-            <h3 class="note-card__title">API-first Platforms</h3>
-            <p class="note-card__text">
-              Products that customers integrate into their own
-              applications and systems.
-            </p>
           </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Developer Tools and Infrastructure</h3>
-            <p class="note-card__text">
-              Platforms that abstract infrastructure responsibilities
-              but still require customer configuration and operational decisions.
+
+          <article class="deliver-item">
+
+            <span class="deliver-item__number">02</span>
+
+            <h3>Evidence-Backed Findings</h3>
+
+            <p>
+              Each finding connects a developer assumption to its supporting evidence, explains what that evidence establishes, and identifies the responsibility or condition that may be overlooked.
             </p>
+
           </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">AI and Agent Platforms</h3>
-            <p class="note-card__text">
-              Products involving model integrations, tools, agents,
-              workflows, and execution environments.
+
+          <article class="deliver-item">
+
+            <span class="deliver-item__number">03</span>
+
+            <h3>Prioritized Assessment</h3>
+
+            <p>
+              Findings are organized by their significance within the examined implementation path, highlighting considerations that may warrant attention or further investigation.
             </p>
+
           </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Authentication and Security</h3>
-            <p class="note-card__text">
-              Products where credentials, permissions, access controls,
-              and authorization responsibilities shape implementation.
+
+          <article class="deliver-item">
+
+            <span class="deliver-item__number">04</span>
+
+            <h3>Supporting Evidence</h3>
+
+            <p>
+              Relevant source references and supporting material allow teams to trace how each finding was reached.
             </p>
+
           </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Fintech Infrastructure</h3>
-            <p class="note-card__text">
-              APIs and platforms supporting payments, financial operations,
-              and connected services.
-            </p>
-          </article>
 
-          <article class="note-card">
-            <h3 class="note-card__title">Data and Communication Infrastructure</h3>
-            <p class="note-card__text">
-              Products involving data pipelines, event processing,
-              messaging, and service integrations.
+          <article class="deliver-item">
+
+            <span class="deliver-item__number">05</span>
+
+            <h3>Review Summary</h3>
+
+            <p>
+              A concise summary of the investigation, its key findings, and the areas that may deserve further attention from product and engineering teams.
             </p>
+
           </article>
 
         </div>
 
-        <h3 class="section__title">
-          When an Independent Review Is Worth Considering
-        </h3>
 
-        <ul class="plan__list">
-          <li>You're introducing new APIs, SDKs, integrations, or implementation workflows.</li>
-          <li>You've changed authentication, configuration, deployment, or migration requirements.</li>
-          <li>You want an independent assessment of how developers interpret a specific implementation path.</li>
-          <li>You need to examine what product behavior or validation actually establishes.</li>
-          <li>You want evidence to support product and engineering decisions.</li>
-        </ul>
+        <div class="deliver-note">
 
-        <p class="note">
-          DaxMac examines a defined implementation path rather than
-          assuming every product area needs a review.
-        </p>
+          <p>
+            Live-testing engagements also include agreed test scenarios, configurations, code, requests, responses, and observed behaviour where relevant.
+          </p>
+
+          <p>
+            The purpose is to give your team an independent view of how developers may interpret and implement a defined part of your product, supported by evidence rather than assumptions about what might be going wrong.
+          </p>
+
+        </div>
 
       </div>
     </section>
 
 
-    <!-- 8. FINAL CTA -->
+    <!-- =====================================================
+         WHO DAXMAC WORKS WITH
+    ====================================================== -->
+
+    <section class="section audience" id="who-we-work-with">
+      <div class="wrap">
+
+        <div class="section__intro">
+
+          <p class="eyebrow">
+            Company Fit
+          </p>
+
+          <h2 class="section__title">
+            Who DaxMac Works With
+          </h2>
+
+          <p class="lede">
+            DaxMac works with companies building developer-facing products where customers must integrate, configure, deploy, or manage technical workflows.
+          </p>
+
+        </div>
+
+
+        <div class="audience-grid">
+
+          <article class="audience-card">
+
+            <h3>API-first Platforms</h3>
+
+            <p>
+              Products that customers integrate into their own applications and systems.
+            </p>
+
+          </article>
+
+
+          <article class="audience-card">
+
+            <h3>Developer Tools and Infrastructure</h3>
+
+            <p>
+              Platforms that abstract infrastructure responsibilities but still require customer configuration and operational decisions.
+            </p>
+
+          </article>
+
+
+          <article class="audience-card">
+
+            <h3>AI and Agent Platforms</h3>
+
+            <p>
+              Products involving model integrations, tools, agents, workflows, and execution environments.
+            </p>
+
+          </article>
+
+
+          <article class="audience-card">
+
+            <h3>Authentication and Security</h3>
+
+            <p>
+              Products where credentials, permissions, access controls, and authorization responsibilities shape implementation.
+            </p>
+
+          </article>
+
+
+          <article class="audience-card">
+
+            <h3>Fintech Infrastructure</h3>
+
+            <p>
+              APIs and platforms supporting payments, financial operations, and connected services.
+            </p>
+
+          </article>
+
+
+          <article class="audience-card">
+
+            <h3>Data and Communication Infrastructure</h3>
+
+            <p>
+              Products involving data pipelines, event processing, messaging, and service integrations.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         WHEN TO CONSIDER A REVIEW
+    ====================================================== -->
+
+    <section class="section consider" id="when-to-review">
+      <div class="wrap">
+
+        <div class="consider-layout">
+
+          <div>
+
+            <p class="eyebrow">
+              Engagement Considerations
+            </p>
+
+            <h2 class="section__title">
+              When an Independent Review Is Worth Considering
+            </h2>
+
+            <p class="lede">
+              An independent Developer Implementation Review may be relevant when:
+            </p>
+
+          </div>
+
+
+          <div>
+
+            <ul class="consider-list">
+
+              <li>
+                You're introducing new APIs, SDKs, integrations, or implementation workflows.
+              </li>
+
+              <li>
+                You've changed authentication, configuration, deployment, or migration requirements.
+              </li>
+
+              <li>
+                You want an independent assessment of how developers interpret a specific implementation path.
+              </li>
+
+              <li>
+                You need to examine what product behaviour or validation actually establishes.
+              </li>
+
+              <li>
+                You want evidence to support product and engineering decisions.
+              </li>
+
+            </ul>
+
+
+            <p class="consider-note">
+              DaxMac examines a defined implementation path rather than assuming every product area needs a review.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         FINAL CTA
+    ====================================================== -->
+
     <section class="section cta" id="contact">
       <div class="wrap">
+
+        <p class="eyebrow">
+          Start a Conversation
+        </p>
 
         <h2 class="cta__title">
           Have an Implementation Path Worth Examining?
         </h2>
 
         <p class="lede">
-          If your product requires developers to integrate, configure,
-          deploy, or manage technical workflows, DaxMac can independently
-          examine a defined implementation path.
+          If your product requires developers to integrate, configure, deploy, or manage technical workflows, DaxMac can independently examine a defined implementation path.
         </p>
 
         <p class="lede">
-          Share the product area or workflow you want examined. We'll assess
-          whether it fits the review process, establish the appropriate
-          scope, and agree on pricing and timelines before work begins.
+          Share the product area or workflow you want examined. We'll assess whether it fits the review process, establish the appropriate scope, and agree on pricing and timelines before work begins.
         </p>
 
-        <a
-          class="btn btn--primary btn--lg"
-          href="mailto:goodness@daxmac.cc?subject=Discuss%20an%20Implementation%20Review"
-        >
-          Discuss an Implementation Review
-        </a>
+
+        <div class="hero__actions">
+
+          <a
+            href="mailto:goodness@daxmac.cc?subject=Implementation%20Review%20Enquiry"
+            class="btn btn--primary btn--lg"
+          >
+            Discuss an Implementation Review
+          </a>
+
+        </div>
+
 
         <p class="cta__email">
           <a href="mailto:goodness@daxmac.cc">
@@ -1472,84 +2269,161 @@
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
   <footer class="site-footer">
 
-    <div class="wrap site-footer__inner">
+    <div class="wrap">
 
-      <div class="footer__brand">
-        <img class="footer__logo" src="assets/logo.png" alt="DaxMac">
+      <div class="site-footer__inner">
 
-        <p class="footer__tagline">
-          Independent Developer Implementation Reviews.
-        </p>
+
+        <!-- BRAND -->
+
+        <div class="footer__brand">
+
+          <a href="index.html" aria-label="DaxMac Home">
+            <img
+              src="assets/logo.png"
+              alt="DaxMac"
+              class="footer__logo"
+            >
+          </a>
+
+          <p class="footer__tagline">
+            Independent Developer Implementation Reviews.
+          </p>
+
+        </div>
+
+
+        <!-- SERVICES -->
+
+        <div class="footer__col">
+
+          <h3 class="footer__head">
+            Services
+          </h3>
+
+          <ul>
+
+            <li>
+              <a href="#services">
+                Preliminary Implementation Review
+              </a>
+            </li>
+
+            <li>
+              <a href="#services">
+                Developer Implementation Review
+              </a>
+            </li>
+
+            <li>
+              <a href="#services">
+                Review + Live Testing
+              </a>
+            </li>
+
+            <li>
+              <a href="#services">
+                Custom Implementation Assessment
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <!-- EXPLORE -->
+
+        <div class="footer__col">
+
+          <h3 class="footer__head">
+            Explore
+          </h3>
+
+          <ul>
+
+            <li>
+              <a href="audits.html">
+                Independent Research
+              </a>
+            </li>
+
+            <li>
+              <a href="field-notes.html">
+                Field Notes
+              </a>
+            </li>
+
+            <li>
+              <a href="about.html">
+                About
+              </a>
+            </li>
+
+            <li>
+              <a href="#contact">
+                Contact
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <!-- CONNECT -->
+
+        <div class="footer__col">
+
+          <h3 class="footer__head">
+            Connect
+          </h3>
+
+          <ul>
+
+            <li>
+              <a
+                href="https://www.linkedin.com/company/daxmac/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://x.com/daxmachq"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
       </div>
 
-      <nav class="footer__col" aria-label="Services">
-        <h2 class="footer__head">Services</h2>
 
-        <ul>
-          <li>
-            <a href="#services">Preliminary Implementation Review</a>
-          </li>
+      <!-- FOOTER BASE -->
 
-          <li>
-            <a href="#services">Developer Implementation Review</a>
-          </li>
+      <div class="site-footer__base">
 
-          <li>
-            <a href="#services">Review + Live Testing</a>
-          </li>
+        <p class="footer__copy">
+          © 2026 DaxMac
+        </p>
 
-          <li>
-            <a href="#services">Custom Implementation Assessment</a>
-          </li>
-        </ul>
-      </nav>
+      </div>
 
-      <nav class="footer__col" aria-label="Explore">
-        <h2 class="footer__head">Explore</h2>
-
-        <ul>
-          <li><a href="audits.html">Independent Research</a></li>
-          <li><a href="field-notes.html">Field Notes</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <nav class="footer__col" aria-label="Connect">
-        <h2 class="footer__head">Connect</h2>
-
-        <ul>
-          <li>
-            <a
-              href="https://www.linkedin.com/company/daxmac/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://x.com/daxmachq"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              X
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-    </div>
-
-    <div class="wrap site-footer__base">
-      <p class="footer__copy">
-        © 2026 DaxMac
-      </p>
     </div>
 
   </footer>
